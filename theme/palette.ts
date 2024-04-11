@@ -1,5 +1,20 @@
 import { lighten, darken } from "polished"
 
+enum ThemeColor {
+  DARK,
+  LIGHT,
+}
+
+export enum Colors {
+  BLUE,
+  FUCHSIA,
+  GREEN,
+  PURPLE,
+  RED,
+  ORANGE,
+  TURQUOISE,
+}
+
 const danger = {
   main: "#d42222",
   light: lighten("0.02", "#d42222"),
@@ -12,13 +27,8 @@ const warning = {
   dark: darken("0.1", "#d4ca22"),
 }
 
-export enum Theme {
-  DARK,
-  LIGHT,
-}
-
 export const palette = {
-  [Theme.LIGHT]: {
+  [ThemeColor.LIGHT]: {
     main: {
       1: "#ffffff",
       2: darken("0.02", "#ffffff"),
@@ -35,7 +45,7 @@ export const palette = {
     danger,
     warning,
   },
-  [Theme.DARK]: {
+  [ThemeColor.DARK]: {
     main: {
       1: lighten("0.06", "#080808"),
       2: "#080808",
@@ -52,16 +62,6 @@ export const palette = {
     danger,
     warning,
   },
-}
-
-export enum Colors {
-  BLUE,
-  FUCHSIA,
-  GREEN,
-  PURPLE,
-  RED,
-  ORANGE,
-  TURQUOISE,
 }
 
 export const color = {
@@ -102,7 +102,7 @@ export const color = {
   },
 }
 
-export const defaultTheme = {
-  selected: palette[Theme.LIGHT],
+export const theme = {
+  selected: palette[ThemeColor.LIGHT],
   mainColor: color[Colors.GREEN],
 }
