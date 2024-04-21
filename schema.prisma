@@ -1,0 +1,96 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Alias {
+  id        String  @id @default(uuid())
+  alias     String  @db.VarChar(40)
+  contactId String  @map(name: "contact_id")
+  contact   Contact @relation(fields: [contactId], references: [id])
+
+  @@map("aliases")
+}
+
+model Contact {
+  id        String    @id @default(uuid())
+  name      String    @db.VarChar(40)
+  lastname  String?   @db.VarChar(40)
+  photo     String?   @db.VarChar(60)
+  birthday  DateTime? @db.Date
+  address   String?   @db.VarChar(40)
+  notes     String?
+  yearMet   Int?      @map(name: "year_met") @db.SmallInt
+  favorite  Boolean   @default(false)
+  active    Boolean   @default(true)
+  createdAt DateTime  @default(now()) @map(name: "created_at")
+  updatedAt DateTime  @updatedAt @map(name: "updated_at")
+  Alias     Alias[]
+  Email     Email[]
+  Number    Number[]
+  Social    Social[]
+
+  @@map("contacts")
+}
+
+enum EmailType {
+  Personal
+  Work
+  Custom
+}
+
+model Email {
+  id        String    @id @default(uuid())
+  email     String    @db.VarChar(40)
+  type      EmailType @default(Personal)
+  label     String?   @db.VarChar(40)
+  contactId String    @map(name: "contact_id")
+  contact   Contact   @relation(fields: [contactId], references: [id])
+
+  @@map("emails")
+}
+
+enum NumberType {
+  Mobile
+  Home
+  Secondary
+  Work
+  Custom
+}
+
+model Number {
+  id        String     @id @default(uuid())
+  number    String     @db.VarChar(20)
+  type      NumberType @default(Mobile)
+  label     String?    @db.VarChar(40)
+  contactId String     @map(name: "contact_id")
+  contact   Contact    @relation(fields: [contactId], references: [id])
+
+  @@map("numbers")
+}
+
+model Social {
+  id         String   @id @default(uuid())
+  username   String   @db.VarChar(80)
+  label      String?  @db.VarChar(40)
+  platformId String   @map(name: "platform_id")
+  platform   Platform @relation(fields: [platformId], references: [id])
+  contactId  String   @map(name: "contact_id")
+  contact    Contact  @relation(fields: [contactId], references: [id])
+
+  @@map("socials")
+}
+
+model Platform {
+  id     String   @id @default(uuid())
+  name   String   @db.VarChar(40)
+  url    String?  @db.VarChar(40)
+  prefix String?  @db.VarChar(10)
+  Social Social[]
+
+  @@map("platforms")
+}
