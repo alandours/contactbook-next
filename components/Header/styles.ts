@@ -1,4 +1,4 @@
-import styled, { DefaultTheme } from "styled-components"
+import styled from "styled-components"
 
 import { screen } from "@/theme/screen"
 import { FontSize, FontWeight } from "@/theme/typography"
@@ -18,11 +18,11 @@ export const HeaderContainer = styled.header`
   width: 100%;
   z-index: ${zindex.fixed};
 
-  ${screen.md`
-    background: ${({ theme }: { theme: DefaultTheme }) =>
-      theme.selected.main[1]};
-    position: initial;
-  `}
+  ${({ theme }) =>
+    screen.md(`
+      background: ${theme.selected.main[1]};
+      position: initial;
+    `)};
 `
 
 export const Sitename = styled.div`
@@ -43,9 +43,9 @@ export const ToggleMenuButton = styled.button`
   font-size: ${FontSize.LARGE};
   margin-right: 1rem;
 
-  ${screen.md`
+  ${screen.md(`
     display: none;
-  `}
+  `)}
 `
 
 export const Sitelink = styled(Link)`

@@ -1,4 +1,4 @@
-import styled, { DefaultTheme } from "styled-components"
+import styled from "styled-components"
 
 import { screen } from "@/theme/screen"
 
@@ -16,12 +16,12 @@ export const MainContentContainer = styled.div`
   transition-property: background, box-shadow;
   width: 100%;
 
-  ${screen.md`
-    border-radius: 8px; 
-    box-shadow: 0 2px 6px 0 ${({ theme }: { theme: DefaultTheme }) =>
-      theme.selected.main.shadow};
-    margin-left: 1rem;
-    width: 75%;
-    height: 80vh;
-  `}
+  ${({ theme }) =>
+    screen.md(`
+      border-radius: 8px; 
+      box-shadow: 0 2px 6px 0 ${theme.selected.main.shadow};
+      margin-left: 1rem;
+      width: 75%;
+      height: 80vh;
+    `)};
 `

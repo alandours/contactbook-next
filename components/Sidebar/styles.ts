@@ -1,4 +1,4 @@
-import styled, { DefaultTheme, css } from "styled-components"
+import styled, { css } from "styled-components"
 
 import { screen } from "@/theme/screen"
 import { zindex } from "@/constants"
@@ -25,16 +25,16 @@ export const SidebarContainer = styled.div<{ open: boolean }>`
       transition: transform 250ms;
     `};
 
-  ${screen.md`
-    border-radius: 8px;
-    box-shadow: 0 2px 6px 0 ${({ theme }: { theme: DefaultTheme }) =>
-      theme.selected.main.shadow};
-    display: block;
-    left: 0;
-    min-width: 25%;
-    max-height: 80vh;
-    position: initial;
-    transform: none;
-    width: 25%;
-  `}
+  ${({ theme }) =>
+    screen.md(`
+      border-radius: 8px;
+      box-shadow: 0 2px 6px 0 ${theme.selected.main.shadow};
+      display: block;
+      left: 0;
+      min-width: 25%;
+      max-height: 80vh;
+      position: initial;
+      transform: none;
+      width: 25%;
+    `)}
 `
