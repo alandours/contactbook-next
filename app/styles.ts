@@ -10,9 +10,9 @@ export const ContactBook = styled.div`
   flex-direction: column;
   height: 100%;
 
-  ${screen.md`
+  ${screen.md(`
     background: none;
-  `}
+  `)}
 `
 
 export const Main = styled.main`
@@ -21,12 +21,12 @@ export const Main = styled.main`
   height: auto;
   max-width: 100%;
 
-  ${screen.md`
+  ${screen.md(`
     margin: auto 1rem;
-  `}
+  `)}
 
-  ${screen.lg`
+  ${screen.lg(`
     margin: auto;
     width: 1000px;
-  `}
+  `)}
 `
