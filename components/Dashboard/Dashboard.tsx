@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useState, useEffect } from "react"
-import { Contact } from "@prisma/client"
+import { Contact } from "@/types"
 
 import { PageHeader } from "@/components/PageHeader"
 import { ContactMessage } from "@/components/ContactMessage"

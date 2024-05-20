@@ -1,6 +1,6 @@
 import { ReactNode } from "react"
 
-import { Contact } from "@prisma/client"
+import { Contact } from "@/types"
 
 export type BirthdayGroup = {
   birthdays: ReactNode | null

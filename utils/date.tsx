@@ -1,4 +1,4 @@
-import { Contact } from "@prisma/client"
+import { Contact } from "@/types"
 import { Section } from "@/components/Section"
 import { ContactLink } from "@/components/ContactLink"
 import {
