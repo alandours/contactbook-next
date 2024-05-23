@@ -11,4 +11,4 @@ export enum LinkVariants {
   ROUND,
 }
 
-export type Contact = Omit<ContactType, "active" | "createdAt" | "updatedAt">
+export type Contact = Omit<ContactType, "active" | "updatedAt">

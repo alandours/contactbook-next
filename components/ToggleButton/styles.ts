@@ -20,7 +20,7 @@ export const ToggleContainer = styled.div<{ active: boolean }>`
     `}
 `
 
-export const ToggleButtonContainer = styled.div`
+export const ToggleButtonContainer = styled.div<{ active: boolean }>`
   background: ${({ theme }) => theme.selected.main[2]};
   border: 1px solid ${({ theme }) => theme.selected.contrast[4]};
   box-shadow: 1px 0 1px 0 ${({ theme }) => theme.selected.main.shadow};

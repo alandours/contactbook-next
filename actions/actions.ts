@@ -2,8 +2,6 @@
 
 import prisma from "@/lib/prisma"
 
-export type Contact = Awaited<ReturnType<typeof getContacts>>[0]
-
 export const getContacts = async (search = "") => {
   const filter = {
     contains: search,
@@ -75,6 +73,7 @@ export const getContacts = async (search = "") => {
       notes: true,
       yearMet: true,
       favorite: true,
+      createdAt: true,
       Social: {
         select: {
           id: true,
