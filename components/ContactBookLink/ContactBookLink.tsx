@@ -7,8 +7,8 @@ import { WebTarget } from "styled-components"
 type ContactBookLinkProps = {
   url: string
   type?: WebTarget
-  highlight: boolean
-  title: string
+  highlight?: boolean
+  title?: string
   variant?: LinkVariants
   className?: string
   children: ReactNode
@@ -17,7 +17,7 @@ type ContactBookLinkProps = {
 export const ContactBookLink = ({
   url,
   type,
-  highlight,
+  highlight = false,
   title,
   variant = LinkVariants.MAIN,
   className = "",
