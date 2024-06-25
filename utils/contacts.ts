@@ -35,7 +35,7 @@ export const sortContacts = (contacts: Contact[]) => {
   })
 }
 
-export const getFirstLetter = (name: string) => name.toUpperCase()[0]
+export const getInitial = (name: string) => name.toUpperCase()[0]
 
 export const getDefaultPhoto = (mainColor: Colors) =>
   `contact-${mainColor || "green"}.jpg`

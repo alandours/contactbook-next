@@ -1,7 +1,8 @@
+import { KeyboardEvent } from "react"
 import { SearchInputContainer, SearchInputElement } from "./styles"
 
 type SearchInputProps = {
-  handleTyping: () => void
+  handleTyping: (e: KeyboardEvent<HTMLInputElement>) => void
 }
 
 export const SearchInput = ({ handleTyping }: SearchInputProps) => (
