@@ -1,14 +1,14 @@
-"use client"
+'use client'
 
-import { ReactNode } from "react"
+import { ReactNode } from 'react'
 
-import { Title, Subtitle } from "@/ui"
+import { Title, Subtitle } from '@/ui'
 
-import { PageHeaderContainer } from "./styles"
+import { PageHeaderContainer } from './styles'
 
 interface PageHeaderProps {
   title?: string
-  subtitle?: string
+  subtitle?: ReactNode
   className?: string
   children?: ReactNode
 }
@@ -16,7 +16,7 @@ interface PageHeaderProps {
 export const PageHeader = ({
   title,
   subtitle,
-  className = "",
+  className = '',
   children,
 }: PageHeaderProps) => (
   <PageHeaderContainer className={className}>

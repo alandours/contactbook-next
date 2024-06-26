@@ -1,13 +1,13 @@
-"use client"
+'use client'
 
-import { useContext } from "react"
+import { useContext } from 'react'
 
-import { ROUTES } from "@/constants/routes"
-import { ContactsContext } from "@/features/contacts/context"
-import { UIContext } from "@/ui/context"
-import { Icons } from "@/ui/icons"
-import { getRandomContact } from "@/utils/contacts"
-import { NotFoundType } from "@/types"
+import { ROUTES } from '@/constants/routes'
+import { ContactsContext } from '@/features/contacts/context'
+import { UIContext } from '@/ui/context'
+import { Icons } from '@/ui/icons'
+import { getRandomContact } from '@/utils/contacts'
+import { NotFoundType } from '@/types'
 
 import {
   NotFoundContainer,
@@ -15,7 +15,7 @@ import {
   NotFoundIcon,
   NotFoundSubtitle,
   NotFoundLink,
-} from "./styles"
+} from './styles'
 
 interface NotFoundProps {
   page?: NotFoundType
@@ -33,14 +33,14 @@ export const NotFound = ({ page = NotFoundType.MAIN }: NotFoundProps) => {
     </>
   )
 
-  if (page === NotFoundType.CONTACT && contacts) {
+  if (page === NotFoundType.CONTACT && contacts.length) {
     const { id, name } = getRandomContact(contacts)
 
     title = "This is not the contact you're looking for"
 
     subtitle = (
       <>
-        Try a different one, like{" "}
+        Try a different one, like{' '}
         <NotFoundLink href={ROUTES.contacts.profile(id)} highlight>
           {name}
         </NotFoundLink>
