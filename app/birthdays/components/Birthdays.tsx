@@ -1,17 +1,17 @@
 "use client"
 
-import { Contact } from "@/types"
+import { useContext } from "react"
+
 import { PageHeader } from "@/components/PageHeader"
 import { Loader } from "@/components/Loader"
+import { ContactsContext } from "@/context/contacts"
 import { getBirthdayGroups } from "@/utils/date"
 
 import { BirthdaysContainer } from "./styles"
 
-type BirthdaysProps = {
-  contacts: Contact[]
-}
+export const Birthdays = () => {
+  const { contacts } = useContext(ContactsContext)
 
-export const Birthdays = ({ contacts }: BirthdaysProps) => {
   const birthdayGroups = getBirthdayGroups(contacts)
   const { birthdays, quantity } = birthdayGroups || {}
   const subtitle = birthdayGroups ? `${quantity} birthdays` : ""

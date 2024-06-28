@@ -15,15 +15,19 @@ import { Contact } from "@/types"
 interface ContactsContextValues {
   contacts: Contact[]
   loading: boolean | undefined
+  palette: string[]
   fetchContacts: (search?: string) => void
   setSearch: Dispatch<SetStateAction<string | undefined>>
+  setPalette: Dispatch<SetStateAction<string[]>>
 }
 
 const initialValues: ContactsContextValues = {
   contacts: [],
   loading: undefined,
+  palette: [],
   fetchContacts: () => undefined,
   setSearch: () => undefined,
+  setPalette: () => undefined,
 }
 
 export const ContactsContext =
@@ -38,6 +42,7 @@ export const ContactsProvider = ({ data, children }: ContactsProviderProps) => {
   const [contacts, setContacts] = useState<Contact[]>(data)
   const [loading, setLoading] = useState<boolean>()
   const [search, setSearch] = useState<string>()
+  const [palette, setPalette] = useState<string[]>([])
 
   const fetchContacts = async () => {
     setLoading(true)
@@ -63,8 +68,10 @@ export const ContactsProvider = ({ data, children }: ContactsProviderProps) => {
       value={{
         contacts,
         loading,
+        palette,
         fetchContacts,
         setSearch,
+        setPalette,
       }}
     >
       {children}

@@ -4,22 +4,21 @@ import { Icon } from "@/components/Icon"
 import { Contact, LinkVariants } from "@/types"
 
 import { ProfileData } from "../ProfileData"
+
 import { MainInfoContainer, EditLink } from "./styles"
 
 type MainInfoProps = {
   contact: Contact
-  palette: string[]
-  setPalette: () => void
 }
 
-export const MainInfo = ({ contact, palette, setPalette }: MainInfoProps) => {
+export const MainInfo = ({ contact }: MainInfoProps) => {
   const { id } = contact || {}
 
   return (
     <>
-      <Gradient palette={palette} smooth />
+      <Gradient smooth />
       <MainInfoContainer>
-        <MainProfilePicture contact={contact} setPalette={setPalette} />
+        <MainProfilePicture contact={contact} />
         <ProfileData contact={contact} />
         <EditLink
           url={`/contacts/${id}/edit`}

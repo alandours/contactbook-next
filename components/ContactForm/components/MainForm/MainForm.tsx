@@ -9,19 +9,17 @@ import { MainFormContainer, PhotoLabel, ImageInput } from "./styles"
 
 type MainFormProps = {
   contact: Contact
-  palette: string[]
-  setPalette: () => void
 }
 
-export const MainForm = ({ contact, palette, setPalette }: MainFormProps) => {
+export const MainForm = ({ contact }: MainFormProps) => {
   const { register } = useFormContext()
 
   return (
     <>
-      <Gradient smooth palette={palette} />
+      <Gradient smooth />
       <MainFormContainer>
         <PhotoLabel>
-          <ProfilePicture contact={contact} setPalette={setPalette} />
+          <ProfilePicture contact={contact} />
           <ImageInput type="file" {...register("imageInput")} />
         </PhotoLabel>
         <MainFormData />

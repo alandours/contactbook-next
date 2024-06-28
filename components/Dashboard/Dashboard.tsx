@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useContext } from "react"
 import { Contact } from "@/types"
 
 import { PageHeader } from "@/components/PageHeader"
@@ -9,6 +9,7 @@ import { ContactLink } from "@/components/ContactLink"
 import { ContactBookLink } from "@/components/ContactBookLink"
 import { Section } from "@/components/Section"
 import { Loader } from "@/components/Loader"
+import { ContactsContext } from "@/context/contacts"
 import { ContactWithNextBirthday } from "@/types/birthday"
 import {
   getContactsWithBirthdays,
@@ -18,11 +19,9 @@ import {
 
 import { DashboardContainer } from "./styles"
 
-type DashboardProps = {
-  contacts: Contact[]
-}
+export const Dashboard = () => {
+  const { contacts } = useContext(ContactsContext)
 
-export const Dashboard = ({ contacts }: DashboardProps) => {
   const [upcomingBirthdays, setUpcomingBirthdays] =
     useState<ContactWithNextBirthday[]>()
   const [lastAdded, setLastAdded] = useState<Contact[]>()
