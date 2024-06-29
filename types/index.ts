@@ -11,4 +11,10 @@ export enum LinkVariants {
   ROUND,
 }
 
+export enum Status {
+  SUCCESS,
+  ERROR,
+  WARNING,
+}
+
 export type Contact = Omit<ContactType, "active" | "updatedAt">

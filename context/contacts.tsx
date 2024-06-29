@@ -10,24 +10,30 @@ import {
 } from "react"
 
 import { getContacts } from "@/actions/actions"
-import { Contact } from "@/types"
+import { Contact, Status } from "@/types"
+
+type Toast = { message: string; type: Status }
 
 interface ContactsContextValues {
   contacts: Contact[]
   loading: boolean | undefined
   palette: string[]
+  toast: Toast | null
   fetchContacts: (search?: string) => void
   setSearch: Dispatch<SetStateAction<string | undefined>>
   setPalette: Dispatch<SetStateAction<string[]>>
+  setToast: (toast: Toast | null) => void
 }
 
 const initialValues: ContactsContextValues = {
   contacts: [],
   loading: undefined,
   palette: [],
+  toast: null,
   fetchContacts: () => undefined,
   setSearch: () => undefined,
   setPalette: () => undefined,
+  setToast: () => undefined,
 }
 
 export const ContactsContext =
@@ -43,6 +49,7 @@ export const ContactsProvider = ({ data, children }: ContactsProviderProps) => {
   const [loading, setLoading] = useState<boolean>()
   const [search, setSearch] = useState<string>()
   const [palette, setPalette] = useState<string[]>([])
+  const [toast, setToast] = useState<Toast | null>(null)
 
   const fetchContacts = async () => {
     setLoading(true)
@@ -69,9 +76,11 @@ export const ContactsProvider = ({ data, children }: ContactsProviderProps) => {
         contacts,
         loading,
         palette,
+        toast,
         fetchContacts,
         setSearch,
         setPalette,
+        setToast,
       }}
     >
       {children}
