@@ -28,6 +28,12 @@ npm install
 npx prisma generate
 ```
 
+#### Seed database
+
+```sh
+npx prisma db seed
+```
+
 #### Run development server
 
 ```sh

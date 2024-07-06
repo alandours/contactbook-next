@@ -1,6 +1,6 @@
-import { ReactNode } from "react"
+import { ReactNode } from 'react'
 
-import { Contact } from "@/types"
+import { Contact } from '@/types'
 
 export type BirthdayGroup = {
   birthdays: ReactNode | null
