@@ -1,4 +1,4 @@
-import { ContactSchema } from "@/features/contacts/pages/ContactForm/schema"
+import { ContactSchema } from '@/features/contacts/pages/ContactForm/schema'
 import {
   Alias as ContactAliasType,
   Contact as ContactType,
@@ -6,7 +6,7 @@ import {
   Number as ContactNumberType,
   Platform as SocialPlatformType,
   Social as ContactSocialType,
-} from "@prisma/client"
+} from '@prisma/client'
 
 export enum ButtonVariants {
   MAIN,
@@ -24,9 +24,9 @@ export enum InputSizes {
 }
 
 export enum Status {
-  SUCCESS = "success",
-  ERROR = "error",
-  WARNING = "warning",
+  SUCCESS = 'success',
+  ERROR = 'error',
+  WARNING = 'warning',
 }
 
 export enum ListItemType {
@@ -34,15 +34,15 @@ export enum ListItemType {
   INITIAL,
 }
 
-export type Alias = Omit<ContactAliasType, "contactId">
-export type Email = Omit<ContactEmailType, "contactId">
-export type Number = Omit<ContactNumberType, "contactId">
-export type Platform = Omit<SocialPlatformType, "contactId">
-export type Social = Omit<ContactSocialType, "contactId" | "platformId"> & {
+export type Alias = Omit<ContactAliasType, 'contactId'>
+export type Email = Omit<ContactEmailType, 'contactId'>
+export type Number = Omit<ContactNumberType, 'contactId'>
+export type Platform = Omit<SocialPlatformType, 'contactId'>
+export type Social = Omit<ContactSocialType, 'contactId' | 'platformId'> & {
   platform: Platform
 }
 
-export type Contact = Omit<ContactType, "active" | "updatedAt"> & {
+export type Contact = Omit<ContactType, 'active' | 'updatedAt'> & {
   aliases: Alias[]
   emails: Email[]
   numbers: Number[]
@@ -60,6 +60,6 @@ export enum NotFoundType {
   CONTACT,
 }
 
-export type ContactFormData = Omit<ContactSchema, "file"> & {
+export type ContactFormData = Omit<ContactSchema, 'file'> & {
   removePhoto: boolean
 }

@@ -1,7 +1,7 @@
-import { Input } from "@/ui/Input"
+import { Input } from '@/ui/Input'
 
-import { ContactMainFormContainer, FieldContainer } from "./styles"
-import { InputSizes } from "@/types"
+import { ContactMainFormContainer, FieldContainer } from './styles'
+import { InputSizes } from '@/types'
 
 export const ContactMainForm = () => (
   <ContactMainFormContainer>

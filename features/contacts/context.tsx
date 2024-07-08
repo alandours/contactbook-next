@@ -1,4 +1,4 @@
-"use client"
+'use client'
 
 import {
   Dispatch,
@@ -7,10 +7,10 @@ import {
   createContext,
   useEffect,
   useState,
-} from "react"
+} from 'react'
 
-import { getContacts } from "@/actions/actions"
-import { Contact, Filters } from "@/types"
+import { getContacts } from '@/actions/actions'
+import { Contact, Filters } from '@/types'
 
 interface ContactsContextValues {
   contacts: Contact[]

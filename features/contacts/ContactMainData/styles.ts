@@ -1,6 +1,6 @@
-import styled, { css } from "styled-components"
-import { FontSize, FontWeight } from "@/ui/typography"
-import { responsive } from "@/ui/responsive"
+import styled, { css } from 'styled-components'
+import { FontSize, FontWeight } from '@/ui/typography'
+import { responsive } from '@/ui/responsive'
 
 export const ContactMainDataContainer = styled.div`
   margin-left: 0.75rem;
@@ -32,7 +32,7 @@ export const Name = styled.span<{ $birthday: number | null }>`
     ${({ $birthday }) =>
       !!$birthday &&
       css`
-        content: "${$birthday}";
+        content: '${$birthday}';
         font-size: ${FontSize.BASE};
         font-weight: ${FontWeight.REGULAR};
         color: ${({ theme }) => theme.selected.contrast[3]};

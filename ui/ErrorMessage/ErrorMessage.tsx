@@ -1,6 +1,6 @@
-import React, { ReactNode } from "react"
+import React, { ReactNode } from 'react'
 
-import { ErrorMessageContainer } from "./styles"
+import { ErrorMessageContainer } from './styles'
 
 interface ErrorMessageProps {
   children: ReactNode

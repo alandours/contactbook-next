@@ -1,4 +1,4 @@
-import { css } from "styled-components"
+import { css } from 'styled-components'
 
 enum Breakpoints {
   VIEWPORT_360 = 360,
@@ -23,12 +23,11 @@ export const responsive = {
       ${styles}
     }
   `,
-  lg: (styles: string) =>
-    css`
-      @media screen and (min-width: ${Breakpoints.VIEWPORT_1024}px) {
-        ${styles}
-      }
-    `,
+  lg: (styles: string) => css`
+    @media screen and (min-width: ${Breakpoints.VIEWPORT_1024}px) {
+      ${styles}
+    }
+  `,
   custom: (size: number, styles: string) => css`
     @media screen and (min-width: ${size}px) {
       ${styles}
@@ -45,7 +44,7 @@ const devices = {
 }
 
 export const isMedia = (media: keyof typeof devices, custom?: string) => {
-  if (typeof window !== "undefined") {
+  if (typeof window !== 'undefined') {
     return window?.matchMedia(
       `(min-width: ${Number(devices[media](custom))}px)`
     ).matches

@@ -1,7 +1,7 @@
-import { Metadata } from "next"
+import { Metadata } from 'next'
 
-import { getContact } from "@/actions/actions"
-import { ContactForm } from "@/features/contacts/pages/ContactForm"
+import { getContact } from '@/actions/actions'
+import { ContactForm } from '@/features/contacts/pages/ContactForm'
 
 interface EditContactPageProps {
   params: {

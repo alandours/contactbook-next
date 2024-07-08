@@ -1,1 +1,1 @@
-export { ContactMainData } from "./ContactMainData"
+export { ContactMainData } from './ContactMainData'

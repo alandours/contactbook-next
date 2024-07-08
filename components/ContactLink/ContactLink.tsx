@@ -1,19 +1,19 @@
-import React, { useContext } from "react"
+import React, { useContext } from 'react'
 
-import { ProfilePicture } from "@/components/ProfilePicture"
+import { ProfilePicture } from '@/components/ProfilePicture'
 import {
   calculateAge,
   calculateNextBirthdayAge,
   getListDate,
   isBirthdayFromToday,
   getNamedDate,
-} from "@/features/birthdays/utils"
-import { UIContext } from "@/ui/context"
-import { Icon, Link } from "@/ui"
-import { Icons } from "@/ui/icons"
+} from '@/features/birthdays/utils'
+import { UIContext } from '@/ui/context'
+import { Icon, Link } from '@/ui'
+import { Icons } from '@/ui/icons'
 
-import { Name, NamedDate, Date, Age } from "./styles"
-import { ButtonVariants, Contact } from "@/types"
+import { Name, NamedDate, Date, Age } from './styles'
+import { ButtonVariants, Contact } from '@/types'
 
 interface ContactLinkProps {
   contact: Contact & { nextBirthday?: Date }

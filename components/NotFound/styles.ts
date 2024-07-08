@@ -1,6 +1,6 @@
-import styled from "styled-components"
+import styled from 'styled-components'
 
-import { Icon, Title, Subtitle, Link } from "@/ui"
+import { Icon, Title, Subtitle, Link } from '@/ui'
 
 export const NotFoundContainer = styled.div``
 

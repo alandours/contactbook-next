@@ -1,1 +1,1 @@
-export { MainProfilePicture } from "./MainProfilePicture"
+export { MainProfilePicture } from './MainProfilePicture'

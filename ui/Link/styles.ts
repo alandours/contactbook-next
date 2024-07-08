@@ -1,8 +1,8 @@
-import styled from "styled-components"
-import Link from "next/link"
+import styled from 'styled-components'
+import Link from 'next/link'
 
-import { buttonStyles } from "@/ui/Button/styles"
-import { ButtonVariants } from "@/types"
+import { buttonStyles } from '@/ui/Button/styles'
+import { ButtonVariants } from '@/types'
 
 export const NextLink = styled(Link)<{
   $variant: ButtonVariants

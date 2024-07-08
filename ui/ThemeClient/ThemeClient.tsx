@@ -1,9 +1,9 @@
-"use client"
+'use client'
 
-import { useContext } from "react"
-import { ThemeProvider } from "styled-components"
+import { useContext } from 'react'
+import { ThemeProvider } from 'styled-components'
 
-import { UIContext } from "@/ui/context"
+import { UIContext } from '@/ui/context'
 
 interface ThemeClientProps {
   children: React.ReactNode

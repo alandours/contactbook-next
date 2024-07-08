@@ -1,13 +1,13 @@
-"use client"
+'use client'
 
-import { useContext, useState } from "react"
+import { useContext, useState } from 'react'
 
-import { updateFavorite } from "@/actions/actions"
-import { Icon } from "@/ui"
-import { UIContext } from "@/ui/context"
-import { Icons } from "@/ui/icons"
+import { updateFavorite } from '@/actions/actions'
+import { Icon } from '@/ui'
+import { UIContext } from '@/ui/context'
+import { Icons } from '@/ui/icons'
 
-import { FavoriteButtonContainer } from "./styles"
+import { FavoriteButtonContainer } from './styles'
 
 interface FavoriteButtonProps {
   id: string
@@ -21,7 +21,7 @@ export const FavoriteButton = ({ id, isFavorite }: FavoriteButtonProps) => {
   const [loading, setLoading] = useState(false)
 
   const icon = favorite ? Icons.heartFull : Icons.heart
-  const title = favorite ? "Remove from favorites" : "Add to favorites"
+  const title = favorite ? 'Remove from favorites' : 'Add to favorites'
 
   const toggleFavorite = async () => {
     setLoading(true)

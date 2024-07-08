@@ -1,12 +1,12 @@
 export const ROUTES = {
-  birthdays: "/birthdays",
+  birthdays: '/birthdays',
   contacts: {
-    main: "/contacts",
+    main: '/contacts',
     create: `/contacts/create`,
     profile: (id: string) => `/contacts/${id}`,
     edit: (id: string) => `/contacts/${id}/edit`,
-    year: "/contacts/year",
+    year: '/contacts/year',
   },
-  settings: "/settings",
+  settings: '/settings',
   profilePictures: (name: string) => `/images/profile/${name}`,
 }

@@ -1,13 +1,13 @@
-"use client"
+'use client'
 
-import React, { MouseEvent, useContext } from "react"
+import React, { MouseEvent, useContext } from 'react'
 
-import { PageHeader } from "@/components/PageHeader"
-import { Section } from "@/components/Section"
-import { ContactsContext } from "@/features/contacts/context"
-import { Loader } from "@/ui"
+import { PageHeader } from '@/components/PageHeader'
+import { Section } from '@/components/Section'
+import { ContactsContext } from '@/features/contacts/context'
+import { Loader } from '@/ui'
 
-import { ContactsByYearContainer, Stats, Stat, Year, Quantity } from "./styles"
+import { ContactsByYearContainer, Stats, Stat, Year, Quantity } from './styles'
 
 interface ContactByYearProps {
   stats: { yearMet: number | null; _count: number }[]
@@ -23,12 +23,12 @@ export const ContactsByYear = ({ stats }: ContactByYearProps) => {
     const { dataset } = e.target as HTMLDivElement
 
     if (!dataset.stat) {
-      updateFilters({ key: "year", remove: true })
+      updateFilters({ key: 'year', remove: true })
     }
   }
 
   const handleStatClick = (year: number) => {
-    updateFilters({ key: "year", value: year })
+    updateFilters({ key: 'year', value: year })
   }
 
   const renderStats = () => {
@@ -56,7 +56,7 @@ export const ContactsByYear = ({ stats }: ContactByYearProps) => {
 
   const subtitle = !!years.length
     ? `From ${years[0]} to ${years[years.length - 1]}`
-    : ""
+    : ''
 
   return stats ? (
     <ContactsByYearContainer onClick={clearFilter}>

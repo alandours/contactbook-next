@@ -1,6 +1,6 @@
-import styled, { css } from "styled-components"
-import { FontSize, FontWeight } from "@/ui/typography"
-import { responsive } from "@/ui/responsive"
+import styled, { css } from 'styled-components'
+import { FontSize, FontWeight } from '@/ui/typography'
+import { responsive } from '@/ui/responsive'
 
 export const LabelContainer = styled.label<{ label: string }>`
   background: ${({ theme }) => theme.selected.main[1]};
@@ -14,7 +14,7 @@ export const LabelContainer = styled.label<{ label: string }>`
   ${({ label }) =>
     responsive.md(`
       ${
-        label === "Alias" &&
+        label === 'Alias' &&
         css`
           width: 207px;
         `

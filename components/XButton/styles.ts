@@ -1,7 +1,7 @@
-import styled from "styled-components"
+import styled from 'styled-components'
 
-import { FontSize } from "@/ui/typography"
-import { Button } from "@/ui"
+import { FontSize } from '@/ui/typography'
+import { Button } from '@/ui'
 
 export const XButtonContainer = styled(Button)`
   background: none;

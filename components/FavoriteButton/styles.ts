@@ -1,7 +1,7 @@
-import styled from "styled-components"
+import styled from 'styled-components'
 
-import { FontSize } from "@/ui/typography"
-import { responsive } from "@/ui/responsive"
+import { FontSize } from '@/ui/typography'
+import { responsive } from '@/ui/responsive'
 
 export const FavoriteButtonContainer = styled.button`
   align-self: center;

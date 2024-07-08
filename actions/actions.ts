@@ -1,13 +1,13 @@
-"use server"
+'use server'
 
-import { revalidatePath } from "next/cache"
+import { revalidatePath } from 'next/cache'
 
-import { MESSAGES } from "@/constants/messages"
-import { schema } from "@/features/contacts/pages/ContactForm/schema"
-import prisma from "@/lib/prisma"
-import { ContactFormData, Filters, Status } from "@/types"
+import { MESSAGES } from '@/constants/messages'
+import { schema } from '@/features/contacts/pages/ContactForm/schema'
+import prisma from '@/lib/prisma'
+import { ContactFormData, Filters, Status } from '@/types'
 
-import { createQuery, createRelatedFieldQuery, writeImage } from "./utils"
+import { createQuery, createRelatedFieldQuery, writeImage } from './utils'
 
 const CONTACT_SELECT = {
   id: true,
@@ -55,8 +55,8 @@ const CONTACT_SELECT = {
 
 export const getContacts = async (filters: Filters = {}) => {
   const searchFilter = {
-    contains: filters.search || "",
-    mode: "insensitive",
+    contains: filters.search || '',
+    mode: 'insensitive',
   } as const
 
   return await prisma.contact.findMany({
@@ -118,7 +118,7 @@ export const getContacts = async (filters: Filters = {}) => {
         },
       ],
     },
-    orderBy: [{ name: "asc" }, { lastname: "asc" }],
+    orderBy: [{ name: 'asc' }, { lastname: 'asc' }],
   })
 }
 
@@ -151,7 +151,7 @@ export const upsertContact = async (
   } = data
 
   try {
-    const imageFile = formData.get("file") as File | null
+    const imageFile = formData.get('file') as File | null
 
     const parsed = schema.safeParse({ ...data, file: imageFile })
 
@@ -235,7 +235,7 @@ export const upsertContact = async (
       return contact
     })
 
-    revalidatePath("/", "layout")
+    revalidatePath('/', 'layout')
 
     const message = contactId
       ? MESSAGES.CONTACT_UPDATE[Status.SUCCESS](contact)
@@ -247,7 +247,7 @@ export const upsertContact = async (
       ? MESSAGES.CONTACT_UPDATE[Status.ERROR](data)
       : MESSAGES.CONTACT_CREATE[Status.ERROR]
 
-    console.warn("Upsert contact error", error)
+    console.warn('Upsert contact error', error)
 
     return { status: Status.ERROR, message, contact: null }
   }
@@ -288,14 +288,14 @@ export const updateFavorite = async (id: string, isFavorite: boolean) =>
 
 export const getStats = async () =>
   await prisma.contact.groupBy({
-    by: "yearMet",
+    by: 'yearMet',
     where: {
       active: true,
       NOT: [{ yearMet: null || 0 }],
     },
     _count: true,
     orderBy: {
-      yearMet: "asc",
+      yearMet: 'asc',
     },
   })
 

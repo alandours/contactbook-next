@@ -1,1 +1,1 @@
-export { ColorSelector } from "./ColorSelector"
+export { ColorSelector } from './ColorSelector'

@@ -1,1 +1,1 @@
-export { StickyBar } from "./StickyBar"
+export { StickyBar } from './StickyBar'

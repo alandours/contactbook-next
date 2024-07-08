@@ -1,10 +1,10 @@
-import { ReactNode, useContext } from "react"
+import { ReactNode, useContext } from 'react'
 
-import { ContactLink } from "@/components/ContactLink"
-import { Contact, ListItemType } from "@/types"
+import { ContactLink } from '@/components/ContactLink'
+import { Contact, ListItemType } from '@/types'
 
-import { ListItemContainer } from "./styles"
-import { UIContext } from "@/ui/context"
+import { ListItemContainer } from './styles'
+import { UIContext } from '@/ui/context'
 
 interface ListItemProps {
   contact?: Contact

@@ -1,6 +1,6 @@
-import styled from "styled-components"
+import styled from 'styled-components'
 
-import { FontSize } from "@/ui/typography"
+import { FontSize } from '@/ui/typography'
 
 export const CheckboxContainer = styled.label`
   align-items: center;

@@ -1,7 +1,7 @@
-import styled from "styled-components"
+import styled from 'styled-components'
 
-import { FontWeight } from "@/ui/typography"
-import { responsive } from "@/ui/responsive"
+import { FontWeight } from '@/ui/typography'
+import { responsive } from '@/ui/responsive'
 
 export const DatafieldContainer = styled.div`
   border-radius: 2px;

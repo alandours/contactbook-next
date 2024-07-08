@@ -1,4 +1,4 @@
-"use client"
+'use client'
 
 import {
   Dispatch,
@@ -7,10 +7,10 @@ import {
   createContext,
   useEffect,
   useState,
-} from "react"
+} from 'react'
 
-import { Settings, getSettings } from "@/features/settings/settings"
-import { Status } from "@/types"
+import { Settings, getSettings } from '@/features/settings/settings'
+import { Status } from '@/types'
 import {
   Colors,
   ThemeColor,
@@ -18,7 +18,7 @@ import {
   palette,
   getTheme,
   getMainColor,
-} from "@/ui/palette"
+} from '@/ui/palette'
 
 type Toast = { message: string; status: Status }
 
@@ -85,7 +85,7 @@ export const UIProvider = ({ children }: UIProviderProps) => {
 
   const updateSetting = (setting: Settings, active: boolean) => {
     if (active) {
-      localStorage.setItem(setting, "true")
+      localStorage.setItem(setting, 'true')
     } else {
       localStorage.removeItem(setting)
     }

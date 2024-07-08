@@ -1,13 +1,13 @@
-"use client"
+'use client'
 
-import { useContext } from "react"
+import { useContext } from 'react'
 
-import { Section } from "@/components/Section"
-import { ContactsContext } from "@/features/contacts/context"
-import { Setting } from "@/features/settings/Setting"
-import { Switch } from "@/ui"
-import { UIContext } from "@/ui/context"
-import { Settings } from "@/features/settings/settings"
+import { Section } from '@/components/Section'
+import { ContactsContext } from '@/features/contacts/context'
+import { Setting } from '@/features/settings/Setting'
+import { Switch } from '@/ui'
+import { UIContext } from '@/ui/context'
+import { Settings } from '@/features/settings/settings'
 
 export const ContactsSettings = () => {
   const { settings, updateSetting } = useContext(UIContext)
@@ -17,7 +17,7 @@ export const ContactsSettings = () => {
     updateSetting(Settings.SHOW_FAVORITE_ICON, active)
 
   const toggleFavoritesOnly = (active: boolean) =>
-    updateFilters({ key: "favorite", value: active, remove: !active })
+    updateFilters({ key: 'favorite', value: active, remove: !active })
 
   const toggleShowAge = (active: boolean) =>
     updateSetting(Settings.SHOW_AGE, active)

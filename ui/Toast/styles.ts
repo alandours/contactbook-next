@@ -1,7 +1,7 @@
-import styled, { css } from "styled-components"
+import styled, { css } from 'styled-components'
 
-import { XButton } from "@/components/XButton"
-import { Status } from "@/types"
+import { XButton } from '@/components/XButton'
+import { Status } from '@/types'
 
 export const CloseButton = styled(XButton)<{ $status: Status }>`
   ${({ theme, $status }) => css`

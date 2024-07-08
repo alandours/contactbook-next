@@ -1,6 +1,6 @@
-import styled from "styled-components"
+import styled from 'styled-components'
 
-import { FontWeight } from "@/ui/typography"
+import { FontWeight } from '@/ui/typography'
 
 export const BirthdaysContainer = styled.div`
   height: 100%;

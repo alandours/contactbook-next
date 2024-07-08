@@ -1,8 +1,8 @@
-import styled, { css } from "styled-components"
+import styled, { css } from 'styled-components'
 
-import { zindex } from "@/ui/constants"
-import { responsive } from "@/ui/responsive"
-import { FontSize, FontWeight } from "@/ui/typography"
+import { zindex } from '@/ui/constants'
+import { responsive } from '@/ui/responsive'
+import { FontSize, FontWeight } from '@/ui/typography'
 
 export const HeaderContainer = styled.header`
   ${({ theme }) => css`

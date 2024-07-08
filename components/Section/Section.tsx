@@ -1,9 +1,9 @@
-import { ReactNode } from "react"
+import { ReactNode } from 'react'
 
-import { SectionHeader } from "@/components/SectionHeader"
-import { Icons } from "@/ui/icons"
+import { SectionHeader } from '@/components/SectionHeader'
+import { Icons } from '@/ui/icons'
 
-import { SectionContainer, Content } from "./styles"
+import { SectionContainer, Content } from './styles'
 
 interface SectionProps {
   title: string

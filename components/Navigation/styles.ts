@@ -1,7 +1,7 @@
-import styled from "styled-components"
+import styled from 'styled-components'
 
-import { responsive } from "@/ui/responsive"
-import { FontSize, FontWeight } from "@/ui/typography"
+import { responsive } from '@/ui/responsive'
+import { FontSize, FontWeight } from '@/ui/typography'
 
 export const NavigationContainer = styled.div`
   align-items: center;

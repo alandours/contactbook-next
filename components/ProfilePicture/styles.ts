@@ -1,7 +1,7 @@
-import styled, { css } from "styled-components"
-import Image from "next/image"
+import styled, { css } from 'styled-components'
+import Image from 'next/image'
 
-import { responsive } from "@/ui/responsive"
+import { responsive } from '@/ui/responsive'
 
 export const ProfilePictureContainer = styled(Image)<{ $thumbnail: boolean }>`
   ${({ theme, $thumbnail, onClick }) => css`

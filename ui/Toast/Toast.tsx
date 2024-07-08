@@ -1,9 +1,9 @@
-import { useState, useEffect, useContext, useCallback } from "react"
+import { useState, useEffect, useContext, useCallback } from 'react'
 
-import { Status } from "@/types"
-import { UIContext } from "@/ui/context"
+import { Status } from '@/types'
+import { UIContext } from '@/ui/context'
 
-import { ToastContainer, CloseButton } from "./styles"
+import { ToastContainer, CloseButton } from './styles'
 
 export const Toast = () => {
   const { toast, setToast } = useContext(UIContext)

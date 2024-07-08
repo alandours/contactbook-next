@@ -1,10 +1,10 @@
-import { EmailType, NumberType } from "@prisma/client"
+import { EmailType, NumberType } from '@prisma/client'
 
-import { Datafield } from "@/components/Datafield"
-import { Icons } from "@/ui/icons"
-import { Alias, Email, Number, Social } from "@/types"
+import { Datafield } from '@/components/Datafield'
+import { Icons } from '@/ui/icons'
+import { Alias, Email, Number, Social } from '@/types'
 
-import { Notes } from "./styles"
+import { Notes } from './styles'
 
 type UnionToIntersection<U> = (U extends any ? (x: U) => void : never) extends (
   x: infer I
@@ -13,14 +13,14 @@ type UnionToIntersection<U> = (U extends any ? (x: U) => void : never) extends (
   : never
 
 export type SectionRenderData = UnionToIntersection<
-  Parameters<(typeof CONTACT_SECTIONS)[number]["render"]>[0]
+  Parameters<(typeof CONTACT_SECTIONS)[number]['render']>[0]
 >
 
 export const CONTACT_SECTIONS = [
   {
-    title: "Aliases",
+    title: 'Aliases',
     icon: Icons.alias,
-    key: "aliases",
+    key: 'aliases',
     order: 1,
     urlStart: null,
     render: (aliases: Alias[]) =>
@@ -30,11 +30,11 @@ export const CONTACT_SECTIONS = [
       }),
   },
   {
-    title: "Phone numbers",
+    title: 'Phone numbers',
     icon: Icons.phone,
-    key: "numbers",
+    key: 'numbers',
     order: 2,
-    urlStart: "tel:",
+    urlStart: 'tel:',
     render: (numbers: Number[], urlStart?: string) =>
       numbers.map((number) => {
         const { id, number: name, type, label: customLabel } = number
@@ -46,11 +46,11 @@ export const CONTACT_SECTIONS = [
       }),
   },
   {
-    title: "Emails",
+    title: 'Emails',
     icon: Icons.email,
-    key: "emails",
+    key: 'emails',
     order: 3,
-    urlStart: "mailto:",
+    urlStart: 'mailto:',
     render: (emails: Email[], urlStart?: string) =>
       emails.map((email) => {
         const { id, email: name, type, label: customLabel } = email
@@ -62,11 +62,11 @@ export const CONTACT_SECTIONS = [
       }),
   },
   {
-    title: "Social Networks",
+    title: 'Social Networks',
     icon: Icons.social,
-    key: "socials",
+    key: 'socials',
     order: 4,
-    urlStart: "https://",
+    urlStart: 'https://',
     render: (socials: Social[]) =>
       socials.map((social) => {
         const {
@@ -75,7 +75,7 @@ export const CONTACT_SECTIONS = [
           platform: { prefix, url: platformUrl, name: platformName },
           label: customLabel,
         } = social
-        const name = `${prefix || ""}${username}`
+        const name = `${prefix || ''}${username}`
         const label = platformName
         const url = `https://${platformUrl}/${username}`
 
@@ -83,9 +83,9 @@ export const CONTACT_SECTIONS = [
       }),
   },
   {
-    title: "Notes",
+    title: 'Notes',
     icon: Icons.notes,
-    key: "notes",
+    key: 'notes',
     order: 5,
     urlStart: null,
     render: (notes: string) => <Notes>{notes}</Notes>,

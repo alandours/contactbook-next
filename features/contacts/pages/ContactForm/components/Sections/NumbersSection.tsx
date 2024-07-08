@@ -1,15 +1,15 @@
-import { useCallback, useEffect } from "react"
-import { useFieldArray } from "react-hook-form"
-import { NumberType } from "@prisma/client"
+import { useCallback, useEffect } from 'react'
+import { useFieldArray } from 'react-hook-form'
+import { NumberType } from '@prisma/client'
 
-import { Section } from "@/components/Section"
-import { Icons } from "@/ui/icons"
+import { Section } from '@/components/Section'
+import { Icons } from '@/ui/icons'
 
-import { MultiField } from "./fields/MultiField"
-import { AddNewButton } from "./styles"
+import { MultiField } from './fields/MultiField'
+import { AddNewButton } from './styles'
 
 export const NumbersSection = () => {
-  const { fields, append, remove } = useFieldArray({ name: "numbers" })
+  const { fields, append, remove } = useFieldArray({ name: 'numbers' })
 
   const addNewNumber = useCallback(
     (shouldFocus = true) =>
@@ -33,7 +33,7 @@ export const NumbersSection = () => {
   return (
     <Section title="Phone numbers" icon={Icons.phone} sticky>
       {!!fields.length &&
-        fields.map((number: Record<"id", string>, index: number) => (
+        fields.map((number: Record<'id', string>, index: number) => (
           <MultiField
             key={number.id}
             label="Phone number"

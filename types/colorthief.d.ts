@@ -1,4 +1,4 @@
-declare module "colorthief" {
+declare module 'colorthief' {
   export type RGBColor = [number, number, number]
   export default class ColorThief {
     getColor: (

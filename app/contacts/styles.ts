@@ -1,8 +1,8 @@
-"use client"
+'use client'
 
-import styled, { css } from "styled-components"
+import styled, { css } from 'styled-components'
 
-import { responsive } from "@/ui/responsive"
+import { responsive } from '@/ui/responsive'
 
 export const ContactBook = styled.div`
   ${({ theme }) => css`

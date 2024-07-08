@@ -1,9 +1,9 @@
-import { Metadata } from "next"
+import { Metadata } from 'next'
 
-import { Settings } from "@/features/settings/pages/Settings"
+import { Settings } from '@/features/settings/pages/Settings'
 
 export const metadata: Metadata = {
-  title: "ContactBook | Settings",
+  title: 'ContactBook | Settings',
 }
 
 export default function SettingsPage() {

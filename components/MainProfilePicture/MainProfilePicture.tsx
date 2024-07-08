@@ -1,12 +1,12 @@
-import { useContext, useState } from "react"
-import Image from "next/image"
+import { useContext, useState } from 'react'
+import Image from 'next/image'
 
-import { ProfilePicture } from "@/components/ProfilePicture"
-import { ROUTES } from "@/constants/routes"
-import { ContactsContext } from "@/features/contacts/context"
-import { Backdrop } from "@/ui"
+import { ProfilePicture } from '@/components/ProfilePicture'
+import { ROUTES } from '@/constants/routes'
+import { ContactsContext } from '@/features/contacts/context'
+import { Backdrop } from '@/ui'
 
-import { FullSizeImageContainer } from "./styles"
+import { FullSizeImageContainer } from './styles'
 
 export const MainProfilePicture = () => {
   const { selectedContact } = useContext(ContactsContext)

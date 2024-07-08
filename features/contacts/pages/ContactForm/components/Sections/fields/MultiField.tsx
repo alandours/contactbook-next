@@ -1,9 +1,9 @@
-import { useWatch } from "react-hook-form"
-import { EmailType, NumberType } from "@prisma/client"
+import { useWatch } from 'react-hook-form'
+import { EmailType, NumberType } from '@prisma/client'
 
-import { Input, Select } from "@/ui"
+import { Input, Select } from '@/ui'
 
-import { FormField, Option, RemoveButton } from "./styles"
+import { FormField, Option, RemoveButton } from './styles'
 
 interface MultiFieldProps {
   label: string
@@ -31,7 +31,7 @@ export const MultiField = ({
       <Input name={names.input} label={label} />
       <Select name={names.select}>
         {options.map((option) =>
-          typeof option === "string" ? (
+          typeof option === 'string' ? (
             <Option key={option} value={option}>
               {option}
             </Option>

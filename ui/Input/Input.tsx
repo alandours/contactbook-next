@@ -1,12 +1,12 @@
-import React, { InputHTMLAttributes } from "react"
-import { useFormContext } from "react-hook-form"
-import { ErrorMessage as HookFormErrorMessage } from "@hookform/error-message"
+import React, { InputHTMLAttributes } from 'react'
+import { useFormContext } from 'react-hook-form'
+import { ErrorMessage as HookFormErrorMessage } from '@hookform/error-message'
 
-import { InputSizes } from "@/types"
-import { ErrorMessage, Icon, Label } from "@/ui"
-import { Icons } from "@/ui/icons"
+import { InputSizes } from '@/types'
+import { ErrorMessage, Icon, Label } from '@/ui'
+import { Icons } from '@/ui/icons'
 
-import { InputContainer, Container } from "./styles"
+import { InputContainer, Container } from './styles'
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   name: string
@@ -35,7 +35,7 @@ export const Input = ({
         {icon && <Icon name={icon} />}
         <InputContainer
           {...register(name)}
-          type={type || "text"}
+          type={type || 'text'}
           disabled={disabled}
           placeholder={placeholder}
           size={size}

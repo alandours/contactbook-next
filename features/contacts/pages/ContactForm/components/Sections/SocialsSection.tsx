@@ -1,16 +1,16 @@
-import { useCallback, useEffect, useState } from "react"
-import { useFieldArray } from "react-hook-form"
+import { useCallback, useEffect, useState } from 'react'
+import { useFieldArray } from 'react-hook-form'
 
-import { getPlatforms } from "@/actions/actions"
-import { Section } from "@/components/Section"
-import { Platform } from "@/types"
-import { Icons } from "@/ui/icons"
+import { getPlatforms } from '@/actions/actions'
+import { Section } from '@/components/Section'
+import { Platform } from '@/types'
+import { Icons } from '@/ui/icons'
 
-import { MultiField } from "./fields/MultiField"
-import { AddNewButton } from "./styles"
+import { MultiField } from './fields/MultiField'
+import { AddNewButton } from './styles'
 
 export const SocialsSection = () => {
-  const { fields, append, remove } = useFieldArray({ name: "socials" })
+  const { fields, append, remove } = useFieldArray({ name: 'socials' })
 
   const [platforms, setPlatforms] = useState<Platform[]>([])
 
@@ -45,7 +45,7 @@ export const SocialsSection = () => {
     <Section title="Social networks" icon={Icons.social} sticky>
       {!!platforms &&
         !!fields.length &&
-        fields.map((username: Record<"id", string>, index: number) => (
+        fields.map((username: Record<'id', string>, index: number) => (
           <MultiField
             key={username.id}
             label="Username"

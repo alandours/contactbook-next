@@ -1,6 +1,6 @@
-import { ReactNode } from "react"
+import { ReactNode } from 'react'
 
-import { SettingContainer, SettingLabel } from "./styles"
+import { SettingContainer, SettingLabel } from './styles'
 
 interface SettingProps {
   label: string

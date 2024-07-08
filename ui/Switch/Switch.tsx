@@ -1,4 +1,4 @@
-import { SwitchButtonContainer, SwitchContainer } from "./styles"
+import { SwitchButtonContainer, SwitchContainer } from './styles'
 
 interface SwitchProps {
   active: boolean
