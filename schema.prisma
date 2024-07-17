@@ -33,6 +33,7 @@ model Contact {
   emails    Email[]
   numbers   Number[]
   socials   Social[]
+  tags      Tag[]
 
   @@map("contacts")
 }
@@ -79,6 +80,12 @@ model Platform {
   socials Social[]
 
   @@map("platforms")
+}
+
+model Tag {
+  id        String    @id @default(uuid())
+  name      String    @unique
+  contacts  Contact[]
 }
 
 enum EmailType {
