@@ -1,6 +1,6 @@
 "use client"
 
-import { Contact } from "@/actions/actions"
+import { Contact } from "@prisma/client"
 import { PageHeader } from "@/components/PageHeader"
 import { Loader } from "@/components/Loader"
 import { getBirthdayGroups } from "@/utils/date"
