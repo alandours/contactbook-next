@@ -7,7 +7,7 @@ import { ContactLink } from '@/components/ContactLink'
 import { Section } from '@/components/Section'
 import { ROUTES } from '@/constants/routes'
 import {
-  getContactsWithBirthdays,
+  addSortNextBirthday,
   getRecentlyAddedContacts,
   getUpcomingBirthdays,
 } from '@/features/birthdays/utils'
@@ -28,8 +28,8 @@ export const Dashboard = () => {
   const [recentlyAdded, setRecentlyAdded] = useState<Contact[]>()
 
   useEffect(() => {
-    const contactsWithBirthdays = getContactsWithBirthdays(contacts)
-    const upcoming = getUpcomingBirthdays(contactsWithBirthdays)
+    const contactsWithNextBirthdays = addSortNextBirthday(contacts)
+    const upcoming = getUpcomingBirthdays(contactsWithNextBirthdays)
 
     setUpcomingBirthdays(upcoming)
 

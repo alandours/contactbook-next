@@ -1,12 +1,12 @@
-import React, { useContext } from 'react'
+import { useContext } from 'react'
 
 import { ProfilePicture } from '@/components/ProfilePicture'
 import {
   calculateAge,
   calculateNextBirthdayAge,
+  getFormattedDaysToNextBirthday,
   getListDate,
   isBirthdayFromToday,
-  getNamedDate,
 } from '@/features/birthdays/utils'
 import { UIContext } from '@/ui/context'
 import { Icon, Link } from '@/ui'
@@ -35,7 +35,8 @@ export const ContactLink = ({
     birthday && nextBirthday && !isBirthdayFromToday(birthday)
       ? calculateNextBirthdayAge(birthday)
       : calculateAge(birthday)
-  const namedDate = !!nextBirthday && getNamedDate(nextBirthday)
+  const daysToNextBirthday =
+    !!nextBirthday && getFormattedDaysToNextBirthday(nextBirthday)
 
   return (
     <Link
@@ -49,7 +50,7 @@ export const ContactLink = ({
         {name} {lastname}
       </Name>
       {showAge && !!age && <Age>{age}</Age>}
-      {namedDate && <NamedDate>{namedDate}</NamedDate>}
+      {daysToNextBirthday && <NamedDate>{daysToNextBirthday}</NamedDate>}
       {!!favorite && settings.showFavoriteIcon && (
         <Icon
           name={Icons.heartFull}

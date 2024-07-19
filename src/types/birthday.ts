@@ -1,9 +1,7 @@
-import { ReactNode } from 'react'
-
 import { Contact } from '@/types'
 
 export type BirthdayGroup = {
-  birthdays: ReactNode | null
+  birthdays: ContactsByBirthdayMonth | null
   quantity: number
 }
 

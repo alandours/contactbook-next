@@ -18,7 +18,7 @@ export const MainContentContainer = styled.div`
     width: 100%;
 
     ${responsive.md(`
-      border-radius: 8px; 
+      border-radius: 0.5rem;
       box-shadow: 0 2px 6px 0 ${theme.selected.main.shadow};
       margin-left: 1rem;
       width: 75%;
