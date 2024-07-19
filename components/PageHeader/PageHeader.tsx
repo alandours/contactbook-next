@@ -9,7 +9,7 @@ type PageHeaderProps = {
   title?: string
   subtitle?: string
   className?: string
-  children: ReactNode
+  children?: ReactNode
 }
 
 export const PageHeader = ({
