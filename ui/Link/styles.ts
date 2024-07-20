@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import Link from "next/link"
 
-import { buttonStyles } from "@/components/Button/styles"
+import { buttonStyles } from "@/ui/Button/styles"
 import { ButtonVariants } from "@/types"
 
 export const NextLink = styled(Link)<{
