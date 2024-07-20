@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
 import { Icon } from "@/components/Icon"
-import { formStyles, screen } from "@/theme/screen"
+import { formElementStyles, screen } from "@/theme/screen"
 
 export const SelectWrapper = styled.div`
   position: relative;
@@ -22,7 +22,8 @@ export const Selector = styled(Icon)`
 `
 
 export const SelectContainer = styled.select`
-  ${formStyles};
+  ${formElementStyles};
+
   appearance: none;
   border: 1px solid ${({ theme }) => theme.selected.contrast[4]};
   border-radius: 3px;

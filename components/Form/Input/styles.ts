@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components"
 
-import { formStyles, screen } from "@/theme/screen"
+import { formElementStyles, screen } from "@/theme/screen"
 import { FontSize, FontWeight } from "@/theme/typography"
 
 export const Container = styled.div`
@@ -9,7 +9,7 @@ export const Container = styled.div`
 `
 
 export const InputContainer = styled.input<{ label: string; size: string }>`
-  ${formStyles};
+  ${formElementStyles};
 
   ${({ label }) =>
     !!label &&

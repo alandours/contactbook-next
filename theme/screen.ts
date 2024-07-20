@@ -1,5 +1,7 @@
 import { css } from "styled-components"
 
+import { FontSize } from "./typography"
+
 enum Breakpoints {
   VIEWPORT_360 = 360,
   VIEWPORT_480 = 480,
@@ -23,3 +25,25 @@ export const screen = {
     getResponsiveStyles(Breakpoints.VIEWPORT_1024, styles),
   custom: (size: number, styles: string) => getResponsiveStyles(size, styles),
 }
+
+export const formElementStyles = css`
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid ${({ theme }) => theme.selected.contrast[4]};
+  color: ${({ theme }) => theme.selected.contrast[1]};
+  font-size: ${FontSize.TEXT};
+  outline: none;
+  padding: 0.25rem 0;
+  resize: none;
+  width: 100%;
+
+  &:hover,
+  &:focus {
+    border: 0;
+    border-bottom: 1px solid ${({ theme }) => theme.mainColor.main};
+  }
+
+  &::placeholder {
+    color: ${({ theme }) => theme.selected.contrast[1]};
+  }
+`
