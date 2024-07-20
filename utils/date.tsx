@@ -7,7 +7,7 @@ import {
   ContactsByBirthdayMonth,
 } from "@/types/birthday"
 
-const getNextBirthday = (birthday: Date) => {
+export const getNextBirthday = (birthday: Date) => {
   const todayDate = new Date()
   const birthdayDate = new Date(birthday.getTime())
 
@@ -155,7 +155,7 @@ export const getBirthdayGroups = (contacts: Contact[]): BirthdayGroup => {
     ([month, contacts]) => (
       <Section title={month} key={month}>
         {contacts.map((contact) => (
-          <ContactLink key={contact.id} showAge showPhoto />
+          <ContactLink key={contact.id} contact={contact} showAge showPhoto />
         ))}
       </Section>
     )

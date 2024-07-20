@@ -1,10 +1,11 @@
 "use server"
 
 import prisma from "@/lib/prisma"
+import { Filters } from "@/types"
 
-export const getContacts = async (search = "") => {
+export const getContacts = async (filters: Filters = {}) => {
   const filter = {
-    contains: search,
+    contains: filters.search,
     mode: "insensitive",
   } as const
 
@@ -108,4 +109,20 @@ export const getContacts = async (search = "") => {
   })
 
   return contacts
+}
+
+export const getStats = async () => {
+  const stats = await prisma.contact.groupBy({
+    by: "yearMet",
+    where: {
+      active: true,
+      NOT: [{ yearMet: null || 0 }],
+    },
+    _count: true,
+    orderBy: {
+      yearMet: "asc",
+    },
+  })
+
+  return stats
 }

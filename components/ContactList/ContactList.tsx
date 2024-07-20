@@ -6,7 +6,7 @@ import { ListItem } from "@/components/ListItem"
 import { SearchInput } from "@/components/SearchInput"
 import { Loader } from "@/components/Loader"
 import { ContactsContext } from "@/context/contacts"
-import { Contact } from "@/types"
+import { Contact, ListItemType } from "@/types"
 import { getInitial } from "@/utils/contacts"
 
 import { List, Count, ContactGroup } from "./styles"
@@ -19,7 +19,7 @@ const renderContactGroups = (contacts: Contact[]) => {
       const { id, name } = contact
       const initial = getInitial(name)
 
-      const Contact = <ListItem key={id} />
+      const Contact = <ListItem key={id} contact={contact} />
 
       groupedByInitial[initial] = groupedByInitial[initial]
         ? [...groupedByInitial[initial], Contact]
@@ -32,7 +32,7 @@ const renderContactGroups = (contacts: Contact[]) => {
 
   const list = Object.keys(contactsByInitial).map((initial) => (
     <ContactGroup key={initial}>
-      <ListItem type="letter" sticky>
+      <ListItem type={ListItemType.INITIAL} sticky>
         {initial}
       </ListItem>
       {contactsByInitial[initial]}
@@ -47,11 +47,11 @@ type ContactListProps = {
 }
 
 export const ContactList = ({ hasSearch }: ContactListProps) => {
-  const { contacts, loading, setSearch } = useContext(ContactsContext)
+  const { contacts, loading, setFilters } = useContext(ContactsContext)
 
   const handleTyping = (e: KeyboardEvent<HTMLInputElement>) => {
     const { value } = e.target as HTMLInputElement
-    setSearch(value)
+    setFilters((prevFilters) => ({ ...prevFilters, search: value }))
   }
 
   return (

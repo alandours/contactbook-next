@@ -49,7 +49,13 @@ export const Dashboard = () => {
 
         {upcomingBirthdays?.length
           ? upcomingBirthdays.map((contact) => (
-              <ContactLink key={contact.id} showPhoto showAge showMonth />
+              <ContactLink
+                key={contact.id}
+                contact={contact}
+                showPhoto
+                showAge
+                showMonth
+              />
             ))
           : "There are no upcoming birthdays"}
 
@@ -64,7 +70,7 @@ export const Dashboard = () => {
 
         {lastAdded?.length
           ? lastAdded.map((contact) => (
-              <ContactLink key={contact.id} showPhoto />
+              <ContactLink key={contact.id} contact={contact} showPhoto />
             ))
           : "There are no contacts"}
 
