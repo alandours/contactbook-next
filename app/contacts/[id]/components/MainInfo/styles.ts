@@ -2,7 +2,7 @@ import styled from "styled-components"
 
 import { screen } from "@/theme/screen"
 import { PageHeader } from "@/components/PageHeader"
-import { ContactBookLink } from "@/components/ContactBookLink"
+import { Link } from "@/components/Link"
 
 export const MainInfoContainer = styled(PageHeader)`
   align-items: center;
@@ -15,7 +15,7 @@ export const MainInfoContainer = styled(PageHeader)`
   `)}
 `
 
-export const EditLink = styled(ContactBookLink)`
+export const EditLink = styled(Link)`
   position: absolute;
   top: 1rem;
   right: 1rem;

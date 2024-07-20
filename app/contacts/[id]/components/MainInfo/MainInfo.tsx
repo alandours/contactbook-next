@@ -5,7 +5,7 @@ import { MainProfilePicture } from "@/components/MainProfilePicture"
 import { Icon } from "@/components/Icon"
 import { ContactsContext } from "@/context/contacts"
 import { theme } from "@/theme/palette"
-import { LinkVariants } from "@/types"
+import { ButtonVariants } from "@/types"
 import { Icons } from "@/utils/icons"
 
 import { ProfileData } from "../ProfileData"
@@ -26,7 +26,7 @@ export const MainInfo = () => {
         <EditLink
           url={`/contacts/${id}/edit`}
           title="Edit contact"
-          variant={LinkVariants.ROUND}
+          variant={ButtonVariants.ROUND}
         >
           <Icon name={Icons.pen} color={theme.selected.main[1]} />
         </EditLink>

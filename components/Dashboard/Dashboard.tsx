@@ -6,7 +6,7 @@ import { Contact } from "@/types"
 import { PageHeader } from "@/components/PageHeader"
 import { ContactMessage } from "@/components/ContactMessage"
 import { ContactLink } from "@/components/ContactLink"
-import { ContactBookLink } from "@/components/ContactBookLink"
+import { Link } from "@/components/Link"
 import { Section } from "@/components/Section"
 import { Loader } from "@/components/Loader"
 import { ContactsContext } from "@/context/contacts"
@@ -61,9 +61,9 @@ export const Dashboard = () => {
           : "There are no upcoming birthdays"}
 
         {upcomingBirthdays && (
-          <ContactBookLink url="/birthdays" highlight>
+          <Link url="/birthdays" highlight>
             See all birthdays
-          </ContactBookLink>
+          </Link>
         )}
       </Section>
       <Section title="Last contacts" icon={Icons.contacts}>
@@ -76,9 +76,9 @@ export const Dashboard = () => {
           : "There are no contacts"}
 
         {lastAdded && !!lastAdded.length && (
-          <ContactBookLink url="/contacts/year" highlight>
+          <Link url="/contacts/year" highlight>
             See contacts by year
-          </ContactBookLink>
+          </Link>
         )}
       </Section>
     </DashboardContainer>
