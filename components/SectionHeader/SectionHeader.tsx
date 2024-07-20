@@ -1,10 +1,11 @@
 import { Icon } from "@/components/Icon"
+import { Icons } from "@/utils/icons"
 
 import { SectionHeaderContainer } from "./styles"
 
 type SectionHeaderProps = {
   title: string
-  icon?: string
+  icon?: Icons
   sticky?: boolean
 }
 
@@ -14,7 +15,7 @@ export const SectionHeader = ({
   sticky = false,
 }: SectionHeaderProps) => (
   <SectionHeaderContainer sticky={sticky}>
-    {!!icon && <Icon icon={icon} inline />}
+    {!!icon && <Icon name={icon} />}
     {title}
   </SectionHeaderContainer>
 )

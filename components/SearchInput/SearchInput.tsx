@@ -1,5 +1,8 @@
 import { KeyboardEvent } from "react"
-import { SearchInputContainer, SearchInputElement } from "./styles"
+
+import { Icons } from "@/utils/icons"
+
+import { SearchIcon, SearchInputContainer, SearchInputElement } from "./styles"
 
 type SearchInputProps = {
   handleTyping: (e: KeyboardEvent<HTMLInputElement>) => void
@@ -7,7 +10,7 @@ type SearchInputProps = {
 
 export const SearchInput = ({ handleTyping }: SearchInputProps) => (
   <SearchInputContainer>
-    {/* <Icon icon="search" /> */}
+    <SearchIcon name={Icons.search} size="1rem" />
     <SearchInputElement
       type="text"
       placeholder="Search contacts"

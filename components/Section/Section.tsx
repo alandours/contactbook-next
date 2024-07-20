@@ -1,12 +1,13 @@
 import { ReactNode } from "react"
 
 import { SectionHeader } from "@/components/SectionHeader"
+import { Icons } from "@/utils/icons"
 
 import { SectionContainer, Content } from "./styles"
 
 type SectionProps = {
   title: string
-  icon?: string
+  icon?: Icons
   order?: number
   sticky?: boolean
   children: ReactNode

@@ -8,6 +8,7 @@ import { ContactBookLink } from "../ContactBookLink"
 export const NotFoundContainer = styled.div``
 
 export const NotFoundTitle = styled(Title)`
+  gap: 1rem;
   justify-content: center;
 `
 

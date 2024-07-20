@@ -1,20 +1,18 @@
 import React from "react"
 
 import { Icon } from "@/components/Icon"
+import { theme } from "@/theme/palette"
+import { Icons } from "@/utils/icons"
 
 import { FavoriteButtonContainer } from "./styles"
 
 export const FavoriteButton = ({ isFavorite, id }) => {
-  const icon = isFavorite ? ["fas", "heart"] : ["far", "heart"]
+  const icon = isFavorite ? Icons.heartFull : Icons.heart
   const title = isFavorite ? "Remove from favorites" : "Add to favorites"
 
   return (
-    <FavoriteButtonContainer
-      type="button"
-      title={title}
-      // onClick={() => dispatch(toggleFavorite(id, !isFavorite))}
-    >
-      <Icon icon={icon} color={["mainColor", "main"]} />
+    <FavoriteButtonContainer type="button" title={title}>
+      <Icon name={icon} color={theme.mainColor.main} />
     </FavoriteButtonContainer>
   )
 }

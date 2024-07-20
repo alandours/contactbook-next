@@ -33,13 +33,14 @@ export const Sitename = styled.div`
 `
 
 export const ToggleMenuButton = styled.button`
+  align-items: center;
   appearance: none;
   padding: 0;
   border: 0;
   outline: 0;
   background-color: transparent;
   cursor: pointer;
-  display: block;
+  display: flex;
   font-size: ${FontSize.LARGE};
   margin-right: 1rem;
 

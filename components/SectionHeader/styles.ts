@@ -7,8 +7,10 @@ export const SectionHeaderContainer = styled.h2<{ sticky: boolean }>`
   background: ${({ theme }) => theme.selected.main[3]};
   border-bottom: 2px solid ${({ theme }) => theme.selected.main.shadow};
   color: ${({ theme }) => theme.selected.contrast[1]};
+  display: flex;
   font-size: ${FontSize.INFO};
   font-weight: ${FontWeight.SEMIBOLD};
+  gap: 0.75rem;
   padding: 0.5rem 1.5rem;
   width: 100%;
   transition: all 420ms ease;

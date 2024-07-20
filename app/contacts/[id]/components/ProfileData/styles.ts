@@ -15,6 +15,7 @@ export const MainDatafield = styled.div`
   align-items: center;
   color: ${({ theme }) => theme.selected.contrast[1]};
   display: flex;
+  gap: 0.5rem;
   margin: 0.25rem 0;
 `
 

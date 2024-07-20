@@ -4,13 +4,14 @@ import { useFormContext } from "react-hook-form"
 import { Icon } from "@/components/Icon"
 import { ErrorMessage } from "@/components/Form/ErrorMessage"
 import { Label } from "@/components/Form/Label"
+import { Icons } from "@/utils/icons"
 
 import { InputContainer, Container } from "./styles"
 
 type InputProps = HTMLInputElement & {
   name: string
   label: string
-  icon?: string
+  icon?: Icons
   defaultValue: string | number
   error: string
   size: string
@@ -32,7 +33,7 @@ export const Input = ({
   return (
     <Label label={label} disabled={disabled}>
       <Container>
-        {icon && <Icon icon={icon} title={label || ""} inline />}
+        {icon && <Icon name={icon} />}
         <InputContainer
           {...register(name)}
           type={type || "text"}

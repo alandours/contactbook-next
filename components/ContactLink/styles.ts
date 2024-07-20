@@ -7,7 +7,8 @@ export const ContactLinkContainer = styled(Link)`
   align-items: center;
   border-radius: 2px;
   display: flex;
-  padding: 0.5rem;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
   position: relative;
   transition: all ease 200ms;
 
@@ -38,8 +39,6 @@ export const NamedDate = styled.span`
 
 export const Name = styled.div`
   color: ${({ theme }) => theme.selected.contrast[1]};
-  margin-left: 0.25rem;
-  margin-right: 0.5rem;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -49,9 +48,4 @@ export const Name = styled.div`
 
 export const Age = styled.div`
   color: ${({ theme }) => theme.selected.contrast[3]};
-`
-
-export const FavoriteIcon = styled.span`
-  font-size: ${FontSize.SMALL};
-  margin: 0 0.5rem;
 `

@@ -2,6 +2,7 @@ import React from "react"
 
 import { Icon } from "@/components/Icon"
 import { ProfilePicture } from "@/components/ProfilePicture"
+import { theme } from "@/theme/palette"
 import { ContactWithNextBirthday } from "@/types/birthday"
 import {
   calculateAge,
@@ -9,17 +10,10 @@ import {
   getListDate,
   isBirthdayFromToday,
   getNamedDate,
-  getNextBirthday,
 } from "@/utils/date"
+import { Icons } from "@/utils/icons"
 
-import {
-  ContactLinkContainer,
-  Name,
-  NamedDate,
-  Date,
-  Age,
-  FavoriteIcon,
-} from "./styles"
+import { ContactLinkContainer, Name, NamedDate, Date, Age } from "./styles"
 
 interface ContactLinkProps {
   contact: ContactWithNextBirthday
@@ -43,10 +37,7 @@ export const ContactLink = ({
   const namedDate = !!nextBirthday && getNamedDate(nextBirthday)
 
   return (
-    <ContactLinkContainer
-      href={`/contacts/${id}`}
-      // onClick={() => sidebarOpen && dispatch(toggleContactList())}
-    >
+    <ContactLinkContainer href={`/contacts/${id}`}>
       {!!nextBirthday && <Date>{getListDate(nextBirthday, showMonth)}</Date>}
       {showPhoto && <ProfilePicture thumbnail />}
       <Name>
@@ -55,9 +46,11 @@ export const ContactLink = ({
       {showAge && !!age && <Age>{age}</Age>}
       {namedDate && <NamedDate>{namedDate}</NamedDate>}
       {!!favorite && !!showFavoriteIcon && (
-        <FavoriteIcon>
-          <Icon icon={["fas", "heart"]} color={["mainColor", "main"]} />
-        </FavoriteIcon>
+        <Icon
+          name={Icons.heartFull}
+          color={theme.mainColor.main}
+          size="0.75rem"
+        />
       )}
     </ContactLinkContainer>
   )

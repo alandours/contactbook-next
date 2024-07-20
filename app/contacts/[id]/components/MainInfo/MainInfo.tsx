@@ -4,7 +4,9 @@ import { Gradient } from "@/components/Gradient"
 import { MainProfilePicture } from "@/components/MainProfilePicture"
 import { Icon } from "@/components/Icon"
 import { ContactsContext } from "@/context/contacts"
+import { theme } from "@/theme/palette"
 import { LinkVariants } from "@/types"
+import { Icons } from "@/utils/icons"
 
 import { ProfileData } from "../ProfileData"
 
@@ -26,7 +28,7 @@ export const MainInfo = () => {
           title="Edit contact"
           variant={LinkVariants.ROUND}
         >
-          <Icon icon="pen" color={["selected", "main", "1"]} />
+          <Icon name={Icons.pen} color={theme.selected.main[1]} />
         </EditLink>
       </MainInfoContainer>
     </>

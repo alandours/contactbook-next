@@ -1,3 +1,5 @@
+import { Icons } from "@/utils/icons"
+
 export enum zindex {
   back = "-10",
   normal = "1",
@@ -9,35 +11,35 @@ export enum zindex {
 export const CONTACT_SECTIONS = [
   {
     title: "Aliases",
-    icon: "id-card",
+    icon: Icons.alias,
     key: "Alias",
     order: 1,
     urlStart: null,
   },
   {
     title: "Phone numbers",
-    icon: "phone",
+    icon: Icons.phone,
     key: "Number",
     order: 2,
     urlStart: "tel:",
   },
   {
     title: "Emails",
-    icon: "envelope",
+    icon: Icons.email,
     key: "Email",
     order: 3,
     urlStart: "mailto:",
   },
   {
     title: "Social Networks",
-    icon: "share-alt",
+    icon: Icons.social,
     key: "Social",
     order: 4,
     urlStart: "https://",
   },
   {
     title: "Notes",
-    icon: "sticky-note",
+    icon: Icons.notes,
     key: "notes",
     order: 5,
     urlStart: null,

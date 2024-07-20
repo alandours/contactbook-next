@@ -3,7 +3,11 @@ import { useFormContext } from "react-hook-form"
 
 import { Input } from "@/components/Form/Input"
 
-import { MainInfoContainer, FieldContainer } from "./styles"
+import {
+  MainInfoContainer,
+  FieldContainer,
+  RemoveImageCheckbox,
+} from "./styles"
 
 export const MainFormData = () => {
   const { errors } = useFormContext()
@@ -41,6 +45,7 @@ export const MainFormData = () => {
       <FieldContainer>
         <Input name="yearMet" placeholder="Met in" error={met.message} />
       </FieldContainer>
+      <RemoveImageCheckbox name="removeImage" label="Delete photo" />
     </MainInfoContainer>
   )
 }

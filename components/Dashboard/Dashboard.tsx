@@ -16,6 +16,7 @@ import {
   getRecentlyAddedContacts,
   getUpcomingBirthdays,
 } from "@/utils/date"
+import { Icons } from "@/utils/icons"
 
 import { DashboardContainer } from "./styles"
 
@@ -44,7 +45,7 @@ export const Dashboard = () => {
     <DashboardContainer>
       <ContactMessage />
       <PageHeader title="ContactBook" subtitle={subtitle} />
-      <Section title="Upcoming birthdays" icon="birthday-cake">
+      <Section title="Upcoming birthdays" icon={Icons.cake}>
         {upcomingBirthdays === undefined && <Loader />}
 
         {upcomingBirthdays?.length
@@ -65,7 +66,7 @@ export const Dashboard = () => {
           </ContactBookLink>
         )}
       </Section>
-      <Section title="Last contacts" icon="user-friends">
+      <Section title="Last contacts" icon={Icons.contacts}>
         {lastAdded === undefined && <Loader />}
 
         {lastAdded?.length

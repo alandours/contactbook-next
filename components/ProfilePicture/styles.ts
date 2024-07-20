@@ -37,7 +37,6 @@ export const ProfilePictureContainer = styled(Image)<{ thumbnail: boolean }>`
       border-width: 2px;
       height: 30px;
       margin: 0;
-      margin-right: 0.5rem;
       min-height: 30px;
       min-width: 30px;
       width: 30px;
@@ -45,7 +44,6 @@ export const ProfilePictureContainer = styled(Image)<{ thumbnail: boolean }>`
       ${screen.md(`
         height: 30px;
         margin: 0;
-        margin-right: 0.5rem;
         min-height: 30px;
         min-width: 30px;
         width: 30px;

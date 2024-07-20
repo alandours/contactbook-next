@@ -4,6 +4,7 @@ import { FavoriteButton } from "@/components/FavoriteButton"
 import { Icon } from "@/components/Icon"
 import { ContactsContext } from "@/context/contacts"
 import { getBirthdayText, calculateAge } from "@/utils/date"
+import { Icons } from "@/utils/icons"
 
 import { ProfileDataContainer, MainDatafield, Name, Link, Text } from "./styles"
 
@@ -24,13 +25,13 @@ export const ProfileData = () => {
       </MainDatafield>
       {birthday && (
         <MainDatafield>
-          <Icon icon="birthday-cake" inline />
+          <Icon name={Icons.cake} />
           <Text>{getBirthdayText(birthday)}</Text>
         </MainDatafield>
       )}
       {address && (
         <MainDatafield>
-          <Icon icon="home" inline />
+          <Icon name={Icons.home} size="1.125rem" />
           <Link
             href={`https://www.google.com/maps/search/${address}`}
             target="_blank"
@@ -42,7 +43,7 @@ export const ProfileData = () => {
       )}
       {yearMet && (
         <MainDatafield>
-          <Icon icon="calendar-check" inline />
+          <Icon name={Icons.calendar} size="1.125rem" />
           <Text>{yearMet}</Text>
         </MainDatafield>
       )}

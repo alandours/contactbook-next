@@ -1,7 +1,9 @@
 import { ReactNode } from "react"
 import { useFormContext } from "react-hook-form"
 
-import { SelectContainer, SelectWrapper } from "./styles"
+import { Icons } from "@/utils/icons"
+
+import { SelectContainer, Selector, SelectWrapper } from "./styles"
 
 type SelectProps = {
   name: string
@@ -17,6 +19,7 @@ export const Select = ({ name, defaultValue, children }: SelectProps) => {
       <SelectContainer {...register(name)} defaultValue={defaultValue}>
         {children}
       </SelectContainer>
+      <Selector name={Icons.chevronDown} />
     </SelectWrapper>
   )
 }
