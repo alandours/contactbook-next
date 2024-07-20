@@ -40,6 +40,7 @@ export const Input = ({
           placeholder={placeholder}
           defaultValue={defaultValue}
           size={size}
+          label={label}
         />
       </Container>
       <ErrorMessage>{error}</ErrorMessage>

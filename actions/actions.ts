@@ -5,13 +5,14 @@ import { Filters } from "@/types"
 
 export const getContacts = async (filters: Filters = {}) => {
   const filter = {
-    contains: filters.search,
+    contains: filters.search || "",
     mode: "insensitive",
   } as const
 
   const contacts = await prisma.contact.findMany({
     where: {
       active: true,
+      yearMet: filters.year,
       OR: [
         {
           name: filter,

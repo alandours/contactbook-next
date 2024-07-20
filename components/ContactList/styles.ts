@@ -10,3 +10,5 @@ export const Count = styled.div`
   padding: 1rem !important;
   text-align: center;
 `
+
+export const List = styled.div``

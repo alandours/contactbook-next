@@ -1,4 +1,5 @@
 import styled from "styled-components"
+
 import { FontSize } from "@/theme/typography"
 
 export const CheckboxContainer = styled.label`

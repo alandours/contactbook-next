@@ -63,6 +63,10 @@ export const ContactsProvider = ({ data, children }: ContactsProviderProps) => {
 
     let contacts = await getContacts(filters)
 
+    contacts = [...contacts].sort((contact1, contact2) =>
+      contact1.name.localeCompare(contact2.name)
+    )
+
     if (localStorage.getItem("favoritesOnly")) {
       contacts = contacts.filter((contact) => contact.favorite)
     }
@@ -76,10 +80,8 @@ export const ContactsProvider = ({ data, children }: ContactsProviderProps) => {
   }
 
   useEffect(() => {
-    if (filters.search !== undefined) {
-      fetchContacts()
-    }
-  }, [filters.search])
+    fetchContacts()
+  }, [filters])
 
   return (
     <ContactsContext.Provider
