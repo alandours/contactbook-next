@@ -67,7 +67,7 @@ export const groupByBirthdayMonth = (
   }, {})
 }
 
-export const calculateAge = (birthdayDate: Date) => {
+export const calculateAge = (birthdayDate?: Date | null) => {
   if (!birthdayDate) {
     return null
   }
@@ -155,7 +155,7 @@ export const getBirthdayGroups = (contacts: Contact[]): BirthdayGroup => {
     ([month, contacts]) => (
       <Section title={month} key={month}>
         {contacts.map((contact) => (
-          <ContactLink contact={contact} key={contact.id} showAge showPhoto />
+          <ContactLink key={contact.id} showAge showPhoto />
         ))}
       </Section>
     )

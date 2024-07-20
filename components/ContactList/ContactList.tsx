@@ -19,7 +19,7 @@ const renderContactGroups = (contacts: Contact[]) => {
       const { id, name } = contact
       const initial = getInitial(name)
 
-      const Contact = <ListItem contact={contact} key={id} />
+      const Contact = <ListItem key={id} />
 
       groupedByInitial[initial] = groupedByInitial[initial]
         ? [...groupedByInitial[initial], Contact]

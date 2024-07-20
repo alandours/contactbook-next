@@ -17,4 +17,9 @@ export enum Status {
   WARNING,
 }
 
+export enum ListItemType {
+  CONTACT,
+  INITIAL,
+}
+
 export type Contact = Omit<ContactType, "active" | "updatedAt">

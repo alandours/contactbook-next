@@ -1,25 +1,26 @@
+import { useContext } from "react"
+
 import { Gradient } from "@/components/Gradient"
 import { MainProfilePicture } from "@/components/MainProfilePicture"
 import { Icon } from "@/components/Icon"
-import { Contact, LinkVariants } from "@/types"
+import { ContactsContext } from "@/context/contacts"
+import { LinkVariants } from "@/types"
 
 import { ProfileData } from "../ProfileData"
 
 import { MainInfoContainer, EditLink } from "./styles"
 
-type MainInfoProps = {
-  contact: Contact
-}
+export const MainInfo = () => {
+  const { selectedContact } = useContext(ContactsContext)
 
-export const MainInfo = ({ contact }: MainInfoProps) => {
-  const { id } = contact || {}
+  const { id } = selectedContact || {}
 
   return (
     <>
       <Gradient smooth />
       <MainInfoContainer>
-        <MainProfilePicture contact={contact} />
-        <ProfileData contact={contact} />
+        <MainProfilePicture />
+        <ProfileData />
         <EditLink
           url={`/contacts/${id}/edit`}
           title="Edit contact"
