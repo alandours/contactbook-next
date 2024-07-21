@@ -1,12 +1,10 @@
 import React, { useContext } from "react"
 
 import { Section } from "@/components/Section"
-import { ColorSelector } from "@/components/ColorSelector"
+import { ColorSelector, Setting } from "@/features/settings"
 import { Switch } from "@/ui"
 import { UIContext } from "@/ui/context"
 import { Colors, ThemeColor, colors, palette } from "@/ui/palette"
-
-import { Setting } from "../Setting"
 
 export const ColorSettings = () => {
   const { setTheme } = useContext(UIContext)
