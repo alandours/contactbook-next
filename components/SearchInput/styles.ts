@@ -22,11 +22,13 @@ export const SearchIcon = styled(Icon)`
 
 export const SearchInputElement = styled.input<{ hasIcon: boolean }>`
   background: ${({ theme }) => theme.selected.main[1]};
+  border: 0;
   border-color: ${({ theme }) => theme.selected.main[2]};
   border-radius: 4px 0 0 0;
   padding: 0.5rem;
   transition: all 420ms ease;
   transition-property: background, border;
+  width: 100%;
 
   ${({ hasIcon }) =>
     !!hasIcon &&

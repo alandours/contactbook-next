@@ -22,8 +22,9 @@ export const Link = ({
   className = "",
   external = false,
   children,
+  onClick,
 }: LinkProps) => {
-  const props = { href, highlight, title, variant, className }
+  const props = { href, highlight, title, variant, className, onClick }
 
   if (external) {
     return (

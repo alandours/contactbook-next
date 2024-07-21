@@ -10,9 +10,7 @@ import {
 } from "react"
 
 import { getContacts } from "@/actions/actions"
-import { Contact, Filters, Status } from "@/types"
-
-type Toast = { message: string; type: Status }
+import { Contact, Filters } from "@/types"
 
 interface ContactsContextValues {
   contacts: Contact[]
@@ -20,12 +18,10 @@ interface ContactsContextValues {
   loading: boolean | undefined
   filters: Filters
   palette: string[]
-  toast: Toast | null
   fetchContacts: (search?: string) => void
   selectContact: (id: string) => void
   setFilters: Dispatch<SetStateAction<Filters>>
   setPalette: Dispatch<SetStateAction<string[]>>
-  setToast: (toast: Toast | null) => void
 }
 
 const initialValues: ContactsContextValues = {
@@ -34,12 +30,10 @@ const initialValues: ContactsContextValues = {
   loading: undefined,
   filters: {},
   palette: [],
-  toast: null,
   fetchContacts: () => undefined,
   selectContact: () => undefined,
   setFilters: () => undefined,
   setPalette: () => undefined,
-  setToast: () => undefined,
 }
 
 export const ContactsContext =
@@ -56,7 +50,6 @@ export const ContactsProvider = ({ data, children }: ContactsProviderProps) => {
   const [loading, setLoading] = useState<boolean>()
   const [filters, setFilters] = useState<Filters>(initialValues.filters)
   const [palette, setPalette] = useState<string[]>([])
-  const [toast, setToast] = useState<Toast | null>(null)
 
   const fetchContacts = async () => {
     setLoading(true)
@@ -91,12 +84,10 @@ export const ContactsProvider = ({ data, children }: ContactsProviderProps) => {
         loading,
         filters,
         palette,
-        toast,
         fetchContacts,
         selectContact,
         setFilters,
         setPalette,
-        setToast,
       }}
     >
       {children}

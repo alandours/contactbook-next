@@ -1,12 +1,12 @@
 import { useState, useEffect, useContext } from "react"
 
-import { ContactsContext } from "@/context/contacts"
 import { Status } from "@/types"
+import { UIContext } from "@/ui/context"
 
 import { ContactMessageContainer, CloseButton } from "./styles"
 
 export const ContactMessage = () => {
-  const { toast, setToast } = useContext(ContactsContext)
+  const { toast, setToast } = useContext(UIContext)
   const [visible, setVisible] = useState(true)
 
   const { message, type } = toast || {}

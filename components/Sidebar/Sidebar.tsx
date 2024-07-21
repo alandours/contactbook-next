@@ -1,6 +1,8 @@
 "use client"
 
-import { ReactNode } from "react"
+import { ReactNode, useContext } from "react"
+
+import { UIContext } from "@/ui/context"
 
 import { SidebarContainer } from "./styles"
 
@@ -8,6 +10,8 @@ type SidebarProps = {
   children: ReactNode
 }
 
-export const Sidebar = ({ children }: SidebarProps) => (
-  <SidebarContainer open={false}>{children}</SidebarContainer>
-)
+export const Sidebar = ({ children }: SidebarProps) => {
+  const { menuOpen } = useContext(UIContext)
+
+  return <SidebarContainer open={menuOpen}>{children}</SidebarContainer>
+}

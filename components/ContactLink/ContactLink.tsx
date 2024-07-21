@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useContext } from "react"
 
 import { Icon, Link } from "@/ui"
 import { ProfilePicture } from "@/components/ProfilePicture"
@@ -11,6 +11,7 @@ import {
   isBirthdayFromToday,
   getNamedDate,
 } from "@/utils/date"
+import { UIContext } from "@/ui/context"
 import { Icons } from "@/ui/icons"
 
 import { Name, NamedDate, Date, Age } from "./styles"
@@ -29,6 +30,8 @@ export const ContactLink = ({
   showAge = false,
   showMonth = false,
 }: ContactLinkProps) => {
+  const { menuOpen, toggleMenu } = useContext(UIContext)
+
   const { id, name, lastname, birthday, nextBirthday, favorite } = contact || {}
   const showFavoriteIcon = localStorage.getItem("showFavoriteIcon")
   const age =
@@ -38,7 +41,11 @@ export const ContactLink = ({
   const namedDate = !!nextBirthday && getNamedDate(nextBirthday)
 
   return (
-    <Link href={`/contacts/${id}`} variant={ButtonVariants.DATAFIELD}>
+    <Link
+      href={`/contacts/${id}`}
+      variant={ButtonVariants.DATAFIELD}
+      onClick={() => menuOpen && toggleMenu()}
+    >
       {!!nextBirthday && <Date>{getListDate(nextBirthday, showMonth)}</Date>}
       {showPhoto && <ProfilePicture thumbnail />}
       <Name>

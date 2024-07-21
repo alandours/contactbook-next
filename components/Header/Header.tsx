@@ -1,24 +1,28 @@
 "use client"
 
-import React from "react"
+import React, { useContext } from "react"
 import Image from "next/image"
 
-import { Icon } from "@/components/Icon"
 import { Navigation } from "@/components/Navigation"
-import { Icons } from "@/utils/icons"
+import { ROUTES } from "@/constants/routes"
+import { Icon, Link } from "@/ui"
+import { UIContext } from "@/ui/context"
+import { Icons } from "@/ui/icons"
 
-import { HeaderContainer, Sitename, ToggleMenuButton, Sitelink } from "./styles"
+import { HeaderContainer, Sitename, ToggleMenuButton } from "./styles"
 
 export const Header = () => {
+  const { toggleMenu } = useContext(UIContext)
+
   return (
     <HeaderContainer>
       <Sitename>
-        <ToggleMenuButton type="button">
+        <ToggleMenuButton type="button" onClick={toggleMenu}>
           <Icon name={Icons.menu} />
         </ToggleMenuButton>
-        <Sitelink href="/">
+        <Link href={ROUTES.contacts.main}>
           <Image src="/logo.png" alt="ContactBook" width={30} height={30} />
-        </Sitelink>
+        </Link>
       </Sitename>
       <Navigation />
     </HeaderContainer>

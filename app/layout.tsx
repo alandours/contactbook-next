@@ -10,6 +10,7 @@ import { Footer } from "@/components/Footer"
 import { ContactList } from "@/components/ContactList"
 import { ContactsProvider } from "@/context/contacts"
 import StyledComponentsRegistry from "@/lib/registry"
+import { UIProvider } from "@/ui/context"
 
 import { ContactBook, Main } from "./styles"
 
@@ -33,18 +34,20 @@ export default async function RootLayout({
       <body className={inter.className}>
         <StyledComponentsRegistry>
           <ThemeClient>
-            <ContactsProvider data={contacts}>
-              <ContactBook>
-                <Header />
-                <Main>
-                  <Sidebar>
-                    <ContactList hasSearch />
-                  </Sidebar>
-                  <MainContent>{children}</MainContent>
-                </Main>
-                <Footer />
-              </ContactBook>
-            </ContactsProvider>
+            <UIProvider>
+              <ContactsProvider data={contacts}>
+                <ContactBook>
+                  <Header />
+                  <Main>
+                    <Sidebar>
+                      <ContactList hasSearch />
+                    </Sidebar>
+                    <MainContent>{children}</MainContent>
+                  </Main>
+                  <Footer />
+                </ContactBook>
+              </ContactsProvider>
+            </UIProvider>
           </ThemeClient>
         </StyledComponentsRegistry>
       </body>
