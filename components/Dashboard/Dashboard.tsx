@@ -15,7 +15,7 @@ import {
   getContactsWithBirthdays,
   getRecentlyAddedContacts,
   getUpcomingBirthdays,
-} from "@/utils/date"
+} from "@/features/birthdays/utils"
 import { Icons } from "@/ui/icons"
 
 import { DashboardContainer } from "./styles"

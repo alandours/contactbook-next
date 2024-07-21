@@ -3,9 +3,9 @@
 import { useContext } from "react"
 
 import { PageHeader } from "@/components/PageHeader"
-import { Loader } from "@/ui"
 import { ContactsContext } from "@/context/contacts"
-import { getBirthdayGroups } from "@/utils/date"
+import { getBirthdayGroups } from "@/features/birthdays/utils"
+import { Loader } from "@/ui"
 
 import { BirthdaysContainer } from "./styles"
 

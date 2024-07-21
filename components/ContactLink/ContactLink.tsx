@@ -1,16 +1,16 @@
 import React, { useContext } from "react"
 
-import { Icon, Link } from "@/ui"
 import { ProfilePicture } from "@/components/ProfilePicture"
-import { ContactWithNextBirthday } from "@/types/birthday"
 import {
   calculateAge,
   calculateNextBirthdayAge,
   getListDate,
   isBirthdayFromToday,
   getNamedDate,
-} from "@/utils/date"
+} from "@/features/birthdays/utils"
+import { ContactWithNextBirthday } from "@/types/birthday"
 import { UIContext } from "@/ui/context"
+import { Icon, Link } from "@/ui"
 import { Icons } from "@/ui/icons"
 
 import { Name, NamedDate, Date, Age } from "./styles"
