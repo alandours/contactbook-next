@@ -25,4 +25,5 @@ export type Contact = Omit<ContactType, "active" | "updatedAt">
 export type Filters = {
   search?: string
   year?: number
+  favorite?: boolean
 }

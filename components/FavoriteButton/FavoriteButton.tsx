@@ -1,10 +1,10 @@
 "use client"
 
-import { useState } from "react"
+import { useContext, useState } from "react"
 
 import { updateFavorite } from "@/actions/actions"
 import { Icon } from "@/ui"
-import { theme } from "@/ui/palette"
+import { UIContext } from "@/ui/context"
 import { Icons } from "@/ui/icons"
 
 import { FavoriteButtonContainer } from "./styles"
@@ -15,6 +15,8 @@ interface FavoriteButtonProps {
 }
 
 export const FavoriteButton = ({ id, isFavorite }: FavoriteButtonProps) => {
+  const { theme } = useContext(UIContext)
+
   const [favorite, setFavorite] = useState(isFavorite)
   const [loading, setLoading] = useState(false)
 

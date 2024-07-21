@@ -1,28 +1,15 @@
-import { useState, useEffect } from "react"
-
 import { ToggleButtonContainer, ToggleContainer } from "./styles"
 
 type ToggleButtonProps = {
-  initialState: boolean
+  active: boolean
   handleClick: (active: boolean) => void
 }
 
 export const ToggleButton = ({
-  initialState = false,
+  active = false,
   handleClick,
-}: ToggleButtonProps) => {
-  const [active, setActive] = useState(initialState)
-
-  useEffect(() => {
-    handleClick(active)
-  }, [active])
-
-  return (
-    <ToggleContainer
-      onClick={() => setActive((prevState) => !prevState)}
-      active={active}
-    >
-      <ToggleButtonContainer active={active} />
-    </ToggleContainer>
-  )
-}
+}: ToggleButtonProps) => (
+  <ToggleContainer onClick={() => handleClick(!active)} active={active}>
+    <ToggleButtonContainer active={active} />
+  </ToggleContainer>
+)

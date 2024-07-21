@@ -14,7 +14,7 @@ interface ContactByYearProps {
 }
 
 export const ContactsByYear = ({ stats }: ContactByYearProps) => {
-  const { filters, setFilters } = useContext(ContactsContext)
+  const { filters, updateFilters } = useContext(ContactsContext)
 
   const years = stats.map((stat) => stat.yearMet)
   const statsHeight = 400
@@ -23,16 +23,12 @@ export const ContactsByYear = ({ stats }: ContactByYearProps) => {
     const { dataset } = e.target as HTMLDivElement
 
     if (!dataset.stat) {
-      setFilters((prevFilters) => {
-        const newFilters = { ...prevFilters }
-        delete newFilters.year
-        return newFilters
-      })
+      updateFilters({ key: "year", remove: true })
     }
   }
 
   const handleStatClick = (year: number) => {
-    setFilters((prevFilters) => ({ ...prevFilters, year }))
+    updateFilters({ key: "year", value: year })
   }
 
   const renderStats = () => {

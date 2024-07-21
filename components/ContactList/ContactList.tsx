@@ -47,11 +47,11 @@ type ContactListProps = {
 }
 
 export const ContactList = ({ hasSearch }: ContactListProps) => {
-  const { contacts, loading, setFilters } = useContext(ContactsContext)
+  const { contacts, loading, updateFilters } = useContext(ContactsContext)
 
   const handleTyping = (e: KeyboardEvent<HTMLInputElement>) => {
     const { value } = e.target as HTMLInputElement
-    setFilters((prevFilters) => ({ ...prevFilters, search: value }))
+    updateFilters({ key: "search", value })
   }
 
   return (

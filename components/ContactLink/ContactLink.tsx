@@ -2,7 +2,6 @@ import React, { useContext } from "react"
 
 import { Icon, Link } from "@/ui"
 import { ProfilePicture } from "@/components/ProfilePicture"
-import { theme } from "@/ui/palette"
 import { ContactWithNextBirthday } from "@/types/birthday"
 import {
   calculateAge,
@@ -30,10 +29,9 @@ export const ContactLink = ({
   showAge = false,
   showMonth = false,
 }: ContactLinkProps) => {
-  const { menuOpen, toggleMenu } = useContext(UIContext)
+  const { theme, settings, menuOpen, toggleMenu } = useContext(UIContext)
 
   const { id, name, lastname, birthday, nextBirthday, favorite } = contact || {}
-  const showFavoriteIcon = localStorage.getItem("showFavoriteIcon")
   const age =
     birthday && nextBirthday && !isBirthdayFromToday(birthday)
       ? calculateNextBirthdayAge(birthday)
@@ -53,7 +51,7 @@ export const ContactLink = ({
       </Name>
       {showAge && !!age && <Age>{age}</Age>}
       {namedDate && <NamedDate>{namedDate}</NamedDate>}
-      {!!favorite && !!showFavoriteIcon && (
+      {!!favorite && settings.showFavoriteIcon && (
         <Icon
           name={Icons.heartFull}
           color={theme.mainColor.main}

@@ -13,6 +13,7 @@ export const getContacts = async (filters: Filters = {}) => {
     where: {
       active: true,
       yearMet: filters.year,
+      favorite: filters.favorite,
       OR: [
         {
           name: filter,
@@ -134,7 +135,7 @@ export const updateFavorite = async (id: string, isFavorite: boolean) => {
       id,
     },
     data: {
-      favorite: !isFavorite,
+      favorite: isFavorite,
     },
   })
 

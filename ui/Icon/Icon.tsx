@@ -1,5 +1,4 @@
 import { icons, Icons } from "@/ui/icons"
-import { theme } from "@/ui/palette"
 
 type IconProps = {
   name: Icons
@@ -10,7 +9,7 @@ type IconProps = {
 
 export const Icon = ({
   name,
-  color = theme.selected.contrast[1],
+  color = "#000",
   size = "1.25rem",
   className = "",
 }: IconProps) => {

@@ -1,9 +1,10 @@
-import { ReactNode } from "react"
+import { ReactNode, useContext } from "react"
 
 import { ContactLink } from "@/components/ContactLink"
 import { Contact, ListItemType } from "@/types"
 
 import { ListItemContainer } from "./styles"
+import { UIContext } from "@/ui/context"
 
 interface ListItemProps {
   contact?: Contact
@@ -18,16 +19,15 @@ export const ListItem = ({
   sticky = false,
   children,
 }: ListItemProps) => {
-  const showAge = !!localStorage.getItem("showAge")
-  const showPhoto = !!localStorage.getItem("showPhoto")
+  const { settings } = useContext(UIContext)
 
   return (
     <ListItemContainer type={type} sticky={sticky}>
       {contact ? (
         <ContactLink
           contact={contact}
-          showAge={showAge}
-          showPhoto={showPhoto}
+          showAge={settings.showAge}
+          showPhoto={settings.showPhoto}
         />
       ) : (
         children

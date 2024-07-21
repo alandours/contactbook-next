@@ -2,19 +2,19 @@ import { Colors } from "@/ui/palette"
 import { Contact } from "@/types"
 import { getRandomInt } from "@/utils"
 
-export const formatFullName = (name: string, lastname?: string | null) => {
+export const formatFullName = (
+  { name, lastname }: { name: string; lastname?: string },
+  sortByLastName: boolean
+) => {
   if (!lastname) {
     return name
   }
 
-  const orderByLastnameFirst = localStorage.getItem("orderByLastnameFirst")
-  return orderByLastnameFirst ? `${lastname}, ${name}` : `${name} ${lastname}`
+  return sortByLastName ? `${lastname}, ${name}` : `${name} ${lastname}`
 }
 
-export const sortContacts = (contacts: Contact[]) => {
-  const orderByLastnameFirst = localStorage.getItem("orderByLastnameFirst")
-
-  if (!orderByLastnameFirst) {
+export const sortContacts = (contacts: Contact[], sortByLastName: boolean) => {
+  if (!sortByLastName) {
     return contacts
   }
 

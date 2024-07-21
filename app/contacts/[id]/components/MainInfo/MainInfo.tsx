@@ -2,18 +2,19 @@ import { useContext } from "react"
 
 import { Gradient } from "@/components/Gradient"
 import { MainProfilePicture } from "@/components/MainProfilePicture"
-import { Icon } from "@/ui"
+import { ROUTES } from "@/constants/routes"
 import { ContactsContext } from "@/context/contacts"
-import { theme } from "@/ui/palette"
 import { ButtonVariants } from "@/types"
+import { Icon } from "@/ui"
+import { UIContext } from "@/ui/context"
 import { Icons } from "@/ui/icons"
 
 import { ProfileData } from "../ProfileData"
 
 import { MainInfoContainer, EditLink } from "./styles"
-import { ROUTES } from "@/constants/routes"
 
 export const MainInfo = () => {
+  const { theme } = useContext(UIContext)
   const { selectedContact } = useContext(ContactsContext)
 
   const { id } = selectedContact || {}

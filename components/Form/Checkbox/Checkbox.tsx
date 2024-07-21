@@ -1,7 +1,8 @@
+import { useContext } from "react"
 import { useFormContext } from "react-hook-form"
 
 import { Icon } from "@/ui"
-import { theme } from "@/ui/palette"
+import { UIContext } from "@/ui/context"
 import { Icons } from "@/ui/icons"
 
 import { CheckboxContainer, CheckboxText, OriginalCheckbox } from "./styles"
@@ -13,6 +14,7 @@ type CheckboxProps = {
 }
 
 export const Checkbox = ({ name, label, className = "" }: CheckboxProps) => {
+  const { theme } = useContext(UIContext)
   const { register, watch } = useFormContext()
 
   const isChecked = watch(name)

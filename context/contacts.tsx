@@ -5,11 +5,13 @@ import {
   ReactNode,
   SetStateAction,
   createContext,
+  useContext,
   useEffect,
   useState,
 } from "react"
 
 import { getContacts } from "@/actions/actions"
+import { UIContext } from "@/ui/context"
 import { Contact, Filters } from "@/types"
 
 interface ContactsContextValues {
@@ -20,7 +22,17 @@ interface ContactsContextValues {
   palette: string[]
   fetchContacts: (search?: string) => void
   selectContact: (id: string) => void
-  setFilters: Dispatch<SetStateAction<Filters>>
+  updateFilters: ({
+    key,
+    value,
+    remove,
+    persist,
+  }: {
+    key: string
+    value?: any
+    remove?: boolean
+    persist?: boolean
+  }) => void
   setPalette: Dispatch<SetStateAction<string[]>>
 }
 
@@ -32,7 +44,7 @@ const initialValues: ContactsContextValues = {
   palette: [],
   fetchContacts: () => undefined,
   selectContact: () => undefined,
-  setFilters: () => undefined,
+  updateFilters: () => undefined,
   setPalette: () => undefined,
 }
 
@@ -45,6 +57,8 @@ interface ContactsProviderProps {
 }
 
 export const ContactsProvider = ({ data, children }: ContactsProviderProps) => {
+  const { settings } = useContext(UIContext)
+
   const [contacts, setContacts] = useState<Contact[]>(data)
   const [selectedContact, setSelectedContact] = useState<Contact | null>(null)
   const [loading, setLoading] = useState<boolean>()
@@ -60,16 +74,41 @@ export const ContactsProvider = ({ data, children }: ContactsProviderProps) => {
       contact1.name.localeCompare(contact2.name)
     )
 
-    if (localStorage.getItem("favoritesOnly")) {
-      contacts = contacts.filter((contact) => contact.favorite)
-    }
-
     setContacts(contacts)
     setLoading(false)
   }
 
   const selectContact = (id: string) => {
     setSelectedContact(contacts.find((contact) => contact.id === id) || null)
+  }
+
+  const updateFilters = ({
+    key,
+    value,
+    remove,
+    persist,
+  }: {
+    key: string
+    value?: any
+    remove?: boolean
+    persist?: boolean
+  }) => {
+    if (value) {
+      setFilters((prevFilters) => ({ ...prevFilters, [key]: value }))
+    }
+
+    if (persist) {
+      localStorage.setItem(key, value)
+    }
+
+    if (remove) {
+      localStorage.removeItem(key)
+      setFilters((prevFilters) => {
+        const newFilters = { ...prevFilters }
+        delete newFilters[key]
+        return newFilters
+      })
+    }
   }
 
   useEffect(() => {
@@ -86,7 +125,7 @@ export const ContactsProvider = ({ data, children }: ContactsProviderProps) => {
         palette,
         fetchContacts,
         selectContact,
-        setFilters,
+        updateFilters,
         setPalette,
       }}
     >
