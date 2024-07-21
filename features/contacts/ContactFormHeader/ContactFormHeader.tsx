@@ -15,7 +15,7 @@ export const ContactFormHeader = () => {
       <ContactFormHeaderContainer>
         <PhotoLabel>
           <ProfilePicture />
-          <ImageInput type="file" {...register("imageInput")} />
+          <ImageInput type="file" {...register("photo")} />
         </PhotoLabel>
         <ContactMainForm />
       </ContactFormHeaderContainer>

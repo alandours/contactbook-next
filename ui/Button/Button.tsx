@@ -6,7 +6,7 @@ import { ButtonContainer } from "./styles"
 
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   variant?: ButtonVariants
-  handleClick: () => void
+  handleClick?: () => void
   children: ReactNode
 }
 

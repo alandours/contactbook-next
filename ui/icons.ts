@@ -2,6 +2,7 @@
 // https://github.com/react-icons/react-icons/issues/786
 // https://github.com/react-icons/react-icons/issues/544
 
+import { BiLoaderAlt } from "@react-icons/all-files/bi/BiLoaderAlt"
 import { FaCalendarAlt } from "@react-icons/all-files/fa/FaCalendarAlt"
 import { FaChevronDown } from "@react-icons/all-files/fa/FaChevronDown"
 import { FaHeart } from "@react-icons/all-files/fa/FaHeart"
@@ -11,7 +12,6 @@ import { FaRegHeart } from "@react-icons/all-files/fa/FaRegHeart"
 import { FaRegStickyNote } from "@react-icons/all-files/fa/FaRegStickyNote"
 import { FaSearch } from "@react-icons/all-files/fa/FaSearch"
 import { FaShareAlt } from "@react-icons/all-files/fa/FaShareAlt"
-import { FaSpinner } from "@react-icons/all-files/fa/FaSpinner"
 import { FaTimes } from "@react-icons/all-files/fa/FaTimes"
 import { FaTrashAlt } from "@react-icons/all-files/fa/FaTrashAlt"
 import { FaUserFriends } from "@react-icons/all-files/fa/FaUserFriends"
@@ -74,6 +74,6 @@ export const icons = {
   [Icons.plus]: GoPlus,
   [Icons.search]: FaSearch,
   [Icons.social]: FaShareAlt,
-  [Icons.spinner]: FaSpinner,
+  [Icons.spinner]: BiLoaderAlt,
   [Icons.times]: FaTimes,
 }

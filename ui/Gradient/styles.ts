@@ -7,8 +7,8 @@ export const GradientContainer = styled.div<{
   smooth: boolean
 }>`
   background: ${({ theme }) => theme.mainColor.main};
-  height: 5px;
-  min-height: 5px;
+  height: 0.375rem;
+  min-height: 0.375rem;
   opacity: 0;
   overflow: hidden;
   position: relative;

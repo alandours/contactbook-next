@@ -28,7 +28,7 @@ export default function Contact({ params: { id } }: ContactProps) {
 
   useEffect(() => {
     selectContact(id)
-  }, [id])
+  }, [id, selectContact])
 
   const handleScroll = (e: UIEvent<HTMLDivElement>) => {
     const { scrollTop } = e.target as HTMLDivElement

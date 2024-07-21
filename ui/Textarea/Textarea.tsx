@@ -1,6 +1,6 @@
 import { useFormContext } from "react-hook-form"
 
-import { ErrorMessage } from "@/components/Form/ErrorMessage"
+import { ErrorMessage } from "@/ui"
 
 import { TextareaContainer } from "./styles"
 

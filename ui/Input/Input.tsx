@@ -1,9 +1,7 @@
 import React from "react"
 import { useFormContext } from "react-hook-form"
 
-import { Icon } from "@/ui"
-import { ErrorMessage } from "@/components/Form/ErrorMessage"
-import { Label } from "@/components/Form/Label"
+import { ErrorMessage, Icon, Label } from "@/ui"
 import { Icons } from "@/ui/icons"
 
 import { InputContainer, Container } from "./styles"
