@@ -2,7 +2,7 @@ import styled, { css } from "styled-components"
 import { FontSize, FontWeight } from "@/ui/typography"
 import { responsive } from "@/ui/responsive"
 
-export const ProfileDataContainer = styled.div`
+export const ContactMainDataContainer = styled.div`
   margin-left: 0.75rem;
   width: 100%;
 

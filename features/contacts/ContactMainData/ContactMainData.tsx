@@ -6,9 +6,9 @@ import { ContactsContext } from "@/features/contacts/context"
 import { Icon, Link, Title } from "@/ui"
 import { Icons } from "@/ui/icons"
 
-import { ProfileDataContainer, MainDatafield, Name, Text } from "./styles"
+import { ContactMainDataContainer, MainDatafield, Name, Text } from "./styles"
 
-export const ProfileData = () => {
+export const ContactMainData = () => {
   const { selectedContact } = useContext(ContactsContext)
 
   const { id, name, lastname, birthday, address, yearMet, favorite } =
@@ -16,7 +16,7 @@ export const ProfileData = () => {
 
   return (
     id && (
-      <ProfileDataContainer>
+      <ContactMainDataContainer>
         <MainDatafield>
           <Title>
             <Name birthday={calculateAge(birthday)}>
@@ -48,7 +48,7 @@ export const ProfileData = () => {
             <Text>{yearMet}</Text>
           </MainDatafield>
         )}
-      </ProfileDataContainer>
+      </ContactMainDataContainer>
     )
   )
 }

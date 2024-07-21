@@ -4,7 +4,7 @@ import { responsive } from "@/ui/responsive"
 import { PageHeader } from "@/components/PageHeader"
 import { Link } from "@/ui"
 
-export const MainInfoContainer = styled(PageHeader)`
+export const ContactHeaderContainer = styled(PageHeader)`
   align-items: center;
   display: flex;
   padding: 1rem;

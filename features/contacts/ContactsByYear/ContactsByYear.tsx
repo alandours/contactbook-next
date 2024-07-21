@@ -4,8 +4,8 @@ import React, { MouseEvent, useContext } from "react"
 
 import { PageHeader } from "@/components/PageHeader"
 import { Section } from "@/components/Section"
-import { Loader } from "@/ui"
 import { ContactsContext } from "@/features/contacts/context"
+import { Loader } from "@/ui"
 
 import { ContactsByYearContainer, Stats, Stat, Year, Quantity } from "./styles"
 

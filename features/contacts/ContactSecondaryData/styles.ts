@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-export const SecondaryInfoContainer = styled.div`
+export const ContactSecondaryDataContainer = styled.div`
   display: flex;
   flex-direction: column;
 `

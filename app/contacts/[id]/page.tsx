@@ -5,12 +5,10 @@ import { UIEvent, useContext, useEffect, useState } from "react"
 import { NotFound } from "@/components/NotFound"
 import { ContactMessage } from "@/components/ContactMessage"
 import { FixedInfo } from "@/components/FixedInfo"
+import { ContactHeader, ContactSecondaryData } from "@/features/contacts"
 import { ContactsContext } from "@/features/contacts/context"
 import { Loader } from "@/ui"
 import { isMedia } from "@/ui/responsive"
-
-import { MainInfo } from "./components/MainInfo"
-import { SecondaryInfo } from "./components/SecondaryInfo"
 
 import { ContactView } from "./styles"
 
@@ -47,8 +45,8 @@ export default function Contact({ params: { id } }: ContactProps) {
     <ContactView onScroll={isMedia("tablet") ? handleScroll : undefined}>
       {isMedia("tablet") && showFixedInfo && <FixedInfo />}
       <ContactMessage />
-      <MainInfo />
-      <SecondaryInfo />
+      <ContactHeader />
+      <ContactSecondaryData />
     </ContactView>
   )
 }
