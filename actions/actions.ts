@@ -127,3 +127,16 @@ export const getStats = async () => {
 
   return stats
 }
+
+export const updateFavorite = async (id: string, isFavorite: boolean) => {
+  const user = await prisma.contact.update({
+    where: {
+      id,
+    },
+    data: {
+      favorite: !isFavorite,
+    },
+  })
+
+  return user
+}
