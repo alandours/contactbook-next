@@ -9,8 +9,8 @@ import { Footer } from "@/components/Footer"
 import { ContactList } from "@/components/ContactList"
 import { ContactsProvider } from "@/features/contacts/context"
 import StyledComponentsRegistry from "@/lib/registry"
-import { ThemeClient } from "@/ui"
 import { UIProvider } from "@/ui/context"
+import { ThemeClient } from "@/ui/ThemeClient"
 
 import { ContactBook, Main } from "./styles"
 
