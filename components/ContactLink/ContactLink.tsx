@@ -2,7 +2,7 @@ import React from "react"
 
 import { Icon, Link } from "@/ui"
 import { ProfilePicture } from "@/components/ProfilePicture"
-import { theme } from "@/theme/palette"
+import { theme } from "@/ui/palette"
 import { ContactWithNextBirthday } from "@/types/birthday"
 import {
   calculateAge,
@@ -11,7 +11,7 @@ import {
   isBirthdayFromToday,
   getNamedDate,
 } from "@/utils/date"
-import { Icons } from "@/utils/icons"
+import { Icons } from "@/ui/icons"
 
 import { Name, NamedDate, Date, Age } from "./styles"
 import { ButtonVariants } from "@/types"

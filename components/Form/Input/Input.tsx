@@ -1,10 +1,10 @@
 import React from "react"
 import { useFormContext } from "react-hook-form"
 
-import { Icon } from "@/components/Icon"
+import { Icon } from "@/ui"
 import { ErrorMessage } from "@/components/Form/ErrorMessage"
 import { Label } from "@/components/Form/Label"
-import { Icons } from "@/utils/icons"
+import { Icons } from "@/ui/icons"
 
 import { InputContainer, Container } from "./styles"
 
@@ -41,7 +41,6 @@ export const Input = ({
           placeholder={placeholder}
           defaultValue={defaultValue}
           size={size}
-          label={label}
         />
       </Container>
       <ErrorMessage>{error}</ErrorMessage>

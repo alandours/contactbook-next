@@ -1,7 +1,7 @@
 import styled from "styled-components"
-import { FontWeight } from "@/theme/typography"
+import { FontWeight } from "@/ui/typography"
 import { zindex } from "@/constants"
-import { screen } from "@/theme/screen"
+import { responsive } from "@/ui/responsive"
 
 export const MainFormContainer = styled.div`
   align-items: center;
@@ -11,7 +11,7 @@ export const MainFormContainer = styled.div`
   width: 100%;
   z-index: 1000;
 
-  ${screen.lg(`
+  ${responsive.lg(`
     flex-direction: row;
   `)}
 `
@@ -38,12 +38,12 @@ export const PhotoLabel = styled.label`
     transition: all ease 200ms;
     z-index: ${zindex.tooltip};
 
-    ${screen.md(`
+    ${responsive.md(`
       width: 188px;
       height: 188px;
     `)}
 
-    ${screen.lg(`
+    ${responsive.lg(`
       opacity: 0;
     `)}
   }

@@ -1,7 +1,7 @@
 import styled from "styled-components"
-import { FontSize, FontWeight } from "@/theme/typography"
+import { FontSize, FontWeight } from "@/ui/typography"
 import { zindex } from "@/constants"
-import { screen } from "@/theme/screen"
+import { responsive } from "@/ui/responsive"
 
 export const SectionHeaderContainer = styled.h2<{ sticky: boolean }>`
   background: ${({ theme }) => theme.selected.main[3]};
@@ -19,7 +19,7 @@ export const SectionHeaderContainer = styled.h2<{ sticky: boolean }>`
 
   ${({ sticky }) =>
     sticky &&
-    screen.md(`
+    responsive.md(`
       position: sticky;
       top: 46px;
     `)}

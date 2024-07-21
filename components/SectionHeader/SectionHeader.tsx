@@ -1,5 +1,5 @@
 import { Icon } from "@/ui"
-import { Icons } from "@/utils/icons"
+import { Icons } from "@/ui/icons"
 
 import { SectionHeaderContainer } from "./styles"
 

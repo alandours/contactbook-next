@@ -1,6 +1,6 @@
 import { KeyboardEvent } from "react"
 
-import { Icons } from "@/utils/icons"
+import { Icons } from "@/ui/icons"
 
 import { SearchIcon, SearchInputContainer, SearchInputElement } from "./styles"
 

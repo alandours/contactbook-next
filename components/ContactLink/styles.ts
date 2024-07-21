@@ -1,22 +1,6 @@
 import styled from "styled-components"
-import Link from "next/link"
 
-import { FontSize, FontWeight } from "@/theme/typography"
-
-export const ContactLinkContainer = styled(Link)`
-  align-items: center;
-  border-radius: 2px;
-  display: flex;
-  gap: 0.5rem;
-  padding: 0.5rem 0.75rem;
-  position: relative;
-  transition: all ease 200ms;
-
-  &:hover {
-    background: ${({ theme }) => theme.selected.main[2]};
-    transition: all ease 100ms;
-  }
-`
+import { FontWeight } from "@/ui/typography"
 
 export const Date = styled.div`
   color: ${({ theme }) => theme.mainColor.dark};

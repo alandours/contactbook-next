@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-import { FontSize, FontWeight } from "@/theme/typography"
+import { FontSize, FontWeight } from "@/ui/typography"
 import { zindex } from "@/constants"
 
 export const FixedInfoContainer = styled.div`

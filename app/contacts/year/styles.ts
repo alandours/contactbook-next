@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components"
 
-import { FontSize, FontWeight } from "@/theme/typography"
-import { screen } from "@/theme/screen"
+import { FontSize, FontWeight } from "@/ui/typography"
+import { responsive } from "@/ui/responsive"
 
 export const ContactsByYearContainer = styled.div`
   display: flex;
@@ -22,12 +22,12 @@ export const Stats = styled.div<{ height: number }>`
     css`
       height: ${height * 0.8}px;
 
-      ${screen.md(`
+      ${responsive.md(`
         height: ${height}px;
       `)}
     `};
 
-  ${screen.md(`  
+  ${responsive.md(`  
     margin: 3rem 2rem;
     max-width: 100%;
   `)}
@@ -101,7 +101,7 @@ export const Stat = styled.div<{ height: number; isActive: boolean }>`
     css`
       height: ${height}px;
 
-      ${screen.md(`
+      ${responsive.md(`
         min-width: 5px;
       `)}
     `}

@@ -1,11 +1,11 @@
 import styled from "styled-components"
-import { screen } from "@/theme/screen"
+import { responsive } from "@/ui/responsive"
 
 export const FullSizePicture = styled.img`
   max-height: 100%;
   max-width: 100%;
 
-  ${screen.md(`
+  ${responsive.md(`
     max-height: 90%;
     max-width: 90%;
   `)}

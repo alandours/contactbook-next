@@ -1,7 +1,7 @@
 import { ReactNode } from "react"
 import { useFormContext } from "react-hook-form"
 
-import { Icons } from "@/utils/icons"
+import { Icons } from "@/ui/icons"
 
 import { SelectContainer, Selector, SelectWrapper } from "./styles"
 

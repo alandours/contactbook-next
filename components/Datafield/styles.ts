@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
-import { FontWeight } from "@/theme/typography"
-import { screen } from "@/theme/screen"
+import { FontWeight } from "@/ui/typography"
+import { responsive } from "@/ui/responsive"
 
 export const DatafieldContainer = styled.div`
   border-radius: 2px;
@@ -18,7 +18,7 @@ export const DataContainer = styled.a`
   display: flex;
   flex-direction: column;
 
-  ${screen.md(`
+  ${responsive.md(`
     flex-direction: row;
   `)}
 `
@@ -30,7 +30,7 @@ export const Name = styled.div`
   text-overflow: ellipsis;
   width: 100%;
 
-  ${screen.md(`
+  ${responsive.md(`
     width: 50%;
   `)}
 `
@@ -40,7 +40,7 @@ export const Label = styled.div`
   word-wrap: break-word;
   width: 100%;
 
-  ${screen.md(`
+  ${responsive.md(`
     width: 50%;
   `)}
 `

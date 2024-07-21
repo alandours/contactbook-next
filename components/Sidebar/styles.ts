@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components"
 
-import { screen } from "@/theme/screen"
+import { responsive } from "@/ui/responsive"
 import { zindex } from "@/constants"
 
 export const SidebarContainer = styled.div<{ open: boolean }>`
@@ -26,7 +26,7 @@ export const SidebarContainer = styled.div<{ open: boolean }>`
     `};
 
   ${({ theme }) =>
-    screen.md(`
+    responsive.md(`
       border-radius: 8px;
       box-shadow: 0 2px 6px 0 ${theme.selected.main.shadow};
       display: block;

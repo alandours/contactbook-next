@@ -1,29 +1,30 @@
 import styled, { css } from "styled-components"
-import { FontSize, FontWeight } from "@/theme/typography"
-import { screen } from "@/theme/screen"
+import { FontSize, FontWeight } from "@/ui/typography"
+import { responsive } from "@/ui/responsive"
 
 export const LabelContainer = styled.label<{ label: string }>`
   background: ${({ theme }) => theme.selected.main[1]};
   display: flex;
   flex-direction: column;
+  gap: 1rem;
   position: relative;
   min-width: 30%;
   width: 100%;
 
   ${({ label }) =>
-    screen.md(`
-  width: 40%;
+    responsive.md(`
+      width: 40%;
 
-  ${
-    label === "Alias" &&
-    css`
-      width: 207px;
-    `
-  }
-`)}
+      ${
+        label === "Alias" &&
+        css`
+          width: 207px;
+        `
+      }
+    `)}
 
   & + & {
-    ${screen.md(`
+    ${responsive.md(`
       margin-left: 1rem;
     `)}
   }

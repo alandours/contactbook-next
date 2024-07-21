@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-import { screen } from "@/theme/screen"
+import { responsive } from "@/ui/responsive"
 import { PageHeader } from "@/components/PageHeader"
 import { Link } from "@/ui"
 
@@ -10,7 +10,7 @@ export const MainInfoContainer = styled(PageHeader)`
   padding: 1rem;
   flex-wrap: wrap;
 
-  ${screen.md(`
+  ${responsive.md(`
     flex-wrap: nowrap;
   `)}
 `
@@ -20,7 +20,7 @@ export const EditLink = styled(Link)`
   top: 1rem;
   right: 1rem;
 
-  ${screen.md(`
+  ${responsive.md(`
     align-self: flex-start !important;
     position: relative;
     right: 0;

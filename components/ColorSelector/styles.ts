@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components"
-import { Colors, color } from "@/theme/palette"
+import { color, Colors } from "@/ui/palette"
 
 export const ColorSelectorContainer = styled.button`
   appearance: none;

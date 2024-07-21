@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
-import { screen } from "@/theme/screen"
-import { FontSize, FontWeight } from "@/theme/typography"
+import { responsive } from "@/ui/responsive"
+import { FontSize, FontWeight } from "@/ui/typography"
 import { zindex } from "@/constants"
 
 export const HeaderContainer = styled.header`
@@ -18,7 +18,7 @@ export const HeaderContainer = styled.header`
   z-index: ${zindex.fixed};
 
   ${({ theme }) =>
-    screen.md(`
+    responsive.md(`
       background: ${theme.selected.main[1]};
       position: initial;
     `)};
@@ -43,7 +43,7 @@ export const ToggleMenuButton = styled.button`
   font-size: ${FontSize.LARGE};
   margin-right: 1rem;
 
-  ${screen.md(`
+  ${responsive.md(`
     display: none;
   `)}
 `

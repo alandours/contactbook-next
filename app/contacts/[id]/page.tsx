@@ -7,7 +7,7 @@ import { NotFound } from "@/components/NotFound"
 import { ContactMessage } from "@/components/ContactMessage"
 import { FixedInfo } from "@/components/FixedInfo"
 import { ContactsContext } from "@/context/contacts"
-import { isMedia } from "@/utils"
+import { isMedia } from "@/ui/responsive"
 
 import { MainInfo } from "./components/MainInfo"
 import { SecondaryInfo } from "./components/SecondaryInfo"

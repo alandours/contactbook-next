@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components"
 
-import { FontWeight } from "@/theme/typography"
+import { FontWeight } from "@/ui/typography"
 import { zindex } from "@/constants"
 import { ListItemType } from "@/types"
 

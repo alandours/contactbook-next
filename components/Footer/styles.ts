@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-import { screen } from "@/theme/screen"
+import { responsive } from "@/ui/responsive"
 
 export const FooterContainer = styled.footer`
   background: ${({ theme }) => theme.selected.main[2]};
@@ -12,7 +12,7 @@ export const FooterContainer = styled.footer`
   transition-property: background, box-shadow, color;
 
   ${({ theme }) =>
-    screen.md(`
+    responsive.md(`
       background: ${theme.selected.main[1]};
       box-shadow: 0 2px 6px 0 ${theme.selected.main.shadow};
       justify-content: space-between;

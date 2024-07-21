@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components"
 
-import { screen } from "@/theme/screen"
+import { responsive } from "@/ui/responsive"
 import { PageHeader } from "@/components/PageHeader"
 import { Checkbox } from "@/components/Form/Checkbox"
 
@@ -18,7 +18,7 @@ export const FieldContainer = styled.div<{ multiline: boolean }>`
       flex-wrap: wrap;
     `}
 
-  ${screen.md(`
+  ${responsive.md(`
     flex-wrap: nowrap;
   `)}
 `
@@ -27,7 +27,7 @@ export const RemoveImageCheckbox = styled(Checkbox)`
   bottom: -6px;
   position: absolute;
 
-  ${screen.md(`
+  ${responsive.md(`
     bottom: -10px;
   `)}
 `

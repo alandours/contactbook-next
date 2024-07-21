@@ -1,10 +1,5 @@
 import { lighten, darken } from "polished"
 
-enum ThemeColor {
-  DARK,
-  LIGHT,
-}
-
 export enum Colors {
   BLUE,
   FUCHSIA,
@@ -13,6 +8,11 @@ export enum Colors {
   RED,
   ORANGE,
   TURQUOISE,
+}
+
+enum ThemeColor {
+  DARK,
+  LIGHT,
 }
 
 const danger = {

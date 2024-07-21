@@ -11,9 +11,9 @@ import { ContactList } from "@/components/ContactList"
 import { ContactsProvider } from "@/context/contacts"
 import StyledComponentsRegistry from "@/lib/registry"
 
-import "./globals.css"
-
 import { ContactBook, Main } from "./styles"
+
+import "./globals.css"
 
 const inter = Open_Sans({ subsets: ["latin"] })
 

@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-import { FontSize } from "@/theme/typography"
+import { FontSize } from "@/ui/typography"
 import { Button } from "@/ui"
 
 export const XButtonContainer = styled(Button)`

@@ -1,7 +1,7 @@
 import { ReactNode } from "react"
 
 import { SectionHeader } from "@/components/SectionHeader"
-import { Icons } from "@/utils/icons"
+import { Icons } from "@/ui/icons"
 
 import { SectionContainer, Content } from "./styles"
 

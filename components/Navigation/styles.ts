@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
-import { screen } from "@/theme/screen"
-import { FontSize, FontWeight } from "@/theme/typography"
+import { responsive } from "@/ui/responsive"
+import { FontSize, FontWeight } from "@/ui/typography"
 
 export const NavigationContainer = styled.div`
   align-items: center;
@@ -14,7 +14,7 @@ export const HeaderLinkText = styled.span`
   font-weight: ${FontWeight.REGULAR};
   margin-left: 0.5rem;
 
-  ${screen.md(`
+  ${responsive.md(`
     display: block;
   `)}
 `

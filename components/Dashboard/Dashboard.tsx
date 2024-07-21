@@ -16,7 +16,7 @@ import {
   getRecentlyAddedContacts,
   getUpcomingBirthdays,
 } from "@/utils/date"
-import { Icons } from "@/utils/icons"
+import { Icons } from "@/ui/icons"
 
 import { DashboardContainer } from "./styles"
 

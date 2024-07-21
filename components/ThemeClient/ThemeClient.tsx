@@ -2,7 +2,7 @@
 
 import { ThemeProvider } from "styled-components"
 
-import { theme } from "@/theme/palette"
+import { theme } from "@/ui/palette"
 
 type ThemeClientProps = {
   children: React.ReactNode

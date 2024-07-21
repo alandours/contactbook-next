@@ -1,8 +1,8 @@
 import { useFormContext } from "react-hook-form"
 
-import { Icon } from "@/components/Icon"
-import { theme } from "@/theme/palette"
-import { Icons } from "@/utils/icons"
+import { Icon } from "@/ui"
+import { theme } from "@/ui/palette"
+import { Icons } from "@/ui/icons"
 
 import { CheckboxContainer, CheckboxText, OriginalCheckbox } from "./styles"
 

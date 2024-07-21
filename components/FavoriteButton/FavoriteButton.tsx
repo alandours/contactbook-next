@@ -1,8 +1,8 @@
 import React from "react"
 
 import { Icon } from "@/ui"
-import { theme } from "@/theme/palette"
-import { Icons } from "@/utils/icons"
+import { theme } from "@/ui/palette"
+import { Icons } from "@/ui/icons"
 
 import { FavoriteButtonContainer } from "./styles"
 

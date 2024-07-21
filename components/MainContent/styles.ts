@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-import { screen } from "@/theme/screen"
+import { responsive } from "@/ui/responsive"
 
 export const MainContentContainer = styled.div`
   align-items: center;
@@ -17,7 +17,7 @@ export const MainContentContainer = styled.div`
   width: 100%;
 
   ${({ theme }) =>
-    screen.md(`
+    responsive.md(`
       border-radius: 8px; 
       box-shadow: 0 2px 6px 0 ${theme.selected.main.shadow};
       margin-left: 1rem;

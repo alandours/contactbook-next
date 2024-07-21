@@ -1,7 +1,7 @@
 import { ButtonHTMLAttributes } from "react"
 
-import { Icon } from "@/components/Icon"
-import { Icons } from "@/utils/icons"
+import { Icon } from "@/ui"
+import { Icons } from "@/ui/icons"
 
 import { XButtonContainer } from "./styles"
 

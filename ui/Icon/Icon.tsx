@@ -1,5 +1,5 @@
-import { theme } from "@/theme/palette"
-import { icons, Icons } from "@/utils/icons"
+import { icons, Icons } from "@/ui/icons"
+import { theme } from "@/ui/palette"
 
 type IconProps = {
   name: Icons

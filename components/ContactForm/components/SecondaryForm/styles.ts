@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components"
 
-import { screen } from "@/theme/screen"
+import { responsive } from "@/ui/responsive"
 import { XButton } from "@/components/XButton"
 
 export const SecondaryFormContainer = styled.div``
@@ -12,7 +12,7 @@ export const RemoveButton = styled(XButton)`
   right: 0;
   top: -2rem;
 
-  ${screen.md(`
+  ${responsive.md(`
     margin-left: 0.75rem;
     opacity: 0;
     position: initial;
@@ -27,7 +27,7 @@ export const FormField = styled.div`
   margin: 3rem 0;
   position: relative;
 
-  ${screen.md(`
+  ${responsive.md(`
     flex-direction: row;
     margin: 0.75rem 0;
   `)}
@@ -37,4 +37,8 @@ export const FormField = styled.div`
     visibility: visible;
     transition: all ease 100ms;
   }
+`
+
+export const Option = styled.option`
+  color: #000;
 `

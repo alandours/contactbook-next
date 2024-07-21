@@ -2,7 +2,7 @@ import React from "react"
 
 import { ButtonVariants } from "@/types"
 import { Icon, Link } from "@/ui"
-import { Icons } from "@/utils/icons"
+import { Icons } from "@/ui/icons"
 
 import { NavigationContainer, HeaderLinkText } from "./styles"
 

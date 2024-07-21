@@ -2,7 +2,6 @@ import styled from "styled-components"
 
 import { Icon } from "@/ui"
 import { zindex } from "@/constants"
-import { formElementStyles } from "@/theme/screen"
 
 export const SearchInputContainer = styled.div`
   background: ${({ theme }) => theme.selected.main[1]};
@@ -22,8 +21,6 @@ export const SearchIcon = styled(Icon)`
 `
 
 export const SearchInputElement = styled.input<{ hasIcon: boolean }>`
-  ${formElementStyles};
-
   background: ${({ theme }) => theme.selected.main[1]};
   border-color: ${({ theme }) => theme.selected.main[2]};
   border-radius: 4px 0 0 0;

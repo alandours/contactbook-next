@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components"
 import Image from "next/image"
 
-import { screen } from "@/theme/screen"
+import { responsive } from "@/ui/responsive"
 
 export const ProfilePictureContainer = styled(Image)<{ thumbnail: boolean }>`
   border: 6px solid ${({ theme }) => theme.selected.main[1]};
@@ -15,7 +15,7 @@ export const ProfilePictureContainer = styled(Image)<{ thumbnail: boolean }>`
   position: relative;
   width: 220px;
 
-  ${screen.md(`
+  ${responsive.md(`
     margin: 0;
     height: 200px;
     min-height: 200px;
@@ -41,7 +41,7 @@ export const ProfilePictureContainer = styled(Image)<{ thumbnail: boolean }>`
       min-width: 30px;
       width: 30px;
 
-      ${screen.md(`
+      ${responsive.md(`
         height: 30px;
         margin: 0;
         min-height: 30px;

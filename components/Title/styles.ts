@@ -1,6 +1,6 @@
 import styled from "styled-components"
-import { FontSize, FontWeight } from "@/theme/typography"
-import { screen } from "@/theme/screen"
+import { FontSize, FontWeight } from "@/ui/typography"
+import { responsive } from "@/ui/responsive"
 
 export const TitleContainer = styled.h1`
   align-items: center;
@@ -12,11 +12,11 @@ export const TitleContainer = styled.h1`
   transition: all 420ms ease;
   transition-property: color;
 
-  ${screen.xs(`
+  ${responsive.xs(`
     font-size: ${FontSize.XL};
   `)}
 
-  ${screen.lg(`
+  ${responsive.lg(`
     font-size: ${FontSize.XXL};
   `)}
 `

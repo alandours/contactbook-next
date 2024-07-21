@@ -1,7 +1,7 @@
 import styled, { DefaultTheme, css } from "styled-components"
 
-import { FontSize, FontWeight } from "@/theme/typography"
 import { ButtonVariants } from "@/types"
+import { FontSize, FontWeight } from "@/ui/typography"
 
 export const buttonStyles = ({
   theme,

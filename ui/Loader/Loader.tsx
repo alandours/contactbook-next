@@ -1,7 +1,7 @@
 import React from "react"
 
 import { Icon } from "@/ui"
-import { Icons } from "@/utils/icons"
+import { Icons } from "@/ui/icons"
 
 import { LoaderContainer } from "./styles"
 

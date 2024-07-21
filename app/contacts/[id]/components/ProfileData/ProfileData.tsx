@@ -4,7 +4,7 @@ import { FavoriteButton } from "@/components/FavoriteButton"
 import { ContactsContext } from "@/context/contacts"
 import { Icon, Link } from "@/ui"
 import { getBirthdayText, calculateAge } from "@/utils/date"
-import { Icons } from "@/utils/icons"
+import { Icons } from "@/ui/icons"
 
 import { ProfileDataContainer, MainDatafield, Name, Text } from "./styles"
 

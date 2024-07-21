@@ -1,11 +1,11 @@
 import styled from "styled-components"
 
-import { screen } from "@/theme/screen"
+import { responsive } from "@/ui/responsive"
 
 export const SettingsContainer = styled.div`
   width: 100%;
 
-  ${screen.md(`
+  ${responsive.md(`
     position: absolute;
     top: 0;
   `)}

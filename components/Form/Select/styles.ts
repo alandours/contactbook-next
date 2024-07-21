@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
-import { Icon } from "@/components/Icon"
-import { formElementStyles, screen } from "@/theme/screen"
+import { Icon } from "@/ui"
+import { responsive } from "@/ui/responsive"
 
 export const SelectWrapper = styled.div`
   position: relative;
@@ -15,15 +15,13 @@ export const Selector = styled(Icon)`
   right: 1rem;
   top: 43%;
 
-  ${screen.md(`
+  ${responsive.md(`
     right: 2rem;
     top: 50%;
   `)}
 `
 
 export const SelectContainer = styled.select`
-  ${formElementStyles};
-
   appearance: none;
   border: 1px solid ${({ theme }) => theme.selected.contrast[4]};
   border-radius: 3px;
@@ -33,7 +31,7 @@ export const SelectContainer = styled.select`
   padding: 0.25rem;
   width: 100%;
 
-  ${screen.md(`
+  ${responsive.md(`
     margin: 0 1.5rem;
     width: 200px;
   `)}

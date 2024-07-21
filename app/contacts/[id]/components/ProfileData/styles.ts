@@ -1,12 +1,12 @@
 import styled, { css } from "styled-components"
-import { FontSize, FontWeight } from "@/theme/typography"
-import { screen } from "@/theme/screen"
+import { FontSize, FontWeight } from "@/ui/typography"
+import { responsive } from "@/ui/responsive"
 
 export const ProfileDataContainer = styled.div`
   margin-left: 0.75rem;
   width: 100%;
 
-  ${screen.md(`
+  ${responsive.md(`
     margin-left: 1.5rem;
   `)}
 `
@@ -24,7 +24,7 @@ export const Name = styled.span<{ birthday: number | null }>`
   align-items: center;
   margin-right: 0.5rem;
 
-  ${screen.md(`
+  ${responsive.md(`
     margin-right: 1rem;
   `)}
 
@@ -39,12 +39,12 @@ export const Name = styled.span<{ birthday: number | null }>`
         margin-left: 0.5rem;
         margin-top: 1px;
 
-        ${screen.md(`
+        ${responsive.md(`
           font-size: ${FontSize.MEDIUM};
           margin-left: 1rem;
         `)}
 
-        ${screen.lg(`
+        ${responsive.lg(`
           font-size: ${FontSize.LARGE};
         `)}
       `};

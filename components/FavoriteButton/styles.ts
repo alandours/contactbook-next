@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
-import { FontSize } from "@/theme/typography"
-import { screen } from "@/theme/screen"
+import { FontSize } from "@/ui/typography"
+import { responsive } from "@/ui/responsive"
 
 export const FavoriteButtonContainer = styled.button`
   align-self: center;
@@ -15,7 +15,7 @@ export const FavoriteButtonContainer = styled.button`
   position: absolute;
   top: 0.75rem;
 
-  ${screen.xs(`
+  ${responsive.xs(`
     font-size: ${FontSize.LARGE};
     left: 0;
     margin-right: 1rem;

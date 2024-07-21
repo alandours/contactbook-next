@@ -4,9 +4,9 @@ import { Gradient } from "@/components/Gradient"
 import { MainProfilePicture } from "@/components/MainProfilePicture"
 import { Icon } from "@/ui"
 import { ContactsContext } from "@/context/contacts"
-import { theme } from "@/theme/palette"
+import { theme } from "@/ui/palette"
 import { ButtonVariants } from "@/types"
-import { Icons } from "@/utils/icons"
+import { Icons } from "@/ui/icons"
 
 import { ProfileData } from "../ProfileData"
 

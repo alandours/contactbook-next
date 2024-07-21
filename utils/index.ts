@@ -22,17 +22,3 @@ export const sanitizeString = (str: string, wsReplace = "-") => {
 
 export const getRandomInt = (min: number, max: number) =>
   Math.floor(Math.random() * (max - min) + min)
-
-const devices = {
-  mobileXs: () => "320",
-  mobile: () => "360",
-  tablet: () => "768",
-  laptop: () => "1024",
-  desktop: () => "1270",
-  custom: (custom?: string) => custom,
-}
-
-export const isMedia = (media: keyof typeof devices, custom?: string) => {
-  return window.matchMedia(`(min-width: ${Number(devices[media](custom))}px)`)
-    .matches
-}
