@@ -20,8 +20,8 @@ export const SearchIcon = styled(Icon)`
   transition-property: color;
 `
 
-export const SearchInputElement = styled.input<{ hasIcon: boolean }>`
-  ${({ theme, hasIcon }) => css`
+export const SearchInputElement = styled.input<{ $hasIcon: boolean }>`
+  ${({ theme, $hasIcon }) => css`
     background: ${theme.selected.main[1]};
     border: 0;
     border-color: ${theme.selected.main[2]};
@@ -31,7 +31,7 @@ export const SearchInputElement = styled.input<{ hasIcon: boolean }>`
     transition-property: background, border;
     width: 100%;
 
-    ${!!hasIcon &&
+    ${!!$hasIcon &&
     `
       padding-left: 2rem;
     `}

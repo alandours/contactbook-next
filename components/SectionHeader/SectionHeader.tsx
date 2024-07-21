@@ -14,7 +14,7 @@ export const SectionHeader = ({
   icon,
   sticky = false,
 }: SectionHeaderProps) => (
-  <SectionHeaderContainer sticky={sticky}>
+  <SectionHeaderContainer $sticky={sticky}>
     {!!icon && <Icon name={icon} />}
     {title}
   </SectionHeaderContainer>

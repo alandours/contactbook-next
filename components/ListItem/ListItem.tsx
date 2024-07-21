@@ -22,7 +22,7 @@ export const ListItem = ({
   const { settings } = useContext(UIContext)
 
   return (
-    <ListItemContainer type={type} sticky={sticky}>
+    <ListItemContainer type={type} $sticky={sticky}>
       {contact ? (
         <ContactLink
           contact={contact}

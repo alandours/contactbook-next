@@ -3,8 +3,8 @@ import { FontSize, FontWeight } from "@/ui/typography"
 import { zindex } from "@/ui/constants"
 import { responsive } from "@/ui/responsive"
 
-export const SectionHeaderContainer = styled.h2<{ sticky: boolean }>`
-  ${({ theme, sticky }) => css`
+export const SectionHeaderContainer = styled.h2<{ $sticky: boolean }>`
+  ${({ theme, $sticky }) => css`
     background: ${theme.selected.main[3]};
     border-bottom: 2px solid ${theme.selected.main.shadow};
     color: ${theme.selected.contrast[1]};
@@ -18,7 +18,7 @@ export const SectionHeaderContainer = styled.h2<{ sticky: boolean }>`
     transition-property: background, border, color;
     z-index: ${zindex.tooltip};
 
-    ${sticky &&
+    ${$sticky &&
     responsive.md(`
       position: sticky;
       top: 46px;

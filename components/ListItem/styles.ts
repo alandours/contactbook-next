@@ -6,9 +6,9 @@ import { ListItemType } from "@/types"
 
 export const ListItemContainer = styled.li<{
   type: ListItemType
-  sticky: boolean
+  $sticky: boolean
 }>`
-  ${({ theme, type, sticky }) => css`
+  ${({ theme, type, $sticky }) => css`
     & + & {
       border-top: 1px solid ${theme.selected.main[3]};
     }
@@ -34,7 +34,7 @@ export const ListItemContainer = styled.li<{
       z-index: ${zindex.tooltip};
     `};
 
-    ${sticky &&
+    ${$sticky &&
     css`
       position: sticky;
       top: 27px;

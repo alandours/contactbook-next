@@ -15,7 +15,7 @@ export const SearchInput = ({ handleTyping }: SearchInputProps) => (
       type="text"
       placeholder="Search contacts"
       onKeyUp={handleTyping}
-      hasIcon
+      $hasIcon
     />
   </SearchInputContainer>
 )
