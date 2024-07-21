@@ -1,12 +1,12 @@
 import { useContext } from "react"
 import { Title } from "@/components/Title"
 import { FavoriteButton } from "@/components/FavoriteButton"
-import { Icon } from "@/components/Icon"
 import { ContactsContext } from "@/context/contacts"
+import { Icon, Link } from "@/ui"
 import { getBirthdayText, calculateAge } from "@/utils/date"
 import { Icons } from "@/utils/icons"
 
-import { ProfileDataContainer, MainDatafield, Name, Link, Text } from "./styles"
+import { ProfileDataContainer, MainDatafield, Name, Text } from "./styles"
 
 export const ProfileData = () => {
   const { selectedContact } = useContext(ContactsContext)
@@ -32,11 +32,7 @@ export const ProfileData = () => {
       {address && (
         <MainDatafield>
           <Icon name={Icons.home} size="1.125rem" />
-          <Link
-            href={`https://www.google.com/maps/search/${address}`}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <Link href={`https://www.google.com/maps/search/${address}`} external>
             {address}
           </Link>
         </MainDatafield>

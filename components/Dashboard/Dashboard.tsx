@@ -6,9 +6,9 @@ import { Contact } from "@/types"
 import { PageHeader } from "@/components/PageHeader"
 import { ContactMessage } from "@/components/ContactMessage"
 import { ContactLink } from "@/components/ContactLink"
-import { Link } from "@/components/Link"
+import { Link, Loader } from "@/ui"
 import { Section } from "@/components/Section"
-import { Loader } from "@/components/Loader"
+import { ROUTES } from "@/constants/routes"
 import { ContactsContext } from "@/context/contacts"
 import { ContactWithNextBirthday } from "@/types/birthday"
 import {
@@ -61,7 +61,7 @@ export const Dashboard = () => {
           : "There are no upcoming birthdays"}
 
         {upcomingBirthdays && (
-          <Link url="/birthdays" highlight>
+          <Link href={ROUTES.birthdays} highlight>
             See all birthdays
           </Link>
         )}
@@ -76,7 +76,7 @@ export const Dashboard = () => {
           : "There are no contacts"}
 
         {lastAdded && !!lastAdded.length && (
-          <Link url="/contacts/year" highlight>
+          <Link href={ROUTES.contacts.year} highlight>
             See contacts by year
           </Link>
         )}

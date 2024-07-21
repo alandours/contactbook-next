@@ -51,11 +51,6 @@ export const Name = styled.span<{ birthday: number | null }>`
   }
 `
 
-export const Link = styled.a`
-  color: ${({ theme }) => theme.mainColor.dark};
-  font-weight: ${FontWeight.REGULAR};
-`
-
 export const Text = styled.p`
   display: inline-block;
 `

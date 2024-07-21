@@ -1,4 +1,6 @@
+import { Link } from "@/ui"
 import { DatafieldContainer, DataContainer, Name, Label, Text } from "./styles"
+import { ButtonVariants } from "@/types"
 
 type DataField = {
   name: string
@@ -9,15 +11,10 @@ type DataField = {
 export const Datafield = ({ name, label, url }: DataField) => (
   <DatafieldContainer>
     {url || label ? (
-      <DataContainer
-        href={url}
-        target="_blank"
-        rel="noopener noreferrer"
-        as={url ? "a" : "div"}
-      >
+      <Link href={url || "#"} variant={ButtonVariants.DATAFIELD} external>
         <Name>{name}</Name>
         <Label>{label}</Label>
-      </DataContainer>
+      </Link>
     ) : (
       <Text>{name}</Text>
     )}

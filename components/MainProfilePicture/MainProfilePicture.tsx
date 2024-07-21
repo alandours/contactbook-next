@@ -1,6 +1,6 @@
 import { useContext, useState } from "react"
 
-import { Backdrop } from "@/components/Backdrop"
+import { Backdrop } from "@/ui"
 import { ProfilePicture } from "@/components/ProfilePicture"
 import { ContactsContext } from "@/context/contacts"
 import { formatFullName } from "@/utils/contacts"

@@ -2,8 +2,7 @@ import styled from "styled-components"
 
 import { Title } from "../Title"
 import { Subtitle } from "../Subtitle"
-import { Icon } from "../Icon"
-import { Link } from "../Link"
+import { Icon } from "@/ui"
 
 export const NotFoundContainer = styled.div``
 
@@ -19,9 +18,4 @@ export const NotFoundSubtitle = styled(Subtitle)`
 export const NotFoundIcon = styled(Icon)`
   margin-right: 0.5rem;
   color: ${({ theme }) => theme.mainColor.main};
-`
-
-export const NotFoundLink = styled(Link)`
-  font-size: inherit;
-  padding: 0;
 `

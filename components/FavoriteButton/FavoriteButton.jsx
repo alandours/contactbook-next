@@ -1,6 +1,6 @@
 import React from "react"
 
-import { Icon } from "@/components/Icon"
+import { Icon } from "@/ui"
 import { theme } from "@/theme/palette"
 import { Icons } from "@/utils/icons"
 

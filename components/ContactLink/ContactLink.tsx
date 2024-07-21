@@ -1,6 +1,6 @@
 import React from "react"
 
-import { Icon } from "@/components/Icon"
+import { Icon, Link } from "@/ui"
 import { ProfilePicture } from "@/components/ProfilePicture"
 import { theme } from "@/theme/palette"
 import { ContactWithNextBirthday } from "@/types/birthday"
@@ -13,7 +13,8 @@ import {
 } from "@/utils/date"
 import { Icons } from "@/utils/icons"
 
-import { ContactLinkContainer, Name, NamedDate, Date, Age } from "./styles"
+import { Name, NamedDate, Date, Age } from "./styles"
+import { ButtonVariants } from "@/types"
 
 interface ContactLinkProps {
   contact: ContactWithNextBirthday
@@ -37,7 +38,7 @@ export const ContactLink = ({
   const namedDate = !!nextBirthday && getNamedDate(nextBirthday)
 
   return (
-    <ContactLinkContainer href={`/contacts/${id}`}>
+    <Link href={`/contacts/${id}`} variant={ButtonVariants.DATAFIELD}>
       {!!nextBirthday && <Date>{getListDate(nextBirthday, showMonth)}</Date>}
       {showPhoto && <ProfilePicture thumbnail />}
       <Name>
@@ -52,6 +53,6 @@ export const ContactLink = ({
           size="0.75rem"
         />
       )}
-    </ContactLinkContainer>
+    </Link>
   )
 }

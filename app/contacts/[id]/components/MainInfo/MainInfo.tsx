@@ -2,7 +2,7 @@ import { useContext } from "react"
 
 import { Gradient } from "@/components/Gradient"
 import { MainProfilePicture } from "@/components/MainProfilePicture"
-import { Icon } from "@/components/Icon"
+import { Icon } from "@/ui"
 import { ContactsContext } from "@/context/contacts"
 import { theme } from "@/theme/palette"
 import { ButtonVariants } from "@/types"
@@ -11,6 +11,7 @@ import { Icons } from "@/utils/icons"
 import { ProfileData } from "../ProfileData"
 
 import { MainInfoContainer, EditLink } from "./styles"
+import { ROUTES } from "@/constants/routes"
 
 export const MainInfo = () => {
   const { selectedContact } = useContext(ContactsContext)
@@ -18,19 +19,21 @@ export const MainInfo = () => {
   const { id } = selectedContact || {}
 
   return (
-    <>
-      <Gradient smooth />
-      <MainInfoContainer>
-        <MainProfilePicture />
-        <ProfileData />
-        <EditLink
-          url={`/contacts/${id}/edit`}
-          title="Edit contact"
-          variant={ButtonVariants.ROUND}
-        >
-          <Icon name={Icons.pen} color={theme.selected.main[1]} />
-        </EditLink>
-      </MainInfoContainer>
-    </>
+    id && (
+      <>
+        <Gradient smooth />
+        <MainInfoContainer>
+          <MainProfilePicture />
+          <ProfileData />
+          <EditLink
+            href={ROUTES.contacts.edit(id)}
+            title="Edit contact"
+            variant={ButtonVariants.MAIN_ROUND}
+          >
+            <Icon name={Icons.pen} color={theme.selected.main[1]} />
+          </EditLink>
+        </MainInfoContainer>
+      </>
+    )
   )
 }

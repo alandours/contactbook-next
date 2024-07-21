@@ -2,7 +2,7 @@ import styled from "styled-components"
 
 import { screen } from "@/theme/screen"
 import { PageHeader } from "@/components/PageHeader"
-import { Link } from "@/components/Link"
+import { Link } from "@/ui"
 
 export const MainInfoContainer = styled(PageHeader)`
   align-items: center;

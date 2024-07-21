@@ -2,6 +2,6 @@
 
 import { ContactForm } from "@/components/ContactForm"
 
-export default function AddContact() {
+export default function CreateContact() {
   return <ContactForm />
 }

@@ -41,33 +41,7 @@ export const buttonStyles = ({
     }
   `}
 
-  ${variant === ButtonVariants.DANGER &&
-  css`
-    background: ${theme.selected.danger.main};
-    color: ${theme.selected.main[1]};
-
-    &:hover,
-    &:focus {
-      background: ${theme.selected.danger.light};
-    }
-  `}
-
-  ${variant === ButtonVariants.ROUND &&
-  css`
-    background: ${theme.mainColor.main};
-    border-radius: 100%;
-    color: ${theme.selected.main[1]};
-    height: 2.25rem;
-    padding: 0;
-    min-width: 2.25rem;
-
-    &:hover,
-    &:focus {
-      background: ${theme.mainColor.light};
-    }
-  `}
-
-  ${variant === ButtonVariants.TEXT &&
+  ${variant === ButtonVariants.SECONDARY &&
   css`
     color: ${theme.selected.contrast[1]};
 
@@ -85,6 +59,55 @@ export const buttonStyles = ({
         color: ${theme.mainColor.main};
       }
     `};
+  `}
+
+  ${variant === ButtonVariants.MAIN_ROUND &&
+  css`
+    background: ${theme.mainColor.main};
+    border-radius: 100%;
+    color: ${theme.selected.main[1]};
+    height: 2.25rem;
+    padding: 0;
+    min-width: 2.25rem;
+
+    &:hover,
+    &:focus {
+      background: ${theme.mainColor.light};
+    }
+  `}
+
+  ${variant === ButtonVariants.DATAFIELD &&
+  css`
+    color: ${theme.selected.contrast[3]};
+    padding: 0.5rem 0.75rem;
+    justify-content: flex-start;
+
+    &:hover,
+    &:focus {
+      background: ${theme.selected.main[2]};
+    }
+  `}
+
+  ${variant === ButtonVariants.DANGER &&
+  css`
+    background: ${theme.selected.danger.main};
+    color: ${theme.selected.main[1]};
+
+    &:hover,
+    &:focus {
+      background: ${theme.selected.danger.light};
+    }
+  `}
+
+  ${variant === ButtonVariants.LINK &&
+  css`
+    color: ${theme.mainColor.dark};
+    padding: 0;
+
+    &:hover,
+    &:focus {
+      color: ${theme.mainColor.main};
+    }
   `}
 `
 

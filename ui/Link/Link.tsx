@@ -1,11 +1,11 @@
-import { ReactNode } from "react"
+import { AnchorHTMLAttributes, ReactNode } from "react"
 
 import { ButtonVariants } from "@/types"
 
 import { NextLink, AnchorLink } from "./styles"
 
-type LinkProps = {
-  url: string
+interface LinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
+  href: string
   highlight?: boolean
   title?: string
   variant?: ButtonVariants
@@ -15,18 +15,22 @@ type LinkProps = {
 }
 
 export const Link = ({
-  url,
+  href,
   highlight = false,
   title,
-  variant = ButtonVariants.TEXT,
+  variant = ButtonVariants.LINK,
   className = "",
   external = false,
   children,
 }: LinkProps) => {
-  const props = { href: url, highlight, title, variant, className }
+  const props = { href, highlight, title, variant, className }
 
   if (external) {
-    return <AnchorLink {...props}>{children}</AnchorLink>
+    return (
+      <AnchorLink {...props} target="_blank" rel="noopener noreferrer">
+        {children}
+      </AnchorLink>
+    )
   }
 
   return <NextLink {...props}>{children}</NextLink>

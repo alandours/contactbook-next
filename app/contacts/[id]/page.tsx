@@ -2,7 +2,7 @@
 
 import { UIEvent, useContext, useEffect, useState } from "react"
 
-import { Loader } from "@/components/Loader"
+import { Loader } from "@/ui"
 import { NotFound } from "@/components/NotFound"
 import { ContactMessage } from "@/components/ContactMessage"
 import { FixedInfo } from "@/components/FixedInfo"

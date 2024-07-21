@@ -3,7 +3,6 @@ import styled from "styled-components"
 import { screen } from "@/theme/screen"
 import { FontSize, FontWeight } from "@/theme/typography"
 import { zindex } from "@/constants"
-import Link from "next/link"
 
 export const HeaderContainer = styled.header`
   background: ${({ theme }) => theme.selected.main[2]};
@@ -47,9 +46,4 @@ export const ToggleMenuButton = styled.button`
   ${screen.md(`
     display: none;
   `)}
-`
-
-export const Sitelink = styled(Link)`
-  color: ${({ theme }) => theme.selected.contrast[1]};
-  display: flex;
 `

@@ -1,4 +1,4 @@
-import { Icon } from "@/components/Icon"
+import { Icon } from "@/ui"
 import { Icons } from "@/utils/icons"
 
 import { SectionHeaderContainer } from "./styles"
