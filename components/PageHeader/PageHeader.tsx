@@ -1,7 +1,6 @@
 import { ReactNode } from "react"
 
-import { Title } from "@/components/Title"
-import { Subtitle } from "@/components/Subtitle"
+import { Title, Subtitle } from "@/ui"
 
 import { PageHeaderContainer } from "./styles"
 

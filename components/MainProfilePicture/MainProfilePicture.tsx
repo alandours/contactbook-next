@@ -3,7 +3,6 @@ import { useContext, useState } from "react"
 import { Backdrop } from "@/ui"
 import { ProfilePicture } from "@/components/ProfilePicture"
 import { ContactsContext } from "@/context/contacts"
-import { formatFullName } from "@/utils/contacts"
 
 import { FullSizePicture } from "./styles"
 
@@ -24,7 +23,7 @@ export const MainProfilePicture = () => {
           >
             <FullSizePicture
               src={`/img/contacts/${photo}`}
-              alt={`${formatFullName(name, lastname)}'s profile picture`}
+              alt={`${name} ${lastname}'s profile picture`}
             />
           </Backdrop>
         )}

@@ -1,6 +1,6 @@
 import { useFormContext } from "react-hook-form"
 
-import { Gradient } from "@/components/Gradient"
+import { Gradient } from "@/ui/Gradient"
 import { ProfilePicture } from "@/components/ProfilePicture"
 
 import { MainFormData } from "./components/MainFormData"

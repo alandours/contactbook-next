@@ -1,5 +1,5 @@
 import { useContext } from "react"
-import { Title } from "@/components/Title"
+import { Title } from "@/ui/Title"
 import { FavoriteButton } from "@/components/FavoriteButton"
 import { ContactsContext } from "@/context/contacts"
 import { Icon, Link } from "@/ui"

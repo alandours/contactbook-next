@@ -1,11 +1,11 @@
 import React, { useContext } from "react"
 
 import { Section } from "@/components/Section"
-import { ToggleButton } from "@/components/ToggleButton"
+import { ContactsContext } from "@/context/contacts"
+import { Switch } from "@/ui"
+import { Settings, UIContext } from "@/ui/context"
 
 import { Setting } from "../Setting"
-import { ContactsContext } from "@/context/contacts"
-import { Settings, UIContext } from "@/ui/context"
 
 export const ContactsSettings = () => {
   const { settings, updateSetting } = useContext(UIContext)
@@ -26,25 +26,19 @@ export const ContactsSettings = () => {
   return (
     <Section title="Contacts">
       <Setting label="Show age">
-        <ToggleButton active={settings.showAge} handleClick={toggleShowAge} />
+        <Switch active={settings.showAge} handleClick={toggleShowAge} />
       </Setting>
       <Setting label="Show photo">
-        <ToggleButton
-          active={settings.showPhoto}
-          handleClick={toggleShowPhoto}
-        />
+        <Switch active={settings.showPhoto} handleClick={toggleShowPhoto} />
       </Setting>
       <Setting label="Show favorite icon">
-        <ToggleButton
+        <Switch
           active={settings.showFavoriteIcon}
           handleClick={toggleFavoriteIcon}
         />
       </Setting>
       <Setting label="Show favorites only">
-        <ToggleButton
-          active={!!filters.favorite}
-          handleClick={toggleFavoritesOnly}
-        />
+        <Switch active={!!filters.favorite} handleClick={toggleFavoritesOnly} />
       </Setting>
     </Section>
   )

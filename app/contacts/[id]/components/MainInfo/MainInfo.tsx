@@ -1,6 +1,6 @@
 import { useContext } from "react"
 
-import { Gradient } from "@/components/Gradient"
+import { Gradient } from "@/ui/Gradient"
 import { MainProfilePicture } from "@/components/MainProfilePicture"
 import { ROUTES } from "@/constants/routes"
 import { ContactsContext } from "@/context/contacts"

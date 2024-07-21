@@ -1,11 +1,12 @@
 import React, { useContext } from "react"
 
 import { Section } from "@/components/Section"
-import { ToggleButton } from "@/components/ToggleButton"
 import { ColorSelector } from "@/components/ColorSelector"
-import { Setting } from "../Setting"
-import { Colors, ThemeColor, colors, palette } from "@/ui/palette"
+import { Switch } from "@/ui"
 import { UIContext } from "@/ui/context"
+import { Colors, ThemeColor, colors, palette } from "@/ui/palette"
+
+import { Setting } from "../Setting"
 
 export const ColorSettings = () => {
   const { setTheme } = useContext(UIContext)
@@ -38,7 +39,7 @@ export const ColorSettings = () => {
   return (
     <Section title="Colors">
       <Setting label="Dark theme">
-        <ToggleButton
+        <Switch
           active={!!localStorage.getItem("darkTheme")}
           handleClick={toggleDarkTheme}
         />
