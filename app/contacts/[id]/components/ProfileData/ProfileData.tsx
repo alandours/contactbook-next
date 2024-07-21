@@ -1,8 +1,8 @@
 import { useContext } from "react"
 
 import { FavoriteButton } from "@/components/FavoriteButton"
-import { ContactsContext } from "@/context/contacts"
 import { getBirthdayText, calculateAge } from "@/features/birthdays/utils"
+import { ContactsContext } from "@/features/contacts/context"
 import { Icon, Link, Title } from "@/ui"
 import { Icons } from "@/ui/icons"
 

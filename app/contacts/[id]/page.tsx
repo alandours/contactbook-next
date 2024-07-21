@@ -2,11 +2,11 @@
 
 import { UIEvent, useContext, useEffect, useState } from "react"
 
-import { Loader } from "@/ui"
 import { NotFound } from "@/components/NotFound"
 import { ContactMessage } from "@/components/ContactMessage"
 import { FixedInfo } from "@/components/FixedInfo"
-import { ContactsContext } from "@/context/contacts"
+import { ContactsContext } from "@/features/contacts/context"
+import { Loader } from "@/ui"
 import { isMedia } from "@/ui/responsive"
 
 import { MainInfo } from "./components/MainInfo"

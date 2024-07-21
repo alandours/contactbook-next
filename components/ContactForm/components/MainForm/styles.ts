@@ -1,7 +1,8 @@
 import styled from "styled-components"
-import { FontWeight } from "@/ui/typography"
-import { zindex } from "@/constants"
+
+import { zindex } from "@/ui/constants"
 import { responsive } from "@/ui/responsive"
+import { FontWeight } from "@/ui/typography"
 
 export const MainFormContainer = styled.div`
   align-items: center;

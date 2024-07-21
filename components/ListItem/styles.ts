@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components"
 
+import { zindex } from "@/ui/constants"
 import { FontWeight } from "@/ui/typography"
-import { zindex } from "@/constants"
 import { ListItemType } from "@/types"
 
 export const ListItemContainer = styled.li<{

@@ -1,7 +1,5 @@
 import ColorThief from "colorthief/dist/color-thief.mjs"
 
-import { Colors, ThemeColor, colors, palette } from "@/ui/palette"
-
 const colorThief = new ColorThief()
 
 export const getPalette = (

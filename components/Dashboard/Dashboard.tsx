@@ -9,7 +9,7 @@ import { ContactLink } from "@/components/ContactLink"
 import { Link, Loader } from "@/ui"
 import { Section } from "@/components/Section"
 import { ROUTES } from "@/constants/routes"
-import { ContactsContext } from "@/context/contacts"
+import { ContactsContext } from "@/features/contacts/context"
 import { ContactWithNextBirthday } from "@/types/birthday"
 import {
   getContactsWithBirthdays,

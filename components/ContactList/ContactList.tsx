@@ -5,7 +5,7 @@ import { useContext, KeyboardEvent, ReactNode } from "react"
 import { ListItem } from "@/components/ListItem"
 import { SearchInput } from "@/components/SearchInput"
 import { Loader } from "@/ui"
-import { ContactsContext } from "@/context/contacts"
+import { ContactsContext } from "@/features/contacts/context"
 import { Contact, ListItemType } from "@/types"
 import { getInitial } from "@/utils/contacts"
 

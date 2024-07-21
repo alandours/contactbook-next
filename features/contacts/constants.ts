@@ -1,13 +1,5 @@
 import { Icons } from "@/ui/icons"
 
-export enum zindex {
-  back = "-10",
-  normal = "1",
-  tooltip = "10",
-  fixed = "100",
-  modal = "1000",
-}
-
 export const CONTACT_SECTIONS = [
   {
     title: "Aliases",

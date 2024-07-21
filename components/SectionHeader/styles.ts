@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components"
 import { FontSize, FontWeight } from "@/ui/typography"
-import { zindex } from "@/constants"
+import { zindex } from "@/ui/constants"
 import { responsive } from "@/ui/responsive"
 
 export const SectionHeaderContainer = styled.h2<{ sticky: boolean }>`

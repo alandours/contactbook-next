@@ -3,8 +3,8 @@
 import { useContext } from "react"
 
 import { PageHeader } from "@/components/PageHeader"
-import { ContactsContext } from "@/context/contacts"
 import { getBirthdayGroups } from "@/features/birthdays/utils"
+import { ContactsContext } from "@/features/contacts/context"
 import { Loader } from "@/ui"
 
 import { BirthdaysContainer } from "./styles"

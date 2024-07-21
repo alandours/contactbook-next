@@ -1,7 +1,7 @@
 import { useContext } from "react"
 
 import { ProfilePicture } from "@/components/ProfilePicture"
-import { ContactsContext } from "@/context/contacts"
+import { ContactsContext } from "@/features/contacts/context"
 
 import { FixedInfoContainer, Name } from "./styles"
 

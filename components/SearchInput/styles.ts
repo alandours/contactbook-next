@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components"
 
 import { Icon } from "@/ui"
-import { zindex } from "@/constants"
+import { zindex } from "@/ui/constants"
 
 export const SearchInputContainer = styled.div`
   background: ${({ theme }) => theme.selected.main[1]};

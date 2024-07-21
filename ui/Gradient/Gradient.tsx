@@ -1,5 +1,6 @@
 import { useContext } from "react"
-import { ContactsContext } from "@/context/contacts"
+
+import { ContactsContext } from "@/features/contacts/context"
 
 import { GradientContainer } from "./styles"
 

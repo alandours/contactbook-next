@@ -1,11 +1,10 @@
 import { useContext } from "react"
 
-import { Gradient } from "@/ui/Gradient"
 import { MainProfilePicture } from "@/components/MainProfilePicture"
 import { ROUTES } from "@/constants/routes"
-import { ContactsContext } from "@/context/contacts"
+import { ContactsContext } from "@/features/contacts/context"
 import { ButtonVariants } from "@/types"
-import { Icon } from "@/ui"
+import { Gradient, Icon } from "@/ui"
 import { UIContext } from "@/ui/context"
 import { Icons } from "@/ui/icons"
 

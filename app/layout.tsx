@@ -8,7 +8,7 @@ import { Sidebar } from "@/components/Sidebar"
 import { MainContent } from "@/components/MainContent"
 import { Footer } from "@/components/Footer"
 import { ContactList } from "@/components/ContactList"
-import { ContactsProvider } from "@/context/contacts"
+import { ContactsProvider } from "@/features/contacts/context"
 import StyledComponentsRegistry from "@/lib/registry"
 import { UIProvider } from "@/ui/context"
 

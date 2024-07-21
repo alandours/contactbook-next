@@ -1,8 +1,8 @@
 import { useContext, useState } from "react"
 
-import { Backdrop } from "@/ui"
 import { ProfilePicture } from "@/components/ProfilePicture"
-import { ContactsContext } from "@/context/contacts"
+import { ContactsContext } from "@/features/contacts/context"
+import { Backdrop } from "@/ui"
 
 import { FullSizePicture } from "./styles"
 
