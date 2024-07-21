@@ -4,18 +4,18 @@ import React, { useState, useEffect, useContext } from "react"
 import { Contact } from "@/types"
 
 import { PageHeader } from "@/components/PageHeader"
-import { ContactMessage } from "@/components/ContactMessage"
 import { ContactLink } from "@/components/ContactLink"
-import { Link, Loader } from "@/ui"
 import { Section } from "@/components/Section"
 import { ROUTES } from "@/constants/routes"
-import { ContactsContext } from "@/features/contacts/context"
-import { ContactWithNextBirthday } from "@/types/birthday"
 import {
   getContactsWithBirthdays,
   getRecentlyAddedContacts,
   getUpcomingBirthdays,
 } from "@/features/birthdays/utils"
+import { ContactsContext } from "@/features/contacts/context"
+import { ContactWithNextBirthday } from "@/types/birthday"
+
+import { Link, Loader, Toast } from "@/ui"
 import { Icons } from "@/ui/icons"
 
 import { DashboardContainer } from "./styles"
@@ -43,7 +43,7 @@ export const Dashboard = () => {
 
   return (
     <DashboardContainer>
-      <ContactMessage />
+      <Toast />
       <PageHeader title="ContactBook" subtitle={subtitle} />
       <Section title="Upcoming birthdays" icon={Icons.cake}>
         {upcomingBirthdays === undefined && <Loader />}

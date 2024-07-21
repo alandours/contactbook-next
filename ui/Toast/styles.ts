@@ -28,7 +28,7 @@ export const CloseButton = styled(XButton)<{ status: Status }>`
   `}
 `
 
-export const ContactMessageContainer = styled.div<{
+export const ToastContainer = styled.div<{
   status: Status
   visible: boolean
 }>`

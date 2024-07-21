@@ -7,3 +7,6 @@ export { Loader } from "./Loader"
 export { Subtitle } from "./Subtitle"
 export { Switch } from "./Switch"
 export { Title } from "./Title"
+export { Toast } from "./Toast"
+
+export { ThemeClient } from "./ThemeClient"

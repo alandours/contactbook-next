@@ -3,9 +3,9 @@ import { useState, useEffect, useContext } from "react"
 import { Status } from "@/types"
 import { UIContext } from "@/ui/context"
 
-import { ContactMessageContainer, CloseButton } from "./styles"
+import { ToastContainer, CloseButton } from "./styles"
 
-export const ContactMessage = () => {
+export const Toast = () => {
   const { toast, setToast } = useContext(UIContext)
   const [visible, setVisible] = useState(true)
 
@@ -34,10 +34,10 @@ export const ContactMessage = () => {
   return (
     !!message &&
     !!type && (
-      <ContactMessageContainer status={type} visible={visible}>
+      <ToastContainer status={type} visible={visible}>
         {message}
         <CloseButton type="button" status={type} handleClick={closeMessage} />
-      </ContactMessageContainer>
+      </ToastContainer>
     )
   )
 }

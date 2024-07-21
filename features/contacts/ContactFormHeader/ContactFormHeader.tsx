@@ -1,25 +1,24 @@
 import { useFormContext } from "react-hook-form"
 
-import { Gradient } from "@/ui/Gradient"
 import { ProfilePicture } from "@/components/ProfilePicture"
+import { ContactMainForm } from "@/features/contacts"
+import { Gradient } from "@/ui"
 
-import { MainFormData } from "./components/MainFormData"
+import { ContactFormHeaderContainer, PhotoLabel, ImageInput } from "./styles"
 
-import { MainFormContainer, PhotoLabel, ImageInput } from "./styles"
-
-export const MainForm = () => {
+export const ContactFormHeader = () => {
   const { register } = useFormContext()
 
   return (
     <>
       <Gradient smooth />
-      <MainFormContainer>
+      <ContactFormHeaderContainer>
         <PhotoLabel>
           <ProfilePicture />
           <ImageInput type="file" {...register("imageInput")} />
         </PhotoLabel>
-        <MainFormData />
-      </MainFormContainer>
+        <ContactMainForm />
+      </ContactFormHeaderContainer>
     </>
   )
 }

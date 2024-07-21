@@ -4,7 +4,7 @@ import { zindex } from "@/ui/constants"
 import { responsive } from "@/ui/responsive"
 import { FontWeight } from "@/ui/typography"
 
-export const MainFormContainer = styled.div`
+export const ContactFormHeaderContainer = styled.div`
   align-items: center;
   display: flex;
   flex-direction: column;

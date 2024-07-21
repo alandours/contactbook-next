@@ -1,14 +1,14 @@
 import styled, { css } from "styled-components"
 
-import { responsive } from "@/ui/responsive"
 import { PageHeader } from "@/components/PageHeader"
 import { Checkbox } from "@/components/Form/Checkbox"
+import { responsive } from "@/ui/responsive"
 
-export const MainInfoContainer = styled(PageHeader)`
+export const ContactMainFormContainer = styled(PageHeader)`
   padding: 1rem;
 `
 
-export const FieldContainer = styled.div<{ multiline: boolean }>`
+export const FieldContainer = styled.div<{ multiline?: boolean }>`
   display: flex;
   margin: 0.25rem 0;
 

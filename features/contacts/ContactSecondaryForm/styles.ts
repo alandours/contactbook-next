@@ -1,9 +1,9 @@
-import styled, { css } from "styled-components"
+import styled from "styled-components"
 
-import { responsive } from "@/ui/responsive"
 import { XButton } from "@/components/XButton"
+import { responsive } from "@/ui/responsive"
 
-export const SecondaryFormContainer = styled.div``
+export const ContactSecondaryFormContainer = styled.div``
 
 export const RemoveButton = styled(XButton)`
   margin-left: 1.5rem;

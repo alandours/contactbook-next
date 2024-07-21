@@ -3,7 +3,7 @@ import styled from "styled-components"
 import { zindex } from "@/ui/constants"
 import { FontSize, FontWeight } from "@/ui/typography"
 
-export const FixedInfoContainer = styled.div`
+export const StickyBarContainer = styled.div`
   background: ${({ theme }) => theme.selected.main[1]};
   display: flex;
   min-height: 46px;
