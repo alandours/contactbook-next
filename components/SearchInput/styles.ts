@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 
 import { Icon } from "@/ui"
 import { zindex } from "@/constants"
@@ -21,28 +21,29 @@ export const SearchIcon = styled(Icon)`
 `
 
 export const SearchInputElement = styled.input<{ hasIcon: boolean }>`
-  background: ${({ theme }) => theme.selected.main[1]};
-  border: 0;
-  border-color: ${({ theme }) => theme.selected.main[2]};
-  border-radius: 4px 0 0 0;
-  padding: 0.5rem;
-  transition: all 420ms ease;
-  transition-property: background, border;
-  width: 100%;
-
-  ${({ hasIcon }) =>
-    !!hasIcon &&
-    `
-    padding-left: 2rem;
-  `}
-
-  &::placeholder {
+  ${({ theme, hasIcon }) => css`
+    background: ${theme.selected.main[1]};
+    border: 0;
+    border-color: ${theme.selected.main[2]};
+    border-radius: 4px 0 0 0;
+    padding: 0.5rem;
     transition: all 420ms ease;
-    transition-property: color;
-  }
+    transition-property: background, border;
+    width: 100%;
 
-  &:hover,
-  &:focus {
-    border-color: ${({ theme }) => theme.selected.main[2]};
-  }
+    ${!!hasIcon &&
+    `
+      padding-left: 2rem;
+    `}
+
+    &::placeholder {
+      transition: all 420ms ease;
+      transition-property: color;
+    }
+
+    &:hover,
+    &:focus {
+      border-color: ${theme.selected.main[2]};
+    }
+  `}
 `

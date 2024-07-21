@@ -1,16 +1,16 @@
 import { lighten, darken } from "polished"
 
 export enum Colors {
+  GREEN = 1,
   BLUE,
-  FUCHSIA,
-  GREEN,
-  PURPLE,
   RED,
+  PURPLE,
   ORANGE,
   TURQUOISE,
+  PINK,
 }
 
-enum ThemeColor {
+export enum ThemeColor {
   DARK,
   LIGHT,
 }
@@ -64,45 +64,66 @@ export const palette = {
   },
 }
 
-export const color = {
+export const colors = {
   [Colors.GREEN]: {
     main: "#12c450",
     light: lighten("0.02", "#12c450"),
     dark: darken("0.1", "#12c450"),
-  },
-  [Colors.TURQUOISE]: {
-    main: "#12d0ae",
-    light: lighten("0.02", "#12d0ae"),
-    dark: darken("0.1", "#12d0ae"),
+    name: "Green",
   },
   [Colors.BLUE]: {
     main: "#158de8",
     light: lighten("0.02", "#158de8"),
     dark: darken("0.1", "#158de8"),
-  },
-  [Colors.PURPLE]: {
-    main: "#9a60ed",
-    light: lighten("0.02", "#9a60ed"),
-    dark: darken("0.1", "#9a60ed"),
-  },
-  [Colors.FUCHSIA]: {
-    main: "#e8158c",
-    light: lighten("0.02", "#e8158c"),
-    dark: darken("0.1", "#e8158c"),
+    name: "Blue",
   },
   [Colors.RED]: {
     main: "#f31717",
     light: lighten("0.02", "#f31717"),
     dark: darken("0.1", "#f31717"),
+    name: "Red",
+  },
+  [Colors.PURPLE]: {
+    main: "#9a60ed",
+    light: lighten("0.02", "#9a60ed"),
+    dark: darken("0.1", "#9a60ed"),
+    name: "Purple",
   },
   [Colors.ORANGE]: {
     main: "#de9d2b",
     light: lighten("0.02", "#de9d2b"),
     dark: darken("0.1", "#de9d2b"),
+    name: "Orange",
+  },
+  [Colors.TURQUOISE]: {
+    main: "#12d0ae",
+    light: lighten("0.02", "#12d0ae"),
+    dark: darken("0.1", "#12d0ae"),
+    name: "Turquoise",
+  },
+  [Colors.PINK]: {
+    main: "#e8158c",
+    light: lighten("0.02", "#e8158c"),
+    dark: darken("0.1", "#e8158c"),
+    name: "Pink",
   },
 }
 
 export const theme = {
   selected: palette[ThemeColor.LIGHT],
-  mainColor: color[Colors.GREEN],
+  mainColor: colors[Colors.GREEN],
+}
+
+export const getTheme = () => {
+  const theme = localStorage.getItem("darkTheme")
+    ? ThemeColor.DARK
+    : ThemeColor.LIGHT
+
+  const mainColor =
+    (localStorage.getItem("mainColor") as Colors | null) || Colors.GREEN
+
+  return {
+    selected: palette[theme],
+    mainColor: colors[mainColor],
+  }
 }

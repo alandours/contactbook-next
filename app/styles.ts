@@ -1,22 +1,24 @@
 "use client"
 
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 
 import { responsive } from "@/ui/responsive"
 import { FontSize, FontWeight } from "@/ui/typography"
 
 export const ContactBook = styled.div`
-  background: ${({ theme }) => theme.selected.main[2]};
-  color: ${({ theme }) => theme.selected.contrast[1]};
-  display: flex;
-  flex-direction: column;
-  font-size: ${FontSize.TEXT};
-  font-weight: ${FontWeight.REGULAR};
-  height: 100%;
+  ${({ theme }) => css`
+    background: ${theme.selected.main[2]};
+    color: ${theme.selected.contrast[1]};
+    display: flex;
+    flex-direction: column;
+    font-size: ${FontSize.TEXT};
+    font-weight: ${FontWeight.REGULAR};
+    height: 100%;
 
-  ${responsive.md(`
-    background: none;
-  `)}
+    ${responsive.md(`
+      background: none;
+    `)}
+  `}
 `
 
 export const Main = styled.main`

@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 
 import { zindex } from "@/constants"
 
@@ -13,19 +13,20 @@ export const InputContainer = styled.div`
 `
 
 export const FormActions = styled.div<{ edit: boolean }>`
-  background: ${({ theme }) => theme.selected.main[1]};
-  bottom: 0;
-  box-shadow: 0 0 8px 2px ${({ theme }) => theme.selected.main.shadow};
-  display: flex;
-  justify-content: flex-end;
-  padding: 0.75rem;
-  position: absolute;
-  width: 100%;
-  z-index: ${zindex.fixed};
+  ${({ theme, edit }) => css`
+    background: ${theme.selected.main[1]};
+    bottom: 0;
+    box-shadow: 0 0 8px 2px ${theme.selected.main.shadow};
+    display: flex;
+    justify-content: flex-end;
+    padding: 0.75rem;
+    position: absolute;
+    width: 100%;
+    z-index: ${zindex.fixed};
 
-  ${({ edit }) =>
-    !!edit &&
+    ${!!edit &&
     `
-    justify-content: space-between;
-  `};
+      justify-content: space-between;
+    `};
+  `}
 `

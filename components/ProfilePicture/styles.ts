@@ -4,35 +4,34 @@ import Image from "next/image"
 import { responsive } from "@/ui/responsive"
 
 export const ProfilePictureContainer = styled(Image)<{ thumbnail: boolean }>`
-  border: 6px solid ${({ theme }) => theme.selected.main[1]};
-  border-radius: 100%;
-  box-shadow: 0 0 5px ${({ theme }) => theme.selected.contrast[4]};
-  height: 220px;
-  margin: auto;
-  min-height: 220px;
-  min-width: 220px;
-  object-fit: cover;
-  position: relative;
-  width: 220px;
+  ${({ theme, thumbnail, onClick }) => css`
+    border: 6px solid ${theme.selected.main[1]};
+    border-radius: 100%;
+    box-shadow: 0 0 5px ${theme.selected.contrast[4]};
+    height: 220px;
+    margin: auto;
+    min-height: 220px;
+    min-width: 220px;
+    object-fit: cover;
+    position: relative;
+    width: 220px;
 
-  ${responsive.md(`
-    margin: 0;
-    height: 200px;
-    min-height: 200px;
-    min-width: 200px;
-    width: 200px;
-  `)}
+    ${responsive.md(`
+      margin: 0;
+      height: 200px;
+      min-height: 200px;
+      min-width: 200px;
+      width: 200px;
+    `)}
 
-  ${({ onClick }) =>
-    !!onClick &&
+    ${!!onClick &&
     css`
       &:hover {
         cursor: pointer;
       }
     `};
 
-  ${({ thumbnail }) =>
-    !!thumbnail &&
+    ${!!thumbnail &&
     css`
       border-width: 2px;
       height: 30px;
@@ -53,4 +52,5 @@ export const ProfilePictureContainer = styled(Image)<{ thumbnail: boolean }>`
         cursor: initial;
       }
     `};
+  `}
 `

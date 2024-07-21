@@ -33,8 +33,8 @@ export default async function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <StyledComponentsRegistry>
-          <ThemeClient>
-            <UIProvider>
+          <UIProvider>
+            <ThemeClient>
               <ContactsProvider data={contacts}>
                 <ContactBook>
                   <Header />
@@ -47,8 +47,8 @@ export default async function RootLayout({
                   <Footer />
                 </ContactBook>
               </ContactsProvider>
-            </UIProvider>
-          </ThemeClient>
+            </ThemeClient>
+          </UIProvider>
         </StyledComponentsRegistry>
       </body>
     </html>

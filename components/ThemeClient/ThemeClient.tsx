@@ -1,13 +1,16 @@
 "use client"
 
+import { useContext } from "react"
 import { ThemeProvider } from "styled-components"
 
-import { theme } from "@/ui/palette"
+import { UIContext } from "@/ui/context"
 
 type ThemeClientProps = {
   children: React.ReactNode
 }
 
-export const ThemeClient = ({ children }: ThemeClientProps) => (
-  <ThemeProvider theme={theme}>{children}</ThemeProvider>
-)
+export const ThemeClient = ({ children }: ThemeClientProps) => {
+  const { theme } = useContext(UIContext)
+
+  return <ThemeProvider theme={theme}>{children}</ThemeProvider>
+}

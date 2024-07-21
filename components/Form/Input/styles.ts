@@ -47,7 +47,7 @@ export const InputContainer = styled.input<{ size: string }>`
     `}
 
     &:disabled {
-      background: ${({ theme }) => theme.selected.main[3]};
+      background: ${theme.selected.main[3]};
 
       ${responsive.md(`
         background: transparent;

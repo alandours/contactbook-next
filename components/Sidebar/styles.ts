@@ -4,19 +4,19 @@ import { responsive } from "@/ui/responsive"
 import { zindex } from "@/constants"
 
 export const SidebarContainer = styled.div<{ open: boolean }>`
-  background: ${({ theme }) => theme.selected.main[1]};
-  left: -100%;
-  max-height: calc(100% - 61px);
-  overflow-x: hidden;
-  overflow-y: scroll;
-  position: absolute;
-  min-width: 100%;
-  transform: translateX(-100%);
-  transition: all 500ms, transform 250ms, background 420ms, box-shadow 420ms;
-  z-index: ${zindex.fixed};
+  ${({ theme, open }) => css`
+    background: ${theme.selected.main[1]};
+    left: -100%;
+    max-height: calc(100% - 61px);
+    overflow-x: hidden;
+    overflow-y: scroll;
+    position: absolute;
+    min-width: 100%;
+    transform: translateX(-100%);
+    transition: all 500ms, transform 250ms, background 420ms, box-shadow 420ms;
+    z-index: ${zindex.fixed};
 
-  ${({ open }) =>
-    !!open &&
+    ${!!open &&
     css`
       min-height: calc(100% - 61px);
       position: fixed;
@@ -25,8 +25,7 @@ export const SidebarContainer = styled.div<{ open: boolean }>`
       transition: transform 250ms;
     `};
 
-  ${({ theme }) =>
-    responsive.md(`
+    ${responsive.md(`
       border-radius: 8px;
       box-shadow: 0 2px 6px 0 ${theme.selected.main.shadow};
       display: block;
@@ -37,4 +36,5 @@ export const SidebarContainer = styled.div<{ open: boolean }>`
       transform: none;
       width: 25%;
     `)}
+  `}
 `

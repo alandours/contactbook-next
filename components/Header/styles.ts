@@ -1,27 +1,28 @@
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 
 import { responsive } from "@/ui/responsive"
 import { FontSize, FontWeight } from "@/ui/typography"
 import { zindex } from "@/constants"
 
 export const HeaderContainer = styled.header`
-  background: ${({ theme }) => theme.selected.main[2]};
-  box-shadow: 0 2px 6px 0 ${({ theme }) => theme.selected.main.shadow};
-  color: ${({ theme }) => theme.selected.contrast[1]};
-  display: flex;
-  justify-content: space-between;
-  padding: 1rem 1.5rem;
-  position: fixed;
-  transition: all 420ms ease;
-  transition-property: background, box-shadow;
-  width: 100%;
-  z-index: ${zindex.fixed};
+  ${({ theme }) => css`
+    background: ${theme.selected.main[2]};
+    box-shadow: 0 2px 6px 0 ${theme.selected.main.shadow};
+    color: ${theme.selected.contrast[1]};
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 1.5rem;
+    position: fixed;
+    transition: all 420ms ease;
+    transition-property: background, box-shadow;
+    width: 100%;
+    z-index: ${zindex.fixed};
 
-  ${({ theme }) =>
-    responsive.md(`
+    ${responsive.md(`
       background: ${theme.selected.main[1]};
       position: initial;
-    `)};
+    `)}
+  `}
 `
 
 export const Sitename = styled.div`

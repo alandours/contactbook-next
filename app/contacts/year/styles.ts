@@ -57,36 +57,35 @@ export const Quantity = styled.div`
 `
 
 export const Stat = styled.div<{ height: number; isActive: boolean }>`
-  background: ${({ theme }) => theme.mainColor.dark};
-  cursor: pointer;
-  min-width: 50px;
-  width: 100%;
-  position: relative;
+  ${({ theme, height, isActive }) => css`
+    background: ${theme.mainColor.dark};
+    cursor: pointer;
+    min-width: 50px;
+    width: 100%;
+    position: relative;
 
-  & + & {
-    margin-left: 2px;
-  }
+    & + & {
+      margin-left: 2px;
+    }
 
-  &:hover {
-    background: ${({ theme }) => theme.mainColor.light};
-    transition: 200ms;
-  }
+    &:hover {
+      background: ${theme.mainColor.light};
+      transition: 200ms;
+    }
 
-  &:hover ${Quantity} {
-    opacity: 1;
-    transition: 200ms;
-  }
+    &:hover ${Quantity} {
+      opacity: 1;
+      transition: 200ms;
+    }
 
-  ${({ height }) =>
-    !!height &&
+    ${!!height &&
     css`
       height: ${height * 0.8}px;
     `}
 
-  ${({ isActive }) =>
-    !!isActive &&
+    ${!!isActive &&
     css`
-      background: ${({ theme }) => theme.mainColor.light};
+      background: ${theme.mainColor.light};
 
       & ${Quantity} {
         opacity: 1;
@@ -96,8 +95,7 @@ export const Stat = styled.div<{ height: number; isActive: boolean }>`
 
 
 
-    ${({ height }) =>
-    !!height &&
+    ${!!height &&
     css`
       height: ${height}px;
 
@@ -105,4 +103,5 @@ export const Stat = styled.div<{ height: number; isActive: boolean }>`
         min-width: 5px;
       `)}
     `}
+  `}
 `

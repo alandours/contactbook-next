@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components"
-import { color, Colors } from "@/ui/palette"
+import { colors, Colors } from "@/ui/palette"
 
 export const ColorSelectorContainer = styled.button`
   appearance: none;
@@ -15,21 +15,18 @@ export const ColorSelectorContainer = styled.button`
 `
 
 export const ColorBox = styled.div<{ selectorColor: Colors }>`
-  ${({ selectorColor }) =>
-    !!selectorColor &&
+  ${({ theme, selectorColor }) => css`
+    ${!!selectorColor &&
     css`
-      background: ${color[selectorColor].main};
+      background: ${colors[selectorColor].main};
     `};
 
-  border: 2px solid ${({ theme }) => theme.selected.main[1]};
-  border-radius: 100%;
-  box-shadow: 0 0 5px ${({ theme }) => theme.selected.contrast[4]};
-  height: 30px;
-  transition: all 420ms ease;
-  transition-property: border, box-shadow;
-  width: 30px;
-`
-
-export const Label = styled.div`
-  color: ${({ theme }) => theme.selected.contrast[1]};
+    border: 2px solid ${theme.selected.main[1]};
+    border-radius: 100%;
+    box-shadow: 0 0 5px ${theme.selected.contrast[4]};
+    height: 30px;
+    transition: all 420ms ease;
+    transition-property: border, box-shadow;
+    width: 30px;
+  `}
 `

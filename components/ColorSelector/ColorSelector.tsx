@@ -1,20 +1,25 @@
-import { Colors } from "@/theme/palette"
+import { Colors, colors } from "@/ui/palette"
 
-import { ColorSelectorContainer, ColorBox, Label } from "./styles"
+import { ColorSelectorContainer, ColorBox } from "./styles"
 
 type ColorSelectorProps = {
-  color: Colors
-  label: string
+  colorKey: Colors
   handleClick: (color: Colors) => void
 }
 
 export const ColorSelector = ({
-  color,
-  label,
+  colorKey,
   handleClick,
-}: ColorSelectorProps) => (
-  <ColorSelectorContainer onClick={() => handleClick(color)}>
-    <ColorBox selectorColor={color} />
-    <Label>{label}</Label>
-  </ColorSelectorContainer>
-)
+}: ColorSelectorProps) => {
+  const colorName = colors[colorKey].name
+
+  return (
+    <ColorSelectorContainer
+      onClick={() => handleClick(colorKey)}
+      title={colorName}
+      aria-label={colorName}
+    >
+      <ColorBox selectorColor={colorKey} />
+    </ColorSelectorContainer>
+  )
+}
