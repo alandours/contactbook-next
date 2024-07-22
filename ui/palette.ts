@@ -1,5 +1,13 @@
 import { lighten, darken } from "polished"
 
+import contactPhotoGreen from "@/assets/defaultPhotos/contact-1.jpg"
+import contactPhotoBlue from "@/assets/defaultPhotos/contact-2.jpg"
+import contactPhotoRed from "@/assets/defaultPhotos/contact-3.jpg"
+import contactPhotoPurple from "@/assets/defaultPhotos/contact-4.jpg"
+import contactPhotoOrange from "@/assets/defaultPhotos/contact-5.jpg"
+import contactPhotoTurquoise from "@/assets/defaultPhotos/contact-6.jpg"
+import contactPhotoPink from "@/assets/defaultPhotos/contact-7.jpg"
+
 export enum Colors {
   GREEN = 1,
   BLUE,
@@ -109,18 +117,30 @@ export const colors = {
   },
 }
 
+export const DEFAULT_PHOTOS = {
+  [Colors.GREEN]: contactPhotoGreen,
+  [Colors.BLUE]: contactPhotoBlue,
+  [Colors.RED]: contactPhotoRed,
+  [Colors.PURPLE]: contactPhotoPurple,
+  [Colors.ORANGE]: contactPhotoOrange,
+  [Colors.TURQUOISE]: contactPhotoTurquoise,
+  [Colors.PINK]: contactPhotoPink,
+}
+
 export const theme = {
   selected: palette[ThemeColor.LIGHT],
   mainColor: colors[Colors.GREEN],
 }
+
+export const getMainColor = () =>
+  (localStorage.getItem("mainColor") as Colors | null) || Colors.GREEN
 
 export const getTheme = () => {
   const theme = localStorage.getItem("darkTheme")
     ? ThemeColor.DARK
     : ThemeColor.LIGHT
 
-  const mainColor =
-    (localStorage.getItem("mainColor") as Colors | null) || Colors.GREEN
+  const mainColor = getMainColor()
 
   return {
     selected: palette[theme],
