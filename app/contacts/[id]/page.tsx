@@ -1,8 +1,8 @@
 "use client"
 
 import { UIEvent, useContext, useEffect, useState } from "react"
+import { notFound } from "next/navigation"
 
-import { NotFound } from "@/components/NotFound"
 import {
   ContactHeader,
   ContactSecondaryData,
@@ -27,7 +27,11 @@ export default function Contact({ params: { id } }: ContactProps) {
   const [showStickyBar, setShowStickyBar] = useState(false)
 
   useEffect(() => {
-    selectContact(id)
+    const contact = selectContact(id)
+
+    if (!contact) {
+      notFound()
+    }
   }, [id, selectContact])
 
   const handleScroll = (e: UIEvent<HTMLDivElement>) => {
@@ -37,10 +41,6 @@ export default function Contact({ params: { id } }: ContactProps) {
 
   if (loading) {
     return <Loader />
-  }
-
-  if (!selectedContact && !loading) {
-    return <NotFound page="contact" />
   }
 
   return (

@@ -33,3 +33,8 @@ export type Filters = {
   year?: number
   favorite?: boolean
 }
+
+export enum NotFoundType {
+  MAIN,
+  CONTACT,
+}
