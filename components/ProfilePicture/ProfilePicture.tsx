@@ -5,9 +5,6 @@ import { DEFAULT_PHOTOS, getMainColor } from "@/ui/palette"
 import { getPalette } from "@/ui/utils"
 
 import { ProfilePictureContainer } from "./styles"
-
-const defaultPhotos = {}
-
 interface ProfilePictureProps {
   thumbnail?: boolean
   handleClick?: () => void
@@ -19,7 +16,7 @@ export const ProfilePicture = ({
 }: ProfilePictureProps) => {
   const { selectedContact, palette, setPalette } = useContext(ContactsContext)
   const [uploaded, setUploaded] = useState(null)
-  // const { watch } = useFormContext() || {}
+  const imageRef = useRef(null)
 
   const { photo, name, lastname } = selectedContact || {}
 
@@ -38,7 +35,7 @@ export const ProfilePicture = ({
       thumbnail={thumbnail}
       ref={imageRef}
       onLoad={handlePalette}
-      onClick={photo && !/contact/.test(photo) ? handleClick : undefined}
+      onClick={photo ? handleClick : undefined}
     />
   )
 }

@@ -9,9 +9,7 @@ export const ListItemContainer = styled.li<{
   $sticky: boolean
 }>`
   ${({ theme, type, $sticky }) => css`
-    & + & {
-      border-top: 1px solid ${theme.selected.main[2]};
-    }
+    border-top: 1px solid ${theme.selected.main[3]};
 
     ${type === ListItemType.CONTACT &&
     css`
