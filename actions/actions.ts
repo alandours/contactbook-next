@@ -126,6 +126,7 @@ export const upsertContact = async (data) => {
     Alias,
     Number,
     Email,
+    Social,
   } = data
 
   const userId = await prisma.$transaction(async (tx) => {
@@ -195,7 +196,7 @@ export const upsertContact = async (data) => {
     }
 
     // Email
-    for (const emailData of Number) {
+    for (const emailData of Email) {
       const { id, email, type, label } = emailData
 
       const emailQuery = {
@@ -218,6 +219,34 @@ export const upsertContact = async (data) => {
       })
     }
 
+    // Social
+    for (const socialData of Social) {
+      const { id, username, platformId, label } = socialData
+
+      const socialQuery = {
+        username,
+        label,
+        platform: {
+          connect: {
+            id: platformId,
+          },
+        },
+        contact: {
+          connect: {
+            id: contactId,
+          },
+        },
+      }
+
+      await tx.social.upsert({
+        where: {
+          id: id || "",
+        },
+        update: socialQuery,
+        create: socialQuery,
+      })
+    }
+
     return user.id
   })
 
@@ -235,6 +264,19 @@ export const deleteContact = async (id) => {
   })
 
   redirect(`/contacts`)
+}
+
+export const getPlatforms = async () => {
+  const platforms = await prisma.platform.findMany({
+    select: {
+      id: true,
+      name: true,
+      url: true,
+      prefix: true,
+    },
+  })
+
+  return platforms
 }
 
 export const getStats = async () => {

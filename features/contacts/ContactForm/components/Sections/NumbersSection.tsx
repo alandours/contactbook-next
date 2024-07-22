@@ -47,7 +47,7 @@ export const NumbersSection = () => {
             removeField={() => remove(index)}
           />
         ))}
-      <AddNewButton handleClick={addNewNumber}>Add a new alias</AddNewButton>
+      <AddNewButton handleClick={addNewNumber}>Add a new number</AddNewButton>
     </Section>
   )
 }

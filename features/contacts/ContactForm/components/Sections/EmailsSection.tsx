@@ -40,14 +40,14 @@ export const EmailsSection = () => {
             names={{
               input: `Email[${index}].email`,
               select: `Email[${index}].type`,
-              custom: `Email[${index}].custom_label`,
+              custom: `Email[${index}].label`,
             }}
             options={Object.keys(EmailType)}
             customType={EmailType.Custom}
             removeField={() => remove(index)}
           />
         ))}
-      <AddNewButton handleClick={addNewEmail}>Add a new alias</AddNewButton>
+      <AddNewButton handleClick={addNewEmail}>Add new e-mail</AddNewButton>
     </Section>
   )
 }

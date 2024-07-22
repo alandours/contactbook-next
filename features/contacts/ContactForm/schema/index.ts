@@ -1,8 +1,7 @@
 import * as yup from "yup"
 
-const emptyStringToNull = (currentValue: string, originalValue: string) => {
-  return originalValue.trim() === "" ? null : currentValue
-}
+const emptyStringToNull = (currentValue: string, originalValue: string) =>
+  !originalValue ? null : currentValue
 
 const schema = yup.object().shape({
   name: yup

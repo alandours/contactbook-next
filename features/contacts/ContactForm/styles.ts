@@ -8,10 +8,6 @@ export const ContactFormContainer = styled.form`
   margin-bottom: 3.75rem;
 `
 
-export const InputContainer = styled.div`
-  display: flex;
-`
-
 export const FormActions = styled.div<{ edit: boolean }>`
   ${({ theme, edit }) => css`
     background: ${theme.selected.main[1]};

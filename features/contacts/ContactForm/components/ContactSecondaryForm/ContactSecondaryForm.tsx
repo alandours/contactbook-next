@@ -4,7 +4,7 @@ import { Icons } from "@/ui/icons"
 
 import { AliasesSection } from "../Sections/AliasesSection"
 import { NumbersSection } from "../Sections/NumbersSection"
-import { EmailsSection } from "../Sections/EmailsSetions"
+import { EmailsSection } from "../Sections/EmailsSection"
 import { SocialsSection } from "../Sections/SocialsSection"
 
 export const ContactSecondaryForm = () => (
