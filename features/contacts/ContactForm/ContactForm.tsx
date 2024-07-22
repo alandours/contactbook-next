@@ -1,6 +1,7 @@
 "use client"
 
 import React, { useState, useEffect, useRef, useContext } from "react"
+import { notFound } from "next/navigation"
 import { useForm, FormProvider } from "react-hook-form"
 import { yupResolver } from "@hookform/resolvers/yup"
 
@@ -40,6 +41,11 @@ export const ContactForm = ({ id }: ContactFormProps) => {
   useEffect(() => {
     if (id) {
       const contact = selectContact(id)
+
+      if (!contact) {
+        notFound()
+      }
+
       reset({
         ...contact,
         birthday: contact.birthday
