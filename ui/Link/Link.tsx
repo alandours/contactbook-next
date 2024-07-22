@@ -6,9 +6,9 @@ import { NextLink, AnchorLink } from "./styles"
 
 interface LinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
   href: string
-  highlight?: boolean
   title?: string
   variant?: ButtonVariants
+  highlight?: boolean
   className?: string
   external?: boolean
   children: ReactNode
@@ -16,15 +16,22 @@ interface LinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
 
 export const Link = ({
   href,
-  highlight = false,
   title,
   variant = ButtonVariants.LINK,
+  highlight = false,
   className = "",
   external = false,
   children,
   onClick,
 }: LinkProps) => {
-  const props = { href, highlight, title, variant, className, onClick }
+  const props = {
+    href,
+    title,
+    $variant: variant,
+    $highlight: highlight,
+    className,
+    onClick,
+  }
 
   if (external) {
     return (

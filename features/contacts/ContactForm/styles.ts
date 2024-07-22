@@ -8,8 +8,8 @@ export const ContactFormContainer = styled.form`
   margin-bottom: 3.75rem;
 `
 
-export const FormActions = styled.div<{ edit: boolean }>`
-  ${({ theme, edit }) => css`
+export const FormActions = styled.div<{ $edit: boolean }>`
+  ${({ theme, $edit }) => css`
     background: ${theme.selected.main[1]};
     bottom: 0;
     box-shadow: 0 0 8px 2px ${theme.selected.main.shadow};
@@ -20,7 +20,7 @@ export const FormActions = styled.div<{ edit: boolean }>`
     width: 100%;
     z-index: ${zindex.fixed};
 
-    ${!!edit &&
+    ${!!$edit &&
     `
       justify-content: space-between;
     `};

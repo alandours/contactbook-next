@@ -14,11 +14,11 @@ export const ColorSelectorContainer = styled.button`
   }
 `
 
-export const ColorBox = styled.div<{ selectorColor: Colors }>`
-  ${({ theme, selectorColor }) => css`
-    ${!!selectorColor &&
+export const ColorBox = styled.div<{ $selectorColor: Colors }>`
+  ${({ theme, $selectorColor }) => css`
+    ${!!$selectorColor &&
     css`
-      background: ${colors[selectorColor].main};
+      background: ${colors[$selectorColor].main};
     `};
 
     border: 2px solid ${theme.selected.main[1]};

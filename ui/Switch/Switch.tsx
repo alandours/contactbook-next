@@ -6,7 +6,7 @@ interface SwitchProps {
 }
 
 export const Switch = ({ active = false, handleClick }: SwitchProps) => (
-  <SwitchContainer onClick={() => handleClick(!active)} active={active}>
-    <SwitchButtonContainer active={active} />
+  <SwitchContainer onClick={() => handleClick(!active)} $active={active}>
+    <SwitchButtonContainer />
   </SwitchContainer>
 )

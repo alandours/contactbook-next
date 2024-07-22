@@ -70,7 +70,7 @@ export const ContactForm = ({ id }: ContactFormProps) => {
 
   const handleScroll = (e) => {
     if (e.target === formRef.current) {
-      setShowStickyBar(e.target.scrollTop > 180)
+      setShowStickyBar(e.target.scrollTop > 270)
     }
   }
 
@@ -86,14 +86,18 @@ export const ContactForm = ({ id }: ContactFormProps) => {
           (message.type === "error" || message.type === "warning") && <Toast />} */}
         <ContactFormHeader />
         <ContactSecondaryForm />
-        <FormActions edit={!!selectedContact}>
+        <FormActions $edit={!!selectedContact}>
           {!!selectedContact && (
             <Button
               type="button"
               handleClick={onDelete}
-              variant={ButtonVariants.DANGER}
+              variant={ButtonVariants.TERTIARY}
             >
-              <Icon name={Icons.delete} color={theme.selected.main[1]} />
+              <Icon
+                name={Icons.delete}
+                color={theme.selected.contrast[2]}
+                size="0.75rem"
+              />
               Delete contact
             </Button>
           )}

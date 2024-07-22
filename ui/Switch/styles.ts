@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components"
 
-export const SwitchContainer = styled.div<{ active: boolean }>`
-  ${({ theme, active }) => css`
+export const SwitchContainer = styled.div<{ $active: boolean }>`
+  ${({ theme, $active }) => css`
     background: ${theme.selected.main[3]};
     box-shadow: inset 4px 2px 9px 0 rgba(0, 0, 0, 0.2);
     border-radius: 40px;
@@ -13,7 +13,7 @@ export const SwitchContainer = styled.div<{ active: boolean }>`
     transition-property: background, box-shadow, color;
     width: 30px;
 
-    ${!!active &&
+    ${!!$active &&
     css`
       background: ${theme.mainColor.main};
       justify-content: flex-end;
@@ -21,7 +21,7 @@ export const SwitchContainer = styled.div<{ active: boolean }>`
   `}
 `
 
-export const SwitchButtonContainer = styled.div<{ active: boolean }>`
+export const SwitchButtonContainer = styled.div`
   ${({ theme }) => css`
     background: ${theme.selected.main[2]};
     border: 1px solid ${theme.selected.contrast[4]};

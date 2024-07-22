@@ -20,7 +20,7 @@ export const Button = ({
   <ButtonContainer
     type={type}
     onClick={handleClick}
-    variant={variant}
+    $variant={variant}
     className={className}
   >
     {children}

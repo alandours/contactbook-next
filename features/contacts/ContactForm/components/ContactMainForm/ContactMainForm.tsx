@@ -5,7 +5,7 @@ import { InputSizes } from "@/types"
 
 export const ContactMainForm = () => (
   <ContactMainFormContainer>
-    <FieldContainer multiline>
+    <FieldContainer $multiline>
       <Input name="name" label="Name" size={InputSizes.BIG} />
       <Input name="lastname" label="Last name" size={InputSizes.BIG} />
     </FieldContainer>

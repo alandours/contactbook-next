@@ -15,6 +15,6 @@ export const Setting = ({
 }: SettingProps) => (
   <SettingContainer>
     {children}
-    <SettingLabel labelFirst={labelFirst}>{label}</SettingLabel>
+    <SettingLabel $labelFirst={labelFirst}>{label}</SettingLabel>
   </SettingContainer>
 )

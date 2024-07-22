@@ -19,7 +19,7 @@ export const MainDatafield = styled.div`
   margin: 0.25rem 0;
 `
 
-export const Name = styled.span<{ birthday: number | null }>`
+export const Name = styled.span<{ $birthday: number | null }>`
   display: flex;
   align-items: center;
   margin-right: 0.5rem;
@@ -29,10 +29,10 @@ export const Name = styled.span<{ birthday: number | null }>`
   `)}
 
   &:after {
-    ${({ birthday }) =>
-      !!birthday &&
+    ${({ $birthday }) =>
+      !!$birthday &&
       css`
-        content: "${birthday}";
+        content: "${$birthday}";
         font-size: ${FontSize.BASE};
         font-weight: ${FontWeight.REGULAR};
         color: ${({ theme }) => theme.selected.contrast[3]};

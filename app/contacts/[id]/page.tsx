@@ -24,7 +24,7 @@ export default function Contact({ params: { id } }: ContactProps) {
   const { selectedContact, loading, selectContact } =
     useContext(ContactsContext)
 
-  const [showFixedInfo, setShowFixedInfo] = useState(false)
+  const [showStickyBar, setShowStickyBar] = useState(false)
 
   useEffect(() => {
     selectContact(id)
@@ -32,7 +32,7 @@ export default function Contact({ params: { id } }: ContactProps) {
 
   const handleScroll = (e: UIEvent<HTMLDivElement>) => {
     const { scrollTop } = e.target as HTMLDivElement
-    setShowFixedInfo(scrollTop > 190)
+    setShowStickyBar(scrollTop > 190)
   }
 
   if (loading) {
@@ -45,7 +45,7 @@ export default function Contact({ params: { id } }: ContactProps) {
 
   return (
     <ContactView onScroll={isMedia("tablet") ? handleScroll : undefined}>
-      {isMedia("tablet") && showFixedInfo && <StickyBar />}
+      {isMedia("tablet") && showStickyBar && <StickyBar />}
       <Toast />
       <ContactHeader />
       <ContactSecondaryData />

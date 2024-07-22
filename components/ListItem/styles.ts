@@ -37,7 +37,7 @@ export const ListItemContainer = styled.li<{
     ${$sticky &&
     css`
       position: sticky;
-      top: 27px;
+      top: 30px;
     `};
 
     transition: all 420ms ease;

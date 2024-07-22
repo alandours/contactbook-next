@@ -19,7 +19,7 @@ export const ColorSelector = ({
       title={colorName}
       aria-label={colorName}
     >
-      <ColorBox selectorColor={colorKey} />
+      <ColorBox $selectorColor={colorKey} />
     </ColorSelectorContainer>
   )
 }

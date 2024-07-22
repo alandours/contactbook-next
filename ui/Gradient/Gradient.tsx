@@ -11,5 +11,5 @@ interface GradientProps {
 export const Gradient = ({ smooth = true }: GradientProps) => {
   const { palette } = useContext(ContactsContext)
 
-  return <GradientContainer palette={palette} smooth={smooth} />
+  return <GradientContainer $palette={palette} $smooth={smooth} />
 }

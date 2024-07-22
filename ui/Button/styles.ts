@@ -5,11 +5,11 @@ import { FontSize, FontWeight } from "@/ui/typography"
 
 export const buttonStyles = ({
   theme,
-  variant,
+  $variant,
   highlight,
 }: {
   theme: DefaultTheme
-  variant: ButtonVariants
+  $variant: ButtonVariants
   highlight?: boolean
 }) => css`
   align-items: center;
@@ -30,7 +30,7 @@ export const buttonStyles = ({
     transition: all ease 100ms;
   }
 
-  ${variant === ButtonVariants.MAIN &&
+  ${$variant === ButtonVariants.MAIN &&
   css`
     background: ${theme.mainColor.main};
     color: ${theme.selected.main[1]};
@@ -41,7 +41,7 @@ export const buttonStyles = ({
     }
   `}
 
-  ${variant === ButtonVariants.SECONDARY &&
+  ${$variant === ButtonVariants.SECONDARY &&
   css`
     color: ${theme.selected.contrast[1]};
 
@@ -61,7 +61,21 @@ export const buttonStyles = ({
     `};
   `}
 
-  ${variant === ButtonVariants.MAIN_ROUND &&
+  ${$variant === ButtonVariants.TERTIARY &&
+  css`
+    color: ${theme.selected.contrast[2]};
+
+    &:hover,
+    &:focus {
+      color: ${theme.selected.contrast[3]};
+
+      & > svg {
+        color: ${theme.selected.contrast[3]} !important;
+      }
+    }
+  `}
+
+  ${$variant === ButtonVariants.MAIN_ROUND &&
   css`
     background: ${theme.mainColor.main};
     border-radius: 100%;
@@ -76,7 +90,7 @@ export const buttonStyles = ({
     }
   `}
 
-  ${variant === ButtonVariants.DATAFIELD &&
+  ${$variant === ButtonVariants.DATAFIELD &&
   css`
     color: ${theme.selected.contrast[3]};
     padding: 0.5rem 0.75rem;
@@ -88,7 +102,7 @@ export const buttonStyles = ({
     }
   `}
 
-  ${variant === ButtonVariants.DANGER &&
+  ${$variant === ButtonVariants.DANGER &&
   css`
     background: ${theme.selected.danger.main};
     color: ${theme.selected.main[1]};
@@ -99,7 +113,7 @@ export const buttonStyles = ({
     }
   `}
 
-  ${variant === ButtonVariants.LINK &&
+  ${$variant === ButtonVariants.LINK &&
   css`
     color: ${theme.mainColor.dark};
     padding: 0;
@@ -112,7 +126,7 @@ export const buttonStyles = ({
 `
 
 export const ButtonContainer = styled.button<{
-  variant: ButtonVariants
+  $variant: ButtonVariants
 }>`
   ${buttonStyles}
 `

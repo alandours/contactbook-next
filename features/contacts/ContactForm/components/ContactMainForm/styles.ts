@@ -10,13 +10,13 @@ export const ContactMainFormContainer = styled(PageHeader)`
   padding: 2rem 0.5rem 0.5rem;
 `
 
-export const FieldContainer = styled.div<{ multiline?: boolean }>`
+export const FieldContainer = styled.div<{ $multiline?: boolean }>`
   display: flex;
   margin: 0.25rem 0;
   width: 100%;
 
-  ${({ multiline }) =>
-    !!multiline &&
+  ${({ $multiline }) =>
+    !!$multiline &&
     css`
       flex-wrap: wrap;
     `}

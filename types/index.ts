@@ -3,6 +3,7 @@ import { Contact as ContactType } from "@prisma/client"
 export enum ButtonVariants {
   MAIN,
   SECONDARY,
+  TERTIARY,
   MAIN_ROUND,
   DATAFIELD,
   LINK,

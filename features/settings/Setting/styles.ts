@@ -6,13 +6,13 @@ export const SettingContainer = styled.li`
   display: flex;
 `
 
-export const SettingLabel = styled.span<{ labelFirst: boolean }>`
+export const SettingLabel = styled.span<{ $labelFirst: boolean }>`
   margin-left: 1rem;
   transition: all 420ms ease;
   transition-property: color;
 
-  ${({ labelFirst }) =>
-    !!labelFirst &&
+  ${({ $labelFirst }) =>
+    !!$labelFirst &&
     `
     margin-right: 1rem;
     margin-left: 0;
