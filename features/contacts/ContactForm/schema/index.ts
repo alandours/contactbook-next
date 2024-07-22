@@ -8,26 +8,26 @@ const schema = yup.object().shape({
   name: yup
     .string()
     .required("The name is required")
-    .max(50, "The name can't be longer than 50 characters"),
+    .max(40, "The name can't be longer than 40 characters"),
   lastname: yup
     .string()
-    .max(50, "The last name can't be longer than 50 characters"),
+    .max(40, "The last name can't be longer than 40 characters"),
   birthday: yup
     .date()
     .typeError("It should be a valid date")
     .max(new Date(), "The birthday can't be in the future")
-    .nullable()
-    .transform(emptyStringToNull),
+    .transform(emptyStringToNull)
+    .nullable(),
   address: yup
     .string()
-    .max(50, "The address can't be longer than 50 characters"),
-  met: yup
+    .max(40, "The address can't be longer than 40 characters"),
+  yearMet: yup
     .number()
     .typeError("It should be a valid year")
     .min(1900, "The year can't be before 1900")
     .max(new Date().getFullYear(), "The year can't be in the future")
-    .nullable()
-    .transform(emptyStringToNull),
+    .transform(emptyStringToNull)
+    .nullable(),
   aliases: yup.array().of(
     yup.object().shape({
       alias: yup

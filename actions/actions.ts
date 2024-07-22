@@ -2,6 +2,7 @@
 
 import prisma from "@/lib/prisma"
 import { Filters } from "@/types"
+import { redirect } from "next/navigation"
 
 export const getContacts = async (filters: Filters = {}) => {
   const filter = {
@@ -111,6 +112,129 @@ export const getContacts = async (filters: Filters = {}) => {
   })
 
   return contacts
+}
+
+export const upsertContact = async (data) => {
+  const {
+    id: contactId,
+    name,
+    lastname,
+    birthday,
+    address,
+    yearMet,
+    notes,
+    Alias,
+    Number,
+    Email,
+  } = data
+
+  const userId = await prisma.$transaction(async (tx) => {
+    const userQuery = {
+      name,
+      lastname,
+      birthday,
+      address,
+      yearMet,
+      notes,
+      // photo: data.photo
+    }
+
+    // Contact
+    const user = await tx.contact.upsert({
+      where: {
+        id: contactId || "",
+      },
+      update: userQuery,
+      create: userQuery,
+    })
+
+    // Alias
+    for (const aliasData of Alias) {
+      const { id, alias } = aliasData
+
+      const aliasQuery = {
+        alias,
+        contact: {
+          connect: {
+            id: contactId,
+          },
+        },
+      }
+
+      await tx.alias.upsert({
+        where: {
+          id: id || "",
+        },
+        update: aliasQuery,
+        create: aliasQuery,
+      })
+    }
+
+    // Number
+    for (const numberData of Number) {
+      const { id, number, type, label } = numberData
+
+      const numberQuery = {
+        number,
+        type,
+        label,
+        contact: {
+          connect: {
+            id: contactId,
+          },
+        },
+      }
+
+      await tx.number.upsert({
+        where: {
+          id: id || "",
+        },
+        update: numberQuery,
+        create: numberQuery,
+      })
+    }
+
+    // Email
+    for (const emailData of Number) {
+      const { id, email, type, label } = emailData
+
+      const emailQuery = {
+        email,
+        type,
+        label,
+        contact: {
+          connect: {
+            id: contactId,
+          },
+        },
+      }
+
+      await tx.email.upsert({
+        where: {
+          id: id || "",
+        },
+        update: emailQuery,
+        create: emailQuery,
+      })
+    }
+
+    return user.id
+  })
+
+  redirect(`/contacts/${userId}`)
+}
+
+export const deleteContact = async (id) => {
+  const user = await prisma.contact.update({
+    where: {
+      id,
+    },
+    data: {
+      active: false,
+    },
+  })
+
+  redirect(`/contacts`)
 }
 
 export const getStats = async () => {

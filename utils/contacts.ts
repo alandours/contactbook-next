@@ -12,12 +12,3 @@ export const getRandomContact = (contacts: Contact[]) => {
   const randomContact = contacts[randomIndex]
   return randomContact
 }
-
-export const appendParsedData = (formData, data) => {
-  Object.keys(data).forEach((key) => {
-    const parsedData = data[key] === null ? "" : data[key]
-    const value =
-      typeof parsedData === "string" ? parsedData : JSON.stringify(parsedData)
-    formData.append(`${key}`, value)
-  })
-}

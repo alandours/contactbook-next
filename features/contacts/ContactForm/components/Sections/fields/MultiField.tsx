@@ -1,3 +1,6 @@
+import { useWatch } from "react-hook-form"
+import { NumberType } from "@prisma/client"
+
 import { Input, Select } from "@/ui"
 
 import { FormField, Option, RemoveButton } from "./styles"
@@ -10,6 +13,7 @@ interface MultiFieldProps {
     custom: string
   }
   options: string[] | { id: string; name: string }[]
+  customType: NumberType
   removeField: () => void
 }
 
@@ -17,8 +21,11 @@ export const MultiField = ({
   label,
   names,
   options,
+  customType,
   removeField,
 }: MultiFieldProps) => {
+  const type = useWatch({ name: names.select })
+
   return (
     <FormField>
       <Input name={names.input} label={label} />
@@ -29,7 +36,11 @@ export const MultiField = ({
           </Option>
         ))}
       </Select>
-      <Input name={names.custom} disabled={false} label="Custom name" />
+      <Input
+        name={names.custom}
+        disabled={type !== customType}
+        label="Custom name"
+      />
       <RemoveButton type="button" handleClick={removeField} />
     </FormField>
   )

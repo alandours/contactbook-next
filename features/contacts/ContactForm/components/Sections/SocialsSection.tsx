@@ -26,7 +26,7 @@ export const SocialsSection = () => {
   const addNewSocial = () => null
 
   return (
-    <Section title="Social networks" icon={Icons.phone} sticky>
+    <Section title="Social networks" icon={Icons.social} sticky>
       {!!platforms &&
         !!fields.length &&
         fields.map((username: Record<"id", string>, index: number) => (
