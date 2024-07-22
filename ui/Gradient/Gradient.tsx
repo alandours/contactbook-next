@@ -4,7 +4,7 @@ import { ContactsContext } from "@/features/contacts/context"
 
 import { GradientContainer } from "./styles"
 
-type GradientProps = {
+interface GradientProps {
   smooth?: boolean
 }
 

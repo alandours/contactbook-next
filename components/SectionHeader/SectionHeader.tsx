@@ -3,7 +3,7 @@ import { Icons } from "@/ui/icons"
 
 import { SectionHeaderContainer } from "./styles"
 
-type SectionHeaderProps = {
+interface SectionHeaderProps {
   title: string
   icon?: Icons
   sticky?: boolean

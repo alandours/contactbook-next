@@ -5,7 +5,7 @@ import { ErrorMessage } from "@/ui"
 
 import { TextareaContainer } from "./styles"
 
-type TextareaProps = {
+interface TextareaProps {
   name: string
   placeholder?: string
 }

@@ -5,7 +5,7 @@ import { ThemeProvider } from "styled-components"
 
 import { UIContext } from "@/ui/context"
 
-type ThemeClientProps = {
+interface ThemeClientProps {
   children: React.ReactNode
 }
 

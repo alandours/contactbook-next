@@ -2,7 +2,7 @@ import { ReactNode, useEffect, useRef } from "react"
 
 import { BackdropContainer } from "./styles"
 
-type BackdropProps = {
+interface BackdropProps {
   children: ReactNode
   handleClick: () => void
   handleKeyDown: () => void

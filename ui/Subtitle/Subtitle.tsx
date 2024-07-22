@@ -2,7 +2,7 @@ import React, { ReactNode } from "react"
 
 import { SubtitleContainer } from "./styles"
 
-type SubtitleProps = {
+interface SubtitleProps {
   className?: string
   children: ReactNode
 }

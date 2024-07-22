@@ -2,7 +2,7 @@ import { ReactNode } from "react"
 
 import { SettingContainer, SettingLabel } from "./styles"
 
-type SettingProps = {
+interface SettingProps {
   label: string
   labelFirst?: boolean
   children: ReactNode

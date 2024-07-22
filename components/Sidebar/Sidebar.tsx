@@ -6,7 +6,7 @@ import { UIContext } from "@/ui/context"
 
 import { SidebarContainer } from "./styles"
 
-type SidebarProps = {
+interface SidebarProps {
   children: ReactNode
 }
 

@@ -1,6 +1,6 @@
 import { icons, Icons } from "@/ui/icons"
 
-type IconProps = {
+interface IconProps {
   name: Icons
   color?: string
   size?: string

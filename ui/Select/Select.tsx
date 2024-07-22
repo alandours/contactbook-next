@@ -5,7 +5,7 @@ import { Icons } from "@/ui/icons"
 
 import { SelectContainer, Selector, SelectWrapper } from "./styles"
 
-type SelectProps = {
+interface SelectProps {
   name: string
   children?: ReactNode
 }

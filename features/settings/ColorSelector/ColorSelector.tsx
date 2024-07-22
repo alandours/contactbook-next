@@ -2,7 +2,7 @@ import { Colors, colors } from "@/ui/palette"
 
 import { ColorSelectorContainer, ColorBox } from "./styles"
 
-type ColorSelectorProps = {
+interface ColorSelectorProps {
   colorKey: Colors
   handleClick: (color: Colors) => void
 }

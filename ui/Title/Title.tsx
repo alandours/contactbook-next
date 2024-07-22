@@ -2,7 +2,7 @@ import { ReactNode } from "react"
 
 import { TitleContainer } from "./styles"
 
-type TitleProps = {
+interface TitleProps {
   className?: string
   children: ReactNode
 }

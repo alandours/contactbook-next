@@ -42,7 +42,7 @@ const renderContactGroups = (contacts: Contact[]) => {
   return list
 }
 
-type ContactListProps = {
+interface ContactListProps {
   hasSearch: boolean
 }
 

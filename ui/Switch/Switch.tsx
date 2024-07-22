@@ -1,6 +1,6 @@
 import { SwitchButtonContainer, SwitchContainer } from "./styles"
 
-type SwitchProps = {
+interface SwitchProps {
   active: boolean
   handleClick: (active: boolean) => void
 }

@@ -2,7 +2,7 @@ import React, { ReactNode } from "react"
 
 import { ErrorMessageContainer } from "./styles"
 
-type ErrorMessageProps = {
+interface ErrorMessageProps {
   children: ReactNode
 }
 

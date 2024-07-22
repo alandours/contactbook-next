@@ -4,7 +4,7 @@ import { Icons } from "@/ui/icons"
 
 import { SearchIcon, SearchInputContainer, SearchInputElement } from "./styles"
 
-type SearchInputProps = {
+interface SearchInputProps {
   handleTyping: (e: KeyboardEvent<HTMLInputElement>) => void
 }
 

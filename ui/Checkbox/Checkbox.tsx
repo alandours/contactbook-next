@@ -7,7 +7,7 @@ import { Icons } from "@/ui/icons"
 
 import { CheckboxContainer, CheckboxText, OriginalCheckbox } from "./styles"
 
-type CheckboxProps = {
+interface CheckboxProps {
   name: string
   label?: string
   className?: string

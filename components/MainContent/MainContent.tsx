@@ -4,7 +4,7 @@ import { ReactNode } from "react"
 
 import { MainContentContainer } from "./styles"
 
-type MainContentProps = {
+interface MainContentProps {
   children: ReactNode
 }
 

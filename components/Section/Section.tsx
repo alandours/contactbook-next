@@ -5,7 +5,7 @@ import { Icons } from "@/ui/icons"
 
 import { SectionContainer, Content } from "./styles"
 
-type SectionProps = {
+interface SectionProps {
   title: string
   icon?: Icons
   order?: number

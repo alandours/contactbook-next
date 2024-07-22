@@ -8,7 +8,7 @@ import { Icons } from "@/ui/icons"
 
 import { InputContainer, Container } from "./styles"
 
-type InputProps = InputHTMLAttributes<HTMLInputElement> & {
+interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   name: string
   label: string
   icon?: Icons

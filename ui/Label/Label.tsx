@@ -2,7 +2,7 @@ import { ReactNode } from "react"
 
 import { LabelContainer, LabelText } from "./styles"
 
-type LabelProps = {
+interface LabelProps {
   label: string
   disabled?: boolean
   children: ReactNode

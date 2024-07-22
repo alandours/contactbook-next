@@ -4,7 +4,7 @@ import { Title, Subtitle } from "@/ui"
 
 import { PageHeaderContainer } from "./styles"
 
-type PageHeaderProps = {
+interface PageHeaderProps {
   title?: string
   subtitle?: string
   className?: string
