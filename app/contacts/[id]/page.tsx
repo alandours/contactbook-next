@@ -3,11 +3,9 @@
 import { UIEvent, useContext, useEffect, useState } from "react"
 import { notFound } from "next/navigation"
 
-import {
-  ContactHeader,
-  ContactSecondaryData,
-  StickyBar,
-} from "@/features/contacts"
+import { ContactHeader } from "@/features/contacts/ContactHeader"
+import { ContactSecondaryData } from "@/features/contacts/ContactSecondaryData"
+import { StickyBar } from "@/features/contacts/StickyBar"
 import { ContactsContext } from "@/features/contacts/context"
 import { Loader, Toast } from "@/ui"
 import { isMedia } from "@/ui/responsive"

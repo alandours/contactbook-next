@@ -1,7 +1,8 @@
 import React, { useContext } from "react"
 
 import { Section } from "@/components/Section"
-import { ColorSelector, Setting } from "@/features/settings"
+import { ColorSelector } from "@/features/settings/ColorSelector"
+import { Setting } from "@/features/settings/Setting"
 import { Switch } from "@/ui"
 import { UIContext } from "@/ui/context"
 import { Colors, ThemeColor, colors, palette } from "@/ui/palette"
@@ -31,7 +32,13 @@ export const ColorSettings = () => {
 
   const ColorButtons = colorKeys.map((key) => {
     const colorKey = key as unknown as Colors
-    return <ColorSelector colorKey={colorKey} handleClick={changeMainColor} />
+    return (
+      <ColorSelector
+        key={colorKey}
+        colorKey={colorKey}
+        handleClick={changeMainColor}
+      />
+    )
   })
 
   return (

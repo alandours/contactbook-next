@@ -1,1 +1,0 @@
-export { Birthdays } from "./Birthdays"

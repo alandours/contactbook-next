@@ -6,7 +6,7 @@ import { useForm, FormProvider } from "react-hook-form"
 import { yupResolver } from "@hookform/resolvers/yup"
 
 import { upsertContact, deleteContact } from "@/actions/actions"
-import { StickyBar } from "@/features/contacts"
+import { StickyBar } from "@/features/contacts/StickyBar"
 import { ContactsContext } from "@/features/contacts/context"
 import { ButtonVariants } from "@/types"
 import { Button, Icon, Loader, Toast } from "@/ui"

@@ -1,6 +1,6 @@
 import { Metadata } from "next"
 
-import { Birthdays } from "@/features/birthdays"
+import { Birthdays } from "@/features/birthdays/Birthdays"
 
 export const metadata: Metadata = {
   title: "ContactBook - Birthdays",

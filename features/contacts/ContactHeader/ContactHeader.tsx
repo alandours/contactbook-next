@@ -2,7 +2,7 @@ import { useContext } from "react"
 
 import { MainProfilePicture } from "@/components/MainProfilePicture"
 import { ROUTES } from "@/constants/routes"
-import { ContactMainData } from "@/features/contacts"
+import { ContactMainData } from "@/features/contacts/ContactMainData"
 import { ContactsContext } from "@/features/contacts/context"
 import { ButtonVariants } from "@/types"
 import { Gradient, Icon } from "@/ui"

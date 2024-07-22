@@ -2,7 +2,7 @@ import React, { useContext } from "react"
 
 import { Section } from "@/components/Section"
 import { ContactsContext } from "@/features/contacts/context"
-import { Setting } from "@/features/settings"
+import { Setting } from "@/features/settings/Setting"
 import { Switch } from "@/ui"
 import { Settings, UIContext } from "@/ui/context"
 

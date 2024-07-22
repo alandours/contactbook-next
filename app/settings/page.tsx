@@ -1,7 +1,8 @@
 "use client"
 
 import { PageHeader } from "@/components/PageHeader"
-import { ColorSettings, ContactsSettings } from "@/features/settings"
+import { ColorSettings } from "@/features/settings/ColorSettings"
+import { ContactsSettings } from "@/features/settings/ContactsSettings"
 
 import { SettingsContainer } from "./styles"
 
