@@ -60,6 +60,7 @@ export const ContactForm = ({ id }: ContactFormProps) => {
 
     const newData = {
       ...data,
+      photo: data.removePhoto ? null : data.photo,
       Alias: data.Alias.filter((field) => !!field.alias),
       Number: data.Number.filter((field) => !!field.number),
       Email: data.Email.filter((field) => !!field.email),

@@ -10,7 +10,9 @@ const schema = yup.object().shape({
     .max(40, "The name can't be longer than 40 characters"),
   lastname: yup
     .string()
-    .max(40, "The last name can't be longer than 40 characters"),
+    .max(40, "The last name can't be longer than 40 characters")
+    .transform(emptyStringToNull)
+    .nullable(),
   birthday: yup
     .date()
     .typeError("It should be a valid date")
@@ -19,7 +21,9 @@ const schema = yup.object().shape({
     .nullable(),
   address: yup
     .string()
-    .max(40, "The address can't be longer than 40 characters"),
+    .max(40, "The address can't be longer than 40 characters")
+    .transform(emptyStringToNull)
+    .nullable(),
   yearMet: yup
     .number()
     .typeError("It should be a valid year")
@@ -69,7 +73,9 @@ const schema = yup.object().shape({
   ),
   notes: yup
     .string()
-    .max(2000, "The notes can't be longer than 2000 characters"),
+    .max(2000, "The notes can't be longer than 2000 characters")
+    .transform(emptyStringToNull)
+    .nullable(),
 })
 
 export default schema

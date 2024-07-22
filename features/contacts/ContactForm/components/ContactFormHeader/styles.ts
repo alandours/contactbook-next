@@ -63,6 +63,6 @@ export const ImageInput = styled.input`
   display: none;
 `
 
-export const RemoveImageCheckbox = styled(Checkbox)`
+export const RemovePhotoCheckbox = styled(Checkbox)`
   margin-top: 0.5rem;
 `

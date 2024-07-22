@@ -109,6 +109,7 @@ export const getContacts = async (filters: Filters = {}) => {
         },
       },
     },
+    orderBy: [{ name: "asc" }, { lastname: "asc" }],
   })
 
   return contacts

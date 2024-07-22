@@ -9,7 +9,7 @@ import {
   ContactFormHeaderContainer,
   ImageInput,
   PhotoLabel,
-  RemoveImageCheckbox,
+  RemovePhotoCheckbox,
 } from "./styles"
 
 export const ContactFormHeader = () => {
@@ -22,7 +22,7 @@ export const ContactFormHeader = () => {
         <PhotoLabel>
           <ProfilePicture />
           <ImageInput type="file" {...register("photo")} />
-          <RemoveImageCheckbox name="removeImage" label="Delete photo" />
+          <RemovePhotoCheckbox name="removePhoto" label="Delete photo" />
         </PhotoLabel>
         <ContactMainForm />
       </ContactFormHeaderContainer>
