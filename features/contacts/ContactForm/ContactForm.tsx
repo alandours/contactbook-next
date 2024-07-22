@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useState, useEffect, useRef, useContext } from "react"
-import { notFound } from "next/navigation"
+import { notFound, redirect } from "next/navigation"
 import { useForm, FormProvider } from "react-hook-form"
 import { yupResolver } from "@hookform/resolvers/yup"
 
@@ -55,7 +55,7 @@ export const ContactForm = ({ id }: ContactFormProps) => {
     }
   }, [id, selectContact, reset])
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     console.log("submit", data)
 
     const newData = {
@@ -68,11 +68,14 @@ export const ContactForm = ({ id }: ContactFormProps) => {
     }
 
     // Add photo before submit
-    upsertContact(newData)
+    const updatedContact = await upsertContact(newData)
+
+    redirect(`/contacts/${updatedContact.id}`)
   }
 
-  const onDelete = () => {
-    deleteContact(id)
+  const onDelete = async () => {
+    await deleteContact(id)
+    redirect(`/contacts`)
   }
 
   const handleScroll = (e) => {
@@ -89,8 +92,9 @@ export const ContactForm = ({ id }: ContactFormProps) => {
         ref={formRef}
       >
         {isMedia("tablet") && showStickyBar && <StickyBar />}
-        {/* {message &&
-          (message.type === "error" || message.type === "warning") && <Toast />} */}
+        {/* {toast && (toast.type === "error" || toast.type === "warning") && (
+          <Toast />
+        )} */}
         <ContactFormHeader />
         <ContactSecondaryForm />
         <FormActions $edit={!!selectedContact}>

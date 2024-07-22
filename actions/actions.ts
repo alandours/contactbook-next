@@ -2,7 +2,6 @@
 
 import prisma from "@/lib/prisma"
 import { Filters } from "@/types"
-import { redirect } from "next/navigation"
 
 export const getContacts = async (filters: Filters = {}) => {
   const filter = {
@@ -129,9 +128,8 @@ export const upsertContact = async (data) => {
     Email,
     Social,
   } = data
-
-  const userId = await prisma.$transaction(async (tx) => {
-    const userQuery = {
+  const contact = await prisma.$transaction(async (tx) => {
+    const contactQuery = {
       name,
       lastname,
       birthday,
@@ -142,12 +140,12 @@ export const upsertContact = async (data) => {
     }
 
     // Contact
-    const user = await tx.contact.upsert({
+    const contact = await tx.contact.upsert({
       where: {
         id: contactId || "",
       },
-      update: userQuery,
-      create: userQuery,
+      update: contactQuery,
+      create: contactQuery,
     })
 
     // Alias
@@ -248,14 +246,14 @@ export const upsertContact = async (data) => {
       })
     }
 
-    return user.id
+    return contact
   })
 
-  redirect(`/contacts/${userId}`)
+  return contact
 }
 
 export const deleteContact = async (id) => {
-  const user = await prisma.contact.update({
+  return await prisma.contact.update({
     where: {
       id,
     },
@@ -263,8 +261,6 @@ export const deleteContact = async (id) => {
       active: false,
     },
   })
-
-  redirect(`/contacts`)
 }
 
 export const getPlatforms = async () => {
@@ -297,7 +293,7 @@ export const getStats = async () => {
 }
 
 export const updateFavorite = async (id: string, isFavorite: boolean) => {
-  const user = await prisma.contact.update({
+  const contact = await prisma.contact.update({
     where: {
       id,
     },
@@ -306,5 +302,5 @@ export const updateFavorite = async (id: string, isFavorite: boolean) => {
     },
   })
 
-  return user
+  return contact
 }

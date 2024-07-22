@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react"
+import { useState, useEffect, useContext, useCallback } from "react"
 
 import { Status } from "@/types"
 import { UIContext } from "@/ui/context"
@@ -11,12 +11,12 @@ export const Toast = () => {
 
   const { message, type } = toast || {}
 
-  const closeMessage = () => {
+  const closeMessage = useCallback(() => {
     setVisible(false)
     setTimeout(() => {
       setToast(null)
     }, 250)
-  }
+  }, [setToast])
 
   useEffect(() => {
     const timeOut = type === Status.SUCCESS ? 1500 : 4000
@@ -29,7 +29,7 @@ export const Toast = () => {
     }
 
     return () => setVisible(true)
-  }, [message])
+  }, [message, closeMessage, type])
 
   return (
     !!message &&
