@@ -1,4 +1,6 @@
-import React, { useContext } from "react"
+"use client"
+
+import { useContext } from "react"
 
 import { Section } from "@/components/Section"
 import { ContactsContext } from "@/features/contacts/context"

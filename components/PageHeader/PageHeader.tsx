@@ -1,3 +1,5 @@
+"use client"
+
 import { ReactNode } from "react"
 
 import { Title, Subtitle } from "@/ui"

@@ -1,4 +1,4 @@
-import ColorThief from "colorthief/dist/color-thief.mjs"
+import ColorThief from "colorthief"
 
 const colorThief = new ColorThief()
 
@@ -8,13 +8,14 @@ export const getPalette = (
   quality = 10
 ) => {
   const palette = colorThief.getPalette(img, colorAmount, quality)
-  return palette.map((color) => {
+
+  return palette?.map((color) => {
     const [red, green, blue] = color
     return `rgb(${red}, ${green}, ${blue})`
   })
 }
 export const getDominantColor = (img: HTMLImageElement, quality = 10) => {
   const color = colorThief.getColor(img, quality)
-  const [red, green, blue] = color
+  const [red, green, blue] = color || []
   return `rgb(${red}, ${green}, ${blue})`
 }
