@@ -5,6 +5,7 @@ import {
   ReactNode,
   SetStateAction,
   createContext,
+  useCallback,
   useContext,
   useEffect,
   useState,
@@ -21,7 +22,7 @@ interface ContactsContextValues {
   filters: Filters
   palette: string[]
   fetchContacts: (search?: string) => void
-  selectContact: (id: string) => void
+  selectContact: (id: string) => Contact | null
   updateFilters: ({
     key,
     value,
@@ -43,7 +44,7 @@ const initialValues: ContactsContextValues = {
   filters: {},
   palette: [],
   fetchContacts: () => undefined,
-  selectContact: () => undefined,
+  selectContact: () => null,
   updateFilters: () => undefined,
   setPalette: () => undefined,
 }
@@ -65,21 +66,26 @@ export const ContactsProvider = ({ data, children }: ContactsProviderProps) => {
   const [filters, setFilters] = useState<Filters>(initialValues.filters)
   const [palette, setPalette] = useState<string[]>([])
 
-  const fetchContacts = async () => {
-    setLoading(true)
+  const fetchContacts = useCallback(
+    () => async () => {
+      setLoading(true)
 
-    let contacts = await getContacts(filters)
+      let contacts = await getContacts(filters)
 
-    contacts = [...contacts].sort((contact1, contact2) =>
-      contact1.name.localeCompare(contact2.name)
-    )
+      contacts = [...contacts].sort((contact1, contact2) =>
+        contact1.name.localeCompare(contact2.name)
+      )
 
-    setContacts(contacts)
-    setLoading(false)
-  }
+      setContacts(contacts)
+      setLoading(false)
+    },
+    [filters]
+  )
 
   const selectContact = (id: string) => {
-    setSelectedContact(contacts.find((contact) => contact.id === id) || null)
+    const contact = contacts.find((contact) => contact.id === id) || null
+    setSelectedContact(contact)
+    return contact
   }
 
   const updateFilters = ({
@@ -113,7 +119,7 @@ export const ContactsProvider = ({ data, children }: ContactsProviderProps) => {
 
   useEffect(() => {
     fetchContacts()
-  }, [filters])
+  }, [fetchContacts])
 
   return (
     <ContactsContext.Provider

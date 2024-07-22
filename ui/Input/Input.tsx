@@ -1,6 +1,6 @@
 import React, { InputHTMLAttributes } from "react"
 import { useFormContext } from "react-hook-form"
-import { ErrorMessage as RHFErrorMessage } from "@hookform/error-message"
+import { ErrorMessage as HookFormErrorMessage } from "@hookform/error-message"
 
 import { InputSizes } from "@/types"
 import { ErrorMessage, Icon, Label } from "@/ui"
@@ -41,7 +41,7 @@ export const Input = ({
           size={size}
         />
       </Container>
-      <RHFErrorMessage
+      <HookFormErrorMessage
         errors={errors}
         name={name}
         render={({ message }) => <ErrorMessage>{message}</ErrorMessage>}
