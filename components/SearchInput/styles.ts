@@ -26,14 +26,15 @@ export const SearchInputElement = styled.input<{ $hasIcon: boolean }>`
     border: 0;
     border-color: ${theme.selected.main[2]};
     border-radius: 4px 0 0 0;
-    padding: 0.5rem;
+    color: ${theme.selected.contrast[1]};
+    padding: 0.375rem;
     transition: all 420ms ease;
     transition-property: background, border;
     width: 100%;
 
     ${!!$hasIcon &&
     `
-      padding-left: 2rem;
+      padding-left: 1.75rem;
     `}
 
     &::placeholder {

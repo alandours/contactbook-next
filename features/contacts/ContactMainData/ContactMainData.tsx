@@ -4,11 +4,13 @@ import { FavoriteButton } from "@/components/FavoriteButton"
 import { getBirthdayText, calculateAge } from "@/features/birthdays/utils"
 import { ContactsContext } from "@/features/contacts/context"
 import { Icon, Link, Title } from "@/ui"
+import { UIContext } from "@/ui/context"
 import { Icons } from "@/ui/icons"
 
 import { ContactMainDataContainer, MainDatafield, Name, Text } from "./styles"
 
 export const ContactMainData = () => {
+  const { theme } = useContext(UIContext)
   const { selectedContact } = useContext(ContactsContext)
 
   const { id, name, lastname, birthday, address, yearMet, favorite } =
@@ -33,7 +35,7 @@ export const ContactMainData = () => {
         )}
         {address && (
           <MainDatafield>
-            <Icon name={Icons.home} size="1.125rem" />
+            <Icon name={Icons.home} />
             <Link
               href={`https://www.google.com/maps/search/${address}`}
               external
@@ -44,7 +46,7 @@ export const ContactMainData = () => {
         )}
         {yearMet && (
           <MainDatafield>
-            <Icon name={Icons.calendar} size="1.125rem" />
+            <Icon name={Icons.calendar} />
             <Text>{yearMet}</Text>
           </MainDatafield>
         )}

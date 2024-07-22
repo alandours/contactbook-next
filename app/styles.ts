@@ -14,10 +14,6 @@ export const ContactBook = styled.div`
     font-size: ${FontSize.TEXT};
     font-weight: ${FontWeight.REGULAR};
     height: 100%;
-
-    ${responsive.md(`
-      background: none;
-    `)}
   `}
 `
 

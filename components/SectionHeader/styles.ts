@@ -5,6 +5,7 @@ import { responsive } from "@/ui/responsive"
 
 export const SectionHeaderContainer = styled.h2<{ $sticky: boolean }>`
   ${({ theme, $sticky }) => css`
+    align-items: center;
     background: ${theme.selected.main[3]};
     border-bottom: 2px solid ${theme.selected.main.shadow};
     color: ${theme.selected.contrast[1]};

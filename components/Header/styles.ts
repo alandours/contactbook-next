@@ -11,7 +11,7 @@ export const HeaderContainer = styled.header`
     color: ${theme.selected.contrast[1]};
     display: flex;
     justify-content: space-between;
-    padding: 1rem 1.5rem;
+    padding: 0.5rem 1.25rem;
     position: fixed;
     transition: all 420ms ease;
     transition-property: background, box-shadow;

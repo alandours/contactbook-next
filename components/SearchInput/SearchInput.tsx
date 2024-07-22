@@ -10,7 +10,7 @@ interface SearchInputProps {
 
 export const SearchInput = ({ handleTyping }: SearchInputProps) => (
   <SearchInputContainer>
-    <SearchIcon name={Icons.search} size="1rem" />
+    <SearchIcon name={Icons.search} size="0.75rem" />
     <SearchInputElement
       type="text"
       placeholder="Search contacts"

@@ -1,5 +1,7 @@
-import { icons, Icons } from "@/ui/icons"
+import { useContext } from "react"
 
+import { UIContext } from "@/ui/context"
+import { icons, Icons } from "@/ui/icons"
 interface IconProps {
   name: Icons
   color?: string
@@ -9,17 +11,21 @@ interface IconProps {
 
 export const Icon = ({
   name,
-  color = "#000",
-  size = "1.25rem",
+  color,
+  size = "1rem",
   className = "",
 }: IconProps) => {
+  const { theme } = useContext(UIContext)
+
+  const iconColor = color || theme.selected.contrast[2]
+
   const IconComponent = icons[name]
 
   if (!IconComponent) return null
 
   return (
     <IconComponent
-      color={color}
+      color={iconColor}
       size={size}
       role="presentation"
       className={className}
