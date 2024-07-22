@@ -2,6 +2,7 @@ import styled from "styled-components"
 
 import { XButton } from "@/components/XButton"
 import { responsive } from "@/ui/responsive"
+import { Button } from "@/ui"
 
 export const ContactSecondaryFormContainer = styled.div``
 
@@ -41,4 +42,7 @@ export const FormField = styled.div`
 
 export const Option = styled.option`
   color: #000;
+`
+export const AddNewButton = styled(Button)`
+  align-self: flex-end;
 `

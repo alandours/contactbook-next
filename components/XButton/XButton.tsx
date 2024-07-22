@@ -16,6 +16,6 @@ export const XButton = ({
   className = "",
 }: XButtonProps) => (
   <XButtonContainer type={type} handleClick={handleClick} className={className}>
-    <Icon name={Icons.times} />
+    <Icon name={Icons.times} size="1rem" />
   </XButtonContainer>
 )

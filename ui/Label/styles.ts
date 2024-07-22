@@ -6,15 +6,13 @@ export const LabelContainer = styled.label<{ label: string }>`
   background: ${({ theme }) => theme.selected.main[1]};
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  padding-top: 0.125rem;
   position: relative;
   min-width: 30%;
   width: 100%;
 
   ${({ label }) =>
     responsive.md(`
-      width: 40%;
-
       ${
         label === "Alias" &&
         css`

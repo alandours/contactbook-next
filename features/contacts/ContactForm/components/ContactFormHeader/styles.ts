@@ -1,5 +1,6 @@
 import styled from "styled-components"
 
+import { Checkbox } from "@/ui"
 import { zindex } from "@/ui/constants"
 import { responsive } from "@/ui/responsive"
 import { FontWeight } from "@/ui/typography"
@@ -8,7 +9,8 @@ export const ContactFormHeaderContainer = styled.div`
   align-items: center;
   display: flex;
   flex-direction: column;
-  padding: 1rem;
+  gap: 1.5rem;
+  padding: 1.5rem;
   width: 100%;
   z-index: 1000;
 
@@ -59,4 +61,8 @@ export const PhotoLabel = styled.label`
 
 export const ImageInput = styled.input`
   display: none;
+`
+
+export const RemoveImageCheckbox = styled(Checkbox)`
+  margin-top: 0.5rem;
 `

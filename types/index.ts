@@ -9,6 +9,11 @@ export enum ButtonVariants {
   DANGER,
 }
 
+export enum InputSizes {
+  REGULAR,
+  BIG,
+}
+
 export enum Status {
   SUCCESS,
   ERROR,

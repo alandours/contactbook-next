@@ -5,12 +5,12 @@ import { FontSize } from "@/ui/typography"
 export const CheckboxContainer = styled.label`
   align-items: center;
   display: flex;
+  gap: 0.25rem;
   justify-content: center;
 `
 
 export const CheckboxText = styled.span`
   color: ${({ theme }) => theme.selected.contrast[1]};
-  margin-left: 0.5rem;
   font-size: ${FontSize.SMALL};
 `
 

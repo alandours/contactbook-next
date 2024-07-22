@@ -7,25 +7,15 @@ import { TextareaContainer } from "./styles"
 type TextareaProps = {
   name: string
   error: string
-  defaultValue?: string
   placeholder?: string
 }
 
-export const Textarea = ({
-  name,
-  error,
-  defaultValue = "",
-  placeholder = "",
-}: TextareaProps) => {
+export const Textarea = ({ name, error, placeholder = "" }: TextareaProps) => {
   const { register } = useFormContext()
 
   return (
     <>
-      <TextareaContainer
-        {...register(name)}
-        defaultValue={defaultValue}
-        placeholder={placeholder}
-      />
+      <TextareaContainer {...register(name)} placeholder={placeholder} />
       <ErrorMessage>{error}</ErrorMessage>
     </>
   )

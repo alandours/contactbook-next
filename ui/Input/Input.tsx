@@ -1,18 +1,18 @@
-import React from "react"
+import React, { InputHTMLAttributes } from "react"
 import { useFormContext } from "react-hook-form"
+import { ErrorMessage as RHFErrorMessage } from "@hookform/error-message"
 
+import { InputSizes } from "@/types"
 import { ErrorMessage, Icon, Label } from "@/ui"
 import { Icons } from "@/ui/icons"
 
 import { InputContainer, Container } from "./styles"
 
-type InputProps = HTMLInputElement & {
+type InputProps = InputHTMLAttributes<HTMLInputElement> & {
   name: string
   label: string
   icon?: Icons
-  defaultValue: string | number
-  error: string
-  size: string
+  size?: InputSizes
 }
 
 export const Input = ({
@@ -22,11 +22,12 @@ export const Input = ({
   disabled,
   placeholder,
   icon,
-  defaultValue,
-  error,
-  size,
+  size = InputSizes.REGULAR,
 }: InputProps) => {
-  const { register } = useFormContext()
+  const {
+    register,
+    formState: { errors },
+  } = useFormContext()
 
   return (
     <Label label={label} disabled={disabled}>
@@ -37,11 +38,14 @@ export const Input = ({
           type={type || "text"}
           disabled={disabled}
           placeholder={placeholder}
-          defaultValue={defaultValue}
           size={size}
         />
       </Container>
-      <ErrorMessage>{error}</ErrorMessage>
+      <RHFErrorMessage
+        errors={errors}
+        name={name}
+        render={({ message }) => <ErrorMessage>{message}</ErrorMessage>}
+      />
     </Label>
   )
 }

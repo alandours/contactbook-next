@@ -1,5 +1,6 @@
 import styled, { css } from "styled-components"
 
+import { InputSizes } from "@/types"
 import { responsive } from "@/ui/responsive"
 import { FontSize, FontWeight } from "@/ui/typography"
 
@@ -8,11 +9,14 @@ export const Container = styled.div`
   width: 100%;
 `
 
-export const InputContainer = styled.input<{ size: string }>`
+export const InputContainer = styled.input<{ size: InputSizes }>`
   ${({ theme, type, size }) => css`
     border: 0;
     border-bottom: 1px solid ${theme.selected.contrast[4]};
     color: ${theme.selected.contrast[1]};
+    font-size: 0.875rem;
+    padding: 0.125rem 0;
+    width: 100%;
 
     &:hover,
     &:focus {
@@ -30,7 +34,7 @@ export const InputContainer = styled.input<{ size: string }>`
       }
     `}
 
-    ${size === "big" &&
+    ${size === InputSizes.BIG &&
     css`
       font-size: ${FontSize.LARGE};
       font-weight: ${FontWeight.BOLD};
