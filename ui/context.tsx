@@ -5,11 +5,20 @@ import {
   ReactNode,
   SetStateAction,
   createContext,
+  useEffect,
   useState,
 } from "react"
 
 import { Status } from "@/types"
-import { Colors, ThemeColor, colors, palette, getTheme } from "./palette"
+import {
+  Colors,
+  ThemeColor,
+  colors,
+  palette,
+  getLocalTheme,
+  getLocalSettings,
+  Settings,
+} from "./palette"
 
 type Toast = { message: string; type: Status }
 
@@ -40,28 +49,17 @@ interface UIContextValues {
   updateSetting: (setting: Settings, active: boolean) => void
 }
 
-export enum Settings {
-  FILTER_FAVORITES = "filterFavorites",
-  SHOW_AGE = "showAge",
-  SHOW_FAVORITE_ICON = "showFavoriteIcon",
-  SHOW_PHOTO = "showPhoto",
-  SORT_BY_LAST_NAME = "sortByLastName",
-}
-
-const getLocalSetting = (setting: Settings) => !!localStorage.getItem(setting)
-
 const initialValues: UIContextValues = {
   theme: initialTheme,
   settings: {
-    [Settings.FILTER_FAVORITES]: getLocalSetting(Settings.FILTER_FAVORITES),
-    [Settings.SHOW_AGE]: getLocalSetting(Settings.SHOW_AGE),
-    [Settings.SHOW_FAVORITE_ICON]: getLocalSetting(Settings.SHOW_FAVORITE_ICON),
-    [Settings.SHOW_PHOTO]: getLocalSetting(Settings.SHOW_PHOTO),
-    [Settings.SORT_BY_LAST_NAME]: getLocalSetting(Settings.SORT_BY_LAST_NAME),
+    [Settings.FILTER_FAVORITES]: false,
+    [Settings.SHOW_AGE]: false,
+    [Settings.SHOW_FAVORITE_ICON]: false,
+    [Settings.SHOW_PHOTO]: false,
+    [Settings.SORT_BY_LAST_NAME]: false,
   },
   menuOpen: false,
   toast: null,
-
   setTheme: () => undefined,
   toggleMenu: () => undefined,
   setToast: () => undefined,
@@ -75,7 +73,7 @@ interface UIProviderProps {
 }
 
 export const UIProvider = ({ children }: UIProviderProps) => {
-  const [theme, setTheme] = useState(getTheme())
+  const [theme, setTheme] = useState(initialValues.theme)
   const [menuOpen, setMenuOpen] = useState(false)
   const [toast, setToast] = useState<Toast | null>(null)
   const [settings, setSettings] = useState(initialValues.settings)
@@ -93,6 +91,15 @@ export const UIProvider = ({ children }: UIProviderProps) => {
 
     setSettings((prevSettings) => ({ ...prevSettings, [setting]: active }))
   }
+
+  const setLocalData = () => {
+    setSettings(getLocalSettings())
+    setTheme(getLocalTheme())
+  }
+
+  useEffect(() => {
+    setLocalData()
+  }, [])
 
   return (
     <UIContext.Provider

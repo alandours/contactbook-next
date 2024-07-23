@@ -21,7 +21,7 @@ export const ContactFormHeader = () => {
       <ContactFormHeaderContainer>
         <PhotoLabel>
           <ProfilePicture />
-          <ImageInput type="file" {...register("photo")} />
+          <ImageInput type="file" {...register("file")} />
           <RemovePhotoCheckbox name="removePhoto" label="Delete photo" />
         </PhotoLabel>
         <ContactMainForm />

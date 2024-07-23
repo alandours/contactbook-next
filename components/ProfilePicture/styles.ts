@@ -3,8 +3,8 @@ import Image from "next/image"
 
 import { responsive } from "@/ui/responsive"
 
-export const ProfilePictureContainer = styled(Image)<{ thumbnail: boolean }>`
-  ${({ theme, thumbnail, onClick }) => css`
+export const ProfilePictureContainer = styled(Image)<{ $thumbnail: boolean }>`
+  ${({ theme, $thumbnail, onClick }) => css`
     border: 6px solid ${theme.selected.main[1]};
     border-radius: 100%;
     box-shadow: 0 0 5px ${theme.selected.contrast[4]};
@@ -31,7 +31,7 @@ export const ProfilePictureContainer = styled(Image)<{ thumbnail: boolean }>`
       }
     `};
 
-    ${!!thumbnail &&
+    ${!!$thumbnail &&
     css`
       border-width: 2px;
       height: 30px;

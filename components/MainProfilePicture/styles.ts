@@ -1,12 +1,14 @@
 import styled from "styled-components"
+
 import { responsive } from "@/ui/responsive"
 
-export const FullSizePicture = styled.img`
-  max-height: 100%;
-  max-width: 100%;
+export const FullSizeImageContainer = styled.div`
+  position: relative;
+  height: 100%;
+  width: 100%;
 
   ${responsive.md(`
-    max-height: 90%;
-    max-width: 90%;
+   height: 90%;
+   width: 60%;
   `)}
 `

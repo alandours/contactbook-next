@@ -58,17 +58,20 @@ export const ContactForm = ({ id }: ContactFormProps) => {
   const onSubmit = async (data) => {
     console.log("submit", data)
 
-    const newData = {
-      ...data,
-      photo: data.removePhoto ? null : data.photo,
+    const { file, ...contactData } = data
+
+    let newData = {
+      ...contactData,
       Alias: data.Alias.filter((field) => !!field.alias),
       Number: data.Number.filter((field) => !!field.number),
       Email: data.Email.filter((field) => !!field.email),
       Social: data.Social.filter((field) => !!field.username),
     }
 
-    // Add photo before submit
-    const updatedContact = await upsertContact(newData)
+    const formData = new FormData()
+    formData.append("file", file[0])
+
+    const updatedContact = await upsertContact(newData, formData)
 
     redirect(`/contacts/${updatedContact.id}`)
   }

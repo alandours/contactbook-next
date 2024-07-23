@@ -1,10 +1,12 @@
 import { useContext, useState } from "react"
+import Image from "next/image"
 
 import { ProfilePicture } from "@/components/ProfilePicture"
+import { ROUTES } from "@/constants/routes"
 import { ContactsContext } from "@/features/contacts/context"
 import { Backdrop } from "@/ui"
 
-import { FullSizePicture } from "./styles"
+import { FullSizeImageContainer } from "./styles"
 
 export const MainProfilePicture = () => {
   const { selectedContact } = useContext(ContactsContext)
@@ -16,15 +18,20 @@ export const MainProfilePicture = () => {
   return (
     name && (
       <>
-        {isOpen && (
+        {isOpen && photo && (
           <Backdrop
             handleClick={() => setIsOpen(false)}
             handleKeyDown={() => setIsOpen(false)}
           >
-            <FullSizePicture
-              src={`/img/contacts/${photo}`}
-              alt={`${name} ${lastname}'s profile picture`}
-            />
+            <FullSizeImageContainer>
+              <Image
+                src={ROUTES.profilePictures(photo)}
+                alt={`${name} ${lastname}'s profile picture`}
+                fill
+                objectFit="contain"
+                quality={100}
+              />
+            </FullSizeImageContainer>
           </Backdrop>
         )}
         <ProfilePicture handleClick={() => setIsOpen(true)} />

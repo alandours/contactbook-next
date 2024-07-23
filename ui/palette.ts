@@ -1,3 +1,5 @@
+"use client"
+
 import { lighten, darken } from "polished"
 
 import contactPhotoGreen from "@/assets/defaultPhotos/contact-1.jpg"
@@ -135,7 +137,7 @@ export const theme = {
 export const getMainColor = () =>
   (localStorage.getItem("mainColor") as Colors | null) || Colors.GREEN
 
-export const getTheme = () => {
+export const getLocalTheme = () => {
   const theme = localStorage.getItem("darkTheme")
     ? ThemeColor.DARK
     : ThemeColor.LIGHT
@@ -147,3 +149,21 @@ export const getTheme = () => {
     mainColor: colors[mainColor],
   }
 }
+
+export enum Settings {
+  FILTER_FAVORITES = "filterFavorites",
+  SHOW_AGE = "showAge",
+  SHOW_FAVORITE_ICON = "showFavoriteIcon",
+  SHOW_PHOTO = "showPhoto",
+  SORT_BY_LAST_NAME = "sortByLastName",
+}
+
+const getLocalSetting = (setting: Settings) => !!localStorage?.getItem(setting)
+
+export const getLocalSettings = () => ({
+  [Settings.FILTER_FAVORITES]: getLocalSetting(Settings.FILTER_FAVORITES),
+  [Settings.SHOW_AGE]: getLocalSetting(Settings.SHOW_AGE),
+  [Settings.SHOW_FAVORITE_ICON]: getLocalSetting(Settings.SHOW_FAVORITE_ICON),
+  [Settings.SHOW_PHOTO]: getLocalSetting(Settings.SHOW_PHOTO),
+  [Settings.SORT_BY_LAST_NAME]: getLocalSetting(Settings.SORT_BY_LAST_NAME),
+})

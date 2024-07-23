@@ -1,10 +1,12 @@
-import React, { useState, useRef, useContext } from "react"
+import { useState, useRef, useContext } from "react"
 
+import { ROUTES } from "@/constants/routes"
 import { ContactsContext } from "@/features/contacts/context"
 import { DEFAULT_PHOTOS, getMainColor } from "@/ui/palette"
 import { getPalette } from "@/ui/utils"
 
 import { ProfilePictureContainer } from "./styles"
+
 interface ProfilePictureProps {
   thumbnail?: boolean
   handleClick?: () => void
@@ -30,12 +32,17 @@ export const ProfilePicture = ({
 
   return (
     <ProfilePictureContainer
-      src={DEFAULT_PHOTOS[getMainColor()]}
+      src={
+        photo ? ROUTES.profilePictures(photo) : DEFAULT_PHOTOS[getMainColor()]
+      }
       alt={`${name} ${lastname}'s profile picture`}
-      thumbnail={thumbnail}
+      $thumbnail={thumbnail}
       ref={imageRef}
       onLoad={handlePalette}
       onClick={photo ? handleClick : undefined}
+      width={360}
+      height={360}
+      quality={100}
     />
   )
 }

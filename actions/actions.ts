@@ -1,5 +1,8 @@
 "use server"
 
+import { writeFile } from "fs/promises"
+import path from "path"
+
 import prisma from "@/lib/prisma"
 import { Filters } from "@/types"
 
@@ -114,7 +117,7 @@ export const getContacts = async (filters: Filters = {}) => {
   return contacts
 }
 
-export const upsertContact = async (data) => {
+export const upsertContact = async (data, formData) => {
   const {
     id: contactId,
     name,
@@ -123,20 +126,40 @@ export const upsertContact = async (data) => {
     address,
     yearMet,
     notes,
+    removePhoto,
     Alias,
     Number,
     Email,
     Social,
   } = data
+
+  // Photo
+  const imageFile = formData.get("file")
+  let newPhotoName: string | null = null
+
+  if (imageFile && !removePhoto) {
+    const buffer = Buffer.from(await imageFile.arrayBuffer())
+    const filename = `${Date.now()}_${imageFile.name.replaceAll(" ", "_")}`
+    const imagePath = path.join(process.cwd(), "public/uploads/" + filename)
+    await writeFile(imagePath, buffer)
+    newPhotoName = filename
+  }
+
   const contact = await prisma.$transaction(async (tx) => {
-    const contactQuery = {
+    let contactQuery = {
       name,
       lastname,
       birthday,
       address,
       yearMet,
       notes,
-      // photo: data.photo
+    }
+
+    if (removePhoto || imageFile) {
+      contactQuery = {
+        ...contactQuery,
+        photo: newPhotoName,
+      }
     }
 
     // Contact
