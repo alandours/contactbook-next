@@ -1,4 +1,5 @@
-import { useState, useRef, useContext } from "react"
+import { useState, useRef, useEffect, useContext } from "react"
+import { useFormContext } from "react-hook-form"
 
 import { ROUTES } from "@/constants/routes"
 import { ContactsContext } from "@/features/contacts/context"
@@ -18,14 +19,31 @@ export const ProfilePicture = ({
 }: ProfilePictureProps) => {
   const { selectedContact, palette, setPalette } = useContext(ContactsContext)
   const [uploaded, setUploaded] = useState(null)
-  const imageRef = useRef(null)
+  const { watch } = useFormContext() || {}
+  const imageRef = useRef<HTMLImageElement>(null)
 
   const { photo, name, lastname } = selectedContact || {}
 
+  const imageField = watch && watch("file")
+  const uploadedImage = imageField && imageField[0]
+
+  useEffect(() => {
+    if (uploadedImage) {
+      setUploaded(URL.createObjectURL(uploadedImage))
+    }
+  }, [uploadedImage])
+
   const handlePalette = () => {
-    if (thumbnail || uploaded) return
+    if (thumbnail || uploaded || !imageRef.current) {
+      return
+    }
+
     const currentPalette = getPalette(imageRef.current, 10)
-    if (!palette || currentPalette.toString() !== palette.toString()) {
+
+    if (
+      currentPalette &&
+      (!palette || currentPalette?.toString() !== palette.toString())
+    ) {
       setPalette(currentPalette)
     }
   }
@@ -33,7 +51,8 @@ export const ProfilePicture = ({
   return (
     <ProfilePictureContainer
       src={
-        photo ? ROUTES.profilePictures(photo) : DEFAULT_PHOTOS[getMainColor()]
+        uploaded ||
+        (photo ? ROUTES.profilePictures(photo) : DEFAULT_PHOTOS[getMainColor()])
       }
       alt={`${name} ${lastname}'s profile picture`}
       $thumbnail={thumbnail}

@@ -3,6 +3,7 @@
 import { writeFile } from "fs/promises"
 import path from "path"
 
+import { ROUTES } from "@/constants/routes"
 import prisma from "@/lib/prisma"
 import { Filters } from "@/types"
 
@@ -140,7 +141,7 @@ export const upsertContact = async (data, formData) => {
   if (imageFile && !removePhoto) {
     const buffer = Buffer.from(await imageFile.arrayBuffer())
     const filename = `${Date.now()}_${imageFile.name.replaceAll(" ", "_")}`
-    const imagePath = path.join(process.cwd(), "public/uploads/" + filename)
+    const imagePath = path.join(process.cwd(), ROUTES.profilePictures(filename))
     await writeFile(imagePath, buffer)
     newPhotoName = filename
   }

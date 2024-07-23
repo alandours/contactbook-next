@@ -1,11 +1,12 @@
 "use client"
 
 import React, { useState, useEffect, useRef, useContext } from "react"
-import { notFound, redirect } from "next/navigation"
+import { notFound, useRouter } from "next/navigation"
 import { useForm, FormProvider } from "react-hook-form"
 import { yupResolver } from "@hookform/resolvers/yup"
 
 import { upsertContact, deleteContact } from "@/actions/actions"
+import { ROUTES } from "@/constants/routes"
 import { StickyBar } from "@/features/contacts/StickyBar"
 import { ContactsContext } from "@/features/contacts/context"
 import { ButtonVariants } from "@/types"
@@ -29,6 +30,8 @@ export const ContactForm = ({ id }: ContactFormProps) => {
 
   const { theme } = useContext(UIContext)
   const { selectedContact, selectContact } = useContext(ContactsContext)
+
+  const router = useRouter()
 
   const formRef = useRef(null)
 
@@ -69,16 +72,19 @@ export const ContactForm = ({ id }: ContactFormProps) => {
     }
 
     const formData = new FormData()
-    formData.append("file", file[0])
+
+    if (file.length) {
+      formData.append("file", file[0])
+    }
 
     const updatedContact = await upsertContact(newData, formData)
 
-    redirect(`/contacts/${updatedContact.id}`)
+    router.push(ROUTES.contacts.profile(updatedContact.id))
   }
 
   const onDelete = async () => {
     await deleteContact(id)
-    redirect(`/contacts`)
+    router.push(ROUTES.contacts.main)
   }
 
   const handleScroll = (e) => {

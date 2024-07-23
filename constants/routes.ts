@@ -8,5 +8,5 @@ export const ROUTES = {
     year: "/contacts/year",
   },
   settings: "/settings",
-  profilePictures: (name: string) => `/images/profile/`,
+  profilePictures: (name: string) => `/images/profile/${name}`,
 }
