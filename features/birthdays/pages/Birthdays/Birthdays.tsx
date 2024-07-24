@@ -12,15 +12,14 @@ import { BirthdaysContainer } from "./styles"
 export const Birthdays = () => {
   const { contacts } = useContext(ContactsContext)
 
-  const birthdayGroups = getBirthdayGroups(contacts)
-  const { birthdays, quantity } = birthdayGroups || {}
-  const subtitle = birthdayGroups ? `${quantity} birthdays` : ""
+  const { birthdays, quantity } = getBirthdayGroups(contacts)
+  const subtitle = quantity ? `${quantity} birthdays` : ""
 
   return (
     <BirthdaysContainer>
       <PageHeader title="Birthdays" subtitle={subtitle} />
-      {!birthdayGroups && <Loader />}
-      {!!quantity && birthdays}
+      {!contacts.length && <Loader />}
+      {birthdays}
     </BirthdaysContainer>
   )
 }

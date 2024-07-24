@@ -8,7 +8,7 @@ export type BirthdayGroup = {
 }
 
 export type ContactWithNextBirthday = Contact & {
-  nextBirthday?: Date
+  nextBirthday: Date
 }
 
 export type ContactsByBirthdayMonth = {

@@ -26,10 +26,14 @@ export const getNextBirthday = (birthday: Date) => {
   return birthdayDate
 }
 
-export const getContactsWithBirthdays = (contacts: Contact[]) => {
+export const getContactsWithBirthdays = (
+  contacts: Contact[]
+): ContactWithNextBirthday[] | null => {
   const withBirthdays = contacts.filter((contact) => contact.birthday)
 
-  if (!withBirthdays.length) return null
+  if (!withBirthdays.length) {
+    return null
+  }
 
   const withNextBirthday = withBirthdays.map((contact) => ({
     ...contact,

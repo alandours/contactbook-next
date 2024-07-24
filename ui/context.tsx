@@ -9,6 +9,7 @@ import {
   useState,
 } from "react"
 
+import { Settings, getLocalSettings } from "@/features/settings/settings"
 import { Status } from "@/types"
 import {
   Colors,
@@ -16,9 +17,7 @@ import {
   colors,
   palette,
   getLocalTheme,
-  getLocalSettings,
-  Settings,
-} from "./palette"
+} from "@/ui/palette"
 
 type Toast = { message: string; type: Status }
 
