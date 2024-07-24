@@ -1,6 +1,8 @@
+import { useContext } from "react"
 import { useFormContext } from "react-hook-form"
 
 import { ProfilePicture } from "@/components/ProfilePicture"
+import { ContactsContext } from "@/features/contacts/context"
 import { Gradient } from "@/ui"
 
 import { ContactMainForm } from "../ContactMainForm"
@@ -13,6 +15,7 @@ import {
 } from "./styles"
 
 export const ContactFormHeader = () => {
+  const { selectedContact } = useContext(ContactsContext)
   const { register } = useFormContext()
 
   return (
@@ -20,7 +23,7 @@ export const ContactFormHeader = () => {
       <Gradient smooth />
       <ContactFormHeaderContainer>
         <PhotoLabel>
-          <ProfilePicture />
+          <ProfilePicture contact={selectedContact} />
           <ImageInput type="file" {...register("file")} />
           <RemovePhotoCheckbox name="removePhoto" label="Delete photo" />
         </PhotoLabel>

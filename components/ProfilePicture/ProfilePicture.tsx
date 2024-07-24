@@ -3,26 +3,29 @@ import { useFormContext } from "react-hook-form"
 
 import { ROUTES } from "@/constants/routes"
 import { ContactsContext } from "@/features/contacts/context"
+import { Contact } from "@/types"
 import { DEFAULT_PHOTOS, getMainColor } from "@/ui/palette"
 import { getPalette } from "@/ui/utils"
 
 import { ProfilePictureContainer } from "./styles"
 
 interface ProfilePictureProps {
+  contact: Contact | null
   thumbnail?: boolean
   handleClick?: () => void
 }
 
 export const ProfilePicture = ({
+  contact,
   thumbnail = false,
   handleClick,
 }: ProfilePictureProps) => {
-  const { selectedContact, palette, setPalette } = useContext(ContactsContext)
+  const { palette, setPalette } = useContext(ContactsContext)
   const [uploaded, setUploaded] = useState(null)
   const { watch } = useFormContext() || {}
   const imageRef = useRef<HTMLImageElement>(null)
 
-  const { photo, name, lastname } = selectedContact || {}
+  const { photo, name, lastname } = contact || {}
 
   const imageField = watch && watch("file")
   const uploadedImage = imageField && imageField[0]

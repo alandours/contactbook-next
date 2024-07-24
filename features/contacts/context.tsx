@@ -6,13 +6,11 @@ import {
   SetStateAction,
   createContext,
   useCallback,
-  useContext,
   useEffect,
   useState,
 } from "react"
 
 import { getContacts } from "@/actions/actions"
-import { UIContext } from "@/ui/context"
 import { Contact, Filters } from "@/types"
 import { getContactById } from "@/utils/contacts"
 
@@ -69,14 +67,12 @@ export const ContactsProvider = ({ data, children }: ContactsProviderProps) => {
     () => async () => {
       setLoading(true)
 
-      let contacts = await getContacts(filters)
-
-      contacts = [...contacts].sort((contact1, contact2) =>
-        contact1.name.localeCompare(contact2.name)
-      )
+      const contacts = await getContacts(filters)
 
       setContacts(contacts)
       setLoading(false)
+
+      return contacts
     },
     [filters]
   )

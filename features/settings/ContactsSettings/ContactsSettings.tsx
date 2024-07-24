@@ -7,7 +7,7 @@ import { ContactsContext } from "@/features/contacts/context"
 import { Setting } from "@/features/settings/Setting"
 import { Switch } from "@/ui"
 import { UIContext } from "@/ui/context"
-import { Settings } from "@/ui/palette"
+import { Settings } from "@/features/settings/settings"
 
 export const ContactsSettings = () => {
   const { settings, updateSetting } = useContext(UIContext)

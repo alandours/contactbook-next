@@ -45,7 +45,7 @@ export const ContactLink = ({
       onClick={() => menuOpen && toggleMenu()}
     >
       {!!nextBirthday && <Date>{getListDate(nextBirthday, showMonth)}</Date>}
-      {showPhoto && <ProfilePicture thumbnail />}
+      {showPhoto && <ProfilePicture contact={contact} thumbnail />}
       <Name>
         {name} {lastname}
       </Name>

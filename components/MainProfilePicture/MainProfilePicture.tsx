@@ -34,7 +34,10 @@ export const MainProfilePicture = () => {
             </FullSizeImageContainer>
           </Backdrop>
         )}
-        <ProfilePicture handleClick={() => setIsOpen(true)} />
+        <ProfilePicture
+          contact={selectedContact}
+          handleClick={() => setIsOpen(true)}
+        />
       </>
     )
   )
