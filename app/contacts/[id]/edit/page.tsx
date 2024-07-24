@@ -2,12 +2,14 @@
 
 import { ContactForm } from "@/features/contacts/pages/ContactForm"
 
-interface EditContactProps {
+interface EditContactPageProps {
   params: {
     id: string
   }
 }
 
-export default function EditContact({ params: { id } }: EditContactProps) {
+export default function EditContactPage({
+  params: { id },
+}: EditContactPageProps) {
   return <ContactForm id={id} />
 }

@@ -6,6 +6,6 @@ export const metadata: Metadata = {
   title: "ContactBook",
 }
 
-export default async function Contacts() {
+export default async function ContactsPage() {
   return <Dashboard />
 }

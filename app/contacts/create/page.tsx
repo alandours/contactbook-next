@@ -6,6 +6,6 @@ export const metadata: Metadata = {
   title: "ContactBook | Add contact",
 }
 
-export default function CreateContact() {
+export default function CreateContactPage() {
   return <ContactForm />
 }
