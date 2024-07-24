@@ -14,6 +14,7 @@ import {
 import { getContacts } from "@/actions/actions"
 import { UIContext } from "@/ui/context"
 import { Contact, Filters } from "@/types"
+import { getContactById } from "@/utils/contacts"
 
 interface ContactsContextValues {
   contacts: Contact[]
@@ -58,8 +59,6 @@ interface ContactsProviderProps {
 }
 
 export const ContactsProvider = ({ data, children }: ContactsProviderProps) => {
-  const { settings } = useContext(UIContext)
-
   const [contacts, setContacts] = useState<Contact[]>(data)
   const [selectedContact, setSelectedContact] = useState<Contact | null>(null)
   const [loading, setLoading] = useState<boolean>()
@@ -83,7 +82,7 @@ export const ContactsProvider = ({ data, children }: ContactsProviderProps) => {
   )
 
   const selectContact = (id: string) => {
-    const contact = contacts.find((contact) => contact.id === id) || null
+    const contact = getContactById(contacts, id)
     setSelectedContact(contact)
     return contact
   }
