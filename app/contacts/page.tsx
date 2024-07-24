@@ -1,6 +1,6 @@
 import { Metadata } from "next"
 
-import { Dashboard } from "@/components/Dashboard"
+import { Dashboard } from "@/features/contacts/pages/Dashboard"
 
 export const metadata: Metadata = {
   title: "ContactBook",

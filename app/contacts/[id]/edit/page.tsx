@@ -1,6 +1,6 @@
 "use client"
 
-import { ContactForm } from "@/features/contacts/ContactForm"
+import { ContactForm } from "@/features/contacts/pages/ContactForm"
 
 interface EditContactProps {
   params: {

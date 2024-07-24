@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState, useEffect, useContext } from "react"
+import { useState, useEffect, useContext } from "react"
 import { Contact } from "@/types"
 
 import { PageHeader } from "@/components/PageHeader"

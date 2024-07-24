@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   title: "ContactBook | Settings",
 }
 
-const Settings = () => {
+export default function SettingsPage() {
   return (
     <SettingsContainer>
       <PageHeader title="Settings" />
@@ -19,5 +19,3 @@ const Settings = () => {
     </SettingsContainer>
   )
 }
-
-export default Settings
