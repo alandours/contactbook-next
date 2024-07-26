@@ -137,15 +137,5 @@ export const theme = {
 export const getMainColor = () =>
   (localStorage.getItem("mainColor") as Colors | null) || Colors.GREEN
 
-export const getLocalTheme = () => {
-  const theme = localStorage.getItem("darkTheme")
-    ? ThemeColor.DARK
-    : ThemeColor.LIGHT
-
-  const mainColor = getMainColor()
-
-  return {
-    selected: palette[theme],
-    mainColor: colors[mainColor],
-  }
-}
+export const getTheme = () =>
+  localStorage.getItem("darkTheme") ? ThemeColor.DARK : ThemeColor.LIGHT

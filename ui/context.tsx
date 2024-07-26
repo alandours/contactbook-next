@@ -16,7 +16,8 @@ import {
   ThemeColor,
   colors,
   palette,
-  getLocalTheme,
+  getTheme,
+  getMainColor,
 } from "@/ui/palette"
 
 type Toast = { message: string; type: Status }
@@ -42,6 +43,8 @@ interface UIContextValues {
   }
   menuOpen: boolean
   toast: Toast | null
+  themeKey: ThemeColor
+  colorKey: Colors
   setTheme: Dispatch<SetStateAction<Theme>>
   toggleMenu: () => void
   setToast: (toast: Toast | null) => void
@@ -59,6 +62,8 @@ const initialValues: UIContextValues = {
   },
   menuOpen: false,
   toast: null,
+  themeKey: ThemeColor.LIGHT,
+  colorKey: Colors.GREEN,
   setTheme: () => undefined,
   toggleMenu: () => undefined,
   setToast: () => undefined,
@@ -76,6 +81,8 @@ export const UIProvider = ({ children }: UIProviderProps) => {
   const [menuOpen, setMenuOpen] = useState(false)
   const [toast, setToast] = useState<Toast | null>(null)
   const [settings, setSettings] = useState(initialValues.settings)
+  const [themeKey, setThemeKey] = useState(initialValues.themeKey)
+  const [colorKey, setColorKey] = useState(initialValues.colorKey)
 
   const toggleMenu = () => {
     setMenuOpen((prevState) => !prevState)
@@ -92,8 +99,17 @@ export const UIProvider = ({ children }: UIProviderProps) => {
   }
 
   const setLocalData = () => {
+    const themeKey = getTheme()
+    const colorKey = getMainColor()
+
+    setThemeKey(themeKey)
+    setColorKey(colorKey)
+
     setSettings(getLocalSettings())
-    setTheme(getLocalTheme())
+    setTheme({
+      selected: palette[themeKey],
+      mainColor: colors[colorKey],
+    })
   }
 
   useEffect(() => {
@@ -107,6 +123,8 @@ export const UIProvider = ({ children }: UIProviderProps) => {
         settings,
         menuOpen,
         toast,
+        themeKey,
+        colorKey,
         setTheme,
         updateSetting,
         toggleMenu,

@@ -45,6 +45,11 @@ const devices = {
 }
 
 export const isMedia = (media: keyof typeof devices, custom?: string) => {
-  return window.matchMedia(`(min-width: ${Number(devices[media](custom))}px)`)
-    .matches
+  if (typeof window !== "undefined") {
+    return window?.matchMedia(
+      `(min-width: ${Number(devices[media](custom))}px)`
+    ).matches
+  }
+
+  return false
 }

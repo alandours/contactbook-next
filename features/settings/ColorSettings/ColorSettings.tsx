@@ -7,10 +7,10 @@ import { ColorSelector } from "@/features/settings/ColorSelector"
 import { Setting } from "@/features/settings/Setting"
 import { Switch } from "@/ui"
 import { UIContext } from "@/ui/context"
-import { Colors, ThemeColor, colors, palette } from "@/ui/palette"
+import { Colors, ThemeColor, colors, getTheme, palette } from "@/ui/palette"
 
 export const ColorSettings = () => {
-  const { setTheme } = useContext(UIContext)
+  const { themeKey, setTheme } = useContext(UIContext)
 
   const toggleDarkTheme = (active: boolean) => {
     const theme = active ? ThemeColor.DARK : ThemeColor.LIGHT
@@ -47,7 +47,7 @@ export const ColorSettings = () => {
     <Section title="Colors">
       <Setting label="Dark theme">
         <Switch
-          active={!!localStorage.getItem("darkTheme")}
+          active={themeKey === ThemeColor.DARK}
           handleClick={toggleDarkTheme}
         />
       </Setting>
