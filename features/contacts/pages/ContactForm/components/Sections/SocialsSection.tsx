@@ -1,9 +1,9 @@
 import { useCallback, useEffect, useState } from "react"
 import { useFieldArray } from "react-hook-form"
-import { Platform } from "@prisma/client"
 
 import { getPlatforms } from "@/actions/actions"
 import { Section } from "@/components/Section"
+import { Platform } from "@/types"
 import { Icons } from "@/ui/icons"
 
 import { MultiField } from "./fields/MultiField"

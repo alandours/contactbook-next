@@ -1,9 +1,10 @@
 import {
-  Alias,
+  Alias as ContactAliasType,
   Contact as ContactType,
-  Email,
-  Number,
-  Social,
+  Email as ContactEmailType,
+  Number as ContactNumberType,
+  Platform as SocialPlatformType,
+  Social as ContactSocialType,
 } from "@prisma/client"
 
 export enum ButtonVariants {
@@ -32,7 +33,20 @@ export enum ListItemType {
   INITIAL,
 }
 
-export type Contact = Omit<ContactType, "active" | "updatedAt">
+export type Alias = ContactAliasType
+export type Email = ContactEmailType
+export type Number = ContactNumberType
+export type Platform = SocialPlatformType
+export type Social = ContactSocialType & {
+  platform: Platform
+}
+
+export type Contact = Omit<ContactType, "active" | "updatedAt"> & {
+  aliases: Alias[]
+  emails: Email[]
+  numbers: Number[]
+  socials: Social[]
+}
 
 export type Filters = {
   search?: string
@@ -51,8 +65,4 @@ export type ContactFormData = Omit<
 > & {
   removePhoto: boolean
   file?: File[]
-  aliases: Alias[]
-  emails: Email[]
-  numbers: Number[]
-  socials: Social[]
 }

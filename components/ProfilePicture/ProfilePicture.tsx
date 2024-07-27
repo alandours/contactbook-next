@@ -23,7 +23,7 @@ export const ProfilePicture = ({
 }: ProfilePictureProps) => {
   const { palette, setPalette } = useContext(ContactsContext)
   const { colorKey } = useContext(UIContext)
-  const [uploaded, setUploaded] = useState(null)
+  const [uploaded, setUploaded] = useState<string | null>(null)
   const { watch } = useFormContext() || {}
   const imageRef = useRef<HTMLImageElement>(null)
 

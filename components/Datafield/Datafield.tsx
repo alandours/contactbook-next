@@ -5,7 +5,7 @@ import { ButtonVariants } from "@/types"
 type DataField = {
   name: string
   label?: string
-  url?: string
+  url?: string | null
 }
 
 export const Datafield = ({ name, label, url }: DataField) => (

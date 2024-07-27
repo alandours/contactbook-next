@@ -30,11 +30,17 @@ export const MultiField = ({
     <FormField>
       <Input name={names.input} label={label} />
       <Select name={names.select}>
-        {options.map((option) => (
-          <Option key={option?.id || option} value={option?.id || option}>
-            {option?.name || option}
-          </Option>
-        ))}
+        {options.map((option) =>
+          typeof option === "string" ? (
+            <Option key={option} value={option}>
+              {option}
+            </Option>
+          ) : (
+            <Option key={option?.id} value={option?.id}>
+              {option?.name}
+            </Option>
+          )
+        )}
       </Select>
       <Input
         name={names.custom}

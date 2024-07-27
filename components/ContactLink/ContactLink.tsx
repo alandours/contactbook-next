@@ -8,16 +8,15 @@ import {
   isBirthdayFromToday,
   getNamedDate,
 } from "@/features/birthdays/utils"
-import { ContactWithNextBirthday } from "@/types/birthday"
 import { UIContext } from "@/ui/context"
 import { Icon, Link } from "@/ui"
 import { Icons } from "@/ui/icons"
 
 import { Name, NamedDate, Date, Age } from "./styles"
-import { ButtonVariants } from "@/types"
+import { ButtonVariants, Contact } from "@/types"
 
 interface ContactLinkProps {
-  contact: ContactWithNextBirthday
+  contact: Contact & { nextBirthday?: Date }
   showPhoto?: boolean
   showAge?: boolean
   showMonth?: boolean
