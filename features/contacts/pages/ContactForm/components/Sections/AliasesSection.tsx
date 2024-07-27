@@ -8,7 +8,7 @@ import { SingleField } from "./fields/SingleField"
 import { AddNewButton } from "./styles"
 
 export const AliasesSection = () => {
-  const { fields, append, remove } = useFieldArray({ name: "Alias" })
+  const { fields, append, remove } = useFieldArray({ name: "aliases" })
 
   const addNewAlias = useCallback(
     (shouldFocus = true) => append({ alias: "" }, { shouldFocus }),
@@ -28,7 +28,7 @@ export const AliasesSection = () => {
           <SingleField
             key={alias.id}
             label="Alias"
-            name={`Alias[${index}].alias`}
+            name={`aliases[${index}].alias`}
             removeField={() => remove(index)}
           />
         ))}

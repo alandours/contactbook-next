@@ -9,7 +9,7 @@ import { MultiField } from "./fields/MultiField"
 import { AddNewButton } from "./styles"
 
 export const EmailsSection = () => {
-  const { fields, append, remove } = useFieldArray({ name: "Email" })
+  const { fields, append, remove } = useFieldArray({ name: "emails" })
 
   const addNewEmail = useCallback(
     (shouldFocus = true) =>
@@ -38,9 +38,9 @@ export const EmailsSection = () => {
             key={email.id}
             label="E-mail"
             names={{
-              input: `Email[${index}].email`,
-              select: `Email[${index}].type`,
-              custom: `Email[${index}].label`,
+              input: `emails[${index}].email`,
+              select: `emails[${index}].type`,
+              custom: `emails[${index}].label`,
             }}
             options={Object.keys(EmailType)}
             customType={EmailType.Custom}

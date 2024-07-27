@@ -60,7 +60,7 @@ const renderSection = (
   switch (key) {
     case "notes":
       return <Notes>{data as string}</Notes>
-    case "Alias":
+    case "aliases":
       return renderAliases(data as Alias[])
     default:
       return renderMultiFields(data as Record<string, unknown>[], urlStart)

@@ -10,7 +10,7 @@ import { MultiField } from "./fields/MultiField"
 import { AddNewButton } from "./styles"
 
 export const SocialsSection = () => {
-  const { fields, append, remove } = useFieldArray({ name: "Social" })
+  const { fields, append, remove } = useFieldArray({ name: "socials" })
 
   const [platforms, setPlatforms] = useState<Platform[]>([])
 
@@ -50,9 +50,9 @@ export const SocialsSection = () => {
             key={username.id}
             label="Username"
             names={{
-              input: `Social[${index}].username`,
-              select: `Social[${index}].platformId`,
-              custom: `Social[${index}].label`,
+              input: `socials[${index}].username`,
+              select: `socials[${index}].platformId`,
+              custom: `socials[${index}].label`,
             }}
             options={platforms}
             removeField={() => remove(index)}

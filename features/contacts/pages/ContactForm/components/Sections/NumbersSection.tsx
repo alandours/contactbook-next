@@ -9,7 +9,7 @@ import { MultiField } from "./fields/MultiField"
 import { AddNewButton } from "./styles"
 
 export const NumbersSection = () => {
-  const { fields, append, remove } = useFieldArray({ name: "Number" })
+  const { fields, append, remove } = useFieldArray({ name: "numbers" })
 
   const addNewNumber = useCallback(
     (shouldFocus = true) =>
@@ -38,9 +38,9 @@ export const NumbersSection = () => {
             key={number.id}
             label="Phone number"
             names={{
-              input: `Number[${index}].number`,
-              select: `Number[${index}].type`,
-              custom: `Number[${index}].label`,
+              input: `numbers[${index}].number`,
+              select: `numbers[${index}].type`,
+              custom: `numbers[${index}].label`,
             }}
             options={Object.keys(NumberType)}
             customType={NumberType.Custom}
