@@ -1,75 +1,17 @@
 "use server"
 
-import { writeFile } from "fs/promises"
-import path from "path"
-
-import { ROUTES } from "@/constants/routes"
 import prisma from "@/lib/prisma"
-import { Filters } from "@/types"
+import { ContactFormData, Filters } from "@/types"
+
+import { createQuery, createRelatedFieldQuery, writeImage } from "./utils"
 
 export const getContacts = async (filters: Filters = {}) => {
-  const filter = {
+  const searchFilter = {
     contains: filters.search || "",
     mode: "insensitive",
   } as const
 
-  const contacts = await prisma.contact.findMany({
-    where: {
-      active: true,
-      yearMet: filters.year,
-      favorite: filters.favorite,
-      OR: [
-        {
-          name: filter,
-        },
-        {
-          lastname: filter,
-        },
-        {
-          address: filter,
-        },
-        {
-          notes: filter,
-        },
-        {
-          Social: {
-            some: {
-              username: filter,
-            },
-          },
-        },
-        {
-          Social: {
-            some: {
-              platform: {
-                name: filter,
-              },
-            },
-          },
-        },
-        {
-          Number: {
-            some: {
-              number: filter,
-            },
-          },
-        },
-        {
-          Email: {
-            some: {
-              email: filter,
-            },
-          },
-        },
-        {
-          Alias: {
-            some: {
-              alias: filter,
-            },
-          },
-        },
-      ],
-    },
+  return await prisma.contact.findMany({
     select: {
       id: true,
       name: true,
@@ -81,7 +23,7 @@ export const getContacts = async (filters: Filters = {}) => {
       yearMet: true,
       favorite: true,
       createdAt: true,
-      Social: {
+      socials: {
         select: {
           id: true,
           username: true,
@@ -89,7 +31,7 @@ export const getContacts = async (filters: Filters = {}) => {
           platform: true,
         },
       },
-      Number: {
+      numbers: {
         select: {
           id: true,
           number: true,
@@ -97,7 +39,7 @@ export const getContacts = async (filters: Filters = {}) => {
           label: true,
         },
       },
-      Email: {
+      emails: {
         select: {
           id: true,
           email: true,
@@ -105,20 +47,78 @@ export const getContacts = async (filters: Filters = {}) => {
           label: true,
         },
       },
-      Alias: {
+      aliases: {
         select: {
           id: true,
           alias: true,
         },
       },
     },
+    where: {
+      active: true,
+      yearMet: filters.year,
+      favorite: filters.favorite,
+      OR: [
+        {
+          name: searchFilter,
+        },
+        {
+          lastname: searchFilter,
+        },
+        {
+          address: searchFilter,
+        },
+        {
+          notes: searchFilter,
+        },
+        {
+          aliases: {
+            some: {
+              alias: searchFilter,
+            },
+          },
+        },
+        {
+          numbers: {
+            some: {
+              number: searchFilter,
+            },
+          },
+        },
+        {
+          emails: {
+            some: {
+              email: searchFilter,
+            },
+          },
+        },
+
+        {
+          socials: {
+            some: {
+              username: searchFilter,
+            },
+          },
+        },
+        {
+          socials: {
+            some: {
+              platform: {
+                name: searchFilter,
+              },
+            },
+          },
+        },
+      ],
+    },
     orderBy: [{ name: "asc" }, { lastname: "asc" }],
   })
-
-  return contacts
 }
 
-export const upsertContact = async (data, formData) => {
+export const upsertContact = async (
+  data: ContactFormData,
+  formData: FormData
+) => {
   const {
     id: contactId,
     name,
@@ -128,156 +128,54 @@ export const upsertContact = async (data, formData) => {
     yearMet,
     notes,
     removePhoto,
-    Alias,
-    Number,
-    Email,
-    Social,
+    aliases,
+    numbers,
+    emails,
+    socials,
   } = data
 
-  // Photo
-  const imageFile = formData.get("file")
-  let newPhotoName: string | null = null
+  const imageFile = formData.get("file") as File | null
+  const photo = imageFile && !removePhoto ? await writeImage(imageFile) : null
 
-  if (imageFile && !removePhoto) {
-    const buffer = Buffer.from(await imageFile.arrayBuffer())
-    const filename = `${Date.now()}_${imageFile.name.replaceAll(" ", "_")}`
-    const imagePath = path.join(process.cwd(), ROUTES.profilePictures(filename))
-    await writeFile(imagePath, buffer)
-    newPhotoName = filename
-  }
-
-  const contact = await prisma.$transaction(async (tx) => {
-    let contactQuery = {
+  return await prisma.$transaction(async (tx) => {
+    const query = {
       name,
       lastname,
       birthday,
       address,
       yearMet,
       notes,
+      ...(imageFile || removePhoto ? { photo } : {}),
     }
 
-    if (removePhoto || imageFile) {
-      contactQuery = {
-        ...contactQuery,
-        photo: newPhotoName,
-      }
+    const contact = await tx.contact.upsert(createQuery(contactId, query))
+
+    for (const aliasData of aliases) {
+      const query = createRelatedFieldQuery(aliasData, contactId)
+      await tx.alias.upsert(query)
     }
 
-    // Contact
-    const contact = await tx.contact.upsert({
-      where: {
-        id: contactId || "",
-      },
-      update: contactQuery,
-      create: contactQuery,
-    })
-
-    // Alias
-    for (const aliasData of Alias) {
-      const { id, alias } = aliasData
-
-      const aliasQuery = {
-        alias,
-        contact: {
-          connect: {
-            id: contactId,
-          },
-        },
-      }
-
-      await tx.alias.upsert({
-        where: {
-          id: id || "",
-        },
-        update: aliasQuery,
-        create: aliasQuery,
-      })
+    for (const numberData of numbers) {
+      const query = createRelatedFieldQuery(numberData, contactId)
+      await tx.number.upsert(query)
     }
 
-    // Number
-    for (const numberData of Number) {
-      const { id, number, type, label } = numberData
-
-      const numberQuery = {
-        number,
-        type,
-        label,
-        contact: {
-          connect: {
-            id: contactId,
-          },
-        },
-      }
-
-      await tx.number.upsert({
-        where: {
-          id: id || "",
-        },
-        update: numberQuery,
-        create: numberQuery,
-      })
+    for (const emailData of emails) {
+      const query = createRelatedFieldQuery(emailData, contactId)
+      await tx.email.upsert(query)
     }
 
-    // Email
-    for (const emailData of Email) {
-      const { id, email, type, label } = emailData
-
-      const emailQuery = {
-        email,
-        type,
-        label,
-        contact: {
-          connect: {
-            id: contactId,
-          },
-        },
-      }
-
-      await tx.email.upsert({
-        where: {
-          id: id || "",
-        },
-        update: emailQuery,
-        create: emailQuery,
-      })
-    }
-
-    // Social
-    for (const socialData of Social) {
-      const { id, username, platformId, label } = socialData
-
-      const socialQuery = {
-        username,
-        label,
-        platform: {
-          connect: {
-            id: platformId,
-          },
-        },
-        contact: {
-          connect: {
-            id: contactId,
-          },
-        },
-      }
-
-      await tx.social.upsert({
-        where: {
-          id: id || "",
-        },
-        update: socialQuery,
-        create: socialQuery,
-      })
+    for (const socialData of socials) {
+      const query = createRelatedFieldQuery(socialData, contactId)
+      await tx.social.upsert(query)
     }
 
     return contact
   })
-
-  return contact
 }
 
-export const deleteContact = async (id) => {
-  return await prisma.contact.update({
+export const deleteContact = async (id: string) =>
+  await prisma.contact.update({
     where: {
       id,
     },
@@ -285,23 +183,19 @@ export const deleteContact = async (id) => {
       active: false,
     },
   })
-}
 
-export const getPlatforms = async () => {
-  const platforms = await prisma.platform.findMany({
-    select: {
-      id: true,
-      name: true,
-      url: true,
-      prefix: true,
+export const updateFavorite = async (id: string, isFavorite: boolean) =>
+  await prisma.contact.update({
+    where: {
+      id,
+    },
+    data: {
+      favorite: isFavorite,
     },
   })
 
-  return platforms
-}
-
-export const getStats = async () => {
-  const stats = await prisma.contact.groupBy({
+export const getStats = async () =>
+  await prisma.contact.groupBy({
     by: "yearMet",
     where: {
       active: true,
@@ -313,18 +207,12 @@ export const getStats = async () => {
     },
   })
 
-  return stats
-}
-
-export const updateFavorite = async (id: string, isFavorite: boolean) => {
-  const contact = await prisma.contact.update({
-    where: {
-      id,
-    },
-    data: {
-      favorite: isFavorite,
+export const getPlatforms = async () =>
+  await prisma.platform.findMany({
+    select: {
+      id: true,
+      name: true,
+      url: true,
+      prefix: true,
     },
   })
-
-  return contact
-}

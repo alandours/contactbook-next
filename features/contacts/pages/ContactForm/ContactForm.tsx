@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState, useEffect, useRef, useContext } from "react"
+import React, { useState, useEffect, useRef, useContext, UIEvent } from "react"
 import { notFound, useRouter } from "next/navigation"
 import { useForm, FormProvider } from "react-hook-form"
 import { yupResolver } from "@hookform/resolvers/yup"
@@ -9,7 +9,7 @@ import { upsertContact, deleteContact } from "@/actions/actions"
 import { ROUTES } from "@/constants/routes"
 import { StickyBar } from "@/features/contacts/StickyBar"
 import { ContactsContext } from "@/features/contacts/context"
-import { ButtonVariants } from "@/types"
+import { ButtonVariants, ContactFormData } from "@/types"
 import { Button, Icon, Loader, Toast } from "@/ui"
 import { Icons } from "@/ui/icons"
 import { UIContext } from "@/ui/context"
@@ -58,22 +58,22 @@ export const ContactForm = ({ id }: ContactFormProps) => {
     }
   }, [id, selectContact, reset])
 
-  const onSubmit = async (data) => {
+  const onSubmit = async (data: ContactFormData) => {
     console.log("submit", data)
 
     const { file, ...contactData } = data
 
     let newData = {
       ...contactData,
-      Alias: data.Alias.filter((field) => !!field.alias),
-      Number: data.Number.filter((field) => !!field.number),
-      Email: data.Email.filter((field) => !!field.email),
-      Social: data.Social.filter((field) => !!field.username),
+      aliases: data.aliases.filter((field) => !!field.alias),
+      numbers: data.numbers.filter((field) => !!field.number),
+      emails: data.emails.filter((field) => !!field.email),
+      socials: data.socials.filter((field) => !!field.username),
     }
 
     const formData = new FormData()
 
-    if (file.length) {
+    if (file?.length) {
       formData.append("file", file[0])
     }
 
@@ -83,13 +83,13 @@ export const ContactForm = ({ id }: ContactFormProps) => {
   }
 
   const onDelete = async () => {
-    await deleteContact(id)
+    await deleteContact(id as string)
     router.push(ROUTES.contacts.main)
   }
 
-  const handleScroll = (e) => {
+  const handleScroll = (e: UIEvent<HTMLFormElement>) => {
     if (e.target === formRef.current) {
-      setShowStickyBar(e.target.scrollTop > 270)
+      setShowStickyBar((e.target as HTMLFormElement).scrollTop > 270)
     }
   }
 

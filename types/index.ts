@@ -1,4 +1,10 @@
-import { Contact as ContactType } from "@prisma/client"
+import {
+  Alias,
+  Contact as ContactType,
+  Email,
+  Number,
+  Social,
+} from "@prisma/client"
 
 export enum ButtonVariants {
   MAIN,
@@ -37,4 +43,16 @@ export type Filters = {
 export enum NotFoundType {
   MAIN,
   CONTACT,
+}
+
+export type ContactFormData = Omit<
+  Contact,
+  "favorite" | "photo" | "createdAt"
+> & {
+  removePhoto: boolean
+  file?: File[]
+  aliases: Alias[]
+  emails: Email[]
+  numbers: Number[]
+  socials: Social[]
 }

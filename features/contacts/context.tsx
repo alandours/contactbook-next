@@ -28,7 +28,7 @@ interface ContactsContextValues {
     remove,
     persist,
   }: {
-    key: string
+    key: keyof Filters
     value?: any
     remove?: boolean
     persist?: boolean
@@ -63,19 +63,16 @@ export const ContactsProvider = ({ data, children }: ContactsProviderProps) => {
   const [filters, setFilters] = useState<Filters>(initialValues.filters)
   const [palette, setPalette] = useState<string[]>([])
 
-  const fetchContacts = useCallback(
-    () => async () => {
-      setLoading(true)
+  const fetchContacts = useCallback(async () => {
+    setLoading(true)
 
-      const contacts = await getContacts(filters)
+    const contacts = await getContacts(filters)
 
-      setContacts(contacts)
-      setLoading(false)
+    setContacts(contacts)
+    setLoading(false)
 
-      return contacts
-    },
-    [filters]
-  )
+    return contacts
+  }, [filters])
 
   const selectContact = (id: string) => {
     const contact = getContactById(contacts, id)
@@ -89,7 +86,7 @@ export const ContactsProvider = ({ data, children }: ContactsProviderProps) => {
     remove,
     persist,
   }: {
-    key: string
+    key: keyof Filters
     value?: any
     remove?: boolean
     persist?: boolean

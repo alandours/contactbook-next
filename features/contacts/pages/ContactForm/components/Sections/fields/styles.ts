@@ -19,6 +19,7 @@ export const RemoveButton = styled(XButton)`
 `
 
 export const FormField = styled.div`
+  align-items: flex-start;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
