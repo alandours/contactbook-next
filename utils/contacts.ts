@@ -8,6 +8,3 @@ export const getRandomContact = (contacts: Contact[]) => {
   const randomContact = contacts[randomIndex]
   return randomContact
 }
-
-export const getContactById = (contacts: Contact[], id: string) =>
-  contacts.find((contact) => contact.id === id) || null

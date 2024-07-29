@@ -43,11 +43,12 @@ const renderContactGroups = (contacts: Contact[]) => {
 }
 
 interface ContactListProps {
+  contacts: Contact[]
   hasSearch: boolean
 }
 
-export const ContactList = ({ hasSearch }: ContactListProps) => {
-  const { contacts, loading, updateFilters } = useContext(ContactsContext)
+export const ContactList = ({ contacts, hasSearch }: ContactListProps) => {
+  const { loading, updateFilters } = useContext(ContactsContext)
 
   const handleTyping = (e: KeyboardEvent<HTMLInputElement>) => {
     const { value } = e.target as HTMLInputElement

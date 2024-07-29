@@ -1,9 +1,54 @@
 "use server"
 
+import { revalidatePath } from "next/cache"
+
 import prisma from "@/lib/prisma"
 import { ContactFormData, Filters } from "@/types"
 
 import { createQuery, createRelatedFieldQuery, writeImage } from "./utils"
+
+const CONTACT_SELECT = {
+  id: true,
+  name: true,
+  lastname: true,
+  photo: true,
+  birthday: true,
+  address: true,
+  notes: true,
+  yearMet: true,
+  favorite: true,
+  createdAt: true,
+  socials: {
+    select: {
+      id: true,
+      username: true,
+      label: true,
+      platform: true,
+    },
+  },
+  numbers: {
+    select: {
+      id: true,
+      number: true,
+      type: true,
+      label: true,
+    },
+  },
+  emails: {
+    select: {
+      id: true,
+      email: true,
+      type: true,
+      label: true,
+    },
+  },
+  aliases: {
+    select: {
+      id: true,
+      alias: true,
+    },
+  },
+}
 
 export const getContacts = async (filters: Filters = {}) => {
   const searchFilter = {
@@ -12,48 +57,7 @@ export const getContacts = async (filters: Filters = {}) => {
   } as const
 
   return await prisma.contact.findMany({
-    select: {
-      id: true,
-      name: true,
-      lastname: true,
-      photo: true,
-      birthday: true,
-      address: true,
-      notes: true,
-      yearMet: true,
-      favorite: true,
-      createdAt: true,
-      socials: {
-        select: {
-          id: true,
-          username: true,
-          label: true,
-          platform: true,
-        },
-      },
-      numbers: {
-        select: {
-          id: true,
-          number: true,
-          type: true,
-          label: true,
-        },
-      },
-      emails: {
-        select: {
-          id: true,
-          email: true,
-          type: true,
-          label: true,
-        },
-      },
-      aliases: {
-        select: {
-          id: true,
-          alias: true,
-        },
-      },
-    },
+    select: CONTACT_SELECT,
     where: {
       active: true,
       yearMet: filters.year,
@@ -115,6 +119,15 @@ export const getContacts = async (filters: Filters = {}) => {
   })
 }
 
+export const getContact = async (id: string) =>
+  await prisma.contact.findFirst({
+    select: CONTACT_SELECT,
+    where: {
+      id,
+      active: true,
+    },
+  })
+
 export const upsertContact = async (
   data: ContactFormData,
   formData: FormData
@@ -137,7 +150,7 @@ export const upsertContact = async (
   const imageFile = formData.get("file") as File | null
   const photo = imageFile && !removePhoto ? await writeImage(imageFile) : null
 
-  return await prisma.$transaction(async (tx) => {
+  const contact = await prisma.$transaction(async (tx) => {
     const query = {
       name,
       lastname,
@@ -172,6 +185,10 @@ export const upsertContact = async (
 
     return contact
   })
+
+  revalidatePath("/", "layout")
+
+  return contact
 }
 
 export const deleteContact = async (id: string) =>

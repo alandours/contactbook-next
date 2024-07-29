@@ -9,7 +9,7 @@ import { upsertContact, deleteContact } from "@/actions/actions"
 import { ROUTES } from "@/constants/routes"
 import { StickyBar } from "@/features/contacts/StickyBar"
 import { ContactsContext } from "@/features/contacts/context"
-import { ButtonVariants, ContactFormData } from "@/types"
+import { ButtonVariants, Contact, ContactFormData } from "@/types"
 import { Button, Icon, Loader, Toast } from "@/ui"
 import { Icons } from "@/ui/icons"
 import { UIContext } from "@/ui/context"
@@ -22,14 +22,14 @@ import schema from "./schema"
 import { ContactFormContainer, FormActions } from "./styles"
 
 interface ContactFormProps {
-  id?: string
+  contact?: Contact | null
 }
 
-export const ContactForm = ({ id }: ContactFormProps) => {
+export const ContactForm = ({ contact }: ContactFormProps) => {
   const [showStickyBar, setShowStickyBar] = useState(false)
 
   const { theme } = useContext(UIContext)
-  const { selectedContact, selectContact } = useContext(ContactsContext)
+  const { selectContact } = useContext(ContactsContext)
 
   const router = useRouter()
 
@@ -39,15 +39,13 @@ export const ContactForm = ({ id }: ContactFormProps) => {
     resolver: yupResolver(schema),
   })
 
-  const { handleSubmit, reset, formState } = methods
+  const { handleSubmit, reset } = methods
 
   useEffect(() => {
-    if (id) {
-      const contact = selectContact(id)
+    if (contact) {
+      selectContact(contact)
 
-      if (!contact) {
-        notFound()
-      }
+      console.log(contact)
 
       reset({
         ...contact,
@@ -56,7 +54,7 @@ export const ContactForm = ({ id }: ContactFormProps) => {
           : null,
       })
     }
-  }, [id, selectContact, reset])
+  }, [contact, selectContact, reset])
 
   const onSubmit = async (data: ContactFormData) => {
     console.log("submit", data)
@@ -83,7 +81,7 @@ export const ContactForm = ({ id }: ContactFormProps) => {
   }
 
   const onDelete = async () => {
-    await deleteContact(id as string)
+    await deleteContact(contact?.id as string)
     router.push(ROUTES.contacts.main)
   }
 
@@ -106,8 +104,8 @@ export const ContactForm = ({ id }: ContactFormProps) => {
         )} */}
         <ContactFormHeader />
         <ContactSecondaryForm />
-        <FormActions $edit={!!selectedContact}>
-          {!!selectedContact && (
+        <FormActions $edit={!!contact}>
+          {!!contact && (
             <Button
               type="button"
               handleClick={onDelete}

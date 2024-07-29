@@ -5,14 +5,12 @@ import {
   ReactNode,
   SetStateAction,
   createContext,
-  useCallback,
   useEffect,
   useState,
 } from "react"
 
 import { getContacts } from "@/actions/actions"
 import { Contact, Filters } from "@/types"
-import { getContactById } from "@/utils/contacts"
 
 interface ContactsContextValues {
   contacts: Contact[]
@@ -20,8 +18,7 @@ interface ContactsContextValues {
   loading: boolean | undefined
   filters: Filters
   palette: string[]
-  fetchContacts: (search?: string) => void
-  selectContact: (id: string) => Contact | null
+  selectContact: (contact: Contact) => void
   updateFilters: ({
     key,
     value,
@@ -42,7 +39,6 @@ const initialValues: ContactsContextValues = {
   loading: undefined,
   filters: {},
   palette: [],
-  fetchContacts: () => undefined,
   selectContact: () => null,
   updateFilters: () => undefined,
   setPalette: () => undefined,
@@ -63,22 +59,7 @@ export const ContactsProvider = ({ data, children }: ContactsProviderProps) => {
   const [filters, setFilters] = useState<Filters>(initialValues.filters)
   const [palette, setPalette] = useState<string[]>([])
 
-  const fetchContacts = useCallback(async () => {
-    setLoading(true)
-
-    const contacts = await getContacts(filters)
-
-    setContacts(contacts)
-    setLoading(false)
-
-    return contacts
-  }, [filters])
-
-  const selectContact = (id: string) => {
-    const contact = getContactById(contacts, id)
-    setSelectedContact(contact)
-    return contact
-  }
+  const selectContact = (contact: Contact) => setSelectedContact(contact)
 
   const updateFilters = ({
     key,
@@ -110,8 +91,23 @@ export const ContactsProvider = ({ data, children }: ContactsProviderProps) => {
   }
 
   useEffect(() => {
+    setContacts(data)
+  }, [data])
+
+  useEffect(() => {
+    const fetchContacts = async () => {
+      setLoading(true)
+
+      const contacts = await getContacts(filters)
+
+      setContacts(contacts)
+      setLoading(false)
+
+      return contacts
+    }
+
     fetchContacts()
-  }, [fetchContacts])
+  }, [filters])
 
   return (
     <ContactsContext.Provider
@@ -121,7 +117,6 @@ export const ContactsProvider = ({ data, children }: ContactsProviderProps) => {
         loading,
         filters,
         palette,
-        fetchContacts,
         selectContact,
         updateFilters,
         setPalette,

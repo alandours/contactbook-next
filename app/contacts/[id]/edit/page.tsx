@@ -1,8 +1,7 @@
 import { Metadata } from "next"
 
-import { getContacts } from "@/actions/actions"
+import { getContact } from "@/actions/actions"
 import { ContactForm } from "@/features/contacts/pages/ContactForm"
-import { getContactById } from "@/utils/contacts"
 
 interface EditContactPageProps {
   params: {
@@ -13,16 +12,17 @@ interface EditContactPageProps {
 export async function generateMetadata({
   params: { id },
 }: EditContactPageProps): Promise<Metadata> {
-  const contacts = await getContacts()
-  const contact = getContactById(contacts, id)
+  const contact = await getContact(id)
 
   return {
     title: contact ? `${contact.name} ${contact.lastname}` : `Contactbook`,
   }
 }
 
-export default function EditContactPage({
+export default async function EditContactPage({
   params: { id },
 }: EditContactPageProps) {
-  return <ContactForm id={id} />
+  const contact = await getContact(id)
+
+  return <ContactForm contact={contact} />
 }

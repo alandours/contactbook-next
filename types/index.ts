@@ -33,11 +33,11 @@ export enum ListItemType {
   INITIAL,
 }
 
-export type Alias = ContactAliasType
-export type Email = ContactEmailType
-export type Number = ContactNumberType
-export type Platform = SocialPlatformType
-export type Social = ContactSocialType & {
+export type Alias = Omit<ContactAliasType, "contactId">
+export type Email = Omit<ContactEmailType, "contactId">
+export type Number = Omit<ContactNumberType, "contactId">
+export type Platform = Omit<SocialPlatformType, "contactId">
+export type Social = Omit<ContactSocialType, "contactId" | "platformId"> & {
   platform: Platform
 }
 
