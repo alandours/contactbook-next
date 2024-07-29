@@ -24,8 +24,10 @@ export const Selector = styled(Icon)`
 export const SelectContainer = styled.select`
   ${({ theme }) => css`
     appearance: none;
+    background: transparent;
     border: 1px solid ${theme.selected.contrast[4]};
     border-radius: 3px;
+    color: ${theme.selected.contrast[1]};
     cursor: pointer;
     display: grid;
     margin: 1rem 0 1.75rem 0;

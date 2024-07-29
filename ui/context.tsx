@@ -9,7 +9,7 @@ import {
   useState,
 } from "react"
 
-import { Settings, getLocalSettings } from "@/features/settings/settings"
+import { Settings, getSettings } from "@/features/settings/settings"
 import { Status } from "@/types"
 import {
   Colors,
@@ -52,18 +52,15 @@ interface UIContextValues {
 }
 
 const initialValues: UIContextValues = {
-  theme: initialTheme,
-  settings: {
-    [Settings.FILTER_FAVORITES]: false,
-    [Settings.SHOW_AGE]: false,
-    [Settings.SHOW_FAVORITE_ICON]: false,
-    [Settings.SHOW_PHOTO]: false,
-    [Settings.SORT_BY_LAST_NAME]: false,
+  theme: {
+    selected: palette[getTheme()],
+    mainColor: colors[getMainColor()],
   },
+  settings: getSettings(),
   menuOpen: false,
   toast: null,
-  themeKey: ThemeColor.LIGHT,
-  colorKey: Colors.GREEN,
+  themeKey: getTheme(),
+  colorKey: getMainColor(),
   setTheme: () => undefined,
   toggleMenu: () => undefined,
   setToast: () => undefined,
@@ -77,12 +74,10 @@ interface UIProviderProps {
 }
 
 export const UIProvider = ({ children }: UIProviderProps) => {
-  const [theme, setTheme] = useState(initialValues.theme)
   const [menuOpen, setMenuOpen] = useState(false)
   const [toast, setToast] = useState<Toast | null>(null)
   const [settings, setSettings] = useState(initialValues.settings)
-  const [themeKey, setThemeKey] = useState(initialValues.themeKey)
-  const [colorKey, setColorKey] = useState(initialValues.colorKey)
+  const [theme, setTheme] = useState(initialValues.theme)
 
   const toggleMenu = () => {
     setMenuOpen((prevState) => !prevState)
@@ -98,24 +93,6 @@ export const UIProvider = ({ children }: UIProviderProps) => {
     setSettings((prevSettings) => ({ ...prevSettings, [setting]: active }))
   }
 
-  const setLocalData = () => {
-    const themeKey = getTheme()
-    const colorKey = getMainColor()
-
-    setThemeKey(themeKey)
-    setColorKey(colorKey)
-
-    setSettings(getLocalSettings())
-    setTheme({
-      selected: palette[themeKey],
-      mainColor: colors[colorKey],
-    })
-  }
-
-  useEffect(() => {
-    setLocalData()
-  }, [])
-
   return (
     <UIContext.Provider
       value={{
@@ -123,8 +100,8 @@ export const UIProvider = ({ children }: UIProviderProps) => {
         settings,
         menuOpen,
         toast,
-        themeKey,
-        colorKey,
+        themeKey: initialValues.themeKey,
+        colorKey: initialValues.colorKey,
         setTheme,
         updateSetting,
         toggleMenu,

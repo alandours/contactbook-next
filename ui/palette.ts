@@ -135,7 +135,11 @@ export const theme = {
 }
 
 export const getMainColor = () =>
-  (localStorage.getItem("mainColor") as Colors | null) || Colors.GREEN
+  (typeof window !== "undefined" &&
+    (localStorage.getItem("mainColor") as Colors | null)) ||
+  Colors.GREEN
 
 export const getTheme = () =>
-  localStorage.getItem("darkTheme") ? ThemeColor.DARK : ThemeColor.LIGHT
+  typeof window !== "undefined" && localStorage.getItem("darkTheme")
+    ? ThemeColor.DARK
+    : ThemeColor.LIGHT

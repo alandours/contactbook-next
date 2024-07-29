@@ -64,8 +64,8 @@ export const ProfilePicture = ({
       ref={imageRef}
       onLoad={handlePalette}
       onClick={photo ? handleClick : undefined}
-      width={360}
-      height={360}
+      width={thumbnail ? 60 : 360}
+      height={thumbnail ? 60 : 360}
       quality={100}
     />
   )

@@ -11,6 +11,7 @@ export const Container = styled.div`
 
 export const InputContainer = styled.input<{ size: InputSizes }>`
   ${({ theme, type, size }) => css`
+    background: transparent;
     border: 0;
     border-bottom: 1px solid ${theme.selected.contrast[4]};
     color: ${theme.selected.contrast[1]};
