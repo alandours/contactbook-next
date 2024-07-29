@@ -7,12 +7,16 @@ export const getPalette = (
   colorAmount: number,
   quality = 10
 ) => {
-  const palette = colorThief.getPalette(img, colorAmount, quality)
+  try {
+    const palette = colorThief.getPalette(img, colorAmount, quality)
 
-  return palette?.map((color) => {
-    const [red, green, blue] = color
-    return `rgb(${red}, ${green}, ${blue})`
-  })
+    return palette?.map((color) => {
+      const [red, green, blue] = color
+      return `rgb(${red}, ${green}, ${blue})`
+    })
+  } catch {
+    return
+  }
 }
 export const getDominantColor = (img: HTMLImageElement, quality = 10) => {
   const color = colorThief.getColor(img, quality)

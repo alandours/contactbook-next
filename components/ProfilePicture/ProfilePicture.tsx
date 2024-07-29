@@ -53,6 +53,8 @@ export const ProfilePicture = ({
     }
   }
 
+  const size = thumbnail ? 60 : 360
+
   return (
     <ProfilePictureContainer
       src={
@@ -64,8 +66,8 @@ export const ProfilePicture = ({
       ref={imageRef}
       onLoad={handlePalette}
       onClick={photo ? handleClick : undefined}
-      width={thumbnail ? 60 : 360}
-      height={thumbnail ? 60 : 360}
+      width={size}
+      height={size}
       quality={100}
     />
   )
