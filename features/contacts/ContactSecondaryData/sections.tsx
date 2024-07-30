@@ -13,7 +13,7 @@ type UnionToIntersection<U> = (U extends any ? (x: U) => void : never) extends (
   : never
 
 export type SectionRenderData = UnionToIntersection<
-  Parameters<(typeof CONTACT_SECTIONS)[number]['render']>[0]
+  Parameters<(typeof CONTACT_SECTIONS)[number]["render"]>[0]
 >
 
 export const CONTACT_SECTIONS = [
@@ -34,13 +34,12 @@ export const CONTACT_SECTIONS = [
     icon: Icons.phone,
     key: 'numbers',
     order: 2,
-    urlStart: 'tel:',
-    render: (numbers: Number[], urlStart?: string) =>
+    render: (numbers: Number[]) =>
       numbers.map((number) => {
         const { id, number: name, type, label: customLabel } = number
         const label =
           customLabel && type === NumberType.Custom ? customLabel : type
-        const url = `${urlStart}${name}`
+        const url = `tel:${name}`
 
         return <Datafield name={name} label={label} url={url} key={id} />
       }),
@@ -50,13 +49,12 @@ export const CONTACT_SECTIONS = [
     icon: Icons.email,
     key: 'emails',
     order: 3,
-    urlStart: 'mailto:',
-    render: (emails: Email[], urlStart?: string) =>
+    render: (emails: Email[]) =>
       emails.map((email) => {
         const { id, email: name, type, label: customLabel } = email
         const label =
           customLabel && type === EmailType.Custom ? customLabel : type
-        const url = `${urlStart}${name}`
+        const url = `mailto:${name}`
 
         return <Datafield name={name} label={label} url={url} key={id} />
       }),
@@ -66,7 +64,6 @@ export const CONTACT_SECTIONS = [
     icon: Icons.social,
     key: 'socials',
     order: 4,
-    urlStart: 'https://',
     render: (socials: Social[]) =>
       socials.map((social) => {
         const {

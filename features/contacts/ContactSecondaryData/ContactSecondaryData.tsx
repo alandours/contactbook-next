@@ -1,10 +1,10 @@
-import { useContext } from 'react'
+import { useContext } from "react"
 
-import { Section } from '@/components/Section'
-import { ContactsContext } from '@/features/contacts/context'
+import { Section } from "@/components/Section"
+import { ContactsContext } from "@/features/contacts/context"
 
-import { CONTACT_SECTIONS, SectionRenderData } from './sections'
-import { ContactSecondaryDataContainer } from './styles'
+import { CONTACT_SECTIONS, SectionRenderData } from "./sections"
+import { ContactSecondaryDataContainer } from "./styles"
 
 export const ContactSecondaryData = () => {
   const { selectedContact } = useContext(ContactsContext)
@@ -13,7 +13,7 @@ export const ContactSecondaryData = () => {
     selectedContact && (
       <ContactSecondaryDataContainer>
         {CONTACT_SECTIONS.map((section) => {
-          const { title, icon, key, order, urlStart, render } = section
+          const { title, icon, key, order, render } = section
           const data = selectedContact[key] as SectionRenderData
 
           return (
