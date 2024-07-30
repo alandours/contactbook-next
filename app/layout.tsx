@@ -40,7 +40,7 @@ export default async function RootLayout({
                   <Header />
                   <Main>
                     <Sidebar>
-                      <ContactList contacts={contacts} hasSearch />
+                      <ContactList hasSearch />
                     </Sidebar>
                     <MainContent>{children}</MainContent>
                   </Main>

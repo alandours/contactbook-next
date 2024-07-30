@@ -72,7 +72,7 @@ export const ContactsProvider = ({ data, children }: ContactsProviderProps) => {
     remove?: boolean
     persist?: boolean
   }) => {
-    if (value) {
+    if (value || value === '') {
       setFilters((prevFilters) => ({ ...prevFilters, [key]: value }))
     }
 
