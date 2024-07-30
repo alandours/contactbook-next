@@ -2,8 +2,10 @@
 
 import { revalidatePath } from "next/cache"
 
+import { MESSAGES } from "@/constants/messages"
+import { schema } from "@/features/contacts/pages/ContactForm/schema"
 import prisma from "@/lib/prisma"
-import { ContactFormData, Filters } from "@/types"
+import { Filters, Status } from "@/types"
 
 import { createQuery, createRelatedFieldQuery, writeImage } from "./utils"
 
@@ -128,10 +130,7 @@ export const getContact = async (id: string) =>
     },
   })
 
-export const upsertContact = async (
-  data: ContactFormData,
-  formData: FormData
-) => {
+export const upsertContact = async (data: any, formData: FormData) => {
   const {
     id: contactId,
     name,
@@ -147,48 +146,71 @@ export const upsertContact = async (
     socials,
   } = data
 
-  const imageFile = formData.get("file") as File | null
-  const photo = imageFile && !removePhoto ? await writeImage(imageFile) : null
+  try {
+    const imageFile = formData.get("file") as File | null
 
-  const contact = await prisma.$transaction(async (tx) => {
-    const query = {
-      name,
-      lastname,
-      birthday,
-      address,
-      yearMet,
-      notes,
-      ...(imageFile || removePhoto ? { photo } : {}),
+    const parsed = schema.safeParse({ ...data, file: imageFile })
+
+    if (!parsed.success) {
+      return {
+        status: Status.ERROR,
+        message: MESSAGES.CONTACT_VALIDATION,
+        contact: null,
+      }
     }
 
-    const contact = await tx.contact.upsert(createQuery(contactId, query))
+    const photo = imageFile && !removePhoto ? await writeImage(imageFile) : null
 
-    for (const aliasData of aliases) {
-      const query = createRelatedFieldQuery(aliasData, contactId)
-      await tx.alias.upsert(query)
-    }
+    const contact = await prisma.$transaction(async (tx) => {
+      const query = {
+        name,
+        lastname,
+        birthday,
+        address,
+        yearMet,
+        notes,
+        ...(imageFile || removePhoto ? { photo } : {}),
+      }
 
-    for (const numberData of numbers) {
-      const query = createRelatedFieldQuery(numberData, contactId)
-      await tx.number.upsert(query)
-    }
+      const contact = await tx.contact.upsert(createQuery(contactId, query))
 
-    for (const emailData of emails) {
-      const query = createRelatedFieldQuery(emailData, contactId)
-      await tx.email.upsert(query)
-    }
+      for (const aliasData of aliases) {
+        const query = createRelatedFieldQuery(aliasData, contactId)
+        await tx.alias.upsert(query)
+      }
 
-    for (const socialData of socials) {
-      const query = createRelatedFieldQuery(socialData, contactId)
-      await tx.social.upsert(query)
-    }
+      for (const numberData of numbers) {
+        const query = createRelatedFieldQuery(numberData, contactId)
+        await tx.number.upsert(query)
+      }
 
-    return contact
-  })
+      for (const emailData of emails) {
+        const query = createRelatedFieldQuery(emailData, contactId)
+        await tx.email.upsert(query)
+      }
 
-  revalidatePath("/", "layout")
+      for (const socialData of socials) {
+        const query = createRelatedFieldQuery(socialData, contactId)
+        await tx.social.upsert(query)
+      }
 
-  return contact
+      return contact
+    })
+
+    revalidatePath("/", "layout")
+
+    const message = contactId
+      ? MESSAGES.CONTACT_UPDATE[Status.SUCCESS](contact)
+      : MESSAGES.CONTACT_CREATE[Status.SUCCESS](contact)
+
+    return { status: Status.SUCCESS, message, contact }
+  } catch {
+    const message = contactId
+      ? MESSAGES.CONTACT_UPDATE[Status.ERROR](data)
+      : MESSAGES.CONTACT_CREATE[Status.ERROR]
+
+    return { status: Status.ERROR, message, contact: null }
+  }
 }
 
 export const deleteContact = async (id: string) =>

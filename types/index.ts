@@ -58,11 +58,3 @@ export enum NotFoundType {
   MAIN,
   CONTACT,
 }
-
-export type ContactFormData = Omit<
-  Contact,
-  "favorite" | "photo" | "createdAt"
-> & {
-  removePhoto: boolean
-  file?: File[]
-}

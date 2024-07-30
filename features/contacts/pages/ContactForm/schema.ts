@@ -1,81 +1,54 @@
-import * as yup from "yup"
+import { z } from "zod"
 
-const emptyStringToNull = (currentValue: string, originalValue: string) =>
-  !originalValue ? null : currentValue
+import { EmailType, NumberType } from "@prisma/client"
 
-const schema = yup.object().shape({
-  name: yup
-    .string()
-    .required("The name is required")
-    .max(40, "The name can't be longer than 40 characters"),
-  lastname: yup
-    .string()
-    .max(40, "The last name can't be longer than 40 characters")
-    .transform(emptyStringToNull)
-    .nullable(),
-  birthday: yup
-    .date()
-    .typeError("It should be a valid date")
+export const schema = z.object({
+  id: z.string().optional(),
+  name: z.string().trim().max(40, "The name is too long"),
+  lastname: z.string().max(40, "The last name is too long").nullable(),
+  birthday: z.coerce
+    .date({ invalid_type_error: "This is not a valid date" })
     .max(new Date(), "The birthday can't be in the future")
-    .transform(emptyStringToNull)
     .nullable(),
-  address: yup
-    .string()
-    .max(40, "The address can't be longer than 40 characters")
-    .transform(emptyStringToNull)
-    .nullable(),
-  yearMet: yup
+  address: z.string().max(40, "The address is too long").nullable(),
+  yearMet: z.coerce
     .number()
-    .typeError("It should be a valid year")
-    .min(1900, "The year can't be before 1900")
+    .int()
     .max(new Date().getFullYear(), "The year can't be in the future")
-    .transform(emptyStringToNull)
+    .transform((year) => (year < 1900 ? null : year))
     .nullable(),
-  aliases: yup.array().of(
-    yup.object().shape({
-      alias: yup
-        .string()
-        .max(50, "The alias can't be longer than 50 characters"),
+  aliases: z.array(
+    z.object({
+      alias: z.string().max(50, "The alias is too long").nullable(),
     })
   ),
-  numbers: yup.array().of(
-    yup.object().shape({
-      number: yup
-        .string()
-        .max(50, "The phone number can't be longer than 50 characters"),
-      id_type: yup.number(),
-      custom_label: yup
-        .string()
-        .max(50, "The label can't be longer than 50 characters"),
+  numbers: z.array(
+    z.object({
+      number: z.string().max(20, "The number is too long").nullable(),
+      type: z.nativeEnum(NumberType),
+      label: z.string().max(50, "The label is too long").nullable(),
     })
   ),
-  emails: yup.array().of(
-    yup.object().shape({
-      email: yup
-        .string()
-        .max(80, "The email can't be longer than 50 characters"),
-      id_type: yup.number(),
-      custom_label: yup
-        .string()
-        .max(50, "The label can't be longer than 50 characters"),
+  emails: z.array(
+    z.object({
+      email: z.string().email().max(80, "The email is too long").nullable(),
+      type: z.nativeEnum(EmailType),
+      label: z.string().max(50, "The label is too long").nullable(),
     })
   ),
-  social: yup.array().of(
-    yup.object().shape({
-      username: yup
-        .string()
-        .max(80, "The username can't be longer than 50 characters"),
-      id_network: yup.number(),
-      custom_label: yup
-        .string()
-        .max(50, "The label can't be longer than 50 characters"),
+  socials: z.array(
+    z.object({
+      username: z.string().max(80, "The username is too long").nullable(),
+      platformId: z.string(),
+      label: z.string().max(50, "The label is too long").nullable(),
     })
   ),
-  notes: yup
-    .string()
-    .max(2000, "The notes can't be longer than 2000 characters")
-    .transform(emptyStringToNull)
+  notes: z.string().max(2000, "The notes are too long").nullable(),
+  file: z
+    .custom<FileList>()
+    .transform((file) => (file.length > 0 ? file.item(0) : null))
+    .refine((file) => !file || file?.type.startsWith("image"), {
+      message: "Only images can be uploaded",
+    })
     .nullable(),
 })
-
-export default schema

@@ -1,15 +1,16 @@
 "use client"
 
 import React, { useState, useEffect, useRef, useContext, UIEvent } from "react"
-import { notFound, useRouter } from "next/navigation"
+import { useRouter } from "next/navigation"
 import { useForm, FormProvider } from "react-hook-form"
-import { yupResolver } from "@hookform/resolvers/yup"
+import { zodResolver } from "@hookform/resolvers/zod"
+import { z } from "zod"
 
 import { upsertContact, deleteContact } from "@/actions/actions"
 import { ROUTES } from "@/constants/routes"
 import { StickyBar } from "@/features/contacts/StickyBar"
 import { ContactsContext } from "@/features/contacts/context"
-import { ButtonVariants, Contact, ContactFormData } from "@/types"
+import { ButtonVariants, Contact, Status } from "@/types"
 import { Button, Icon, Loader, Toast } from "@/ui"
 import { Icons } from "@/ui/icons"
 import { UIContext } from "@/ui/context"
@@ -17,7 +18,8 @@ import { isMedia } from "@/ui/responsive"
 
 import { ContactFormHeader } from "./components/ContactFormHeader"
 import { ContactSecondaryForm } from "./components/ContactSecondaryForm"
-import schema from "./schema"
+
+import { schema } from "./schema"
 
 import { ContactFormContainer, FormActions } from "./styles"
 
@@ -35,8 +37,8 @@ export const ContactForm = ({ contact }: ContactFormProps) => {
 
   const formRef = useRef(null)
 
-  const methods = useForm({
-    resolver: yupResolver(schema),
+  const methods = useForm<z.output<typeof schema>>({
+    resolver: zodResolver(schema),
   })
 
   const { handleSubmit, reset } = methods
@@ -44,8 +46,6 @@ export const ContactForm = ({ contact }: ContactFormProps) => {
   useEffect(() => {
     if (contact) {
       selectContact(contact)
-
-      console.log(contact)
 
       reset({
         ...contact,
@@ -56,7 +56,7 @@ export const ContactForm = ({ contact }: ContactFormProps) => {
     }
   }, [contact, selectContact, reset])
 
-  const onSubmit = async (data: ContactFormData) => {
+  const onSubmit = async (data: z.output<typeof schema>) => {
     console.log("submit", data)
 
     const { file, ...contactData } = data
@@ -71,13 +71,15 @@ export const ContactForm = ({ contact }: ContactFormProps) => {
 
     const formData = new FormData()
 
-    if (file?.length) {
-      formData.append("file", file[0])
+    if (file) {
+      formData.append("file", file)
     }
 
-    const updatedContact = await upsertContact(newData, formData)
+    const { status, message, contact } = await upsertContact(newData, formData)
 
-    router.push(ROUTES.contacts.profile(updatedContact.id))
+    if (status === Status.SUCCESS && contact) {
+      router.push(ROUTES.contacts.profile(contact.id))
+    }
   }
 
   const onDelete = async () => {

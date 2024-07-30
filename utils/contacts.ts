@@ -8,3 +8,6 @@ export const getRandomContact = (contacts: Contact[]) => {
   const randomContact = contacts[randomIndex]
   return randomContact
 }
+
+export const getFullName = (name: string, lastname: string | null) =>
+  `${name}${lastname ? ` ${lastname}` : ""}`
