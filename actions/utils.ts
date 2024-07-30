@@ -11,7 +11,7 @@ export const createQuery = (query: any, id?: string) => ({
 })
 
 export const createRelatedFieldQuery = (data: any, contactId: string) => {
-  const { id, platform, platformId, ...fields } = data
+  const { id, platformId, ...fields } = data
 
   const query = {
     ...fields,
@@ -31,7 +31,7 @@ export const createRelatedFieldQuery = (data: any, contactId: string) => {
       : {}),
   }
 
-  return createQuery(id, query)
+  return createQuery(query, id)
 }
 
 export const writeImage = async (imageFile: File) => {

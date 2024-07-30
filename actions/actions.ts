@@ -26,6 +26,7 @@ const CONTACT_SELECT = {
       username: true,
       label: true,
       platform: true,
+      platformId: true,
     },
   },
   numbers: {

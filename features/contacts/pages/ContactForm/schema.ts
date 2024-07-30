@@ -6,19 +6,35 @@ export type ContactSchema = z.output<typeof schema>
 
 export const schema = z.object({
   id: z.string().optional(),
-  name: z.string().trim().max(40, "The name is too long"),
+  name: z
+    .string()
+    .trim()
+    .min(1, "The name can't be empty")
+    .max(40, "The name is too long"),
   lastname: z.string().max(40, "The last name is too long").nullable(),
-  birthday: z.coerce
-    .date({ invalid_type_error: "This is not a valid date" })
-    .max(new Date(), "The birthday can't be in the future")
-    .nullable(),
+  birthday: z.union([
+    z.coerce
+      .date({ invalid_type_error: "This is not a valid birthday" })
+      .max(new Date(), "The birthday can't be in the future"),
+    z
+      .string()
+      .refine((birthday) => !birthday, {
+        message: "This is not a valid birthday",
+      })
+      .nullable(),
+  ]),
   address: z.string().max(40, "The address is too long").nullable(),
-  yearMet: z.coerce
-    .number()
-    .int()
-    .max(new Date().getFullYear(), "The year can't be in the future")
-    .transform((year) => (year < 1900 ? null : year))
-    .nullable(),
+  yearMet: z.union([
+    z.coerce
+      .number({ message: "This is not a valid year" })
+      .int({ message: "This is not a valid year" })
+      .min(1900, "The year can't be before 1900")
+      .max(new Date().getFullYear(), "The year can't be in the future"),
+    z
+      .string({ message: "This is not a valid year" })
+      .refine((year) => !year, { message: "This is not a valid year" })
+      .nullable(),
+  ]),
   aliases: z.array(
     z.object({
       id: z.string().optional(),
@@ -28,7 +44,7 @@ export const schema = z.object({
   numbers: z.array(
     z.object({
       id: z.string().optional(),
-      number: z.string().max(20, "The number is too long").nullable(),
+      number: z.string().max(20, "The phone number is too long").nullable(),
       type: z.nativeEnum(NumberType),
       label: z.string().max(50, "The label is too long").nullable(),
     })
@@ -36,7 +52,7 @@ export const schema = z.object({
   emails: z.array(
     z.object({
       id: z.string().optional(),
-      email: z.string().email().max(80, "The email is too long").nullable(),
+      email: z.string().email().max(80, "The e-mail is too long").nullable(),
       type: z.nativeEnum(EmailType),
       label: z.string().max(50, "The label is too long").nullable(),
     })
@@ -54,7 +70,7 @@ export const schema = z.object({
     .custom<FileList>()
     .transform((file) => (file.length > 0 ? file.item(0) : null))
     .refine((file) => !file || file?.type.startsWith("image"), {
-      message: "Only images can be uploaded",
+      message: "This is not a valid image",
     })
     .nullable(),
   removePhoto: z.boolean(),
