@@ -47,7 +47,7 @@ export const ColorSettings = () => {
     <Section title="Colors">
       <Setting label="Dark theme">
         <Switch
-          active={themeKey === ThemeColor.DARK}
+          active={!!localStorage.getItem('darkTheme')}
           handleClick={toggleDarkTheme}
         />
       </Setting>
