@@ -37,7 +37,11 @@ export const createRelatedFieldQuery = (data: any, contactId: string) => {
 export const writeImage = async (imageFile: File) => {
   const buffer = Buffer.from(await imageFile.arrayBuffer())
   const filename = `${Date.now()}_${imageFile.name.replaceAll(" ", "_")}`
-  const imagePath = path.join(process.cwd(), ROUTES.profilePictures(filename))
+  const imagePath = path.join(
+    process.cwd(),
+    "/public",
+    ROUTES.profilePictures(filename)
+  )
 
   await writeFile(imagePath, buffer)
 
