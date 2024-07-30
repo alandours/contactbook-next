@@ -1,7 +1,8 @@
-import { Contact, Status } from "@/types"
+import { ContactFormData, Status } from "@/types"
 import { getFullName } from "@/utils/contacts"
 
-type ContactNames = Pick<Contact, "name" | "lastname"> & Partial<Contact>
+type ContactNames = Pick<ContactFormData, "name" | "lastname"> &
+  Partial<ContactFormData>
 
 export const MESSAGES = {
   CONTACT_CREATE: {

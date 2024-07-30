@@ -5,7 +5,7 @@ import { revalidatePath } from "next/cache"
 import { MESSAGES } from "@/constants/messages"
 import { schema } from "@/features/contacts/pages/ContactForm/schema"
 import prisma from "@/lib/prisma"
-import { Filters, Status } from "@/types"
+import { ContactFormData, Filters, Status } from "@/types"
 
 import { createQuery, createRelatedFieldQuery, writeImage } from "./utils"
 
@@ -130,7 +130,10 @@ export const getContact = async (id: string) =>
     },
   })
 
-export const upsertContact = async (data: any, formData: FormData) => {
+export const upsertContact = async (
+  data: ContactFormData,
+  formData: FormData
+) => {
   const {
     id: contactId,
     name,
@@ -152,6 +155,8 @@ export const upsertContact = async (data: any, formData: FormData) => {
     const parsed = schema.safeParse({ ...data, file: imageFile })
 
     if (!parsed.success) {
+      console.warn(MESSAGES.CONTACT_VALIDATION, parsed)
+
       return {
         status: Status.ERROR,
         message: MESSAGES.CONTACT_VALIDATION,
@@ -172,25 +177,57 @@ export const upsertContact = async (data: any, formData: FormData) => {
         ...(imageFile || removePhoto ? { photo } : {}),
       }
 
-      const contact = await tx.contact.upsert(createQuery(contactId, query))
+      const contact = await tx.contact.upsert(createQuery(query, contactId))
+
+      // Alias
+      await tx.alias.deleteMany({
+        where: {
+          contactId: contact.id,
+          NOT: aliases.map(({ id }) => ({ id })),
+        },
+      })
 
       for (const aliasData of aliases) {
-        const query = createRelatedFieldQuery(aliasData, contactId)
+        const query = createRelatedFieldQuery(aliasData, contact.id)
         await tx.alias.upsert(query)
       }
 
+      // Number
+      await tx.number.deleteMany({
+        where: {
+          contactId: contact.id,
+          NOT: numbers.map(({ id }) => ({ id })),
+        },
+      })
+
       for (const numberData of numbers) {
-        const query = createRelatedFieldQuery(numberData, contactId)
+        const query = createRelatedFieldQuery(numberData, contact.id)
         await tx.number.upsert(query)
       }
 
+      // Email
+      await tx.email.deleteMany({
+        where: {
+          contactId: contact.id,
+          NOT: emails.map(({ id }) => ({ id })),
+        },
+      })
+
       for (const emailData of emails) {
-        const query = createRelatedFieldQuery(emailData, contactId)
+        const query = createRelatedFieldQuery(emailData, contact.id)
         await tx.email.upsert(query)
       }
 
+      // Social
+      await tx.social.deleteMany({
+        where: {
+          contactId: contact.id,
+          NOT: socials.map(({ id }) => ({ id })),
+        },
+      })
+
       for (const socialData of socials) {
-        const query = createRelatedFieldQuery(socialData, contactId)
+        const query = createRelatedFieldQuery(socialData, contact.id)
         await tx.social.upsert(query)
       }
 
@@ -204,10 +241,12 @@ export const upsertContact = async (data: any, formData: FormData) => {
       : MESSAGES.CONTACT_CREATE[Status.SUCCESS](contact)
 
     return { status: Status.SUCCESS, message, contact }
-  } catch {
+  } catch (error) {
     const message = contactId
       ? MESSAGES.CONTACT_UPDATE[Status.ERROR](data)
       : MESSAGES.CONTACT_CREATE[Status.ERROR]
+
+    console.warn("Upsert contact error", error)
 
     return { status: Status.ERROR, message, contact: null }
   }

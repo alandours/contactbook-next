@@ -2,7 +2,7 @@ import { ROUTES } from "@/constants/routes"
 import { writeFile } from "fs/promises"
 import path from "path"
 
-export const createQuery = (id: string, query: any) => ({
+export const createQuery = (query: any, id?: string) => ({
   where: {
     id: id || "",
   },

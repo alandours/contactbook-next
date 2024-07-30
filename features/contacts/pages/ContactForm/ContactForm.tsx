@@ -19,10 +19,9 @@ import { isMedia } from "@/ui/responsive"
 import { ContactFormHeader } from "./components/ContactFormHeader"
 import { ContactSecondaryForm } from "./components/ContactSecondaryForm"
 
-import { schema } from "./schema"
+import { ContactSchema, schema } from "./schema"
 
 import { ContactFormContainer, FormActions } from "./styles"
-
 interface ContactFormProps {
   contact?: Contact | null
 }
@@ -37,7 +36,7 @@ export const ContactForm = ({ contact }: ContactFormProps) => {
 
   const formRef = useRef(null)
 
-  const methods = useForm<z.output<typeof schema>>({
+  const methods = useForm<ContactSchema>({
     resolver: zodResolver(schema),
   })
 
@@ -52,11 +51,12 @@ export const ContactForm = ({ contact }: ContactFormProps) => {
         birthday: contact.birthday
           ? contact.birthday.toISOString().split("T")[0]
           : null,
+        removePhoto: false,
       })
     }
   }, [contact, selectContact, reset])
 
-  const onSubmit = async (data: z.output<typeof schema>) => {
+  const onSubmit = async (data: ContactSchema) => {
     console.log("submit", data)
 
     const { file, ...contactData } = data

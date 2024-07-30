@@ -1,3 +1,4 @@
+import { ContactSchema } from "@/features/contacts/pages/ContactForm/schema"
 import {
   Alias as ContactAliasType,
   Contact as ContactType,
@@ -57,4 +58,8 @@ export type Filters = {
 export enum NotFoundType {
   MAIN,
   CONTACT,
+}
+
+export type ContactFormData = Omit<ContactSchema, "file"> & {
+  removePhoto: boolean
 }

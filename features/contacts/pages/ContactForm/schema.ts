@@ -2,6 +2,8 @@ import { z } from "zod"
 
 import { EmailType, NumberType } from "@prisma/client"
 
+export type ContactSchema = z.output<typeof schema>
+
 export const schema = z.object({
   id: z.string().optional(),
   name: z.string().trim().max(40, "The name is too long"),
@@ -19,11 +21,13 @@ export const schema = z.object({
     .nullable(),
   aliases: z.array(
     z.object({
+      id: z.string().optional(),
       alias: z.string().max(50, "The alias is too long").nullable(),
     })
   ),
   numbers: z.array(
     z.object({
+      id: z.string().optional(),
       number: z.string().max(20, "The number is too long").nullable(),
       type: z.nativeEnum(NumberType),
       label: z.string().max(50, "The label is too long").nullable(),
@@ -31,6 +35,7 @@ export const schema = z.object({
   ),
   emails: z.array(
     z.object({
+      id: z.string().optional(),
       email: z.string().email().max(80, "The email is too long").nullable(),
       type: z.nativeEnum(EmailType),
       label: z.string().max(50, "The label is too long").nullable(),
@@ -38,6 +43,7 @@ export const schema = z.object({
   ),
   socials: z.array(
     z.object({
+      id: z.string().optional(),
       username: z.string().max(80, "The username is too long").nullable(),
       platformId: z.string(),
       label: z.string().max(50, "The label is too long").nullable(),
@@ -51,4 +57,5 @@ export const schema = z.object({
       message: "Only images can be uploaded",
     })
     .nullable(),
+  removePhoto: z.boolean(),
 })
