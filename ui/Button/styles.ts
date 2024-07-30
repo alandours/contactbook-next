@@ -46,7 +46,7 @@ export const buttonStyles = ({
     color: ${theme.selected.contrast[1]};
 
     &:hover,
-    &:focus {
+    &:focus-visible {
       color: ${theme.selected.contrast[2]};
     }
 
@@ -55,7 +55,7 @@ export const buttonStyles = ({
       color: ${theme.mainColor.dark};
 
       &:hover,
-      &:focus {
+      &:focus-visible {
         color: ${theme.mainColor.main};
       }
     `};
