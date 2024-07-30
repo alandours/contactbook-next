@@ -11,7 +11,7 @@ import { ROUTES } from "@/constants/routes"
 import { StickyBar } from "@/features/contacts/StickyBar"
 import { ContactsContext } from "@/features/contacts/context"
 import { ButtonVariants, Contact, Status } from "@/types"
-import { Button, Icon, Loader, Toast } from "@/ui"
+import { Button, Icon, Toast } from "@/ui"
 import { Icons } from "@/ui/icons"
 import { UIContext } from "@/ui/context"
 import { isMedia } from "@/ui/responsive"
@@ -30,7 +30,7 @@ interface ContactFormProps {
 export const ContactForm = ({ contact }: ContactFormProps) => {
   const [showStickyBar, setShowStickyBar] = useState(false)
 
-  const { theme } = useContext(UIContext)
+  const { theme, setToast } = useContext(UIContext)
   const { selectContact } = useContext(ContactsContext)
 
   const router = useRouter()
@@ -77,14 +77,21 @@ export const ContactForm = ({ contact }: ContactFormProps) => {
 
     const { status, message, contact } = await upsertContact(newData, formData)
 
+    setToast({ message, status })
+
     if (status === Status.SUCCESS && contact) {
       router.push(ROUTES.contacts.profile(contact.id))
     }
   }
 
   const onDelete = async () => {
-    await deleteContact(contact?.id as string)
-    router.push(ROUTES.contacts.main)
+    const { status, message } = await deleteContact(contact?.id as string)
+
+    setToast({ message, status })
+
+    if (status === Status.SUCCESS) {
+      router.push(ROUTES.contacts.main)
+    }
   }
 
   const handleScroll = (e: UIEvent<HTMLFormElement>) => {
@@ -101,9 +108,7 @@ export const ContactForm = ({ contact }: ContactFormProps) => {
         ref={formRef}
       >
         {isMedia("tablet") && showStickyBar && <StickyBar />}
-        {/* {toast && (toast.type === "error" || toast.type === "warning") && (
-          <Toast />
-        )} */}
+        <Toast />
         <ContactFormHeader />
         <ContactSecondaryForm />
         <FormActions $edit={!!contact}>

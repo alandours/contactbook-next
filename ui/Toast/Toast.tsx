@@ -9,7 +9,7 @@ export const Toast = () => {
   const { toast, setToast } = useContext(UIContext)
   const [visible, setVisible] = useState(true)
 
-  const { message, type } = toast || {}
+  const { message, status } = toast || {}
 
   const closeMessage = useCallback(() => {
     setVisible(false)
@@ -19,7 +19,7 @@ export const Toast = () => {
   }, [setToast])
 
   useEffect(() => {
-    const timeOut = type === Status.SUCCESS ? 1500 : 4000
+    const timeOut = status === Status.SUCCESS ? 2500 : 4000
 
     if (message) {
       const messageTimeout = setTimeout(() => {
@@ -29,14 +29,18 @@ export const Toast = () => {
     }
 
     return () => setVisible(true)
-  }, [message, closeMessage, type])
+  }, [message, closeMessage, status])
 
   return (
     !!message &&
-    !!type && (
-      <ToastContainer status={type} visible={visible}>
+    !!status && (
+      <ToastContainer $status={status} $visible={visible}>
         {message}
-        <CloseButton type="button" status={type} handleClick={closeMessage} />
+        <CloseButton
+          type="button"
+          $status={status}
+          handleClick={closeMessage}
+        />
       </ToastContainer>
     )
   )

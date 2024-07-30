@@ -20,7 +20,7 @@ import {
   getMainColor,
 } from "@/ui/palette"
 
-type Toast = { message: string; type: Status }
+type Toast = { message: string; status: Status }
 
 type Theme = {
   selected: (typeof palette)[ThemeColor]

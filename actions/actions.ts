@@ -213,15 +213,28 @@ export const upsertContact = async (data: any, formData: FormData) => {
   }
 }
 
-export const deleteContact = async (id: string) =>
-  await prisma.contact.update({
-    where: {
-      id,
-    },
-    data: {
-      active: false,
-    },
-  })
+export const deleteContact = async (id: string) => {
+  try {
+    const contact = await prisma.contact.update({
+      where: {
+        id,
+      },
+      data: {
+        active: false,
+      },
+    })
+
+    return {
+      status: Status.SUCCESS,
+      message: MESSAGES.CONTACT_DELETE[Status.SUCCESS](contact),
+    }
+  } catch {
+    return {
+      status: Status.ERROR,
+      message: MESSAGES.CONTACT_DELETE[Status.ERROR],
+    }
+  }
+}
 
 export const updateFavorite = async (id: string, isFavorite: boolean) =>
   await prisma.contact.update({

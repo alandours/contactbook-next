@@ -23,9 +23,9 @@ export enum InputSizes {
 }
 
 export enum Status {
-  SUCCESS,
-  ERROR,
-  WARNING,
+  SUCCESS = "success",
+  ERROR = "error",
+  WARNING = "warning",
 }
 
 export enum ListItemType {

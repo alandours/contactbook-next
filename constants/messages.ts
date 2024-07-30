@@ -9,6 +9,11 @@ export const MESSAGES = {
       `${getFullName(name, lastname)} was created`,
     [Status.ERROR]: "There was an error creating the contact",
   },
+  CONTACT_DELETE: {
+    [Status.SUCCESS]: ({ name, lastname }: ContactNames) =>
+      `${getFullName(name, lastname)} was deleted`,
+    [Status.ERROR]: "There was an error deleting the contact",
+  },
   CONTACT_UPDATE: {
     [Status.SUCCESS]: ({ name, lastname }: ContactNames) =>
       `${getFullName(name, lastname)} was updated`,
