@@ -115,8 +115,10 @@ export const buttonStyles = ({
 
   ${$variant === ButtonVariants.LINK &&
   css`
+    align-self: flex-end;
     color: ${theme.mainColor.dark};
     padding: 0;
+    width: fit-content;
 
     &:hover,
     &:focus {

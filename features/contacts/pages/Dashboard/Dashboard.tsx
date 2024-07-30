@@ -1,7 +1,6 @@
 "use client"
 
 import { useState, useEffect, useContext } from "react"
-import { Contact } from "@/types"
 
 import { PageHeader } from "@/components/PageHeader"
 import { ContactLink } from "@/components/ContactLink"
@@ -13,8 +12,8 @@ import {
   getUpcomingBirthdays,
 } from "@/features/birthdays/utils"
 import { ContactsContext } from "@/features/contacts/context"
+import { ButtonVariants, Contact } from "@/types"
 import { ContactWithNextBirthday } from "@/types/birthday"
-
 import { Link, Loader, Toast } from "@/ui"
 import { Icons } from "@/ui/icons"
 
@@ -61,7 +60,7 @@ export const Dashboard = () => {
           : "There are no upcoming birthdays"}
 
         {upcomingBirthdays && (
-          <Link href={ROUTES.birthdays} highlight>
+          <Link variant={ButtonVariants.LINK} href={ROUTES.birthdays} highlight>
             See all birthdays
           </Link>
         )}
@@ -76,7 +75,11 @@ export const Dashboard = () => {
           : "There are no contacts"}
 
         {lastAdded && !!lastAdded.length && (
-          <Link href={ROUTES.contacts.year} highlight>
+          <Link
+            variant={ButtonVariants.LINK}
+            href={ROUTES.contacts.year}
+            highlight
+          >
             See contacts by year
           </Link>
         )}
