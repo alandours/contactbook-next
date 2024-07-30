@@ -6,6 +6,16 @@ import { Alias, Email, Number, Social } from "@/types"
 
 import { Notes } from "./styles"
 
+type UnionToIntersection<U> = (U extends any ? (x: U) => void : never) extends (
+  x: infer I
+) => void
+  ? I
+  : never
+
+export type SectionRenderData = UnionToIntersection<
+  Parameters<(typeof CONTACT_SECTIONS)[number]["render"]>[0]
+>
+
 export const CONTACT_SECTIONS = [
   {
     title: "Aliases",
@@ -25,7 +35,7 @@ export const CONTACT_SECTIONS = [
     key: "numbers",
     order: 2,
     urlStart: "tel:",
-    render: (numbers: Number[], urlStart: string) =>
+    render: (numbers: Number[], urlStart?: string) =>
       numbers.map((number) => {
         const { id, number: name, type, label: customLabel } = number
         const label =
@@ -41,7 +51,7 @@ export const CONTACT_SECTIONS = [
     key: "emails",
     order: 3,
     urlStart: "mailto:",
-    render: (emails: Email[], urlStart: string) =>
+    render: (emails: Email[], urlStart?: string) =>
       emails.map((email) => {
         const { id, email: name, type, label: customLabel } = email
         const label =
