@@ -1,15 +1,15 @@
-"use client"
+'use client'
 
-import { useContext, KeyboardEvent, ReactNode } from "react"
+import { useContext, KeyboardEvent, ReactNode } from 'react'
 
-import { ListItem } from "@/components/ListItem"
-import { SearchInput } from "@/components/SearchInput"
-import { Loader } from "@/ui"
-import { ContactsContext } from "@/features/contacts/context"
-import { Contact, ListItemType } from "@/types"
-import { getInitial } from "@/utils/contacts"
+import { ListItem } from '@/components/ListItem'
+import { SearchInput } from '@/components/SearchInput'
+import { Loader } from '@/ui'
+import { ContactsContext } from '@/features/contacts/context'
+import { Contact, ListItemType } from '@/types'
+import { getInitial } from '@/utils/contacts'
 
-import { List, Count, ContactGroup } from "./styles"
+import { List, Count, ContactGroup } from './styles'
 
 const renderContactGroups = (contacts: Contact[]) => {
   const contactsByInitial: Record<string, ReactNode[]> = contacts.reduce(
@@ -52,7 +52,7 @@ export const ContactList = ({ contacts, hasSearch }: ContactListProps) => {
 
   const handleTyping = (e: KeyboardEvent<HTMLInputElement>) => {
     const { value } = e.target as HTMLInputElement
-    updateFilters({ key: "search", value })
+    updateFilters({ key: 'search', value })
   }
 
   return (

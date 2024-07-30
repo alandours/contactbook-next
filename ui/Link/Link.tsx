@@ -1,8 +1,8 @@
-import { AnchorHTMLAttributes, ReactNode } from "react"
+import { AnchorHTMLAttributes, ReactNode } from 'react'
 
-import { ButtonVariants } from "@/types"
+import { ButtonVariants } from '@/types'
 
-import { NextLink, AnchorLink } from "./styles"
+import { NextLink, AnchorLink } from './styles'
 
 interface LinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
   href: string
@@ -19,7 +19,7 @@ export const Link = ({
   title,
   variant = ButtonVariants.LINK,
   highlight = false,
-  className = "",
+  className = '',
   external = false,
   children,
   onClick,

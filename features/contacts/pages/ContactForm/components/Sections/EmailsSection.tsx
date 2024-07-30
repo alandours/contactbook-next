@@ -1,15 +1,15 @@
-import { useCallback, useEffect } from "react"
-import { useFieldArray } from "react-hook-form"
-import { EmailType } from "@prisma/client"
+import { useCallback, useEffect } from 'react'
+import { useFieldArray } from 'react-hook-form'
+import { EmailType } from '@prisma/client'
 
-import { Section } from "@/components/Section"
-import { Icons } from "@/ui/icons"
+import { Section } from '@/components/Section'
+import { Icons } from '@/ui/icons'
 
-import { MultiField } from "./fields/MultiField"
-import { AddNewButton } from "./styles"
+import { MultiField } from './fields/MultiField'
+import { AddNewButton } from './styles'
 
 export const EmailsSection = () => {
-  const { fields, append, remove } = useFieldArray({ name: "emails" })
+  const { fields, append, remove } = useFieldArray({ name: 'emails' })
 
   const addNewEmail = useCallback(
     (shouldFocus = true) =>
@@ -33,7 +33,7 @@ export const EmailsSection = () => {
   return (
     <Section title="E-mails" icon={Icons.email} sticky>
       {!!fields.length &&
-        fields.map((email: Record<"id", string>, index: number) => (
+        fields.map((email: Record<'id', string>, index: number) => (
           <MultiField
             key={email.id}
             label="E-mail"

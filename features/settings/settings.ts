@@ -1,11 +1,11 @@
-"use client"
+'use client'
 
 export enum Settings {
-  FILTER_FAVORITES = "filterFavorites",
-  SHOW_AGE = "showAge",
-  SHOW_FAVORITE_ICON = "showFavoriteIcon",
-  SHOW_PHOTO = "showPhoto",
-  SORT_BY_LAST_NAME = "sortByLastName",
+  FILTER_FAVORITES = 'filterFavorites',
+  SHOW_AGE = 'showAge',
+  SHOW_FAVORITE_ICON = 'showFavoriteIcon',
+  SHOW_PHOTO = 'showPhoto',
+  SORT_BY_LAST_NAME = 'sortByLastName',
 }
 
 export const getSettings = () => ({

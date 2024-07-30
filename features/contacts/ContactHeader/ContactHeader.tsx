@@ -1,15 +1,15 @@
-import { useContext } from "react"
+import { useContext } from 'react'
 
-import { MainProfilePicture } from "@/components/MainProfilePicture"
-import { ROUTES } from "@/constants/routes"
-import { ContactMainData } from "@/features/contacts/ContactMainData"
-import { ContactsContext } from "@/features/contacts/context"
-import { ButtonVariants } from "@/types"
-import { Gradient, Icon } from "@/ui"
-import { UIContext } from "@/ui/context"
-import { Icons } from "@/ui/icons"
+import { MainProfilePicture } from '@/components/MainProfilePicture'
+import { ROUTES } from '@/constants/routes'
+import { ContactMainData } from '@/features/contacts/ContactMainData'
+import { ContactsContext } from '@/features/contacts/context'
+import { ButtonVariants } from '@/types'
+import { Gradient, Icon } from '@/ui'
+import { UIContext } from '@/ui/context'
+import { Icons } from '@/ui/icons'
 
-import { ContactHeaderContainer, EditLink } from "./styles"
+import { ContactHeaderContainer, EditLink } from './styles'
 
 export const ContactHeader = () => {
   const { theme } = useContext(UIContext)

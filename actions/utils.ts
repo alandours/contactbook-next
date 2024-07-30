@@ -1,10 +1,10 @@
-import { ROUTES } from "@/constants/routes"
-import { writeFile } from "fs/promises"
-import path from "path"
+import { ROUTES } from '@/constants/routes'
+import { writeFile } from 'fs/promises'
+import path from 'path'
 
 export const createQuery = (query: any, id?: string) => ({
   where: {
-    id: id || "",
+    id: id || '',
   },
   update: query,
   create: query,
@@ -36,10 +36,10 @@ export const createRelatedFieldQuery = (data: any, contactId: string) => {
 
 export const writeImage = async (imageFile: File) => {
   const buffer = Buffer.from(await imageFile.arrayBuffer())
-  const filename = `${Date.now()}_${imageFile.name.replaceAll(" ", "_")}`
+  const filename = `${Date.now()}_${imageFile.name.replaceAll(' ', '_')}`
   const imagePath = path.join(
     process.cwd(),
-    "/public",
+    '/public',
     ROUTES.profilePictures(filename)
   )
 

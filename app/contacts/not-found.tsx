@@ -1,10 +1,10 @@
-import { Metadata } from "next"
+import { Metadata } from 'next'
 
-import { NotFound } from "@/components/NotFound"
-import { NotFoundType } from "@/types"
+import { NotFound } from '@/components/NotFound'
+import { NotFoundType } from '@/types'
 
 export const metadata: Metadata = {
-  title: "Not found :(",
+  title: 'Not found :(',
 }
 
 export default function NotFoundPage() {

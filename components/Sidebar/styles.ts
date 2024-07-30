@@ -1,7 +1,7 @@
-import styled, { css } from "styled-components"
+import styled, { css } from 'styled-components'
 
-import { zindex } from "@/ui/constants"
-import { responsive } from "@/ui/responsive"
+import { zindex } from '@/ui/constants'
+import { responsive } from '@/ui/responsive'
 
 export const SidebarContainer = styled.div<{ open: boolean }>`
   ${({ theme, open }) => css`
@@ -13,7 +13,11 @@ export const SidebarContainer = styled.div<{ open: boolean }>`
     position: absolute;
     min-width: 100%;
     transform: translateX(-100%);
-    transition: all 500ms, transform 250ms, background 420ms, box-shadow 420ms;
+    transition:
+      all 500ms,
+      transform 250ms,
+      background 420ms,
+      box-shadow 420ms;
     z-index: ${zindex.fixed};
 
     ${!!open &&

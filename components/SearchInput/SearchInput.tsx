@@ -1,8 +1,8 @@
-import { KeyboardEvent } from "react"
+import { KeyboardEvent } from 'react'
 
-import { Icons } from "@/ui/icons"
+import { Icons } from '@/ui/icons'
 
-import { SearchIcon, SearchInputContainer, SearchInputElement } from "./styles"
+import { SearchIcon, SearchInputContainer, SearchInputElement } from './styles'
 
 interface SearchInputProps {
   handleTyping: (e: KeyboardEvent<HTMLInputElement>) => void

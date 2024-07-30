@@ -1,9 +1,9 @@
-import styled from "styled-components"
+import styled from 'styled-components'
 
-import { Checkbox } from "@/ui"
-import { zindex } from "@/ui/constants"
-import { responsive } from "@/ui/responsive"
-import { FontWeight } from "@/ui/typography"
+import { Checkbox } from '@/ui'
+import { zindex } from '@/ui/constants'
+import { responsive } from '@/ui/responsive'
+import { FontWeight } from '@/ui/typography'
 
 export const ContactFormHeaderContainer = styled.div`
   align-items: center;
@@ -24,7 +24,7 @@ export const PhotoLabel = styled.label`
   cursor: pointer;
 
   &:before {
-    content: "Change photo";
+    content: 'Change photo';
     align-items: center;
     background: rgba(0, 0, 0, 0.75);
     border-radius: 50%;

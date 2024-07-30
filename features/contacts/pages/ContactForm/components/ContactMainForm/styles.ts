@@ -1,7 +1,7 @@
-import styled, { css } from "styled-components"
+import styled, { css } from 'styled-components'
 
-import { PageHeader } from "@/components/PageHeader"
-import { responsive } from "@/ui/responsive"
+import { PageHeader } from '@/components/PageHeader'
+import { responsive } from '@/ui/responsive'
 
 export const ContactMainFormContainer = styled(PageHeader)`
   display: flex;

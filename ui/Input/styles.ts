@@ -1,8 +1,8 @@
-import styled, { css } from "styled-components"
+import styled, { css } from 'styled-components'
 
-import { InputSizes } from "@/types"
-import { responsive } from "@/ui/responsive"
-import { FontSize, FontWeight } from "@/ui/typography"
+import { InputSizes } from '@/types'
+import { responsive } from '@/ui/responsive'
+import { FontSize, FontWeight } from '@/ui/typography'
 
 export const Container = styled.div`
   position: relative;
@@ -28,7 +28,7 @@ export const InputContainer = styled.input<{ size: InputSizes }>`
       color: ${theme.selected.contrast[1]};
     }
 
-    ${type === "date" &&
+    ${type === 'date' &&
     `
       &::-webkit-calendar-picker-indicator {
           filter: invert(0.5);

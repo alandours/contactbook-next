@@ -1,1 +1,1 @@
-export { ContactSecondaryData } from "./ContactSecondaryData"
+export { ContactSecondaryData } from './ContactSecondaryData'

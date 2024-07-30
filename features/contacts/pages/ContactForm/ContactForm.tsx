@@ -1,27 +1,27 @@
-"use client"
+'use client'
 
-import React, { useState, useEffect, useRef, useContext, UIEvent } from "react"
-import { useRouter } from "next/navigation"
-import { useForm, FormProvider } from "react-hook-form"
-import { zodResolver } from "@hookform/resolvers/zod"
-import { z } from "zod"
+import React, { useState, useEffect, useRef, useContext, UIEvent } from 'react'
+import { useRouter } from 'next/navigation'
+import { useForm, FormProvider } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { z } from 'zod'
 
-import { upsertContact, deleteContact } from "@/actions/actions"
-import { ROUTES } from "@/constants/routes"
-import { StickyBar } from "@/features/contacts/StickyBar"
-import { ContactsContext } from "@/features/contacts/context"
-import { ButtonVariants, Contact, Status } from "@/types"
-import { Button, Icon, Toast } from "@/ui"
-import { Icons } from "@/ui/icons"
-import { UIContext } from "@/ui/context"
-import { isMedia } from "@/ui/responsive"
+import { upsertContact, deleteContact } from '@/actions/actions'
+import { ROUTES } from '@/constants/routes'
+import { StickyBar } from '@/features/contacts/StickyBar'
+import { ContactsContext } from '@/features/contacts/context'
+import { ButtonVariants, Contact, Status } from '@/types'
+import { Button, Icon, Toast } from '@/ui'
+import { Icons } from '@/ui/icons'
+import { UIContext } from '@/ui/context'
+import { isMedia } from '@/ui/responsive'
 
-import { ContactFormHeader } from "./components/ContactFormHeader"
-import { ContactSecondaryForm } from "./components/ContactSecondaryForm"
+import { ContactFormHeader } from './components/ContactFormHeader'
+import { ContactSecondaryForm } from './components/ContactSecondaryForm'
 
-import { ContactSchema, schema } from "./schema"
+import { ContactSchema, schema } from './schema'
 
-import { ContactFormContainer, FormActions } from "./styles"
+import { ContactFormContainer, FormActions } from './styles'
 interface ContactFormProps {
   contact?: Contact | null
 }
@@ -49,7 +49,7 @@ export const ContactForm = ({ contact }: ContactFormProps) => {
       reset({
         ...contact,
         birthday: contact.birthday
-          ? contact.birthday.toISOString().split("T")[0]
+          ? contact.birthday.toISOString().split('T')[0]
           : null,
         removePhoto: false,
       })
@@ -57,7 +57,7 @@ export const ContactForm = ({ contact }: ContactFormProps) => {
   }, [contact, selectContact, reset])
 
   const onSubmit = async (data: ContactSchema) => {
-    console.log("submit", data)
+    console.log('submit', data)
 
     const { file, ...contactData } = data
 
@@ -72,7 +72,7 @@ export const ContactForm = ({ contact }: ContactFormProps) => {
     const formData = new FormData()
 
     if (file) {
-      formData.append("file", file)
+      formData.append('file', file)
     }
 
     const { status, message, contact } = await upsertContact(newData, formData)
@@ -104,10 +104,10 @@ export const ContactForm = ({ contact }: ContactFormProps) => {
     <FormProvider {...methods}>
       <ContactFormContainer
         onSubmit={handleSubmit(onSubmit)}
-        onScroll={isMedia("tablet") ? handleScroll : undefined}
+        onScroll={isMedia('tablet') ? handleScroll : undefined}
         ref={formRef}
       >
-        {isMedia("tablet") && showStickyBar && <StickyBar />}
+        {isMedia('tablet') && showStickyBar && <StickyBar />}
         <Toast />
         <ContactFormHeader />
         <ContactSecondaryForm />

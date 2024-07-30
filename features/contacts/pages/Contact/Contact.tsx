@@ -1,17 +1,17 @@
-"use client"
+'use client'
 
-import { UIEvent, useContext, useEffect, useState } from "react"
-import { notFound } from "next/navigation"
+import { UIEvent, useContext, useEffect, useState } from 'react'
+import { notFound } from 'next/navigation'
 
-import { ContactHeader } from "@/features/contacts/ContactHeader"
-import { ContactSecondaryData } from "@/features/contacts/ContactSecondaryData"
-import { StickyBar } from "@/features/contacts/StickyBar"
-import { ContactsContext } from "@/features/contacts/context"
-import { Contact as ContactType } from "@/types"
-import { Loader, Toast } from "@/ui"
-import { isMedia } from "@/ui/responsive"
+import { ContactHeader } from '@/features/contacts/ContactHeader'
+import { ContactSecondaryData } from '@/features/contacts/ContactSecondaryData'
+import { StickyBar } from '@/features/contacts/StickyBar'
+import { ContactsContext } from '@/features/contacts/context'
+import { Contact as ContactType } from '@/types'
+import { Loader, Toast } from '@/ui'
+import { isMedia } from '@/ui/responsive'
 
-import { ContactView } from "./styles"
+import { ContactView } from './styles'
 
 interface ContactProps {
   contact: ContactType | null
@@ -40,8 +40,8 @@ export const Contact = ({ contact }: ContactProps) => {
   }
 
   return (
-    <ContactView onScroll={isMedia("tablet") ? handleScroll : undefined}>
-      {isMedia("tablet") && showStickyBar && <StickyBar />}
+    <ContactView onScroll={isMedia('tablet') ? handleScroll : undefined}>
+      {isMedia('tablet') && showStickyBar && <StickyBar />}
       <Toast />
       <ContactHeader />
       <ContactSecondaryData />

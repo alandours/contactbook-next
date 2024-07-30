@@ -1,6 +1,6 @@
-import { Input } from "@/ui"
+import { Input } from '@/ui'
 
-import { FormField, RemoveButton } from "./styles"
+import { FormField, RemoveButton } from './styles'
 
 interface SingleFieldProps {
   name: string

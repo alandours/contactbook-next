@@ -1,9 +1,9 @@
-import "styled-components"
+import 'styled-components'
 
-import { theme } from "@/ui/palette"
+import { theme } from '@/ui/palette'
 
 type CustomTheme = typeof theme
 
-declare module "styled-components" {
+declare module 'styled-components' {
   export interface DefaultTheme extends CustomTheme {}
 }

@@ -1,6 +1,6 @@
-import { ReactNode, useEffect, useRef } from "react"
+import { ReactNode, useEffect, useRef } from 'react'
 
-import { BackdropContainer } from "./styles"
+import { BackdropContainer } from './styles'
 
 interface BackdropProps {
   children: ReactNode
@@ -25,7 +25,7 @@ export const Backdrop = ({
       tabIndex={0}
       onClick={handleClick}
       onKeyDown={(e) => {
-        if (e.key.toLowerCase() === "escape") handleKeyDown()
+        if (e.key.toLowerCase() === 'escape') handleKeyDown()
       }}
     >
       {children}

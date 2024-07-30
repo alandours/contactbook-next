@@ -1,10 +1,10 @@
-"use client"
+'use client'
 
-import { ReactNode, useContext } from "react"
+import { ReactNode, useContext } from 'react'
 
-import { UIContext } from "@/ui/context"
+import { UIContext } from '@/ui/context'
 
-import { SidebarContainer } from "./styles"
+import { SidebarContainer } from './styles'
 
 interface SidebarProps {
   children: ReactNode

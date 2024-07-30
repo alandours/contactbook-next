@@ -1,11 +1,11 @@
-import { useContext } from "react"
-import { useFormContext } from "react-hook-form"
+import { useContext } from 'react'
+import { useFormContext } from 'react-hook-form'
 
-import { Icon } from "@/ui"
-import { UIContext } from "@/ui/context"
-import { Icons } from "@/ui/icons"
+import { Icon } from '@/ui'
+import { UIContext } from '@/ui/context'
+import { Icons } from '@/ui/icons'
 
-import { CheckboxContainer, CheckboxText, OriginalCheckbox } from "./styles"
+import { CheckboxContainer, CheckboxText, OriginalCheckbox } from './styles'
 
 interface CheckboxProps {
   name: string
@@ -13,7 +13,7 @@ interface CheckboxProps {
   className?: string
 }
 
-export const Checkbox = ({ name, label, className = "" }: CheckboxProps) => {
+export const Checkbox = ({ name, label, className = '' }: CheckboxProps) => {
   const { theme } = useContext(UIContext)
   const { register, watch } = useFormContext()
 

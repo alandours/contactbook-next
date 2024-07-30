@@ -1,17 +1,17 @@
-import { useCallback, useEffect } from "react"
-import { useFieldArray } from "react-hook-form"
+import { useCallback, useEffect } from 'react'
+import { useFieldArray } from 'react-hook-form'
 
-import { Section } from "@/components/Section"
-import { Icons } from "@/ui/icons"
+import { Section } from '@/components/Section'
+import { Icons } from '@/ui/icons'
 
-import { SingleField } from "./fields/SingleField"
-import { AddNewButton } from "./styles"
+import { SingleField } from './fields/SingleField'
+import { AddNewButton } from './styles'
 
 export const AliasesSection = () => {
-  const { fields, append, remove } = useFieldArray({ name: "aliases" })
+  const { fields, append, remove } = useFieldArray({ name: 'aliases' })
 
   const addNewAlias = useCallback(
-    (shouldFocus = true) => append({ alias: "" }, { shouldFocus }),
+    (shouldFocus = true) => append({ alias: '' }, { shouldFocus }),
     [append]
   )
 
@@ -24,7 +24,7 @@ export const AliasesSection = () => {
   return (
     <Section title="Aliases" icon={Icons.alias} sticky>
       {!!fields.length &&
-        fields.map((alias: Record<"id", string>, index: number) => (
+        fields.map((alias: Record<'id', string>, index: number) => (
           <SingleField
             key={alias.id}
             label="Alias"

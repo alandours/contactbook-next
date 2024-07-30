@@ -1,11 +1,11 @@
-import React, { useContext } from "react"
+import React, { useContext } from 'react'
 
-import { ButtonVariants } from "@/types"
-import { Icon, Link } from "@/ui"
-import { UIContext } from "@/ui/context"
-import { Icons } from "@/ui/icons"
+import { ButtonVariants } from '@/types'
+import { Icon, Link } from '@/ui'
+import { UIContext } from '@/ui/context'
+import { Icons } from '@/ui/icons'
 
-import { NavigationContainer, HeaderLinkText } from "./styles"
+import { NavigationContainer, HeaderLinkText } from './styles'
 
 export const Navigation = () => {
   const { theme } = useContext(UIContext)

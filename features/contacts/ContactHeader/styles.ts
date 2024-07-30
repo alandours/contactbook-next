@@ -1,8 +1,8 @@
-import styled from "styled-components"
+import styled from 'styled-components'
 
-import { responsive } from "@/ui/responsive"
-import { PageHeader } from "@/components/PageHeader"
-import { Link } from "@/ui"
+import { responsive } from '@/ui/responsive'
+import { PageHeader } from '@/components/PageHeader'
+import { Link } from '@/ui'
 
 export const ContactHeaderContainer = styled(PageHeader)`
   align-items: center;

@@ -1,8 +1,8 @@
-import { useContext } from "react"
+import { useContext } from 'react'
 
-import { ContactsContext } from "@/features/contacts/context"
+import { ContactsContext } from '@/features/contacts/context'
 
-import { GradientContainer } from "./styles"
+import { GradientContainer } from './styles'
 
 interface GradientProps {
   smooth?: boolean

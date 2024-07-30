@@ -1,6 +1,6 @@
-import { ReactNode } from "react"
+import { ReactNode } from 'react'
 
-import { LabelContainer, LabelText } from "./styles"
+import { LabelContainer, LabelText } from './styles'
 
 interface LabelProps {
   label: string

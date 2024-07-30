@@ -1,10 +1,10 @@
-import { EmailType, NumberType } from "@prisma/client"
+import { EmailType, NumberType } from '@prisma/client'
 
-import { Datafield } from "@/components/Datafield"
-import { Icons } from "@/ui/icons"
-import { Alias, Email, Number, Social } from "@/types"
+import { Datafield } from '@/components/Datafield'
+import { Icons } from '@/ui/icons'
+import { Alias, Email, Number, Social } from '@/types'
 
-import { Notes } from "./styles"
+import { Notes } from './styles'
 
 type UnionToIntersection<U> = (U extends any ? (x: U) => void : never) extends (
   x: infer I
@@ -18,9 +18,9 @@ export type SectionRenderData = UnionToIntersection<
 
 export const CONTACT_SECTIONS = [
   {
-    title: "Aliases",
+    title: 'Aliases',
     icon: Icons.alias,
-    key: "aliases",
+    key: 'aliases',
     order: 1,
     urlStart: null,
     render: (aliases: Alias[]) =>
@@ -30,9 +30,9 @@ export const CONTACT_SECTIONS = [
       }),
   },
   {
-    title: "Phone numbers",
+    title: 'Phone numbers',
     icon: Icons.phone,
-    key: "numbers",
+    key: 'numbers',
     order: 2,
     render: (numbers: Number[]) =>
       numbers.map((number) => {
@@ -45,9 +45,9 @@ export const CONTACT_SECTIONS = [
       }),
   },
   {
-    title: "Emails",
+    title: 'Emails',
     icon: Icons.email,
-    key: "emails",
+    key: 'emails',
     order: 3,
     render: (emails: Email[]) =>
       emails.map((email) => {
@@ -60,9 +60,9 @@ export const CONTACT_SECTIONS = [
       }),
   },
   {
-    title: "Social Networks",
+    title: 'Social Networks',
     icon: Icons.social,
-    key: "socials",
+    key: 'socials',
     order: 4,
     render: (socials: Social[]) =>
       socials.map((social) => {
@@ -72,7 +72,7 @@ export const CONTACT_SECTIONS = [
           platform: { prefix, url: platformUrl, name: platformName },
           label: customLabel,
         } = social
-        const name = `${prefix || ""}${username}`
+        const name = `${prefix || ''}${username}`
         const label = platformName
         const url = `https://${platformUrl}/${username}`
 
@@ -80,9 +80,9 @@ export const CONTACT_SECTIONS = [
       }),
   },
   {
-    title: "Notes",
+    title: 'Notes',
     icon: Icons.notes,
-    key: "notes",
+    key: 'notes',
     order: 5,
     urlStart: null,
     render: (notes: string) => <Notes>{notes}</Notes>,

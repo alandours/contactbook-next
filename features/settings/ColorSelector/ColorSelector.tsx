@@ -1,6 +1,6 @@
-import { Colors, colors } from "@/ui/palette"
+import { Colors, colors } from '@/ui/palette'
 
-import { ColorSelectorContainer, ColorBox } from "./styles"
+import { ColorSelectorContainer, ColorBox } from './styles'
 
 interface ColorSelectorProps {
   colorKey: Colors

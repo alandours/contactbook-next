@@ -1,7 +1,7 @@
-import { useContext } from "react"
+import { useContext } from 'react'
 
-import { UIContext } from "@/ui/context"
-import { icons, Icons } from "@/ui/icons"
+import { UIContext } from '@/ui/context'
+import { icons, Icons } from '@/ui/icons'
 interface IconProps {
   name: Icons
   color?: string
@@ -12,8 +12,8 @@ interface IconProps {
 export const Icon = ({
   name,
   color,
-  size = "1rem",
-  className = "",
+  size = '1rem',
+  className = '',
 }: IconProps) => {
   const { theme } = useContext(UIContext)
 

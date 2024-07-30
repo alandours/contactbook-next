@@ -1,1 +1,1 @@
-export { ContactsSettings } from "./ContactsSettings"
+export { ContactsSettings } from './ContactsSettings'

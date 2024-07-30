@@ -1,8 +1,8 @@
-import styled, { css } from "styled-components"
+import styled, { css } from 'styled-components'
 
-import { zindex } from "@/ui/constants"
-import { FontWeight } from "@/ui/typography"
-import { ListItemType } from "@/types"
+import { zindex } from '@/ui/constants'
+import { FontWeight } from '@/ui/typography'
+import { ListItemType } from '@/types'
 
 export const ListItemContainer = styled.li<{
   type: ListItemType

@@ -1,14 +1,14 @@
-import { useState, useRef, useEffect, useContext } from "react"
-import { useFormContext } from "react-hook-form"
+import { useState, useRef, useEffect, useContext } from 'react'
+import { useFormContext } from 'react-hook-form'
 
-import { ROUTES } from "@/constants/routes"
-import { ContactsContext } from "@/features/contacts/context"
-import { Contact } from "@/types"
-import { DEFAULT_PHOTOS, getMainColor } from "@/ui/palette"
-import { getPalette } from "@/ui/utils"
+import { ROUTES } from '@/constants/routes'
+import { ContactsContext } from '@/features/contacts/context'
+import { Contact } from '@/types'
+import { DEFAULT_PHOTOS, getMainColor } from '@/ui/palette'
+import { getPalette } from '@/ui/utils'
 
-import { ProfilePictureContainer } from "./styles"
-import { UIContext } from "@/ui/context"
+import { ProfilePictureContainer } from './styles'
+import { UIContext } from '@/ui/context'
 
 interface ProfilePictureProps {
   contact: Contact | null
@@ -29,7 +29,7 @@ export const ProfilePicture = ({
 
   const { photo, name, lastname } = contact || {}
 
-  const imageField = watch && watch("file")
+  const imageField = watch && watch('file')
   const uploadedImage = imageField && imageField[0]
 
   useEffect(() => {

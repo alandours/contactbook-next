@@ -1,8 +1,8 @@
-"use client"
+'use client'
 
-import { ReactNode } from "react"
+import { ReactNode } from 'react'
 
-import { MainContentContainer } from "./styles"
+import { MainContentContainer } from './styles'
 
 interface MainContentProps {
   children: ReactNode

@@ -1,9 +1,9 @@
-import { ButtonHTMLAttributes } from "react"
+import { ButtonHTMLAttributes } from 'react'
 
-import { Icon } from "@/ui"
-import { Icons } from "@/ui/icons"
+import { Icon } from '@/ui'
+import { Icons } from '@/ui/icons'
 
-import { XButtonContainer } from "./styles"
+import { XButtonContainer } from './styles'
 
 interface XButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   handleClick: () => void
@@ -13,7 +13,7 @@ interface XButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 export const XButton = ({
   type,
   handleClick,
-  className = "",
+  className = '',
 }: XButtonProps) => (
   <XButtonContainer type={type} handleClick={handleClick} className={className}>
     <Icon name={Icons.times} />

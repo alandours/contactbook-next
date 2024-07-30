@@ -1,9 +1,9 @@
-import { useContext } from "react"
+import { useContext } from 'react'
 
-import { ProfilePicture } from "@/components/ProfilePicture"
-import { ContactsContext } from "@/features/contacts/context"
+import { ProfilePicture } from '@/components/ProfilePicture'
+import { ContactsContext } from '@/features/contacts/context'
 
-import { StickyBarContainer, Name } from "./styles"
+import { StickyBarContainer, Name } from './styles'
 
 export const StickyBar = () => {
   const { selectedContact } = useContext(ContactsContext)
@@ -13,7 +13,7 @@ export const StickyBar = () => {
     name && (
       <StickyBarContainer>
         <ProfilePicture contact={selectedContact} thumbnail />
-        <Name>{`${name} ${lastname}` || "New contact"}</Name>
+        <Name>{`${name} ${lastname}` || 'New contact'}</Name>
       </StickyBarContainer>
     )
   )

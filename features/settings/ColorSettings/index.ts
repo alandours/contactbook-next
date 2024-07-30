@@ -1,1 +1,1 @@
-export { ColorSettings } from "./ColorSettings"
+export { ColorSettings } from './ColorSettings'

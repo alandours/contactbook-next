@@ -1,5 +1,5 @@
-import { Contact } from "@/types"
-import { getRandomInt } from "@/utils"
+import { Contact } from '@/types'
+import { getRandomInt } from '@/utils'
 
 export const getInitial = (name: string) => name.toUpperCase()[0]
 
@@ -10,4 +10,4 @@ export const getRandomContact = (contacts: Contact[]) => {
 }
 
 export const getFullName = (name: string, lastname: string | null) =>
-  `${name}${lastname ? ` ${lastname}` : ""}`
+  `${name}${lastname ? ` ${lastname}` : ''}`

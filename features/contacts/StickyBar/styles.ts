@@ -1,7 +1,7 @@
-import styled from "styled-components"
+import styled from 'styled-components'
 
-import { zindex } from "@/ui/constants"
-import { FontSize, FontWeight } from "@/ui/typography"
+import { zindex } from '@/ui/constants'
+import { FontSize, FontWeight } from '@/ui/typography'
 
 export const StickyBarContainer = styled.div`
   background: ${({ theme }) => theme.selected.main[1]};

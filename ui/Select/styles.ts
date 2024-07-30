@@ -1,7 +1,7 @@
-import styled, { css } from "styled-components"
+import styled, { css } from 'styled-components'
 
-import { Icon } from "@/ui"
-import { responsive } from "@/ui/responsive"
+import { Icon } from '@/ui'
+import { responsive } from '@/ui/responsive'
 
 export const SelectWrapper = styled.div`
   position: relative;

@@ -1,6 +1,6 @@
-import styled from "styled-components"
+import styled from 'styled-components'
 
-import { zindex } from "@/ui/constants"
+import { zindex } from '@/ui/constants'
 
 export const BackdropContainer = styled.div`
   align-items: center;

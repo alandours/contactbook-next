@@ -1,9 +1,9 @@
-import { ReactNode } from "react"
-import { useFormContext } from "react-hook-form"
+import { ReactNode } from 'react'
+import { useFormContext } from 'react-hook-form'
 
-import { Icons } from "@/ui/icons"
+import { Icons } from '@/ui/icons'
 
-import { SelectContainer, Selector, SelectWrapper } from "./styles"
+import { SelectContainer, Selector, SelectWrapper } from './styles'
 
 interface SelectProps {
   name: string

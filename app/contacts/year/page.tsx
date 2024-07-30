@@ -1,10 +1,10 @@
-import { Metadata } from "next"
+import { Metadata } from 'next'
 
-import { getStats } from "@/actions/actions"
-import { ContactsByYear } from "@/features/contacts/pages/ContactsByYear"
+import { getStats } from '@/actions/actions'
+import { ContactsByYear } from '@/features/contacts/pages/ContactsByYear'
 
 export const metadata: Metadata = {
-  title: "ContactBook | Years",
+  title: 'ContactBook | Years',
 }
 
 export default async function YearPage() {

@@ -1,6 +1,6 @@
-import styled from "styled-components"
+import styled from 'styled-components'
 
-import { FontSize, FontWeight } from "@/ui/typography"
+import { FontSize, FontWeight } from '@/ui/typography'
 
 export const ErrorMessageContainer = styled.div`
   color: ${({ theme }) => theme.selected.danger.light};

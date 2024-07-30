@@ -1,7 +1,7 @@
-import styled from "styled-components"
+import styled from 'styled-components'
 
-import { XButton } from "@/components/XButton"
-import { responsive } from "@/ui/responsive"
+import { XButton } from '@/components/XButton'
+import { responsive } from '@/ui/responsive'
 
 export const RemoveButton = styled(XButton)`
   margin-left: 1.5rem;

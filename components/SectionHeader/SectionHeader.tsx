@@ -1,7 +1,7 @@
-import { Icon } from "@/ui"
-import { Icons } from "@/ui/icons"
+import { Icon } from '@/ui'
+import { Icons } from '@/ui/icons'
 
-import { SectionHeaderContainer } from "./styles"
+import { SectionHeaderContainer } from './styles'
 
 interface SectionHeaderProps {
   title: string

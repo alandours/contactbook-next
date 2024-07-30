@@ -1,1 +1,1 @@
-export { Gradient } from "./Gradient"
+export { Gradient } from './Gradient'

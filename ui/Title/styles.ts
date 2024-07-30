@@ -1,6 +1,6 @@
-import styled from "styled-components"
-import { FontSize, FontWeight } from "@/ui/typography"
-import { responsive } from "@/ui/responsive"
+import styled from 'styled-components'
+import { FontSize, FontWeight } from '@/ui/typography'
+import { responsive } from '@/ui/responsive'
 
 export const TitleContainer = styled.h1`
   align-items: center;

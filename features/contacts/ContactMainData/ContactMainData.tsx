@@ -1,13 +1,13 @@
-import { useContext } from "react"
+import { useContext } from 'react'
 
-import { FavoriteButton } from "@/components/FavoriteButton"
-import { getBirthdayText, calculateAge } from "@/features/birthdays/utils"
-import { ContactsContext } from "@/features/contacts/context"
-import { Icon, Link, Title } from "@/ui"
-import { UIContext } from "@/ui/context"
-import { Icons } from "@/ui/icons"
+import { FavoriteButton } from '@/components/FavoriteButton'
+import { getBirthdayText, calculateAge } from '@/features/birthdays/utils'
+import { ContactsContext } from '@/features/contacts/context'
+import { Icon, Link, Title } from '@/ui'
+import { UIContext } from '@/ui/context'
+import { Icons } from '@/ui/icons'
 
-import { ContactMainDataContainer, MainDatafield, Name, Text } from "./styles"
+import { ContactMainDataContainer, MainDatafield, Name, Text } from './styles'
 
 export const ContactMainData = () => {
   const { theme } = useContext(UIContext)

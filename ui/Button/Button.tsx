@@ -1,8 +1,8 @@
-import { ButtonHTMLAttributes, ReactNode } from "react"
+import { ButtonHTMLAttributes, ReactNode } from 'react'
 
-import { ButtonVariants } from "@/types"
+import { ButtonVariants } from '@/types'
 
-import { ButtonContainer } from "./styles"
+import { ButtonContainer } from './styles'
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariants
@@ -11,10 +11,10 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 export const Button = ({
-  type = "button",
+  type = 'button',
   variant = ButtonVariants.MAIN,
   handleClick,
-  className = "",
+  className = '',
   children,
 }: ButtonProps) => (
   <ButtonContainer

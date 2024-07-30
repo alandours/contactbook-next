@@ -1,11 +1,11 @@
-import { Contact } from "@/types"
-import { Section } from "@/components/Section"
-import { ContactLink } from "@/components/ContactLink"
+import { Contact } from '@/types'
+import { Section } from '@/components/Section'
+import { ContactLink } from '@/components/ContactLink'
 import {
   BirthdayGroup,
   ContactWithNextBirthday,
   ContactsByBirthdayMonth,
-} from "@/types/birthday"
+} from '@/types/birthday'
 
 export const getNextBirthday = (birthday: Date) => {
   const todayDate = new Date()
@@ -59,8 +59,8 @@ export const groupByBirthdayMonth = (
     const contactsByBirthdayMonth: ContactsByBirthdayMonth = acc
     const { nextBirthday } = contact || {}
 
-    const monthYear = `${nextBirthday.toLocaleString("en", {
-      month: "long",
+    const monthYear = `${nextBirthday.toLocaleString('en', {
+      month: 'long',
     })} ${nextBirthday.getFullYear()}`
 
     contactsByBirthdayMonth[monthYear] = contactsByBirthdayMonth[monthYear]
@@ -94,8 +94,8 @@ export const calculateNextBirthdayAge = (birthday: Date) => {
 }
 
 export const getBirthdayText = (birthday: Date) => {
-  const options: Intl.DateTimeFormatOptions = { month: "long" }
-  const locale = "en"
+  const options: Intl.DateTimeFormatOptions = { month: 'long' }
+  const locale = 'en'
 
   if (calculateAge(birthday))
     return `${birthday.toLocaleDateString(
@@ -132,11 +132,11 @@ export const getListDate = (birthday: Date, showMonth: boolean) => {
 
 export const getNamedDate = (birthday: Date) => {
   if (isBirthdayFromToday(birthday)) {
-    return "Today"
+    return 'Today'
   }
 
   if (isBirthdayFromToday(birthday, 1)) {
-    return "Tomorrow"
+    return 'Tomorrow'
   }
 
   const daysUntilBirthday = Math.round(

@@ -1,7 +1,7 @@
-import styled, { css } from "styled-components"
+import styled, { css } from 'styled-components'
 
-import { FontSize, FontWeight } from "@/ui/typography"
-import { responsive } from "@/ui/responsive"
+import { FontSize, FontWeight } from '@/ui/typography'
+import { responsive } from '@/ui/responsive'
 
 export const ContactsByYearContainer = styled.div`
   display: flex;
