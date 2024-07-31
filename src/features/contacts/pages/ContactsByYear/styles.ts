@@ -56,8 +56,8 @@ export const Quantity = styled.div`
   width: 100%;
 `
 
-export const Stat = styled.div<{ height: number; isActive: boolean }>`
-  ${({ theme, height, isActive }) => css`
+export const Stat = styled.div<{ height: number; $isActive: boolean }>`
+  ${({ theme, height, $isActive }) => css`
     background: ${theme.mainColor.dark};
     cursor: pointer;
     min-width: 50px;
@@ -83,7 +83,7 @@ export const Stat = styled.div<{ height: number; isActive: boolean }>`
       height: ${height * 0.8}px;
     `}
 
-    ${!!isActive &&
+    ${!!$isActive &&
     css`
       background: ${theme.mainColor.light};
 

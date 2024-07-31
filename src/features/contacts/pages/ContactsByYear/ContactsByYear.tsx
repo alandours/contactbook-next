@@ -43,7 +43,7 @@ export const ContactsByYear = ({ stats }: ContactByYearProps) => {
         <Stat
           onClick={() => handleStatClick(yearMet)}
           height={height}
-          isActive={filters.year === yearMet}
+          $isActive={filters.year === yearMet}
           data-stat={yearMet}
           key={yearMet}
         >
