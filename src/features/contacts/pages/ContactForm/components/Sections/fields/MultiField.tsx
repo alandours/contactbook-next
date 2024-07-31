@@ -1,9 +1,10 @@
-import { useWatch } from 'react-hook-form'
+import { Controller, useFormContext, useWatch } from 'react-hook-form'
 import { EmailType, NumberType } from '@prisma/client'
 
 import { Input, Select } from '@/ui'
+import { OptionData } from '@/ui/Select'
 
-import { FormField, Option, RemoveButton } from './styles'
+import { FormField, RemoveButton } from './styles'
 
 interface MultiFieldProps {
   label: string
@@ -12,7 +13,7 @@ interface MultiFieldProps {
     select: string
     custom: string
   }
-  options: string[] | { id: string; name: string }[]
+  options: { label: string; value: string }[]
   customType?: NumberType | EmailType
   removeField: () => void
 }
@@ -24,24 +25,34 @@ export const MultiField = ({
   customType,
   removeField,
 }: MultiFieldProps) => {
+  const { control } = useFormContext()
   const type = useWatch({ name: names.select })
 
   return (
     <FormField>
       <Input name={names.input} label={label} />
-      <Select name={names.select}>
-        {options.map((option) =>
-          typeof option === 'string' ? (
-            <Option key={option} value={option}>
-              {option}
-            </Option>
-          ) : (
-            <Option key={option?.id} value={option?.id}>
-              {option?.name}
-            </Option>
+      <Controller
+        name={names.select}
+        control={control}
+        render={({ field: { value, onChange } }) => {
+          return (
+            <Select
+              label="Type"
+              options={options}
+              value={
+                options.find((option) => option.value === value) as OptionData
+              }
+              onChange={(selectedOption) => {
+                if (selectedOption && 'value' in selectedOption) {
+                  onChange(selectedOption.value)
+                }
+              }}
+              defaultValue={options.find((option) => option.value === 'Custom')}
+              portalTarget={document.querySelector('body')}
+            />
           )
-        )}
-      </Select>
+        }}
+      />
       <Input
         name={names.custom}
         disabled={!customType || customType !== type}

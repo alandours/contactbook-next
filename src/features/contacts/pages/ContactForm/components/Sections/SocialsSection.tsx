@@ -54,7 +54,10 @@ export const SocialsSection = () => {
               select: `socials[${index}].platformId`,
               custom: `socials[${index}].label`,
             }}
-            options={platforms}
+            options={platforms.map(({ id, name }) => ({
+              label: name,
+              value: id,
+            }))}
             removeField={() => remove(index)}
           />
         ))}

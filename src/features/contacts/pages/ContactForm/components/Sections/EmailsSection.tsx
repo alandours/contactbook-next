@@ -42,7 +42,10 @@ export const EmailsSection = () => {
               select: `emails[${index}].type`,
               custom: `emails[${index}].label`,
             }}
-            options={Object.keys(EmailType)}
+            options={Object.keys(EmailType).map((key) => ({
+              label: key,
+              value: key,
+            }))}
             customType={EmailType.Custom}
             removeField={() => remove(index)}
           />

@@ -42,7 +42,10 @@ export const NumbersSection = () => {
               select: `numbers[${index}].type`,
               custom: `numbers[${index}].label`,
             }}
-            options={Object.keys(NumberType)}
+            options={Object.keys(NumberType).map((key) => ({
+              label: key,
+              value: key,
+            }))}
             customType={NumberType.Custom}
             removeField={() => remove(index)}
           />
