@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { useFieldArray } from 'react-hook-form'
 
 import { getPlatforms } from '@/actions/actions'
@@ -10,7 +10,7 @@ import { MultiField } from './fields/MultiField'
 import { AddNewButton } from './styles'
 
 export const SocialsSection = () => {
-  const { fields, append, remove } = useFieldArray({ name: 'socials' })
+  const { fields, append, replace, remove } = useFieldArray({ name: 'socials' })
 
   const [platforms, setPlatforms] = useState<Platform[]>([])
 
@@ -22,24 +22,20 @@ export const SocialsSection = () => {
     fetchPlatforms()
   }, [])
 
-  const addNewSocial = useCallback(
-    (shouldFocus = true) =>
-      append(
-        {
-          username: null,
-          platformId: platforms[0]?.id,
-          label: null,
-        },
-        { shouldFocus }
-      ),
-    [append, platforms]
+  const newField = useMemo(
+    () => ({
+      username: null,
+      platformId: platforms[0]?.id,
+      label: null,
+    }),
+    [platforms]
   )
 
   useEffect(() => {
-    if (!fields.length) {
-      addNewSocial(false)
+    if (!fields.length && platforms.length) {
+      replace(newField)
     }
-  }, [fields, addNewSocial])
+  }, [fields, platforms, newField, replace])
 
   return (
     <Section title="Social networks" icon={Icons.social} sticky>
@@ -61,7 +57,9 @@ export const SocialsSection = () => {
             removeField={() => remove(index)}
           />
         ))}
-      <AddNewButton handleClick={addNewSocial}>Add a new social</AddNewButton>
+      <AddNewButton handleClick={() => append(newField, { shouldFocus: true })}>
+        Add a new social
+      </AddNewButton>
     </Section>
   )
 }

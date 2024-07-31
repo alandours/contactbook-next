@@ -47,7 +47,6 @@ export const MultiField = ({
                   onChange(selectedOption.value)
                 }
               }}
-              defaultValue={options.find((option) => option.value === 'Custom')}
               portalTarget={document.querySelector('body')}
             />
           )

@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from 'react'
+import { useEffect, useMemo } from 'react'
 import { useFieldArray } from 'react-hook-form'
 
 import { Section } from '@/components/Section'
@@ -8,18 +8,15 @@ import { SingleField } from './fields/SingleField'
 import { AddNewButton } from './styles'
 
 export const AliasesSection = () => {
-  const { fields, append, remove } = useFieldArray({ name: 'aliases' })
+  const { fields, append, replace, remove } = useFieldArray({ name: 'aliases' })
 
-  const addNewAlias = useCallback(
-    (shouldFocus = true) => append({ alias: '' }, { shouldFocus }),
-    [append]
-  )
+  const newField = useMemo(() => ({ alias: '' }), [])
 
   useEffect(() => {
     if (!fields.length) {
-      addNewAlias(false)
+      replace(newField)
     }
-  }, [fields, addNewAlias])
+  }, [fields, newField, replace])
 
   return (
     <Section title="Aliases" icon={Icons.alias} sticky>
@@ -32,7 +29,9 @@ export const AliasesSection = () => {
             removeField={() => remove(index)}
           />
         ))}
-      <AddNewButton handleClick={addNewAlias}>Add a new alias</AddNewButton>
+      <AddNewButton handleClick={() => append(newField, { shouldFocus: true })}>
+        Add a new alias
+      </AddNewButton>
     </Section>
   )
 }

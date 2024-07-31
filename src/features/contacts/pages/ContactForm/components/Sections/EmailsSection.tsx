@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from 'react'
+import { useEffect, useMemo } from 'react'
 import { useFieldArray } from 'react-hook-form'
 import { EmailType } from '@prisma/client'
 
@@ -9,26 +9,22 @@ import { MultiField } from './fields/MultiField'
 import { AddNewButton } from './styles'
 
 export const EmailsSection = () => {
-  const { fields, append, remove } = useFieldArray({ name: 'emails' })
+  const { fields, append, replace, remove } = useFieldArray({ name: 'emails' })
 
-  const addNewEmail = useCallback(
-    (shouldFocus = true) =>
-      append(
-        {
-          email: null,
-          type: EmailType.Personal,
-          label: null,
-        },
-        { shouldFocus }
-      ),
-    [append]
+  const newField = useMemo(
+    () => ({
+      email: null,
+      type: EmailType.Personal,
+      label: null,
+    }),
+    []
   )
 
   useEffect(() => {
     if (!fields.length) {
-      addNewEmail(false)
+      replace(newField)
     }
-  }, [fields, addNewEmail])
+  }, [fields, newField, replace])
 
   return (
     <Section title="E-mails" icon={Icons.email} sticky>
@@ -50,7 +46,9 @@ export const EmailsSection = () => {
             removeField={() => remove(index)}
           />
         ))}
-      <AddNewButton handleClick={addNewEmail}>Add new e-mail</AddNewButton>
+      <AddNewButton handleClick={() => append(newField, { shouldFocus: true })}>
+        Add new e-mail
+      </AddNewButton>
     </Section>
   )
 }
