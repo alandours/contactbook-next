@@ -165,8 +165,6 @@ export const upsertContact = async (
       }
     }
 
-    const photo = imageFile && !removePhoto ? await writeImage(imageFile) : null
-
     const contact = await prisma.$transaction(async (tx) => {
       const query = {
         name,
@@ -175,10 +173,23 @@ export const upsertContact = async (
         address,
         yearMet,
         notes,
-        ...(imageFile || removePhoto ? { photo } : {}),
       }
 
       const contact = await tx.contact.upsert(createQuery(query, contactId))
+
+      if (contact && (imageFile || removePhoto)) {
+        const photo =
+          imageFile && !removePhoto
+            ? await writeImage(imageFile, contact.id)
+            : null
+
+        await tx.contact.update({
+          data: { photo },
+          where: {
+            id: contact.id,
+          },
+        })
+      }
 
       // Alias
       await tx.alias.deleteMany({

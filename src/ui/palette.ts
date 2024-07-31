@@ -1,14 +1,7 @@
 'use client'
 
+import { ROUTES } from '@/constants/routes'
 import { lighten, darken } from 'polished'
-
-import contactPhotoGreen from '@/assets/defaultPhotos/contact-1.jpg'
-import contactPhotoBlue from '@/assets/defaultPhotos/contact-2.jpg'
-import contactPhotoRed from '@/assets/defaultPhotos/contact-3.jpg'
-import contactPhotoPurple from '@/assets/defaultPhotos/contact-4.jpg'
-import contactPhotoOrange from '@/assets/defaultPhotos/contact-5.jpg'
-import contactPhotoTurquoise from '@/assets/defaultPhotos/contact-6.jpg'
-import contactPhotoPink from '@/assets/defaultPhotos/contact-7.jpg'
 
 export enum Colors {
   GREEN = 1,
@@ -120,13 +113,13 @@ export const colors = {
 }
 
 export const DEFAULT_PHOTOS = {
-  [Colors.GREEN]: contactPhotoGreen,
-  [Colors.BLUE]: contactPhotoBlue,
-  [Colors.RED]: contactPhotoRed,
-  [Colors.PURPLE]: contactPhotoPurple,
-  [Colors.ORANGE]: contactPhotoOrange,
-  [Colors.TURQUOISE]: contactPhotoTurquoise,
-  [Colors.PINK]: contactPhotoPink,
+  [Colors.GREEN]: ROUTES.profilePictures('contact-1.jpg'),
+  [Colors.BLUE]: ROUTES.profilePictures('contact-2.jpg'),
+  [Colors.RED]: ROUTES.profilePictures('contact-3.jpg'),
+  [Colors.PURPLE]: ROUTES.profilePictures('contact-4.jpg'),
+  [Colors.ORANGE]: ROUTES.profilePictures('contact-5.jpg'),
+  [Colors.TURQUOISE]: ROUTES.profilePictures('contact-6.jpg'),
+  [Colors.PINK]: ROUTES.profilePictures('contact-7.jpg'),
 }
 
 export const theme = {

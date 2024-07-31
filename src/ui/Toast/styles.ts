@@ -12,7 +12,7 @@ export const CloseButton = styled(XButton)<{ $status: Status }>`
     & > svg {
       ${$status === Status.SUCCESS &&
       css`
-        color: ${theme.mainColor.dark};
+        color: ${theme.mainColor.dark} !important;
       `};
 
       ${$status === Status.ERROR &&

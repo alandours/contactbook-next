@@ -9,5 +9,5 @@ export const getRandomContact = (contacts: Contact[]) => {
   return randomContact
 }
 
-export const getFullName = (name: string, lastname: string | null) =>
+export const getFullName = (name: string, lastname?: string | null) =>
   `${name}${lastname ? ` ${lastname}` : ''}`
