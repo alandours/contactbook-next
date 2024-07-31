@@ -35,6 +35,7 @@ export const MultiField = ({
         name={names.select}
         control={control}
         render={({ field: { value, onChange } }) => {
+          // console.log(value)
           return (
             <Select
               label="Type"
