@@ -10,7 +10,7 @@ import { UIContext } from '@/ui/context'
 import { Colors, ThemeColor, colors, getTheme, palette } from '@/ui/palette'
 
 export const ColorSettings = () => {
-  const { themeKey, setTheme } = useContext(UIContext)
+  const { setTheme } = useContext(UIContext)
 
   const toggleDarkTheme = (active: boolean) => {
     const theme = active ? ThemeColor.DARK : ThemeColor.LIGHT

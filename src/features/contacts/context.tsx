@@ -18,7 +18,7 @@ interface ContactsContextValues {
   loading: boolean | undefined
   filters: Filters
   palette: string[]
-  selectContact: (contact: Contact) => void
+  selectContact: (contact: Contact | null) => void
   updateFilters: ({
     key,
     value,
@@ -59,7 +59,7 @@ export const ContactsProvider = ({ data, children }: ContactsProviderProps) => {
   const [filters, setFilters] = useState<Filters>(initialValues.filters)
   const [palette, setPalette] = useState<string[]>([])
 
-  const selectContact = (contact: Contact) => setSelectedContact(contact)
+  const selectContact = (contact: Contact | null) => setSelectedContact(contact)
 
   const updateFilters = ({
     key,

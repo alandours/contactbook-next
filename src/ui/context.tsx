@@ -43,8 +43,6 @@ interface UIContextValues {
   }
   menuOpen: boolean
   toast: Toast | null
-  themeKey: ThemeColor
-  colorKey: Colors
   setTheme: Dispatch<SetStateAction<Theme>>
   toggleMenu: () => void
   setToast: (toast: Toast | null) => void
@@ -59,8 +57,6 @@ const initialValues: UIContextValues = {
   settings: getSettings(),
   menuOpen: false,
   toast: null,
-  themeKey: getTheme(),
-  colorKey: getMainColor(),
   setTheme: () => undefined,
   toggleMenu: () => undefined,
   setToast: () => undefined,
@@ -100,8 +96,6 @@ export const UIProvider = ({ children }: UIProviderProps) => {
         settings,
         menuOpen,
         toast,
-        themeKey: initialValues.themeKey,
-        colorKey: initialValues.colorKey,
         setTheme,
         updateSetting,
         toggleMenu,

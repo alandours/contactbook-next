@@ -43,9 +43,9 @@ export const ContactForm = ({ contact }: ContactFormProps) => {
   const { handleSubmit, reset } = methods
 
   useEffect(() => {
-    if (contact) {
-      selectContact(contact)
+    selectContact(contact || null)
 
+    if (contact) {
       reset({
         ...contact,
         birthday: contact.birthday
