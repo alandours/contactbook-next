@@ -9,26 +9,30 @@ export const RemoveButton = styled(XButton)`
   position: absolute;
   right: 0;
   top: -2rem;
+  width: 0.625rem;
 
   ${responsive.md(`
-    margin-left: 0.75rem;
+    margin-left: 0;
     opacity: 0;
-    position: initial;
+    position: absolute;
+    right: -1.25rem;
+    top: 0.125rem;
     visibility: hidden;
   `)}
 `
 
 export const FormField = styled.div`
-  align-items: flex-start;
+  align-items: center;
   display: flex;
   flex-direction: column;
+  gap: 1.2rem;
   justify-content: space-between;
   margin: 3rem 0;
   position: relative;
 
   ${responsive.md(`
     flex-direction: row;
-    margin: 0.75rem 0;
+    margin: 1.5rem 0;
   `)}
 
   &:hover ${RemoveButton} {
@@ -36,8 +40,4 @@ export const FormField = styled.div`
     visibility: visible;
     transition: all ease 100ms;
   }
-`
-
-export const Option = styled.option`
-  color: #000;
 `

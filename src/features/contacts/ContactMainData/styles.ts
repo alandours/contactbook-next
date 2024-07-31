@@ -3,6 +3,9 @@ import { FontSize, FontWeight } from '@/ui/typography'
 import { responsive } from '@/ui/responsive'
 
 export const ContactMainDataContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
   margin-left: 0.75rem;
   width: 100%;
 
@@ -16,7 +19,6 @@ export const MainDatafield = styled.div`
   color: ${({ theme }) => theme.selected.contrast[1]};
   display: flex;
   gap: 0.5rem;
-  margin: 0.25rem 0;
 `
 
 export const Name = styled.span<{ $birthday: number | null }>`

@@ -15,5 +15,5 @@ export const Content = styled.div`
   display: flex;
   flex-direction: column;
   overflow-x: scroll;
-  padding: 1rem 1.5rem;
+  padding: 2rem 2rem;
 `
