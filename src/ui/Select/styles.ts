@@ -1,50 +1,71 @@
 import styled, { css } from 'styled-components'
 
-import { Icon } from '@/ui'
-import { responsive } from '@/ui/responsive'
+export const StylesWrapper = styled.div`
+  width: 100%;
 
-export const SelectWrapper = styled.div`
-  position: relative;
-`
-
-export const Selector = styled(Icon)`
-  color: ${({ theme }) => theme.selected.contrast[3]};
-  font-size: 0.8rem;
-  margin-top: -6px;
-  position: absolute;
-  right: 1rem;
-  top: 43%;
-
-  ${responsive.md(`
-    right: 2rem;
-    top: 50%;
-  `)}
-`
-
-export const SelectContainer = styled.select`
   ${({ theme }) => css`
-    appearance: none;
-    background: transparent;
-    border: 1px solid ${theme.selected.contrast[4]};
-    border-radius: 3px;
+    .contactbook-select {
+      &__control {
+        border: 0;
+        border-bottom: 1px solid ${theme.selected.contrast[4]};
+        border-radius: 0;
+        box-shadow: none;
+        background: ${theme.selected.main[1]};
+        cursor: pointer;
+        min-height: auto;
+        padding: 0;
+
+        &:hover,
+        &:active,
+        &:focus {
+          border-color: ${theme.mainColor.main};
+        }
+      }
+
+      &__indicator {
+        padding: 0 0.25rem;
+      }
+
+      &__single-value {
+        color: ${theme.selected.contrast[1]};
+      }
+
+      &__value-container {
+        padding: 0.125rem 0;
+      }
+    }
+  `}
+`
+
+export const MenuContainer = styled.div`
+  ${({ theme }) => css`
+    background: ${theme.selected.main[3]};
+
+    .contactbook-select__menu-list {
+      padding: 0;
+      box-shadow: 0 0 4px 0 ${theme.selected.main[2]};
+    }
+  `}
+`
+
+export const OptionContainer = styled.div<{
+  $isFocused: boolean
+  $isSelected: boolean
+}>`
+  cursor: pointer;
+  display: flex;
+  font-size: 0.875rem;
+  justify-content: space-between;
+  padding: 0.5rem 0.75rem;
+
+  ${({ theme, $isFocused }) => css`
     color: ${theme.selected.contrast[1]};
-    cursor: pointer;
-    display: grid;
-    margin: 1rem 0 1.75rem 0;
-    padding: 0.25rem;
-    width: 100%;
+    background: ${$isFocused ? theme.selected.main[4] : theme.selected.main[3]};
+  `}
+`
 
-    ${responsive.md(`
-      margin: 0 1.5rem;
-      width: 200px;
-    `)}
-
-    &:hover, &:focus {
-      border: 1px solid ${theme.mainColor.main};
-    }
-
-    &:hover + ${Selector}, &:focus + ${Selector} {
-      color: ${theme.mainColor.main};
-    }
+export const SelectedIcon = styled.span`
+  ${({ theme }) => css`
+    color: ${theme.mainColor.main};
   `}
 `

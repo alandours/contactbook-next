@@ -1,22 +1,73 @@
-import { ReactNode } from 'react'
-import { useFormContext } from 'react-hook-form'
+import ReactSelect, {
+  GroupBase,
+  MultiValue,
+  SelectComponentsConfig,
+  SingleValue,
+  StylesConfig,
+} from 'react-select'
 
-import { Icons } from '@/ui/icons'
+import { Label } from '@/ui/Label'
 
-import { SelectContainer, Selector, SelectWrapper } from './styles'
+import { Menu } from './components/Menu'
+import { Option } from './components/Option'
+import { StylesWrapper } from './styles'
 
-interface SelectProps {
-  name: string
-  children?: ReactNode
+export type OptionData = {
+  label: string
+  value: string
 }
 
-export const Select = ({ name, children }: SelectProps) => {
-  const { register } = useFormContext()
+interface SelectProps {
+  options: OptionData[]
+  value: OptionData
+  label: string
+  placeholder?: string
+  defaultValue?: OptionData
+  isSearchable?: boolean
+  portalTarget?: HTMLElement | null
+  onChange: (newValue: SingleValue<OptionData> | MultiValue<OptionData>) => void
+}
+
+export const Select = ({
+  options,
+  value,
+  defaultValue,
+  label,
+  placeholder = '',
+  isSearchable = false,
+  portalTarget,
+  onChange,
+}: SelectProps) => {
+  const components: Partial<
+    SelectComponentsConfig<OptionData, boolean, GroupBase<OptionData>>
+  > = {
+    IndicatorSeparator: null,
+    Option,
+    Menu,
+  }
+
+  const styles: Partial<
+    StylesConfig<OptionData, boolean, GroupBase<OptionData>>
+  > = {
+    menuPortal: (base) => ({ ...base, zIndex: 999 }),
+  }
 
   return (
-    <SelectWrapper>
-      <SelectContainer {...register(name)}>{children}</SelectContainer>
-      <Selector name={Icons.chevronDown} size="0.75rem" />
-    </SelectWrapper>
+    <StylesWrapper>
+      <Label label={label}>
+        <ReactSelect
+          classNamePrefix="contactbook-select"
+          options={options}
+          value={value}
+          defaultValue={defaultValue}
+          placeholder={placeholder}
+          isSearchable={isSearchable}
+          menuPortalTarget={portalTarget}
+          components={components}
+          styles={styles}
+          onChange={onChange}
+        />
+      </Label>
+    </StylesWrapper>
   )
 }
