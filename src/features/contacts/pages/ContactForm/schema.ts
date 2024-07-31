@@ -19,9 +19,6 @@ export const schema = z.object({
     .transform(emptyToNull)
     .nullish(),
   birthday: z.union([
-    z.coerce
-      .date({ invalid_type_error: 'This is not a valid birthday' })
-      .max(new Date(), "The birthday can't be in the future"),
     z
       .string()
       .refine((birthday) => !birthday, {
@@ -29,6 +26,9 @@ export const schema = z.object({
       })
       .transform(emptyToNull)
       .nullable(),
+    z.coerce
+      .date({ invalid_type_error: 'This is not a valid birthday' })
+      .max(new Date(), "The birthday can't be in the future"),
   ]),
   address: z
     .string()
