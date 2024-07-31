@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from 'react'
+import { useEffect, useMemo } from 'react'
 import { useFieldArray } from 'react-hook-form'
 import { NumberType } from '@prisma/client'
 
@@ -9,26 +9,22 @@ import { MultiField } from './fields/MultiField'
 import { AddNewButton } from './styles'
 
 export const NumbersSection = () => {
-  const { fields, append, remove } = useFieldArray({ name: 'numbers' })
+  const { fields, append, replace, remove } = useFieldArray({ name: 'numbers' })
 
-  const addNewNumber = useCallback(
-    (shouldFocus = true) =>
-      append(
-        {
-          number: null,
-          type: NumberType.Mobile,
-          label: null,
-        },
-        { shouldFocus }
-      ),
-    [append]
+  const newField = useMemo(
+    () => ({
+      number: null,
+      type: NumberType.Mobile,
+      label: null,
+    }),
+    []
   )
 
   useEffect(() => {
     if (!fields.length) {
-      addNewNumber(false)
+      replace(newField)
     }
-  }, [fields, addNewNumber])
+  }, [fields, newField, replace])
 
   return (
     <Section title="Phone numbers" icon={Icons.phone} sticky>
@@ -50,7 +46,9 @@ export const NumbersSection = () => {
             removeField={() => remove(index)}
           />
         ))}
-      <AddNewButton handleClick={addNewNumber}>Add a new number</AddNewButton>
+      <AddNewButton handleClick={() => append(newField, { shouldFocus: true })}>
+        Add a new number
+      </AddNewButton>
     </Section>
   )
 }
