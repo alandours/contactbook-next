@@ -13,7 +13,7 @@ type UnionToIntersection<U> = (U extends any ? (x: U) => void : never) extends (
   : never
 
 export type SectionRenderData = UnionToIntersection<
-  Parameters<(typeof CONTACT_SECTIONS)[number]["render"]>[0]
+  Parameters<(typeof CONTACT_SECTIONS)[number]['render']>[0]
 >
 
 export const CONTACT_SECTIONS = [
@@ -72,8 +72,8 @@ export const CONTACT_SECTIONS = [
           platform: { prefix, url: platformUrl, name: platformName },
           label: customLabel,
         } = social
-        const name = `${prefix || ''}${username}`
-        const label = platformName
+        const name = `${prefix || '@'}${username}`
+        const label = customLabel || platformName
         const url = `https://${platformUrl}/${username}`
 
         return <Datafield name={name} label={label} url={url} key={id} />
