@@ -22,19 +22,19 @@ import { DashboardContainer, InlineLink } from './styles'
 export const Dashboard = () => {
   const { contacts } = useContext(ContactsContext)
 
-  const [upcomingBirthdays, setUpcomingBirthdays] =
-    useState<ContactWithNextBirthday[]>()
-  const [lastAdded, setLastAdded] = useState<Contact[]>()
+  const [upcomingBirthdays, setUpcomingBirthdays] = useState<
+    ContactWithNextBirthday[] | null
+  >(null)
+  const [recentlyAdded, setRecentlyAdded] = useState<Contact[]>()
 
   useEffect(() => {
     const contactsWithBirthdays = getContactsWithBirthdays(contacts)
     const upcoming = getUpcomingBirthdays(contactsWithBirthdays)
 
-    if (upcoming) {
-      setUpcomingBirthdays(upcoming)
-      const lastContacts = getRecentlyAddedContacts(contacts)
-      setLastAdded(lastContacts)
-    }
+    setUpcomingBirthdays(upcoming)
+
+    const lastContacts = getRecentlyAddedContacts(contacts)
+    setRecentlyAdded(lastContacts)
   }, [contacts])
 
   const subtitle =
@@ -73,9 +73,9 @@ export const Dashboard = () => {
           </Link>
         )}
       </Section>
-      {!!lastAdded?.length && (
+      {!!recentlyAdded?.length && (
         <Section title="Recently added" icon={Icons.contacts}>
-          {lastAdded.map((contact) => (
+          {recentlyAdded.map((contact) => (
             <ContactLink key={contact.id} contact={contact} showPhoto />
           ))}
           {
