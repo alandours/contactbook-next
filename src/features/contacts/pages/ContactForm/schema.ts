@@ -4,6 +4,8 @@ import { EmailType, NumberType } from '@prisma/client'
 
 export type ContactSchema = z.output<typeof schema>
 
+const emptyToNull = (str: string) => str.trim() || null
+
 export const schema = z.object({
   id: z.string().optional(),
   name: z
@@ -11,7 +13,11 @@ export const schema = z.object({
     .trim()
     .min(1, "The name can't be empty")
     .max(40, 'The name is too long'),
-  lastname: z.string().max(40, 'The last name is too long').nullable(),
+  lastname: z
+    .string()
+    .max(40, 'The last name is too long')
+    .transform(emptyToNull)
+    .nullish(),
   birthday: z.union([
     z.coerce
       .date({ invalid_type_error: 'This is not a valid birthday' })
@@ -21,9 +27,14 @@ export const schema = z.object({
       .refine((birthday) => !birthday, {
         message: 'This is not a valid birthday',
       })
+      .transform(emptyToNull)
       .nullable(),
   ]),
-  address: z.string().max(40, 'The address is too long').nullable(),
+  address: z
+    .string()
+    .max(40, 'The address is too long')
+    .transform(emptyToNull)
+    .nullable(),
   yearMet: z.union([
     z.coerce
       .number({ message: 'This is not a valid year' })
@@ -33,6 +44,7 @@ export const schema = z.object({
     z
       .string({ message: 'This is not a valid year' })
       .refine((year) => !year, { message: 'This is not a valid year' })
+      .transform(emptyToNull)
       .nullable(),
   ]),
   aliases: z.array(
@@ -65,7 +77,11 @@ export const schema = z.object({
       label: z.string().max(50, 'The label is too long').nullable(),
     })
   ),
-  notes: z.string().max(2000, 'The notes are too long').nullable(),
+  notes: z
+    .string()
+    .max(2000, 'The notes are too long')
+    .transform(emptyToNull)
+    .nullable(),
   file: z
     .custom<FileList>()
     .transform((file) => (file.length > 0 ? file.item(0) : null))

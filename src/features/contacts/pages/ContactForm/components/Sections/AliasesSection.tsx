@@ -10,7 +10,7 @@ import { AddNewButton } from './styles'
 export const AliasesSection = () => {
   const { fields, append, replace, remove } = useFieldArray({ name: 'aliases' })
 
-  const newField = useMemo(() => ({ alias: '' }), [])
+  const newField = useMemo(() => ({ alias: null }), [])
 
   useEffect(() => {
     if (!fields.length) {
