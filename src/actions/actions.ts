@@ -8,6 +8,9 @@ import prisma from '@/lib/prisma'
 import { ContactFormData, Filters, Status } from '@/types'
 
 import { createQuery, createRelatedFieldQuery, writeImage } from './utils'
+import { Prisma } from '@prisma/client'
+
+const ASC = Prisma.SortOrder.asc
 
 const CONTACT_SELECT = {
   id: true,
@@ -28,6 +31,7 @@ const CONTACT_SELECT = {
       platform: true,
       platformId: true,
     },
+    orderBy: [{ platform: { name: ASC } }],
   },
   numbers: {
     select: {
@@ -36,6 +40,7 @@ const CONTACT_SELECT = {
       type: true,
       label: true,
     },
+    orderBy: [{ type: ASC }, { label: ASC }],
   },
   emails: {
     select: {
@@ -44,12 +49,14 @@ const CONTACT_SELECT = {
       type: true,
       label: true,
     },
+    orderBy: [{ type: ASC }, { label: ASC }],
   },
   aliases: {
     select: {
       id: true,
       alias: true,
     },
+    orderBy: [{ alias: ASC }],
   },
 }
 
@@ -318,4 +325,5 @@ export const getPlatforms = async () =>
       url: true,
       prefix: true,
     },
+    orderBy: { name: 'asc' },
   })

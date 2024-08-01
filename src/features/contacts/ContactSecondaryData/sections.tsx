@@ -72,9 +72,11 @@ export const CONTACT_SECTIONS = [
           platform: { prefix, url: platformUrl, name: platformName },
           label: customLabel,
         } = social
-        const name = `${prefix || '@'}${username}`
+        const name = `${prefix || ''}${username}`
         const label = customLabel || platformName
-        const url = `https://${platformUrl}/${username}`
+        const url = platformUrl
+          ? `https://${platformUrl}${username}`
+          : `https://${username}`
 
         return <Datafield name={name} label={label} url={url} key={id} />
       }),
