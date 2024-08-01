@@ -19,7 +19,7 @@ export const ContactBook = styled.div`
 
 export const Main = styled.main`
   display: flex;
-  margin-top: 66px;
+  margin-top: 3rem;
   height: auto;
   max-width: 100%;
 

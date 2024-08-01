@@ -29,6 +29,7 @@ export const Name = styled.div`
   overflow: hidden;
   text-overflow: ellipsis;
   width: 100%;
+  white-space: nowrap;
 
   ${responsive.md(`
     width: 50%;
@@ -38,7 +39,7 @@ export const Name = styled.div`
 export const Label = styled.div`
   color: ${({ theme }) => theme.selected.contrast[3]};
   word-wrap: break-word;
-  width: 100%;
+  white-space: nowrap;
 
   ${responsive.md(`
     width: 50%;

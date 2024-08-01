@@ -5,7 +5,7 @@ import { Section } from '@/components/Section'
 import { Icons } from '@/ui/icons'
 
 import { SingleField } from './fields/SingleField'
-import { AddNewButton } from './styles'
+import { AddNewButton, Fields } from './styles'
 
 export const AliasesSection = () => {
   const { fields, append, replace, remove } = useFieldArray({ name: 'aliases' })
@@ -20,15 +20,17 @@ export const AliasesSection = () => {
 
   return (
     <Section title="Aliases" icon={Icons.alias} sticky>
-      {!!fields.length &&
-        fields.map((alias: Record<'id', string>, index: number) => (
-          <SingleField
-            key={alias.id}
-            label="Alias"
-            name={`aliases[${index}].alias`}
-            removeField={() => remove(index)}
-          />
-        ))}
+      <Fields>
+        {!!fields.length &&
+          fields.map((alias: Record<'id', string>, index: number) => (
+            <SingleField
+              key={alias.id}
+              label="Alias"
+              name={`aliases[${index}].alias`}
+              removeField={() => remove(index)}
+            />
+          ))}
+      </Fields>
       <AddNewButton handleClick={() => append(newField, { shouldFocus: true })}>
         Add a new alias
       </AddNewButton>

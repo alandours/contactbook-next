@@ -7,7 +7,7 @@ import { Platform } from '@/types'
 import { Icons } from '@/ui/icons'
 
 import { MultiField } from './fields/MultiField'
-import { AddNewButton } from './styles'
+import { AddNewButton, Fields } from './styles'
 
 export const SocialsSection = () => {
   const { fields, append, replace, remove } = useFieldArray({ name: 'socials' })
@@ -39,24 +39,26 @@ export const SocialsSection = () => {
 
   return (
     <Section title="Social networks" icon={Icons.social} sticky>
-      {!!platforms &&
-        !!fields.length &&
-        fields.map((username: Record<'id', string>, index: number) => (
-          <MultiField
-            key={username.id}
-            label="Username"
-            names={{
-              input: `socials[${index}].username`,
-              select: `socials[${index}].platformId`,
-              custom: `socials[${index}].label`,
-            }}
-            options={platforms.map(({ id, name }) => ({
-              label: name,
-              value: id,
-            }))}
-            removeField={() => remove(index)}
-          />
-        ))}
+      <Fields>
+        {!!platforms &&
+          !!fields.length &&
+          fields.map((username: Record<'id', string>, index: number) => (
+            <MultiField
+              key={username.id}
+              label="Username"
+              names={{
+                input: `socials[${index}].username`,
+                select: `socials[${index}].platformId`,
+                custom: `socials[${index}].label`,
+              }}
+              options={platforms.map(({ id, name }) => ({
+                label: name,
+                value: id,
+              }))}
+              removeField={() => remove(index)}
+            />
+          ))}
+      </Fields>
       <AddNewButton handleClick={() => append(newField, { shouldFocus: true })}>
         Add a new social
       </AddNewButton>

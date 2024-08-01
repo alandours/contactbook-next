@@ -6,7 +6,7 @@ import { Section } from '@/components/Section'
 import { Icons } from '@/ui/icons'
 
 import { MultiField } from './fields/MultiField'
-import { AddNewButton } from './styles'
+import { AddNewButton, Fields } from './styles'
 
 export const NumbersSection = () => {
   const { fields, append, replace, remove } = useFieldArray({ name: 'numbers' })
@@ -28,24 +28,26 @@ export const NumbersSection = () => {
 
   return (
     <Section title="Phone numbers" icon={Icons.phone} sticky>
-      {!!fields.length &&
-        fields.map((number: Record<'id', string>, index: number) => (
-          <MultiField
-            key={number.id}
-            label="Phone number"
-            names={{
-              input: `numbers[${index}].number`,
-              select: `numbers[${index}].type`,
-              custom: `numbers[${index}].label`,
-            }}
-            options={Object.keys(NumberType).map((key) => ({
-              label: key,
-              value: key,
-            }))}
-            customType={NumberType.Custom}
-            removeField={() => remove(index)}
-          />
-        ))}
+      <Fields>
+        {!!fields.length &&
+          fields.map((number: Record<'id', string>, index: number) => (
+            <MultiField
+              key={number.id}
+              label="Phone number"
+              names={{
+                input: `numbers[${index}].number`,
+                select: `numbers[${index}].type`,
+                custom: `numbers[${index}].label`,
+              }}
+              options={Object.keys(NumberType).map((key) => ({
+                label: key,
+                value: key,
+              }))}
+              customType={NumberType.Custom}
+              removeField={() => remove(index)}
+            />
+          ))}
+      </Fields>
       <AddNewButton handleClick={() => append(newField, { shouldFocus: true })}>
         Add a new number
       </AddNewButton>

@@ -8,6 +8,7 @@ export const LabelContainer = styled.label<{ label: string }>`
   flex-direction: column;
   padding-top: 0.125rem;
   position: relative;
+  margin-top: 1rem;
   min-width: 30%;
   width: 100%;
 

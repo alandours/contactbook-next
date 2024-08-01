@@ -7,11 +7,12 @@ import { Link } from '@/ui'
 export const ContactHeaderContainer = styled(PageHeader)`
   align-items: center;
   display: flex;
-  padding: 1rem;
+  padding: 2rem 1rem;
   flex-wrap: wrap;
 
   ${responsive.md(`
     flex-wrap: nowrap;
+    padding: 1rem;
   `)}
 `
 

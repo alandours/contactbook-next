@@ -6,12 +6,17 @@ import { responsive } from '@/ui/responsive'
 export const ContactMainFormContainer = styled(PageHeader)`
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 2rem;
   padding: 2rem 0.5rem 0.5rem;
+
+  ${responsive.md(`
+    gap: 1rem;
+  `)}
 `
 
 export const FieldContainer = styled.div<{ $multiline?: boolean }>`
   display: flex;
+  gap: 2rem;
   margin: 0.25rem 0;
   width: 100%;
 
@@ -23,5 +28,6 @@ export const FieldContainer = styled.div<{ $multiline?: boolean }>`
 
   ${responsive.md(`
     flex-wrap: nowrap;
+    gap: 0;
   `)}
 `

@@ -52,13 +52,9 @@ export const InputContainer = styled.input<{ size: InputSizes }>`
     `}
 
     &:disabled {
-      background: ${theme.selected.main[3]};
+      background: transparent;
+      border: 0;
       color: ${theme.selected.main[1]};
-
-      ${responsive.md(`
-        background: transparent;
-        border: 0;
-      `)}
     }
   `}
 `

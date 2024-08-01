@@ -25,14 +25,13 @@ export const FormField = styled.div`
   align-items: center;
   display: flex;
   flex-direction: column;
-  gap: 1.2rem;
+  gap: 2rem;
   justify-content: space-between;
-  margin: 3rem 0;
   position: relative;
 
   ${responsive.md(`
     flex-direction: row;
-    margin: 1.5rem 0;
+    gap: 1.2rem;
   `)}
 
   &:hover ${RemoveButton} {
