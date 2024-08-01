@@ -7,7 +7,7 @@ import { ContactLink } from '@/components/ContactLink'
 import { Section } from '@/components/Section'
 import { ROUTES } from '@/constants/routes'
 import {
-  addSortNextBirthday,
+  addNextBirthday,
   getRecentlyAddedContacts,
   getUpcomingBirthdays,
 } from '@/features/birthdays/utils'
@@ -28,7 +28,7 @@ export const Dashboard = () => {
   const [recentlyAdded, setRecentlyAdded] = useState<Contact[]>()
 
   useEffect(() => {
-    const contactsWithNextBirthdays = addSortNextBirthday(contacts)
+    const contactsWithNextBirthdays = addNextBirthday(contacts)
     const upcoming = getUpcomingBirthdays(contactsWithNextBirthdays)
 
     setUpcomingBirthdays(upcoming)
@@ -55,18 +55,19 @@ export const Dashboard = () => {
       <Toast />
       <PageHeader title="ContactBook" subtitle={subtitle} />
       <Section title="Upcoming birthdays" icon={Icons.cake}>
-        {upcomingBirthdays?.length
-          ? upcomingBirthdays.map((contact) => (
-              <ContactLink
-                key={contact.id}
-                contact={contact}
-                showPhoto
-                showAge
-                showMonth
-              />
-            ))
-          : 'No upcoming birthdays'}
-
+        <div>
+          {upcomingBirthdays?.length
+            ? upcomingBirthdays.map((contact) => (
+                <ContactLink
+                  key={contact.id}
+                  contact={contact}
+                  showPhoto
+                  showAge
+                  showMonth
+                />
+              ))
+            : 'No upcoming birthdays'}
+        </div>
         {upcomingBirthdays && (
           <Link variant={ButtonVariants.LINK} href={ROUTES.birthdays} highlight>
             See all birthdays
@@ -75,9 +76,11 @@ export const Dashboard = () => {
       </Section>
       {!!recentlyAdded?.length && (
         <Section title="Recently added" icon={Icons.contacts}>
-          {recentlyAdded.map((contact) => (
-            <ContactLink key={contact.id} contact={contact} showPhoto />
-          ))}
+          <div>
+            {recentlyAdded.map((contact) => (
+              <ContactLink key={contact.id} contact={contact} showPhoto />
+            ))}
+          </div>
           {
             <Link
               variant={ButtonVariants.LINK}

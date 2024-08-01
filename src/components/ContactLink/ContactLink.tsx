@@ -3,7 +3,6 @@ import { useContext } from 'react'
 import { ProfilePicture } from '@/components/ProfilePicture'
 import {
   calculateAge,
-  calculateNextBirthdayAge,
   getFormattedDaysToNextBirthday,
   getListDate,
   isBirthdayFromToday,
@@ -33,7 +32,7 @@ export const ContactLink = ({
   const { id, name, lastname, birthday, nextBirthday, favorite } = contact || {}
   const age =
     birthday && nextBirthday && !isBirthdayFromToday(birthday)
-      ? calculateNextBirthdayAge(birthday)
+      ? calculateAge(birthday, 1)
       : calculateAge(birthday)
   const daysToNextBirthday =
     !!nextBirthday && getFormattedDaysToNextBirthday(nextBirthday)

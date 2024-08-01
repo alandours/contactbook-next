@@ -8,23 +8,25 @@ import {
 import {
   add,
   addYears,
-  differenceInDays,
+  differenceInSeconds,
   differenceInYears,
   format,
+  getMonth,
+  getYear,
   setYear,
 } from 'date-fns'
+
+const getDaysToNextBirthday = (birthday: Date) =>
+  Math.ceil(differenceInSeconds(birthday, new Date()) / 60 / 60 / 24)
 
 const getNextBirthday = (birthday: Date) => {
   const today = new Date()
   const thisYearBirthday = setYear(birthday, today.getFullYear())
 
-  return thisYearBirthday < today
-    ? addYears(thisYearBirthday, 1)
-    : thisYearBirthday
+  return getDaysToNextBirthday(thisYearBirthday) >= 0
+    ? thisYearBirthday
+    : addYears(thisYearBirthday, 1)
 }
-
-const getDaysToNextBirthday = (birthday: Date) =>
-  differenceInDays(getNextBirthday(birthday), new Date())
 
 export const isBirthdayFromToday = (birthday: Date, days = 0) => {
   const targetMonthDay = format(add(new Date(), { days }), 'MM-dd')
@@ -34,20 +36,20 @@ export const isBirthdayFromToday = (birthday: Date, days = 0) => {
 }
 
 export const getFormattedDaysToNextBirthday = (birthday: Date) => {
-  if (isBirthdayFromToday(birthday)) {
+  const daysToNextBirthday = getDaysToNextBirthday(birthday)
+
+  if (daysToNextBirthday === 0) {
     return 'Today'
   }
 
-  if (isBirthdayFromToday(birthday, 1)) {
+  if (daysToNextBirthday === 1) {
     return 'Tomorrow'
   }
-
-  const daysToNextBirthday = getDaysToNextBirthday(birthday)
 
   return `${daysToNextBirthday} days`
 }
 
-export const addSortNextBirthday = (
+export const addNextBirthday = (
   contacts: Contact[]
 ): ContactWithNextBirthday[] | null => {
   const withBirthdays = contacts.filter((contact) => contact.birthday)
@@ -91,7 +93,7 @@ export const groupByBirthdayMonth = (
 }
 
 export const getBirthdayGroups = (contacts: Contact[]): BirthdayGroup => {
-  const contactsWithNextBirthdays = addSortNextBirthday(contacts)
+  const contactsWithNextBirthdays = addNextBirthday(contacts)
 
   if (!contactsWithNextBirthdays) {
     return { birthdays: null, quantity: 0 }
@@ -103,19 +105,14 @@ export const getBirthdayGroups = (contacts: Contact[]): BirthdayGroup => {
   }
 }
 
-export const calculateAge = (birthdayDate?: Date | null) => {
+export const calculateAge = (birthdayDate?: Date | null, yearOffset = 0) => {
   if (!birthdayDate) {
     return null
   }
 
   const age = differenceInYears(new Date(), new Date(birthdayDate))
 
-  return age < 100 ? age : null
-}
-
-export const calculateNextBirthdayAge = (birthday: Date) => {
-  const age = calculateAge(birthday)
-  return age ? age + 1 : null
+  return age < 100 ? age + yearOffset : null
 }
 
 export const formatBirthday = (birthday: Date) =>
@@ -130,7 +127,17 @@ export const getListDate = (birthday: Date, showMonth: boolean) => {
 
 export const getUpcomingBirthdays = (
   contactsWithBirthdays: ContactWithNextBirthday[] | null
-) => (contactsWithBirthdays ? contactsWithBirthdays.slice(0, 4) : null)
+) => {
+  if (!contactsWithBirthdays) {
+    return null
+  }
+
+  return contactsWithBirthdays.filter(
+    (contact) =>
+      getYear(contact.nextBirthday) === getYear(new Date()) &&
+      getMonth(contact.nextBirthday) === getMonth(new Date())
+  )
+}
 
 export const getRecentlyAddedContacts = (contacts: Contact[]) => {
   const contactByCreationDate = [...contacts].sort(
