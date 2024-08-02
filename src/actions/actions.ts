@@ -58,6 +58,13 @@ const CONTACT_SELECT = {
     },
     orderBy: [{ alias: ASC }],
   },
+  tags: {
+    select: {
+      id: true,
+      name: true,
+    },
+    orderBy: [{ name: ASC }],
+  },
 }
 
 export const getContacts = async (filters: Filters = {}) => {
@@ -106,7 +113,6 @@ export const getContacts = async (filters: Filters = {}) => {
             },
           },
         },
-
         {
           socials: {
             some: {
@@ -120,6 +126,13 @@ export const getContacts = async (filters: Filters = {}) => {
               platform: {
                 name: searchFilter,
               },
+            },
+          },
+        },
+        {
+          tags: {
+            some: {
+              name: searchFilter,
             },
           },
         },
@@ -331,6 +344,15 @@ export const getPlatforms = async () =>
       name: true,
       url: true,
       prefix: true,
+    },
+    orderBy: { name: 'asc' },
+  })
+
+export const getTags = async () =>
+  await prisma.tag.findMany({
+    select: {
+      id: true,
+      name: true,
     },
     orderBy: { name: 'asc' },
   })

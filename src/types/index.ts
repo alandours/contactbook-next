@@ -1,5 +1,6 @@
 import { ContactSchema } from '@/features/contacts/pages/ContactForm/schema'
 import {
+  Tag as TagType,
   Alias as ContactAliasType,
   Contact as ContactType,
   Email as ContactEmailType,
@@ -34,6 +35,7 @@ export enum ListItemType {
   INITIAL,
 }
 
+export type Tag = Omit<TagType, 'contactId'>
 export type Alias = Omit<ContactAliasType, 'contactId'>
 export type Email = Omit<ContactEmailType, 'contactId'>
 export type Number = Omit<ContactNumberType, 'contactId'>
@@ -47,6 +49,7 @@ export type Contact = Omit<ContactType, 'active' | 'updatedAt'> & {
   emails: Email[]
   numbers: Number[]
   socials: Social[]
+  tags: Tag[]
 }
 
 export type Filters = {
