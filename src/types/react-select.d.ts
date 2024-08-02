@@ -9,6 +9,6 @@ declare module 'react-select/base' {
     IsMulti extends boolean,
     Group extends GroupBase<Option>,
   > {
-    label: string
+    label?: string
   }
 }

@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components'
 import { FontSize, FontWeight } from '@/ui/typography'
 import { responsive } from '@/ui/responsive'
 
-export const LabelContainer = styled.label<{ label: string }>`
+export const LabelContainer = styled.label<{ label?: string }>`
   background: ${({ theme }) => theme.selected.main[1]};
   display: flex;
   flex-direction: column;

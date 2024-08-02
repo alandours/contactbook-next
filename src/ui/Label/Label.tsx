@@ -3,7 +3,7 @@ import { ReactNode } from 'react'
 import { LabelContainer, LabelText } from './styles'
 
 interface LabelProps {
-  label: string
+  label?: string
   disabled?: boolean
   children: ReactNode
 }
