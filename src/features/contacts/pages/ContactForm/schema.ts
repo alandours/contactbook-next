@@ -64,7 +64,15 @@ export const schema = z.object({
   emails: z.array(
     z.object({
       id: z.string().optional(),
-      email: z.string().email().max(80, 'The e-mail is too long').nullable(),
+      email: z.union([
+        z
+          .string()
+          .email()
+          .max(80, 'The e-mail is too long')
+          .transform(emptyToNull)
+          .nullable(),
+        z.string().max(0).nullable(),
+      ]),
       type: z.nativeEnum(EmailType),
       label: z.string().max(50, 'The label is too long').nullable(),
     })
