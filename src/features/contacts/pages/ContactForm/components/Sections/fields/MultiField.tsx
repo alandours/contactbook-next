@@ -7,7 +7,10 @@ import { OptionData } from '@/ui/Select'
 import { FormField, RemoveButton } from './styles'
 
 interface MultiFieldProps {
-  label: string
+  label: {
+    input: string
+    select: string
+  }
   names: {
     input: string
     select: string
@@ -30,14 +33,14 @@ export const MultiField = ({
 
   return (
     <FormField>
-      <Input name={names.input} label={label} />
+      <Input name={names.input} label={label.input} />
       <Controller
         name={names.select}
         control={control}
         render={({ field: { value, onChange } }) => {
           return (
             <Select
-              label="Type"
+              label={label.select}
               options={options}
               value={
                 options.find((option) => option.value === value) as OptionData

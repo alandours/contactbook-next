@@ -45,7 +45,7 @@ export const SocialsSection = () => {
           fields.map((username: Record<'id', string>, index: number) => (
             <MultiField
               key={username.id}
-              label="Username"
+              label={{ input: 'Username', select: 'Platform' }}
               names={{
                 input: `socials[${index}].username`,
                 select: `socials[${index}].platformId`,
