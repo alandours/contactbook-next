@@ -63,6 +63,7 @@ export enum NotFoundType {
   CONTACT,
 }
 
-export type ContactFormData = Omit<ContactSchema, 'file'> & {
+export type ContactFormData = Omit<ContactSchema, 'file' | 'tags'> & {
+  tags: Tag[]
   removePhoto: boolean
 }

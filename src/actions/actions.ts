@@ -5,10 +5,11 @@ import { revalidatePath } from 'next/cache'
 import { MESSAGES } from '@/constants/messages'
 import { schema } from '@/features/contacts/pages/ContactForm/schema'
 import prisma from '@/lib/prisma'
+import { Prisma } from '@prisma/client'
 import { ContactFormData, Filters, Status } from '@/types'
+import { tagsToOptions } from '@/utils/contacts'
 
 import { createQuery, createRelatedFieldQuery, writeImage } from './utils'
-import { Prisma } from '@prisma/client'
 
 const ASC = Prisma.SortOrder.asc
 
@@ -168,12 +169,17 @@ export const upsertContact = async (
     numbers,
     emails,
     socials,
+    tags,
   } = data
 
   try {
     const imageFile = formData.get('file') as File | null
 
-    const parsed = schema.safeParse({ ...data, file: imageFile })
+    const parsed = schema.safeParse({
+      ...data,
+      file: imageFile,
+      tags: tagsToOptions(tags),
+    })
 
     if (!parsed.success) {
       console.warn(MESSAGES.CONTACT_VALIDATION, parsed)
@@ -196,6 +202,21 @@ export const upsertContact = async (
       }
 
       const contact = await tx.contact.upsert(createQuery(query, contactId))
+
+      await tx.contact.update({
+        data: {
+          tags: {
+            set: tags.map((tag) => ({ id: tag.id })),
+            connectOrCreate: tags.map((tag) => ({
+              where: { id: tag.id },
+              create: tag,
+            })),
+          },
+        },
+        where: {
+          id: contact.id,
+        },
+      })
 
       if (contact && (imageFile || removePhoto)) {
         const photo =
