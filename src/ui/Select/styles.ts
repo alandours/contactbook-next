@@ -26,6 +26,14 @@ export const StylesWrapper = styled.div`
         padding: 0 0.25rem;
       }
 
+      &__input-container {
+        color: ${theme.selected.contrast[1]};
+      }
+
+      &__menu-notice {
+        font-size: 0.875rem;
+      }
+
       &__single-value {
         color: ${theme.selected.contrast[1]};
       }

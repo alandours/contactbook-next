@@ -50,6 +50,7 @@ export const MultiField = ({
                   onChange(selectedOption.value)
                 }
               }}
+              isSearchable
               portalTarget={document.querySelector('body')}
             />
           )
