@@ -1,15 +1,14 @@
 import ReactSelect, {
   GroupBase,
-  MultiValue,
+  Props,
   SelectComponentsConfig,
-  SingleValue,
   StylesConfig,
 } from 'react-select'
 
 import { Label } from '@/ui/Label'
 
 import { Menu } from './components/Menu'
-import { Option } from './components/Option'
+import { SelectOption } from './components/SelectOption'
 import { StylesWrapper } from './styles'
 
 export type OptionData = {
@@ -17,38 +16,30 @@ export type OptionData = {
   value: string
 }
 
-interface SelectProps {
-  options: OptionData[]
-  value: OptionData
-  label: string
-  placeholder?: string
-  defaultValue?: OptionData
-  isSearchable?: boolean
-  portalTarget?: HTMLElement | null
-  onChange: (newValue: SingleValue<OptionData> | MultiValue<OptionData>) => void
-}
-
-export const Select = ({
+export const Select = <
+  Option,
+  IsMulti extends boolean = false,
+  Group extends GroupBase<Option> = GroupBase<Option>,
+>({
+  label,
   options,
   value,
   defaultValue,
-  label,
   placeholder = '',
   isSearchable = false,
-  portalTarget,
+  isMulti,
+  menuPortalTarget,
   onChange,
-}: SelectProps) => {
+}: Props<Option, IsMulti, Group>) => {
   const components: Partial<
-    SelectComponentsConfig<OptionData, boolean, GroupBase<OptionData>>
+    SelectComponentsConfig<Option, IsMulti, GroupBase<Option>>
   > = {
     IndicatorSeparator: null,
-    Option,
+    Option: SelectOption,
     Menu,
   }
 
-  const styles: Partial<
-    StylesConfig<OptionData, boolean, GroupBase<OptionData>>
-  > = {
+  const styles: Partial<StylesConfig<Option, IsMulti, GroupBase<Option>>> = {
     menuPortal: (base) => ({ ...base, zIndex: 999 }),
   }
 
@@ -56,13 +47,15 @@ export const Select = ({
     <StylesWrapper>
       <Label label={label}>
         <ReactSelect
+          label={label}
           classNamePrefix="contactbook-select"
           options={options}
           value={value}
           defaultValue={defaultValue}
           placeholder={placeholder}
           isSearchable={isSearchable}
-          menuPortalTarget={portalTarget}
+          isMulti={isMulti}
+          menuPortalTarget={menuPortalTarget}
           components={components}
           styles={styles}
           onChange={onChange}

@@ -1,8 +1,7 @@
 import { MenuProps } from 'react-select'
 
-import { OptionData } from '../Select'
 import { MenuContainer } from '../styles'
 
-export const Menu = ({ innerProps, children }: MenuProps<OptionData>) => (
+export const Menu = <Option,>({ innerProps, children }: MenuProps<Option>) => (
   <MenuContainer {...innerProps}>{children}</MenuContainer>
 )

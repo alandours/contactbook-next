@@ -1,14 +1,13 @@
 import { OptionProps } from 'react-select'
 
-import { OptionData } from '../Select'
 import { OptionContainer, SelectedIcon } from '../styles'
 
-export const Option = ({
+export const SelectOption = <Option,>({
   innerProps,
   isSelected,
   isFocused,
   children,
-}: OptionProps<OptionData>) => (
+}: OptionProps<Option>) => (
   <OptionContainer
     {...innerProps}
     $isFocused={isFocused}

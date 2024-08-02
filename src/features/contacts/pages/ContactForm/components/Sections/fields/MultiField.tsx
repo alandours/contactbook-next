@@ -39,7 +39,7 @@ export const MultiField = ({
         control={control}
         render={({ field: { value, onChange } }) => {
           return (
-            <Select
+            <Select<OptionData, false>
               label={label.select}
               options={options}
               value={
@@ -51,7 +51,7 @@ export const MultiField = ({
                 }
               }}
               isSearchable
-              portalTarget={document.querySelector('body')}
+              menuPortalTarget={document.querySelector('body')}
             />
           )
         }}
