@@ -85,6 +85,12 @@ export const schema = z.object({
       label: z.string().max(50, 'The label is too long').nullable(),
     })
   ),
+  tags: z.array(
+    z.object({
+      value: z.string().optional(),
+      label: z.string().max(40, 'The tag is too long').nullable(),
+    })
+  ),
   notes: z
     .string()
     .max(2000, 'The notes are too long')
