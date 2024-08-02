@@ -282,6 +282,8 @@ export const deleteContact = async (id: string) => {
       },
     })
 
+    revalidatePath('/', 'layout')
+
     return {
       status: Status.SUCCESS,
       message: MESSAGES.CONTACT_DELETE[Status.SUCCESS](contact),
@@ -294,8 +296,8 @@ export const deleteContact = async (id: string) => {
   }
 }
 
-export const updateFavorite = async (id: string, isFavorite: boolean) =>
-  await prisma.contact.update({
+export const updateFavorite = async (id: string, isFavorite: boolean) => {
+  const user = await prisma.contact.update({
     where: {
       id,
     },
@@ -303,6 +305,11 @@ export const updateFavorite = async (id: string, isFavorite: boolean) =>
       favorite: isFavorite,
     },
   })
+
+  revalidatePath('/', 'layout')
+
+  return user
+}
 
 export const getStats = async () =>
   await prisma.contact.groupBy({
