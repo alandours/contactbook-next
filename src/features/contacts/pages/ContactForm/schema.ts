@@ -100,7 +100,7 @@ export const schema = z.object({
     .nullable(),
   file: z
     .custom<FileList>()
-    .transform((file) => (file.length > 0 ? file.item(0) : null))
+    .transform((file) => (file.length > 0 ? file[0] : null))
     .refine((file) => !file || file?.type.startsWith('image'), {
       message: 'This is not a valid image',
     })
