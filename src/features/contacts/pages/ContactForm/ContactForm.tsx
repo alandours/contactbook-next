@@ -1,10 +1,9 @@
 'use client'
 
-import React, { useState, useEffect, useRef, useContext, UIEvent } from 'react'
+import { useState, useEffect, useRef, useContext, UIEvent } from 'react'
 import { useRouter } from 'next/navigation'
 import { useForm, FormProvider } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { z } from 'zod'
 
 import { upsertContact, deleteContact } from '@/actions/actions'
 import { ROUTES } from '@/constants/routes'
@@ -15,6 +14,7 @@ import { Button, Icon, Toast } from '@/ui'
 import { Icons } from '@/ui/icons'
 import { UIContext } from '@/ui/context'
 import { isMedia } from '@/ui/responsive'
+import { optionsToTags, tagsToOptions } from '@/utils/contacts'
 
 import { ContactFormHeader } from './components/ContactFormHeader'
 import { ContactSecondaryForm } from './components/ContactSecondaryForm'
@@ -22,6 +22,7 @@ import { ContactSecondaryForm } from './components/ContactSecondaryForm'
 import { ContactSchema, schema } from './schema'
 
 import { ContactFormContainer, FormActions } from './styles'
+
 interface ContactFormProps {
   contact?: Contact | null
 }
@@ -51,6 +52,7 @@ export const ContactForm = ({ contact }: ContactFormProps) => {
         birthday: contact.birthday
           ? contact.birthday.toISOString().split('T')[0]
           : null,
+        tags: tagsToOptions(contact.tags),
         removePhoto: false,
       })
     }
@@ -67,6 +69,7 @@ export const ContactForm = ({ contact }: ContactFormProps) => {
       numbers: data.numbers.filter((field) => !!field.number),
       emails: data.emails.filter((field) => !!field.email),
       socials: data.socials.filter((field) => !!field.username),
+      tags: optionsToTags(data.tags),
     }
 
     const formData = new FormData()

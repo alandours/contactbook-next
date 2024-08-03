@@ -21,7 +21,7 @@ export const tagsToOptions = (tags: { id: string; name: string }[]) =>
     value: id,
   })) || []
 
-export const optionsToTags = (options: MultiValue<OptionData>) =>
+export const optionsToTags = (options?: MultiValue<OptionData>) =>
   options?.map(({ label, value }) => ({
     id: value,
     name: label,
