@@ -27,7 +27,7 @@ export const EmailsSection = () => {
   }, [fields, newField, replace])
 
   return (
-    <Section title="E-mails" icon={Icons.email} sticky>
+    <Section title="E-mails" icon={Icons.email} iconSize="1.125rem" sticky>
       <Fields>
         {!!fields.length &&
           fields.map((email: Record<'id', string>, index: number) => (
