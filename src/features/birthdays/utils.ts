@@ -132,11 +132,7 @@ export const getUpcomingBirthdays = (
     return null
   }
 
-  return contactsWithBirthdays.filter(
-    (contact) =>
-      getYear(contact.nextBirthday) === getYear(new Date()) &&
-      getMonth(contact.nextBirthday) === getMonth(new Date())
-  )
+  return contactsWithBirthdays.slice(0, 6)
 }
 
 export const getRecentlyAddedContacts = (contacts: Contact[]) => {
@@ -145,5 +141,5 @@ export const getRecentlyAddedContacts = (contacts: Contact[]) => {
       new Date(contact2.createdAt).getTime() -
       new Date(contact1.createdAt).getTime()
   )
-  return contactByCreationDate.slice(0, 4)
+  return contactByCreationDate.slice(0, 6)
 }
