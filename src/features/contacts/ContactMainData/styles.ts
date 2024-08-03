@@ -66,9 +66,11 @@ export const Tags = styled.div`
 
 export const Tag = styled.div`
   ${({ theme }) => css`
+    align-items: center;
     background: ${theme.selected.contrast[1]};
     border-radius: 1rem;
     color: ${theme.selected.main[2]};
+    display: flex;
     font-size: 0.75rem;
     padding: 0.125rem 0.625rem;
   `};
