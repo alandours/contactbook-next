@@ -44,7 +44,7 @@ export const Year = styled.div`
 `
 
 export const Quantity = styled.div`
-  color: ${({ theme }) => theme.mainColor.dark};
+  color: ${({ theme }) => theme.mainColor.main};
   display: flex;
   font-size: ${FontSize.SMALL};
   font-weight: ${FontWeight.REGULAR};
@@ -58,7 +58,7 @@ export const Quantity = styled.div`
 
 export const Stat = styled.div<{ height: number; $isActive: boolean }>`
   ${({ theme, height, $isActive }) => css`
-    background: ${theme.mainColor.dark};
+    background: ${theme.mainColor.main};
     cursor: pointer;
     min-width: 50px;
     width: 100%;

@@ -15,7 +15,9 @@ export async function generateMetadata({
   const contact = await getContact(id)
 
   return {
-    title: contact ? `${contact.name} ${contact.lastname}` : `Contactbook`,
+    title: contact
+      ? `${contact.name} ${contact.lastname || ''}`
+      : `Contactbook`,
   }
 }
 

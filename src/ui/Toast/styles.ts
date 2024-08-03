@@ -50,21 +50,21 @@ export const ToastContainer = styled.div<{
 
     ${$status === Status.SUCCESS &&
     css`
-      background: ${theme.mainColor.main};
+      background: ${theme.mainColor.light};
       border: 1px solid ${theme.mainColor.dark};
       color: ${theme.selected.main[1]};
     `};
 
     ${$status === Status.ERROR &&
     css`
-      background: ${theme.selected.danger.main};
+      background: ${theme.selected.danger.light};
       border: 1px solid ${theme.selected.danger.dark};
       color: ${theme.selected.main[1]};
     `};
 
     ${$status === Status.WARNING &&
     css`
-      background: ${theme.selected.warning.main};
+      background: ${theme.selected.warning.light};
       border: 1px solid ${theme.selected.warning.dark};
       color: ${theme.selected.main[1]};
     `};

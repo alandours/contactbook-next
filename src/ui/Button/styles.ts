@@ -34,6 +34,7 @@ export const buttonStyles = ({
   css`
     background: ${theme.mainColor.main};
     color: ${theme.selected.main[1]};
+    min-width:;
 
     &:hover,
     &:focus {
@@ -52,11 +53,11 @@ export const buttonStyles = ({
 
     ${!!highlight &&
     css`
-      color: ${theme.mainColor.dark};
+      color: ${theme.mainColor.main};
 
       &:hover,
       &:focus-visible {
-        color: ${theme.mainColor.main};
+        color: ${theme.mainColor.light};
       }
     `};
   `}
@@ -116,13 +117,13 @@ export const buttonStyles = ({
   ${$variant === ButtonVariants.LINK &&
   css`
     align-self: flex-end;
-    color: ${theme.mainColor.dark};
+    color: ${theme.mainColor.main};
     padding: 0;
     width: fit-content;
 
     &:hover,
     &:focus {
-      color: ${theme.mainColor.main};
+      color: ${theme.mainColor.light};
     }
   `}
 `
