@@ -2,8 +2,8 @@ import styled, { css } from 'styled-components'
 
 export const SwitchContainer = styled.div<{ $active: boolean }>`
   ${({ theme, $active }) => css`
-    background: ${theme.selected.main[3]};
-    box-shadow: inset 4px 2px 9px 0 rgba(0, 0, 0, 0.2);
+    background: ${theme.selected.main[4]};
+    box-shadow: inset 4px 2px 6px 0 rgba(0, 0, 0, 0.2);
     border-radius: 40px;
     cursor: pointer;
     display: flex;
