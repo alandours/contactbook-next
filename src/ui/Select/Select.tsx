@@ -1,9 +1,10 @@
-import ReactSelect, {
+import {
   GroupBase,
   Props,
   SelectComponentsConfig,
   StylesConfig,
 } from 'react-select'
+import CreatableSelect from 'react-select/creatable'
 
 import { Label } from '@/ui/Label'
 
@@ -46,7 +47,7 @@ export const Select = <
   return (
     <StylesWrapper>
       <Label label={label}>
-        <ReactSelect
+        <CreatableSelect
           label={label}
           classNamePrefix="contactbook-select"
           options={options}

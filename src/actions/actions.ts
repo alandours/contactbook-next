@@ -206,11 +206,11 @@ export const upsertContact = async (
       await tx.contact.update({
         data: {
           tags: {
-            set: tags.map((tag) => ({ id: tag.id })),
             connectOrCreate: tags.map((tag) => ({
               where: { id: tag.id },
               create: tag,
             })),
+            set: tags.map((tag) => ({ id: tag.id })),
           },
         },
         where: {
