@@ -10,11 +10,11 @@ import { TagsSection } from '../Sections/TagsSection'
 
 export const ContactSecondaryForm = () => (
   <>
+    <TagsSection />
     <AliasesSection />
     <NumbersSection />
     <EmailsSection />
     <SocialsSection />
-    <TagsSection />
     <Section title="Notes" icon={Icons.notes} sticky>
       <Textarea name="notes" />
     </Section>

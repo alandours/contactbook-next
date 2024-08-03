@@ -30,7 +30,7 @@ export const TagsSection = () => {
   const options = tagsToOptions(tags)
 
   return (
-    <Section title="Tags" icon={Icons.email} sticky>
+    <Section title="Tags" icon={Icons.tag} iconSize="0.875rem" sticky>
       <Fields>
         <FormField>
           <Controller

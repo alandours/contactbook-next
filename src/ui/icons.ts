@@ -8,11 +8,13 @@ import { FaCalendarCheck } from '@react-icons/all-files/fa/FaCalendarCheck'
 import { FaChevronDown } from '@react-icons/all-files/fa/FaChevronDown'
 import { FaHeart } from '@react-icons/all-files/fa/FaHeart'
 import { FaHeartBroken } from '@react-icons/all-files/fa/FaHeartBroken'
-import { FaRegAddressCard } from '@react-icons/all-files/fa/FaRegAddressCard'
+import { FaIdCard } from '@react-icons/all-files/fa/FaIdCard'
+import { FaPhoneAlt } from '@react-icons/all-files/fa/FaPhoneAlt'
 import { FaRegHeart } from '@react-icons/all-files/fa/FaRegHeart'
 import { FaRegStickyNote } from '@react-icons/all-files/fa/FaRegStickyNote'
 import { FaSearch } from '@react-icons/all-files/fa/FaSearch'
 import { FaShareAlt } from '@react-icons/all-files/fa/FaShareAlt'
+import { FaTag } from '@react-icons/all-files/fa/FaTag'
 import { FaTimes } from '@react-icons/all-files/fa/FaTimes'
 import { FaTrashAlt } from '@react-icons/all-files/fa/FaTrashAlt'
 import { FaUserFriends } from '@react-icons/all-files/fa/FaUserFriends'
@@ -24,7 +26,6 @@ import { MdCheckBox } from '@react-icons/all-files/md/MdCheckBox'
 import { MdCheckBoxOutlineBlank } from '@react-icons/all-files/md/MdCheckBoxOutlineBlank'
 import { MdEmail } from '@react-icons/all-files/md/MdEmail'
 import { MdModeEdit } from '@react-icons/all-files/md/MdModeEdit'
-import { MdSmartphone } from '@react-icons/all-files/md/MdSmartphone'
 
 export enum Icons {
   alias = 1,
@@ -49,11 +50,12 @@ export enum Icons {
   search,
   social,
   spinner,
+  tag,
   times,
 }
 
 export const icons = {
-  [Icons.alias]: FaRegAddressCard,
+  [Icons.alias]: FaIdCard,
   [Icons.cake]: FaBirthdayCake,
   [Icons.calendar]: FaCalendarCheck,
   [Icons.checkbox]: MdCheckBoxOutlineBlank,
@@ -70,10 +72,11 @@ export const icons = {
   [Icons.menu]: IoMdMenu,
   [Icons.notes]: FaRegStickyNote,
   [Icons.pen]: MdModeEdit,
-  [Icons.phone]: MdSmartphone,
+  [Icons.phone]: FaPhoneAlt,
   [Icons.plus]: GoPlus,
   [Icons.search]: FaSearch,
   [Icons.social]: FaShareAlt,
   [Icons.spinner]: BiLoaderAlt,
+  [Icons.tag]: FaTag,
   [Icons.times]: FaTimes,
 }
