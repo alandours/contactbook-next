@@ -29,7 +29,7 @@ export const ContactMainData = () => {
             <Name $birthday={calculateAge(birthday)}>
               {name} {lastname}
             </Name>
-            <FavoriteButton isFavorite={!!favorite} id={id} />
+            <FavoriteButton isFavorite={!!favorite} id={id} key={id} />
           </Title>
         </MainDatafield>
         {birthday && (
