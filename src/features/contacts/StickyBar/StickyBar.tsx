@@ -13,7 +13,7 @@ export const StickyBar = () => {
     name && (
       <StickyBarContainer>
         <ProfilePicture contact={selectedContact} thumbnail />
-        <Name>{`${name} ${lastname}` || 'New contact'}</Name>
+        <Name>{`${name} ${lastname || ''}` || 'New contact'}</Name>
       </StickyBarContainer>
     )
   )

@@ -30,6 +30,7 @@ export const AliasesSection = () => {
               label="Alias"
               name={`aliases[${index}].alias`}
               removeField={() => remove(index)}
+              isLastField={fields.length === 1}
             />
           ))}
       </Fields>

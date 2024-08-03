@@ -58,6 +58,7 @@ export const SocialsSection = () => {
                 value: id,
               }))}
               removeField={() => remove(index)}
+              isLastField={fields.length === 1}
             />
           ))}
       </Fields>

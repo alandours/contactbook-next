@@ -5,12 +5,18 @@ import { FormField, RemoveButton } from './styles'
 interface SingleFieldProps {
   name: string
   label: string
+  isLastField: boolean
   removeField: () => void
 }
 
-export const SingleField = ({ name, label, removeField }: SingleFieldProps) => (
+export const SingleField = ({
+  name,
+  label,
+  isLastField,
+  removeField,
+}: SingleFieldProps) => (
   <FormField>
     <Input name={name} label={label} />
-    <RemoveButton handleClick={removeField} />
+    {!isLastField && <RemoveButton handleClick={removeField} />}
   </FormField>
 )

@@ -47,6 +47,7 @@ export const EmailsSection = () => {
               }))}
               customType={EmailType.Custom}
               removeField={() => remove(index)}
+              isLastField={fields.length === 1}
             />
           ))}
       </Fields>

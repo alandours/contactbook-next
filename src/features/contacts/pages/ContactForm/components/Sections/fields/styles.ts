@@ -1,24 +1,18 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 import { XButton } from '@/components/XButton'
 import { Button } from '@/ui'
 import { responsive } from '@/ui/responsive'
 
 export const RemoveButton = styled(XButton)`
-  margin-left: 1.5rem;
-  transition: all ease 200ms;
+  padding: 0.25rem;
   position: absolute;
   right: 0;
-  top: -2rem;
-  width: 0.625rem;
+  top: -1.25rem;
 
   ${responsive.md(`
-    margin-left: 0;
-    opacity: 0;
-    position: absolute;
-    right: -1.25rem;
-    top: 0.125rem;
-    visibility: hidden;
+    right: -2rem;
+    top: 1rem;
   `)}
 `
 
@@ -28,18 +22,13 @@ export const FormField = styled.div`
   flex-direction: column;
   gap: 2rem;
   justify-content: space-between;
+  margin-top: 1rem;
   position: relative;
 
   ${responsive.md(`
     flex-direction: row;
     gap: 1.2rem;
   `)}
-
-  &:hover ${RemoveButton} {
-    opacity: 1;
-    visibility: visible;
-    transition: all ease 100ms;
-  }
 `
 
 export const AddNewButtonContainer = styled(Button)`

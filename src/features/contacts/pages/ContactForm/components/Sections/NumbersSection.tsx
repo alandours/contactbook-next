@@ -47,6 +47,7 @@ export const NumbersSection = () => {
               }))}
               customType={NumberType.Custom}
               removeField={() => remove(index)}
+              isLastField={fields.length === 1}
             />
           ))}
       </Fields>

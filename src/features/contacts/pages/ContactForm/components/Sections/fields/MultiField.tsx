@@ -17,6 +17,7 @@ interface MultiFieldProps {
     custom: string
   }
   options: { label: string; value: string }[]
+  isLastField: boolean
   customType?: NumberType | EmailType
   removeField: () => void
 }
@@ -25,6 +26,7 @@ export const MultiField = ({
   label,
   names,
   options,
+  isLastField,
   customType,
   removeField,
 }: MultiFieldProps) => {
@@ -61,7 +63,7 @@ export const MultiField = ({
         disabled={!customType || customType !== type}
         label="Custom name"
       />
-      <RemoveButton type="button" handleClick={removeField} />
+      {!isLastField && <RemoveButton type="button" handleClick={removeField} />}
     </FormField>
   )
 }

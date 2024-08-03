@@ -8,6 +8,7 @@ export const Fields = styled.div`
   gap: 2rem;
 
   ${responsive.md(`
+    margin-right: 2rem;
     gap: 1rem;
   `)}
 `
