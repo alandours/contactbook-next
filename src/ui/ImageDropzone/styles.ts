@@ -1,25 +1,36 @@
 import styled from 'styled-components'
-import { responsive } from '../responsive'
 
-export const DropzoneOverlay = styled.div`
+import { responsive } from '@/ui/responsive'
+
+export const OverlayContainer = styled.div`
+  color: #fff;
+  position: absolute;
+  height: inherit;
+  width: inherit;
+  z-index: 100;
+
+  ${responsive.md(`
+    width: inherit;
+    height: inherit;
+  `)}
+`
+
+export const Overlay = styled.div`
   align-items: center;
   background: #000;
   border-radius: 100%;
-  color: #fff;
   display: flex;
+  height: inherit;
   justify-content: center;
-  position: absolute;
-  height: 14rem;
   opacity: 0.75;
+  padding: 2rem;
   text-align: center;
-  transition: opacity 200ms;
-  width: 14rem;
-  z-index: 100000;
+  width: inherit;
+`
 
-  ${responsive.md(`
-    width: 12rem;
-    height: 12rem;
-  `)}
+export const HoverOverlay = styled(Overlay)`
+  opacity: 0;
+  transition: opacity 200ms;
 `
 
 export const DropzoneContainer = styled.div`
@@ -35,5 +46,11 @@ export const DropzoneContainer = styled.div`
   ${responsive.md(`
     width: 12rem;
     height: 12rem;
+
+    &:hover {
+     ${HoverOverlay} {
+        opacity: 0.75;
+      }
+    }
   `)}
 `

@@ -26,7 +26,7 @@ export const ContactFormHeader = () => {
             name="file"
             control={control}
             defaultValue={[]}
-            render={({ field: { onChange, value } }) => (
+            render={({ field: { onChange } }) => (
               <ImageDropzone
                 onDrop={(acceptedFiles) => {
                   console.log(acceptedFiles)

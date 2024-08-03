@@ -1,7 +1,14 @@
-import { ReactNode, useCallback } from 'react'
+import { ReactNode } from 'react'
 import { useDropzone } from 'react-dropzone'
-import { DropzoneContainer, DropzoneOverlay } from './styles'
-import { isMedia } from '../responsive'
+
+import {
+  DropzoneContainer,
+  HoverOverlay,
+  Overlay,
+  OverlayContainer,
+} from './styles'
+
+import { isMedia } from '@/ui/responsive'
 
 interface ImageDropzoneProps {
   onDrop: (files: File[]) => void
@@ -20,17 +27,17 @@ export const ImageDropzone = ({ onDrop, children }: ImageDropzoneProps) => {
   return (
     <DropzoneContainer {...getRootProps()}>
       <input type="file" {...getInputProps()} />
-      <DropzoneOverlay>
+      <OverlayContainer>
         {isMedia('desktop') ? (
           isDragActive ? (
-            <p>Drop it</p>
+            <Overlay>Drop photo</Overlay>
           ) : (
-            <p>Drag a new photo</p>
+            <HoverOverlay>Click or drag to change photo</HoverOverlay>
           )
         ) : (
-          <p>Change photo</p>
+          <Overlay>Change photo</Overlay>
         )}
-      </DropzoneOverlay>
+      </OverlayContainer>
       {children}
     </DropzoneContainer>
   )
