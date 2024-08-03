@@ -66,10 +66,10 @@ export const Tags = styled.div`
 
 export const Tag = styled.div`
   ${({ theme }) => css`
-    color: ${theme.selected.main[2]};
     background: ${theme.selected.contrast[1]};
-    padding: 0.125rem 0.625rem;
     border-radius: 1rem;
+    color: ${theme.selected.main[2]};
     font-size: 0.75rem;
+    padding: 0.125rem 0.625rem;
   `};
 `

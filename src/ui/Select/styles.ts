@@ -34,6 +34,27 @@ export const StylesWrapper = styled.div`
         font-size: 0.875rem;
       }
 
+      &__multi-value {
+        background: ${theme.selected.contrast[1]};
+        border-radius: 1rem;
+        color: ${theme.selected.main[2]};
+        padding: 0.125rem 0.625rem;
+
+        &__label {
+          padding: 0;
+        }
+
+        &__remove {
+          margin-top: 0.125rem;
+          margin-right: -0.5rem;
+
+          &:hover {
+            color: ${theme.selected.danger.dark};
+            background: inherit;
+          }
+        }
+      }
+
       &__single-value {
         color: ${theme.selected.contrast[1]};
       }
@@ -75,5 +96,15 @@ export const OptionContainer = styled.div<{
 export const SelectedIcon = styled.span`
   ${({ theme }) => css`
     color: ${theme.mainColor.main};
+  `}
+`
+
+export const NoOptions = styled.div`
+  ${({ theme }) => css`
+    align-items: center;
+    color: ${theme.selected.contrast[1]};
+    display: flex;
+    font-size: 0.875rem;
+    padding: 0.5rem 0.75rem;
   `}
 `

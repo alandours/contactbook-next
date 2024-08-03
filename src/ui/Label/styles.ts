@@ -3,17 +3,17 @@ import { FontSize, FontWeight } from '@/ui/typography'
 import { responsive } from '@/ui/responsive'
 
 export const LabelContainer = styled.label<{ label?: string }>`
-  background: ${({ theme }) => theme.selected.main[1]};
-  display: flex;
-  flex-direction: column;
-  padding-top: 0.125rem;
-  position: relative;
-  margin-top: 1rem;
-  min-width: 30%;
-  width: 100%;
+  ${({ theme, label }) => css`
+    background: ${theme.selected.main[1]};
+    display: flex;
+    flex-direction: column;
+    margin-top: ${!!label ? '1rem' : '0'};
+    padding-top: 0.125rem;
+    position: relative;
+    min-width: 30%;
+    width: 100%;
 
-  ${({ label }) =>
-    responsive.md(`
+    ${responsive.md(`
       ${
         label === 'Alias' &&
         css`
@@ -21,6 +21,7 @@ export const LabelContainer = styled.label<{ label?: string }>`
         `
       }
     `)}
+  `}
 
   & + & {
     ${responsive.md(`

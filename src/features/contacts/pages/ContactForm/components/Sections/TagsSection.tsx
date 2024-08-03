@@ -39,7 +39,6 @@ export const TagsSection = () => {
             render={({ field: { ref, ...field } }) => {
               return (
                 <Select<OptionData, true>
-                  label="Tagss"
                   options={options}
                   isSearchable
                   isMulti

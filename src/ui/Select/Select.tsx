@@ -9,7 +9,9 @@ import CreatableSelect from 'react-select/creatable'
 import { Label } from '@/ui/Label'
 
 import { Menu } from './components/Menu'
+import { NoOptionsMessage } from './components/NoOptionsMessage'
 import { SelectOption } from './components/SelectOption'
+
 import { StylesWrapper } from './styles'
 
 export type OptionData = {
@@ -38,6 +40,7 @@ export const Select = <
     IndicatorSeparator: null,
     Option: SelectOption,
     Menu,
+    NoOptionsMessage,
   }
 
   const styles: Partial<StylesConfig<Option, IsMulti, GroupBase<Option>>> = {
