@@ -34,7 +34,7 @@ export const MultiField = ({
   const type = useWatch({ name: names.select })
 
   return (
-    <FormField>
+    <FormField $labelMargin={false}>
       <Input name={names.input} label={label.input} />
       <Controller
         name={names.select}

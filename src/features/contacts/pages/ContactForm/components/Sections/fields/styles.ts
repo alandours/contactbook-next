@@ -16,19 +16,21 @@ export const RemoveButton = styled(XButton)`
   `)}
 `
 
-export const FormField = styled.div`
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  justify-content: space-between;
-  margin-top: 1rem;
-  position: relative;
+export const FormField = styled.div<{ $labelMargin: boolean }>`
+  ${({ $labelMargin }) => css`
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    justify-content: space-between;
+    margin-top: ${$labelMargin ? '1rem' : '0'};
+    position: relative;
 
-  ${responsive.md(`
+    ${responsive.md(`
     flex-direction: row;
     gap: 1.2rem;
   `)}
+  `}
 `
 
 export const AddNewButtonContainer = styled(Button)`
