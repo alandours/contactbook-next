@@ -10,7 +10,7 @@ import { ROUTES } from '@/constants/routes'
 import { StickyBar } from '@/features/contacts/StickyBar'
 import { ContactsContext } from '@/features/contacts/context'
 import { ButtonVariants, Contact, Status } from '@/types'
-import { Button, Icon, Toast } from '@/ui'
+import { Button, Icon } from '@/ui'
 import { Icons } from '@/ui/icons'
 import { UIContext } from '@/ui/context'
 import { isMedia } from '@/ui/responsive'
@@ -111,7 +111,6 @@ export const ContactForm = ({ contact }: ContactFormProps) => {
         ref={formRef}
       >
         {isMedia('tablet') && showStickyBar && <StickyBar />}
-        <Toast />
         <ContactFormHeader />
         <ContactSecondaryForm />
         <FormActions $edit={!!contact}>

@@ -5,10 +5,6 @@ import { Status } from '@/types'
 
 export const CloseButton = styled(XButton)<{ $status: Status }>`
   ${({ theme, $status }) => css`
-    position: absolute;
-    top: 0.7rem;
-    right: 1rem;
-
     & > svg {
       ${$status === Status.SUCCESS &&
       css`
@@ -28,20 +24,29 @@ export const CloseButton = styled(XButton)<{ $status: Status }>`
   `}
 `
 
+export const ToastWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  left: 0;
+  position: absolute;
+  top: 4.125rem;
+  width: 100%;
+  z-index: 1000;
+`
+
 export const ToastContainer = styled.div<{
   $status: Status
   $visible: boolean
 }>`
   ${({ theme, $status, $visible }) => css`
-    border-radius: 4px;
-    position: absolute;
-    left: 2%;
+    align-items: center;
+    border-radius: 0.25rem;
+    display: flex;
+    justify-content: space-between;
     opacity: 0;
     padding: 0.6rem 1rem;
     transition: opacity 300ms;
-    top: 2%;
-    width: 96%;
-    z-index: 1000;
+    width: 1000px;
 
     ${$status === Status.SUCCESS &&
     css`

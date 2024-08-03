@@ -1,9 +1,8 @@
 import { useState, useEffect, useContext, useCallback } from 'react'
 
-import { Status } from '@/types'
 import { UIContext } from '@/ui/context'
 
-import { ToastContainer, CloseButton } from './styles'
+import { ToastContainer, CloseButton, ToastWrapper } from './styles'
 
 export const Toast = () => {
   const { toast, setToast } = useContext(UIContext)
@@ -19,7 +18,7 @@ export const Toast = () => {
   }, [setToast])
 
   useEffect(() => {
-    const timeOut = status === Status.SUCCESS ? 2500 : 4000
+    const timeOut = 4000
 
     if (message) {
       const messageTimeout = setTimeout(() => {
@@ -34,14 +33,16 @@ export const Toast = () => {
   return (
     !!message &&
     !!status && (
-      <ToastContainer $status={status} $visible={visible}>
-        {message}
-        <CloseButton
-          type="button"
-          $status={status}
-          handleClick={closeMessage}
-        />
-      </ToastContainer>
+      <ToastWrapper>
+        <ToastContainer $status={status} $visible={visible}>
+          {message}
+          <CloseButton
+            type="button"
+            $status={status}
+            handleClick={closeMessage}
+          />
+        </ToastContainer>
+      </ToastWrapper>
     )
   )
 }

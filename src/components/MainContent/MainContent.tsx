@@ -2,6 +2,8 @@
 
 import { ReactNode } from 'react'
 
+import { Toast } from '@/ui'
+
 import { MainContentContainer } from './styles'
 
 interface MainContentProps {
@@ -9,5 +11,8 @@ interface MainContentProps {
 }
 
 export const MainContent = ({ children }: MainContentProps) => (
-  <MainContentContainer>{children}</MainContentContainer>
+  <>
+    <MainContentContainer>{children}</MainContentContainer>
+    <Toast />
+  </>
 )

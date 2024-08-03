@@ -14,7 +14,7 @@ import {
 import { ContactsContext } from '@/features/contacts/context'
 import { ButtonVariants, Contact } from '@/types'
 import { ContactWithNextBirthday } from '@/types/birthday'
-import { Link, Toast } from '@/ui'
+import { Link } from '@/ui'
 import { Icons } from '@/ui/icons'
 
 import { DashboardContainer, InlineLink } from './styles'
@@ -52,7 +52,6 @@ export const Dashboard = () => {
 
   return (
     <DashboardContainer>
-      <Toast />
       <PageHeader title="ContactBook" subtitle={subtitle} />
       <Section title="Upcoming birthdays" icon={Icons.cake}>
         <div>
