@@ -5,8 +5,10 @@ import { NumberType } from '@prisma/client'
 import { Section } from '@/components/Section'
 import { Icons } from '@/ui/icons'
 
+import { AddNewButton } from './fields/AddNewButton'
 import { MultiField } from './fields/MultiField'
-import { AddNewButton, Fields } from './styles'
+
+import { Fields } from './styles'
 
 export const NumbersSection = () => {
   const { fields, append, replace, remove } = useFieldArray({ name: 'numbers' })
@@ -49,7 +51,7 @@ export const NumbersSection = () => {
           ))}
       </Fields>
       <AddNewButton handleClick={() => append(newField, { shouldFocus: true })}>
-        Add a new number
+        New number
       </AddNewButton>
     </Section>
   )

@@ -6,8 +6,10 @@ import { Section } from '@/components/Section'
 import { Platform } from '@/types'
 import { Icons } from '@/ui/icons'
 
+import { AddNewButton } from './fields/AddNewButton'
 import { MultiField } from './fields/MultiField'
-import { AddNewButton, Fields } from './styles'
+
+import { Fields } from './styles'
 
 export const SocialsSection = () => {
   const { fields, append, replace, remove } = useFieldArray({ name: 'socials' })
@@ -60,7 +62,7 @@ export const SocialsSection = () => {
           ))}
       </Fields>
       <AddNewButton handleClick={() => append(newField, { shouldFocus: true })}>
-        Add a new social
+        New account
       </AddNewButton>
     </Section>
   )

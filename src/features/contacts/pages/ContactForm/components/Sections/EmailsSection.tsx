@@ -5,8 +5,10 @@ import { EmailType } from '@prisma/client'
 import { Section } from '@/components/Section'
 import { Icons } from '@/ui/icons'
 
+import { AddNewButton } from './fields/AddNewButton'
 import { MultiField } from './fields/MultiField'
-import { AddNewButton, Fields } from './styles'
+
+import { Fields } from './styles'
 
 export const EmailsSection = () => {
   const { fields, append, replace, remove } = useFieldArray({ name: 'emails' })
@@ -49,7 +51,7 @@ export const EmailsSection = () => {
           ))}
       </Fields>
       <AddNewButton handleClick={() => append(newField, { shouldFocus: true })}>
-        Add new e-mail
+        New e-mail
       </AddNewButton>
     </Section>
   )

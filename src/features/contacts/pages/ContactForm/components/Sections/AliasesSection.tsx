@@ -4,8 +4,10 @@ import { useFieldArray } from 'react-hook-form'
 import { Section } from '@/components/Section'
 import { Icons } from '@/ui/icons'
 
+import { AddNewButton } from './fields/AddNewButton'
 import { SingleField } from './fields/SingleField'
-import { AddNewButton, Fields } from './styles'
+
+import { Fields } from './styles'
 
 export const AliasesSection = () => {
   const { fields, append, replace, remove } = useFieldArray({ name: 'aliases' })
@@ -32,7 +34,7 @@ export const AliasesSection = () => {
           ))}
       </Fields>
       <AddNewButton handleClick={() => append(newField, { shouldFocus: true })}>
-        Add a new alias
+        New alias
       </AddNewButton>
     </Section>
   )

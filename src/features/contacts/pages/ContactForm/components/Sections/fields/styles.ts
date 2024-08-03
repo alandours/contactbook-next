@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 import { XButton } from '@/components/XButton'
+import { Button } from '@/ui'
 import { responsive } from '@/ui/responsive'
 
 export const RemoveButton = styled(XButton)`
@@ -39,4 +40,8 @@ export const FormField = styled.div`
     visibility: visible;
     transition: all ease 100ms;
   }
+`
+
+export const AddNewButtonContainer = styled(Button)`
+  align-self: flex-end;
 `
