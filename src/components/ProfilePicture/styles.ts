@@ -8,13 +8,13 @@ export const ProfilePictureContainer = styled(Image)<{ $thumbnail: boolean }>`
     border: 6px solid ${theme.selected.main[1]};
     border-radius: 100%;
     box-shadow: 0 0 5px ${theme.selected.contrast[4]};
-    height: 220px;
+    height: 13.75rem;
     margin: auto;
-    min-height: 220px;
-    min-width: 220px;
+    min-height: 13.75rem;
+    min-width: 13.75rem;
     object-fit: cover;
     position: relative;
-    width: 220px;
+    width: 13.75rem;
 
     ${responsive.md(`
       margin: 0;

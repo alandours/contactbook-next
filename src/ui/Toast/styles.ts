@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components'
 
 import { XButton } from '@/components/XButton'
 import { Status } from '@/types'
+import { responsive } from '../responsive'
 
 export const CloseButton = styled(XButton)<{ $status: Status }>`
   ${({ theme, $status }) => css`
@@ -29,9 +30,13 @@ export const ToastWrapper = styled.div`
   justify-content: center;
   left: 0;
   position: absolute;
-  top: 4.125rem;
+  top: 1.125rem;
   width: 100%;
   z-index: 1000;
+
+  ${responsive.md(`
+    top: 4.125rem;
+  `)}
 `
 
 export const ToastContainer = styled.div<{
@@ -43,10 +48,11 @@ export const ToastContainer = styled.div<{
     border-radius: 0.25rem;
     display: flex;
     justify-content: space-between;
+    max-width: 1000px;
     opacity: 0;
     padding: 0.6rem 1rem;
     transition: opacity 300ms;
-    width: 1000px;
+    width: calc(100% - 2rem);
 
     ${$status === Status.SUCCESS &&
     css`
