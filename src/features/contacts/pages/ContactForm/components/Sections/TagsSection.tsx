@@ -43,6 +43,7 @@ export const TagsSection = () => {
                   isSearchable
                   isMulti
                   menuPortalTarget={document.querySelector('body')}
+                  isCreatable
                   {...field}
                 />
               )

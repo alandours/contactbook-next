@@ -16,14 +16,14 @@ export const RemoveButton = styled(XButton)`
   `)}
 `
 
-export const FormField = styled.div<{ $labelMargin: boolean }>`
+export const FormField = styled.div<{ $labelMargin?: boolean }>`
   ${({ $labelMargin }) => css`
     align-items: center;
     display: flex;
     flex-direction: column;
     gap: 2rem;
     justify-content: space-between;
-    margin-top: ${$labelMargin ? '1rem' : '0'};
+    margin-top: ${!!$labelMargin ? '1rem' : '0'};
     position: relative;
 
     ${responsive.md(`

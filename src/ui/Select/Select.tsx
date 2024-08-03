@@ -1,4 +1,4 @@
-import {
+import ReactSelect, {
   GroupBase,
   Props,
   SelectComponentsConfig,
@@ -31,6 +31,7 @@ export const Select = <
   placeholder = '',
   isSearchable = false,
   isMulti,
+  isCreatable = false,
   menuPortalTarget,
   onChange,
 }: Props<Option, IsMulti, Group>) => {
@@ -47,23 +48,30 @@ export const Select = <
     menuPortal: (base) => ({ ...base, zIndex: 999 }),
   }
 
+  const props = {
+    label,
+    classNamePrefix: 'contactbook-select',
+    options,
+    value,
+    defaultValue,
+    placeholder,
+    isSearchable,
+    isMulti,
+    isCreatable,
+    menuPortalTarget,
+    components,
+    styles,
+    onChange,
+  }
+
   return (
     <StylesWrapper>
       <Label label={label}>
-        <CreatableSelect
-          label={label}
-          classNamePrefix="contactbook-select"
-          options={options}
-          value={value}
-          defaultValue={defaultValue}
-          placeholder={placeholder}
-          isSearchable={isSearchable}
-          isMulti={isMulti}
-          menuPortalTarget={menuPortalTarget}
-          components={components}
-          styles={styles}
-          onChange={onChange}
-        />
+        {isCreatable ? (
+          <CreatableSelect {...props} />
+        ) : (
+          <ReactSelect {...props} />
+        )}
       </Label>
     </StylesWrapper>
   )
