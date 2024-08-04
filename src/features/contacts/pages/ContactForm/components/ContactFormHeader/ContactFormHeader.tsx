@@ -9,7 +9,7 @@ import { ContactMainForm } from '../ContactMainForm'
 
 import {
   ContactFormHeaderContainer,
-  PhotoLabel,
+  PhotoSection,
   RemovePhotoCheckbox,
 } from './styles'
 
@@ -21,7 +21,7 @@ export const ContactFormHeader = () => {
     <>
       <Gradient smooth />
       <ContactFormHeaderContainer>
-        <PhotoLabel>
+        <PhotoSection>
           <Controller
             name="file"
             control={control}
@@ -29,7 +29,6 @@ export const ContactFormHeader = () => {
             render={({ field: { onChange } }) => (
               <ImageDropzone
                 onDrop={(acceptedFiles) => {
-                  console.log(acceptedFiles)
                   if (acceptedFiles.length > 0) {
                     onChange([acceptedFiles[0]])
                   }
@@ -40,7 +39,7 @@ export const ContactFormHeader = () => {
             )}
           />
           <RemovePhotoCheckbox name="removePhoto" label="Delete photo" />
-        </PhotoLabel>
+        </PhotoSection>
         <ContactMainForm />
       </ContactFormHeaderContainer>
     </>

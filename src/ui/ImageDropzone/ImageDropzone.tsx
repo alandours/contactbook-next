@@ -26,7 +26,7 @@ export const ImageDropzone = ({ onDrop, children }: ImageDropzoneProps) => {
 
   return (
     <DropzoneContainer {...getRootProps()}>
-      <input type="file" {...getInputProps()} />
+      <input type="file" {...getInputProps()} aria-label="Photo" />
       <OverlayContainer>
         {isMedia('desktop') ? (
           isDragActive ? (

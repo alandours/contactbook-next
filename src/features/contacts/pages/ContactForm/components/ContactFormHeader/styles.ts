@@ -18,7 +18,7 @@ export const ContactFormHeaderContainer = styled.div`
   `)}
 `
 
-export const PhotoLabel = styled.label`
+export const PhotoSection = styled.div`
   position: relative;
 `
 
