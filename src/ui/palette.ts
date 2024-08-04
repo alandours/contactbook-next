@@ -113,13 +113,13 @@ export const colors = {
 }
 
 export const DEFAULT_PHOTOS = {
-  [Colors.GREEN]: ROUTES.profilePictures('contact-1'),
-  [Colors.BLUE]: ROUTES.profilePictures('contact-2'),
-  [Colors.RED]: ROUTES.profilePictures('contact-3'),
-  [Colors.PURPLE]: ROUTES.profilePictures('contact-4'),
-  [Colors.ORANGE]: ROUTES.profilePictures('contact-5'),
-  [Colors.TURQUOISE]: ROUTES.profilePictures('contact-6'),
-  [Colors.PINK]: ROUTES.profilePictures('contact-7'),
+  [Colors.GREEN]: ROUTES.profilePictures('default/contact-1.jpg'),
+  [Colors.BLUE]: ROUTES.profilePictures('default/contact-2.jpg'),
+  [Colors.RED]: ROUTES.profilePictures('default/contact-3.jpg'),
+  [Colors.PURPLE]: ROUTES.profilePictures('default/contact-4.jpg'),
+  [Colors.ORANGE]: ROUTES.profilePictures('default/contact-5.jpg'),
+  [Colors.TURQUOISE]: ROUTES.profilePictures('default/contact-6.jpg'),
+  [Colors.PINK]: ROUTES.profilePictures('default/contact-7.jpg'),
 }
 
 export const theme = {
