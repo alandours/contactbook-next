@@ -66,6 +66,19 @@ const CONTACT_SELECT = {
     },
     orderBy: [{ name: ASC }],
   },
+  relatesTo: {
+    select: {
+      id: true,
+      label: true,
+      contact: {
+        select: {
+          id: true,
+          name: true,
+          lastname: true,
+        },
+      },
+    },
+  },
 }
 
 export const getContacts = async (filters: Filters = {}) => {
@@ -170,6 +183,7 @@ export const upsertContact = async (
     emails,
     socials,
     tags,
+    relatesTo,
   } = data
 
   try {
@@ -203,6 +217,7 @@ export const upsertContact = async (
 
       const contact = await tx.contact.upsert(createQuery(query, contactId))
 
+      // Tag
       await tx.contact.update({
         data: {
           tags: {
@@ -218,6 +233,7 @@ export const upsertContact = async (
         },
       })
 
+      // Photo
       if (contact && (imageFile || removePhoto)) {
         const photo =
           imageFile && !removePhoto
@@ -230,6 +246,51 @@ export const upsertContact = async (
             id: contact.id,
           },
         })
+      }
+
+      // Relation
+      await tx.contactToContact.deleteMany({
+        where: {
+          fromContactId: contact.id,
+          NOT: relatesTo.map(({ id }) => ({ id: id || 0 })),
+        },
+      })
+
+      for (const relation of relatesTo) {
+        if (!relation.contact.id) {
+          continue
+        }
+
+        await tx.contactToContact.upsert({
+          where: {
+            id: Number(relation.id || 0),
+          },
+          update: {
+            fromContactId: contact.id,
+            contactId: relation.contact.id,
+            label: relation.label,
+          },
+          create: {
+            fromContactId: contact.id,
+            contactId: relation.contact.id,
+            label: relation.label,
+          },
+        })
+
+        // Bidirectional update
+        // await tx.contactToContact.upsert({
+        //   where: {
+        //     fromContactId_contactId: {
+        //       fromContactId: relation.contact.id,
+        //       contactId: contact.id,
+        //     },
+        //   },
+        //   update: {},
+        //   create: {
+        //     fromContactId: relation.contact.id,
+        //     contactId: contact.id,
+        //   },
+        // })
       }
 
       // Alias
