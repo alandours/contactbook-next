@@ -31,6 +31,7 @@ export const MultiField = ({
   removeField,
 }: MultiFieldProps) => {
   const { control } = useFormContext()
+  const input = useWatch({ name: names.input })
   const type = useWatch({ name: names.select })
 
   return (
@@ -63,7 +64,9 @@ export const MultiField = ({
         disabled={!customType || customType !== type}
         label="Custom name"
       />
-      {!isLastField && <RemoveButton type="button" handleClick={removeField} />}
+      {(!isLastField || !!input) && (
+        <RemoveButton type="button" handleClick={removeField} />
+      )}
     </FormField>
   )
 }
