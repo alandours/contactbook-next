@@ -4,7 +4,7 @@ import { ButtonVariants } from '@/types'
 
 type DataField = {
   name: string
-  label?: string
+  label?: string | null
   url?: string | null
   external?: boolean
 }

@@ -7,6 +7,7 @@ import {
   Number as ContactNumberType,
   Platform as SocialPlatformType,
   Social as ContactSocialType,
+  ContactToContact as RelationType,
 } from '@prisma/client'
 
 export enum ButtonVariants {
@@ -43,6 +44,7 @@ export type Platform = Omit<SocialPlatformType, 'contactId'>
 export type Social = Omit<ContactSocialType, 'contactId' | 'platformId'> & {
   platform: Platform
 }
+export type Relation = RelationType & { contact: RelationContact }
 
 export type Contact = Omit<ContactType, 'active' | 'updatedAt'> & {
   aliases: Alias[]
@@ -51,6 +53,8 @@ export type Contact = Omit<ContactType, 'active' | 'updatedAt'> & {
   socials: Social[]
   tags: Tag[]
 }
+
+type RelationContact = Pick<Contact, 'id' | 'name' | 'lastname'>
 
 export type Filters = {
   search?: string

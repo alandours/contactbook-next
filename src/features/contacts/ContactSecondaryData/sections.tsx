@@ -1,8 +1,10 @@
 import { EmailType, NumberType } from '@prisma/client'
 
 import { Datafield } from '@/components/Datafield'
+import { ROUTES } from '@/constants/routes'
 import { Icons } from '@/ui/icons'
-import { Alias, Email, Number, Social } from '@/types'
+import { Alias, Email, Number, Relation, Social } from '@/types'
+import { getFullName } from '@/utils/contacts'
 
 import { Notes } from './styles'
 
@@ -17,6 +19,29 @@ export type SectionRenderData = UnionToIntersection<
 >
 
 export const CONTACT_SECTIONS = [
+  {
+    title: 'Relations',
+    icon: Icons.relation,
+    key: 'relatesTo',
+    order: 0,
+    urlStart: null,
+    render: (relations: any) =>
+      relations.map((relation: Relation) => {
+        const {
+          label,
+          contact: { id, name, lastname },
+        } = relation || {}
+        return (
+          <Datafield
+            name={getFullName(name, lastname)}
+            label={label}
+            url={ROUTES.contacts.profile(id)}
+            key={id + label}
+            external={false}
+          />
+        )
+      }),
+  },
   {
     title: 'Aliases',
     icon: Icons.alias,
