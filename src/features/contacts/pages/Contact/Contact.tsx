@@ -35,7 +35,9 @@ export const Contact = ({ contact }: ContactProps) => {
     setShowStickyBar(scrollTop > 190)
   }
 
-  if (loading) {
+  console.log('loading', loading)
+
+  if (loading && !contact) {
     return <Loader />
   }
 
