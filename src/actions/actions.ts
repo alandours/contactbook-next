@@ -78,6 +78,11 @@ const CONTACT_SELECT = {
         },
       },
     },
+    orderBy: [
+      { label: ASC },
+      { contact: { name: ASC } },
+      { contact: { lastname: ASC } },
+    ],
   },
 }
 
