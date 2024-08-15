@@ -39,13 +39,15 @@ export const SocialsSection = () => {
     }
   }, [fields, platforms, newField, replace])
 
+  const customId = platforms.find((platform) => platform.name === 'Custom')?.id
+
   return (
     <Section title="Social networks" icon={Icons.social} sticky>
       <Fields>
         {!!platforms &&
           !!fields.length &&
           fields.map((username: Record<'id', string>, index: number) => (
-            <MultiField
+            <MultiField<string>
               key={username.id}
               label={{ input: 'Username', select: 'Platform' }}
               names={{
@@ -59,6 +61,7 @@ export const SocialsSection = () => {
               }))}
               removeField={() => remove(index)}
               isLastField={fields.length === 1}
+              customType={customId}
             />
           ))}
       </Fields>

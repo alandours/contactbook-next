@@ -33,7 +33,7 @@ export const EmailsSection = () => {
       <Fields>
         {!!fields.length &&
           fields.map((email: Record<'id', string>, index: number) => (
-            <MultiField
+            <MultiField<EmailType>
               key={email.id}
               label={{ input: 'E-mail', select: 'Type' }}
               names={{

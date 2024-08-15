@@ -33,7 +33,7 @@ export const NumbersSection = () => {
       <Fields>
         {!!fields.length &&
           fields.map((number: Record<'id', string>, index: number) => (
-            <MultiField
+            <MultiField<NumberType>
               key={number.id}
               label={{ input: 'Phone number', select: 'Type' }}
               names={{
