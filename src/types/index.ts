@@ -44,7 +44,9 @@ export type Platform = Omit<SocialPlatformType, 'contactId'>
 export type Social = Omit<ContactSocialType, 'contactId' | 'platformId'> & {
   platform: Platform
 }
-export type Relation = RelationType & { contact: RelationContact }
+export type Relation = Pick<RelationType, 'id' | 'label'> & {
+  contact: RelationContact
+}
 
 export type Contact = Omit<ContactType, 'active' | 'updatedAt'> & {
   aliases: Alias[]
@@ -52,6 +54,7 @@ export type Contact = Omit<ContactType, 'active' | 'updatedAt'> & {
   numbers: Number[]
   socials: Social[]
   tags: Tag[]
+  relatesTo: Relation[]
 }
 
 type RelationContact = Pick<Contact, 'id' | 'name' | 'lastname'>

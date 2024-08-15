@@ -115,10 +115,13 @@ export const calculateAge = (birthdayDate?: Date | null, yearOffset = 0) => {
   return age < 100 ? age + yearOffset : null
 }
 
-export const formatBirthday = (birthday: Date) =>
-  calculateAge(birthday)
-    ? format(birthday, 'MMMM d, u')
-    : format(birthday, 'MMMM d')
+export const formatBirthday = (birthday: Date) => {
+  if (calculateAge(birthday)) {
+    return format(birthday, 'MMMM d, u')
+  } else {
+    return format(add(birthday, { days: 1 }), 'MMMM d')
+  }
+}
 
 export const getListDate = (birthday: Date, showMonth: boolean) => {
   const listDateFormat = showMonth ? 'dd/MM' : 'dd'
