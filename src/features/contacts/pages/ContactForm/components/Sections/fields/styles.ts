@@ -18,7 +18,7 @@ export const RemoveButton = styled(XButton)`
 
 export const FormField = styled.div<{ $labelMargin?: boolean }>`
   ${({ $labelMargin }) => css`
-    align-items: center;
+    align-items: flex-end;
     display: flex;
     flex-direction: column;
     gap: 2rem;
@@ -27,9 +27,9 @@ export const FormField = styled.div<{ $labelMargin?: boolean }>`
     position: relative;
 
     ${responsive.md(`
-    flex-direction: row;
-    gap: 1.2rem;
-  `)}
+      flex-direction: row;
+      gap: 1.2rem;
+    `)}
   `}
 `
 

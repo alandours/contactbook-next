@@ -17,25 +17,38 @@ model Alias {
 }
 
 model Contact {
-  id        String    @id @default(uuid())
-  name      String    @db.VarChar(40)
-  lastname  String?   @db.VarChar(40)
-  photo     String?   @db.VarChar(60)
-  birthday  DateTime? @db.Date
-  address   String?   @db.VarChar(40)
+  id        String             @id @default(uuid())
+  name      String             @db.VarChar(40)
+  lastname  String?            @db.VarChar(40)
+  photo     String?            @db.VarChar(60)
+  birthday  DateTime?          @db.Date
+  address   String?            @db.VarChar(40)
   notes     String?
-  yearMet   Int?      @map("year_met") @db.SmallInt
-  favorite  Boolean   @default(false)
-  active    Boolean   @default(true)
-  createdAt DateTime  @default(now()) @map("created_at")
-  updatedAt DateTime  @updatedAt @map("updated_at")
+  yearMet   Int?               @map("year_met") @db.SmallInt
+  favorite  Boolean            @default(false)
+  active    Boolean            @default(true)
+  createdAt DateTime           @default(now()) @map("created_at")
+  updatedAt DateTime           @updatedAt @map("updated_at")
   aliases   Alias[]
   emails    Email[]
   numbers   Number[]
   socials   Social[]
   tags      Tag[]
+  relatesTo ContactToContact[] @relation("relatesTo")
+  relatedTo ContactToContact[] @relation("relatedTo")
 
   @@map("contacts")
+}
+
+model ContactToContact {
+  id            Int     @id @default(autoincrement())
+  label         String? @db.VarChar(40)
+  fromContactId String
+  contactId     String
+  fromContact   Contact @relation("relatesTo", fields: [fromContactId], references: [id])
+  contact       Contact @relation("relatedTo", fields: [contactId], references: [id])
+
+  @@unique([fromContactId, contactId])
 }
 
 model Email {
@@ -83,9 +96,9 @@ model Platform {
 }
 
 model Tag {
-  id        String    @id @default(uuid())
-  name      String    @unique
-  contacts  Contact[]
+  id       String    @id @default(uuid())
+  name     String    @unique
+  contacts Contact[]
 }
 
 enum EmailType {

@@ -6,7 +6,7 @@ import { OptionData } from '@/ui/Select'
 
 import { FormField, RemoveButton } from './styles'
 
-interface MultiFieldProps {
+interface MultiFieldProps<CustomType> {
   label: {
     input: string
     select: string
@@ -18,19 +18,20 @@ interface MultiFieldProps {
   }
   options: { label: string; value: string }[]
   isLastField: boolean
-  customType?: NumberType | EmailType
+  customType?: CustomType
   removeField: () => void
 }
 
-export const MultiField = ({
+export const MultiField = <CustomType,>({
   label,
   names,
   options,
   isLastField,
   customType,
   removeField,
-}: MultiFieldProps) => {
+}: MultiFieldProps<CustomType>) => {
   const { control } = useFormContext()
+  const input = useWatch({ name: names.input })
   const type = useWatch({ name: names.select })
 
   return (
@@ -63,7 +64,9 @@ export const MultiField = ({
         disabled={!customType || customType !== type}
         label="Custom name"
       />
-      {!isLastField && <RemoveButton type="button" handleClick={removeField} />}
+      {(!isLastField || !!input) && (
+        <RemoveButton type="button" handleClick={removeField} />
+      )}
     </FormField>
   )
 }

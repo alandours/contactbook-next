@@ -10,6 +10,6 @@ declare module 'react-select/base' {
     Group extends GroupBase<Option>,
   > {
     label?: string
-    isCreatable: boolean
+    isCreatable?: boolean
   }
 }

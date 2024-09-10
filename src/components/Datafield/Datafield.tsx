@@ -4,14 +4,19 @@ import { ButtonVariants } from '@/types'
 
 type DataField = {
   name: string
-  label?: string
+  label?: string | null
   url?: string | null
+  external?: boolean
 }
 
-export const Datafield = ({ name, label, url }: DataField) => (
+export const Datafield = ({ name, label, url, external = true }: DataField) => (
   <DatafieldContainer>
     {url || label ? (
-      <Link href={url || '#'} variant={ButtonVariants.DATAFIELD} external>
+      <Link
+        href={url || '#'}
+        variant={ButtonVariants.DATAFIELD}
+        external={external}
+      >
         <Name>{name}</Name>
         <Label>{label}</Label>
       </Link>

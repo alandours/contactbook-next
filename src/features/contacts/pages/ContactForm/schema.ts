@@ -106,4 +106,13 @@ export const schema = z.object({
     })
     .nullable(),
   removePhoto: z.boolean(),
+  relatesTo: z.array(
+    z.object({
+      id: z.number().nullable(),
+      label: z.string().max(40, 'The label is too long').nullable(),
+      contact: z.object({
+        id: z.string().optional(),
+      }),
+    })
+  ),
 })
